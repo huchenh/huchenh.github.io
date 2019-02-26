@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>coding</title>
+  <title>追风</title>
   
   <subtitle>我的前端之路</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-02-17T13:27:47.386Z</updated>
+  <updated>2019-02-17T14:00:48.183Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://huchenh.github.io/2019/02/17/hello-world/"/>
     <id>https://huchenh.github.io/2019/02/17/hello-world/</id>
     <published>2019-02-17T05:56:39.217Z</published>
-    <updated>2019-02-17T13:27:47.386Z</updated>
+    <updated>2019-02-17T14:00:48.183Z</updated>
     
     <summary type="html">
     
@@ -29,10 +29,10 @@
       
         
         
-          &lt;!-- 接下来就是见证奇迹的时刻 --&gt;
+          &lt;!-- cp -R public/* .deploy/huchenh.github.io --&gt;
+&lt;!-- 接下来就是见证奇迹的时刻 --&gt;
 &lt;!-- &lt;font color=&quot;#FF0000&quot;&gt; 我可以设置这一句的颜色哈哈 &lt;/font&gt; 
-&lt;font size=6&gt; 我还可以设置这一句的大小嘻嘻 &lt;/font&gt; 
-&lt;font size=5
+&lt;font size=6&gt;
         
       
     
