@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-02-27T16:16:14.157Z</updated>
+  <updated>2019-02-28T15:41:35.532Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>js知识梳理三</title>
+    <link href="https://huchenh.github.io/2019/02/28/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%B8%89/"/>
+    <id>https://huchenh.github.io/2019/02/28/js知识梳理三/</id>
+    <published>2019-02-28T15:40:19.000Z</published>
+    <updated>2019-02-28T15:41:35.532Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数组常用方法&quot;&gt;&lt;a href=&quot;#数组常用方法&quot; class=&quot;headerlink&quot; title=&quot;数组常用方法&quot;&gt;&lt;/a&gt;数组常用方法&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;方法的作用 &lt;/li&gt;
+&lt;li&gt;方法的参数 &lt;/li&gt;
+&lt;li&gt;方法的返回值&lt;/li&gt;
+&lt;li&gt;原有数组是否改变&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;push&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作用：向数组“末尾”追加新的内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 参数：追加的内容（可以是一个，也可是多个）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 返回值：新增后数组的长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 原有数组改变&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ary = [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary.push(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;4  ary:[12,23,24,1000]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary.push(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&amp;#123;&lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&#39;xxx&#39;&lt;/span&gt;&amp;#125;); &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;6&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary:[&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&amp;#123;...&amp;#125;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;pop&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作用：删除数组最后一项&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 参数：无&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 返回：被删除的那一项内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 原有数组改变&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ary = [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary.pop() =&amp;gt; &lt;span class=&quot;comment&quot;&gt;//34&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;shift&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作用：删除数组中的第一项&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 参数：无&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 返回：被删除的那一项内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 原有数组改变&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ary = [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary.shfit(); =&amp;gt; &lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;unshfit&lt;/code&gt;&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 作用：向数组开始位置追加新内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 参数：要新增的内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 返回：新增后数组的长度&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 原有数组改变&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; ary = [&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;23&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;34&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ary.unshfit(&lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;,&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;) &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;5&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ary =&amp;gt; [100,true,12,23,34]&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>js知识梳理二</title>
     <link href="https://huchenh.github.io/2019/02/28/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%BA%8C/"/>
     <id>https://huchenh.github.io/2019/02/28/js知识梳理二/</id>
     <published>2019-02-27T16:08:19.000Z</published>
-    <updated>2019-02-27T16:16:14.157Z</updated>
+    <updated>2019-02-28T15:39:44.320Z</updated>
     
     <summary type="html">
     
@@ -72,11 +101,12 @@
     <link href="https://huchenh.github.io/2019/02/28/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%B8%80/"/>
     <id>https://huchenh.github.io/2019/02/28/js知识梳理一/</id>
     <published>2019-02-27T16:05:32.000Z</published>
-    <updated>2019-02-27T16:16:34.538Z</updated>
+    <updated>2019-02-28T15:38:32.869Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;数据类型的详细剖析&quot;&gt;&lt;a href=&quot;#数据类型的详细剖析&quot; class=&quot;headerlink&quot; title=&quot;数据类型的详细剖析&quot;&gt;&lt;/a&gt;数据类型的详细剖析&lt;/h3&gt;&lt;ol&gt;
+      &lt;!-- cp -R public/* .deploy/huchenh.github.io --&gt;
+&lt;h3 id=&quot;数据类型的详细剖析&quot;&gt;&lt;a href=&quot;#数据类型的详细剖析&quot; class=&quot;headerlink&quot; title=&quot;数据类型的详细剖析&quot;&gt;&lt;/a&gt;数据类型的详细剖析&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;number数字类型&lt;br&gt;NaN：not a number 但是它是数字类型的&lt;br&gt;isNaN：检测当前值是否不是有效数字，返回true代表不是有效数字，返回false是有效数字&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//=&amp;gt;语法：isNaN([value])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var num=12;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(num); //-&amp;gt;检测num变量存储的值是否为非有效数字 false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;apos;13&amp;apos;) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;apos;珠峰&amp;apos;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(true) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(false) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(null) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(undefined) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;#123;age:9&amp;#125;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN([12,23]) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN([12]) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(/^$/) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(function()&amp;#123;&amp;#125;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;重要：isNaN检测的机制&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1、首先验证当前要检测的值是否为数字类型的，如果不是，浏览器会默认的把值转换为数字类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  把非数字类型的值转换为数字&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - 其它基本类型转换为数字：直接使用Number这个方法转换的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [字符串转数字]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13&amp;apos;) -&amp;gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13px&amp;apos;) -&amp;gt;NaN 如果当前字符串中出现任意一个非有效数字字符，结果则为NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13.5&amp;apos;) -&amp;gt;13.5 可以识别小数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [布尔转数字]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(true) -&amp;gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(false) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [其它]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(null) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(undefined) -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - 把引用数据类型值转换为数字：先把引用值调取toString转换为字符串，然后再把字符串调取Number转换为数字&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [对象]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     (&amp;#123;&amp;#125;).toString() -&amp;gt;&amp;apos;[object Object]&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [数组]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     [12,23].toString() -&amp;gt;&amp;apos;12,23&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     [12].toString() -&amp;gt;&amp;apos;12&amp;apos; -&amp;gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [正则]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     /^$/.toString() -&amp;gt;&amp;apos;/^$/&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Number(&amp;apos;&amp;apos;) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [].toString() -&amp;gt;&amp;apos;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  =&amp;gt; isNaN([])：false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2、当前检测的值已经是数字类型，是有效数字返回false，不是返回true（数字类型中只有NaN不是有效数字，其余都是有效数字）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
@@ -114,37 +144,6 @@
     
     
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://huchenh.github.io/2019/02/17/hello-world/"/>
-    <id>https://huchenh.github.io/2019/02/17/hello-world/</id>
-    <published>2019-02-17T05:56:39.217Z</published>
-    <updated>2019-02-17T14:00:48.183Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;!-- cp -R public/* .deploy/huchenh.github.io --&gt;
-&lt;!-- 接下来就是见证奇迹的时刻 --&gt;
-&lt;!-- &lt;font color=&quot;#FF0000&quot;&gt; 我可以设置这一句的颜色哈哈 &lt;/font&gt; 
-&lt;font size=6&gt;
-        
-      
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://huchenh.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-      <category term="hexo" scheme="https://huchenh.github.io/tags/hexo/"/>
-    
-      <category term="github" scheme="https://huchenh.github.io/tags/github/"/>
     
   </entry>
   
