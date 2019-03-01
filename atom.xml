@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-02-28T15:41:35.532Z</updated>
+  <updated>2019-03-01T14:18:00.130Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git基础</title>
+    <link href="https://huchenh.github.io/2019/03/01/git%E5%9F%BA%E7%A1%80/"/>
+    <id>https://huchenh.github.io/2019/03/01/git基础/</id>
+    <published>2019-03-01T14:15:37.000Z</published>
+    <updated>2019-03-01T14:18:00.130Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;git基础管理&quot;&gt;&lt;a href=&quot;#git基础管理&quot; class=&quot;headerlink&quot; title=&quot;git基础管理&quot;&gt;&lt;/a&gt;git基础管理&lt;/h3&gt;&lt;p&gt;&lt;code&gt;基础命令配置&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;git
+        
+      
+    
+    </summary>
+    
+      <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理三</title>
