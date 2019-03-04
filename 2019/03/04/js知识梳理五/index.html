@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="js严格模式 1.在严格模式下不支持使用 “arguments.callee / arguments.callee.caller” （Uncaught TypeError: ‘caller’, ‘callee’, and ‘arguments’ properties may not be accessed on strict mode functions or the arguments obje">
+<meta name="keywords" content="javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js知识梳理五">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/04/js知识梳理五/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="js严格模式 1.在严格模式下不支持使用 “arguments.callee / arguments.callee.caller” （Uncaught TypeError: ‘caller’, ‘callee’, and ‘arguments’ properties may not be accessed on strict mode functions or the arguments obje">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-04T14:03:21.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js知识梳理五">
+<meta name="twitter:description" content="js严格模式 1.在严格模式下不支持使用 “arguments.callee / arguments.callee.caller” （Uncaught TypeError: ‘caller’, ‘callee’, and ‘arguments’ properties may not be accessed on strict mode functions or the arguments obje">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/04/js知识梳理五/">
+
+
+
+
+
+  <title>js知识梳理五 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/04/js知识梳理五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js知识梳理五</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T22:01:29+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="js严格模式"><a href="#js严格模式" class="headerlink" title="js严格模式"></a>js严格模式</h3><blockquote>
+<p>1.在严格模式下不支持使用 “arguments.callee / arguments.callee.caller” （Uncaught TypeError: ‘caller’, ‘callee’, and ‘arguments’ properties may not be accessed on strict mode functions or the arguments objects for calls to them）<br><br>2.在严格模式下ARGUMENTS和形参没有映射机制<br><br>3.在严格模式下不允许给一个对象设置重复属性名的：“obj={n:10,n:20}”<br><br>4.在严格模式下，函数执行，如果没有明确指定执行的主体（函数前面没有点），不再像非严格模式下一样，统一都交给window，而是让this指向undefined，代表没有执行主体：“严格模式下，有执行主体this就指向谁，没有执行主体，this就是undefined”<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">/*function fn(x) &#123;</span></span><br><span class="line"><span class="comment">        arguments[0]=100;</span></span><br><span class="line"><span class="comment">        console.log(x);//=&gt;100 存在映射机制</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    fn(10);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*var obj=&#123;</span></span><br><span class="line"><span class="comment">        n:10,</span></span><br><span class="line"><span class="comment">        n:20</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">    console.log(obj.n);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//=&gt;window</span></span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    <span class="comment">/*function fn(x) &#123;</span></span><br><span class="line"><span class="comment">        arguments[0]=100;</span></span><br><span class="line"><span class="comment">        console.log(x);//=&gt;10 不存在映射机制</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    fn(10);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*var obj=&#123;</span></span><br><span class="line"><span class="comment">        n:10,</span></span><br><span class="line"><span class="comment">        n:20</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">    console.log(obj.n);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//=&gt;undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="原型设计模式"><a href="#原型设计模式" class="headerlink" title="原型设计模式"></a>原型设计模式</h3><blockquote>
+<p>在实际项目基于面向对象开发的时候(构造原型设计模式),我们根据需要,很多时候会重定向类的原型(让类的原型指向自己开辟的堆内存</p>
+<ul>
+<li>自己开辟的堆内存中没有constructor属性,导致类的原型构造函数缺失（解决：自己手动在堆内存中增加constructor属性）</li>
+<li>当原型重定向后，浏览器默认开辟的那个原型堆内存会被释放掉，如果之前已经存储了一些方法或者属性，这些东西都会丢失（所以：内置类的原型不允许重定向到自己开辟的堆内存，因为内置类原型上自带很多属性方法，重定向后都没了，这样是不被允许的）</li>
+</ul>
+</blockquote>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><blockquote>
+<p>它是CSS预编译语言，和它类似的还有sass/stylus…</p>
+<p>css是标记语言，不是编程语言，没有类、实例、函数、变量等东西；而less等预编译语言就是让css具备面向对象编程的思想；但是浏览器不能直接识别和渲染less代码，需要我们把less代码预先编译为正常的css后，再交给浏览器渲染解析；</p>
+</blockquote>
+<h3 id="less的编译"><a href="#less的编译" class="headerlink" title="less的编译"></a>less的编译</h3><ul>
+<li>在开发环境下编译(产品没有开发完，正在开发中，这个是开发环境)<blockquote>
+<p>导入less.js即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//=&gt;rel=&quot;stylesheet/less&quot; 这块有修改</span><br><span class="line">&lt;link rel=&quot;stylesheet/less&quot; href=&quot;css/demo1.less&quot;&gt;</span><br><span class="line"></span><br><span class="line">//=&gt;导入JS文件即可</span><br><span class="line">&lt;script src=&quot;js/less-2.5.3.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>在生产环境下编译(产品开发完成了，需要部署到服务器上)</p>
+<blockquote>
+<p>项目上线，不能把less部署，这样用户每一次打开页面都需要重新的编译，非常耗性能，我们部署到服务器上的是编译后的css</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.在当前电脑的全局环境下安装less模块</span><br><span class="line">  $ npm install less -g</span><br><span class="line"></span><br><span class="line">  验证是否安装成功：$ lessc -v</span><br><span class="line"></span><br><span class="line">2.基于命令把我们的less编译成css</span><br><span class="line">  $ lessc xxx/xxx.less xxx/xxx.min.css -x</span><br><span class="line"></span><br><span class="line">  把指定目录中的less编译成为css(并且实现了代码的压缩)，把编译后的css存入到具体指定路径中的文件中；上线前在HTML中导入的是css文件；</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>目前基于webpack和框架实现工程化开发的时候，我们都是在webpack配置文件中，配置出less的编译（需要安装less/less-loader等模块），这样不管是开发环境下的预览，还是部署到生产环境下，都是基于webpack中的less模块编译的</p>
+</li>
+<li><p>less语法：[<a href="http://lesscss.cn/]" target="_blank" rel="noopener">http://lesscss.cn/]</a></p>
+</li>
+</ul>
+<h3 id="call、aplly、bind"><a href="#call、aplly、bind" class="headerlink" title="call、aplly、bind"></a>call、aplly、bind</h3><p><strong><code>call</code></strong></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[fn].call([this],[param]…)<br> fn.call：当前实例(函数FN)通过原型链的查找机制，找到Function.prototype上的call方法  =&gt;function call(){[native code]}<br> ,当call方法执行的时候，内部处理了一些事情<br><br> 1、首先把要操作函数中的THIS关键字变为CALL方法第一个传递的实参值<br><br> 2、把CALL方法第二个及第二个以后的实参获取到<br><br> 3、把要操作的函数执行，并且把第二个以后的传递进来的实参传给函数<br><!--more--></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// call 原理</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.es3Call = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> content = context || <span class="built_in">window</span>;</span><br><span class="line">   content.fn = <span class="keyword">this</span>;</span><br><span class="line">   <span class="keyword">var</span> args = [];</span><br><span class="line">   <span class="comment">// arguments是类数组对象，遍历之前需要保存长度，过滤出第一个传参</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>, len = <span class="built_in">arguments</span>.length ; i &lt; len; i++) &#123;</span><br><span class="line">      <span class="comment">// 避免object之类传入</span></span><br><span class="line">      args.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">'content.fn('</span>+args+<span class="string">')'</span>);</span><br><span class="line">   <span class="keyword">delete</span> content.fn;</span><br><span class="line">   <span class="keyword">return</span> result;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="call细节"><a href="#call细节" class="headerlink" title="call细节"></a>call细节</h3><blockquote>
+<ul>
+<li>非严格模式下，如果参数不传，或者第一个传递的是null/undefined，THIS都指向WINDOW</li>
+<li>在严格模式下，第一个参数是谁，THIS就指向谁（包括null/undefined），不传THIS是undefined</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fn.call(obj, <span class="number">10</span>, <span class="number">20</span>);<span class="comment">//=&gt;this:obj a=10 b=20</span></span><br><span class="line">fn.call(<span class="number">10</span>, <span class="number">20</span>);<span class="comment">//=&gt;this:10 a=20 b=undefined</span></span><br><span class="line">fn.call();<span class="comment">//=&gt;this:window a=undefined b=undefined</span></span><br><span class="line">fn.call(<span class="literal">null</span>);<span class="comment">//=&gt;this:window</span></span><br><span class="line">fn.call(<span class="literal">undefined</span>);<span class="comment">//=&gt;this:window</span></span><br></pre></td></tr></table></figure>
+<p><code>apply</code></p>
+<blockquote>
+<p>和call基本上一模一样，唯一区别在于传参方式</p>
+<ul>
+<li>fn.call(obj,10,20)</li>
+<li>fn.apply(obj,[10,20]) APPLY把需要传递给FN的参数放到一个数组（或者类数组）中传递进去，虽然写的是一个数组，但是也相当于给FN一个个的传递</li>
+</ul>
+</blockquote>
+<p> <code>bind：</code></p>
+<blockquote>
+<p>语法和call一模一样，唯一的区别在于立即执行还是等待执行</p>
+<ul>
+<li>fn.call(obj,10,20) 改变FN中的THIS,并且把FN立即执行</li>
+<li>fn.bind(obj,10,20) 改变FN中的THIS,此时的FN并没有执行（不兼容IE6~8）</li>
+</ul>
+</blockquote>
+<h3 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h3><p> <strong><code>对象解构赋值</code></strong><br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> obj = &#123;<span class="attr">name</span>: <span class="string">'xxx'</span>, <span class="attr">age</span>: <span class="number">25</span>, <span class="attr">sex</span>: <span class="number">0</span>&#125;;</span><br><span class="line">  <span class="keyword">let</span> &#123;name, age&#125; = obj;<span class="comment">//=&gt;对象解构赋值默认情况下要求：左侧变量名和对象中的属性名一致才可以</span></span><br><span class="line">  <span class="built_in">console</span>.log(name, age);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> &#123;sex&#125; = obj;</span><br><span class="line">  <span class="built_in">console</span>.log(sex);<span class="comment">//=&gt;0</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> &#123;<span class="attr">age</span>: ageAA&#125; = obj;</span><br><span class="line">  <span class="built_in">console</span>.log(age);<span class="comment">//=&gt;Uncaught ReferenceError: age is not defined</span></span><br><span class="line">  <span class="built_in">console</span>.log(ageAA);<span class="comment">//=&gt;25 给解构的属性名起别名作为我们使用的变量</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> &#123;friend = <span class="number">0</span>&#125; = obj;</span><br><span class="line">  <span class="built_in">console</span>.log(friend);<span class="comment">//=&gt;0 给不存在的属性设置默认值</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params">&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">                       name = <span class="string">'珠峰'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">                       age = <span class="number">0</span></span></span></span><br><span class="line"><span class="function"><span class="params">                   &#125; = &#123;&#125;</span>) </span>&#123;<span class="comment">//=&gt;把传递的对象解构了(不传递值,默认赋值为空对象：现在传递对象或者不传递，形参接收到的都是对象)，解构的时候，可以把传递进来对象中，如果某个属性不存在，我们赋值默认值</span></span><br><span class="line">    <span class="built_in">console</span>.log(name, age);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">fn(&#123;</span><br><span class="line">    name: <span class="string">'xxx'</span>,</span><br><span class="line">    age: <span class="number">25</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>数组解构赋值</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> a = <span class="number">12</span>,</span><br><span class="line">     b = <span class="number">13</span>;</span><br><span class="line"><span class="comment">//=&gt;a&amp;b互换位置</span></span><br><span class="line"> [a, b] = [b, a];<span class="comment">//=&gt;[13,12]</span></span><br><span class="line"> <span class="built_in">console</span>.log(a, b);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*let c=a;</span></span><br><span class="line"><span class="comment">a=b;</span></span><br><span class="line"><span class="comment">b=c;</span></span><br><span class="line"><span class="comment">console.log(a, b);*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*a=a+b;</span></span><br><span class="line"><span class="comment">b=a-b;</span></span><br><span class="line"><span class="comment">a=a-b;</span></span><br><span class="line"><span class="comment">console.log(a, b);*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> ary = [<span class="number">12</span>];</span><br><span class="line"> <span class="keyword">let</span> [a, b = <span class="number">0</span>] = ary;<span class="comment">//=&gt;在解构的时候可以给变量设置默认值：如果当前变量对应结构中的这一项没有值，变量用默认值</span></span><br><span class="line"> <span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;12 0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> ary = [<span class="number">12</span>, <span class="number">23</span>, <span class="number">34</span>, <span class="number">45</span>, <span class="number">56</span>];</span><br><span class="line"><span class="comment">//=&gt;需求：获取第一项，把剩下的项作为一个数组返回</span></span><br><span class="line"> <span class="keyword">let</span> [a, ...b] = ary;</span><br><span class="line"> <span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;12 [23,34,45,56]  “...”在此处称之为剩余运算符：除了前面以外的项，都放在一个数组中</span></span><br><span class="line"><span class="comment">// let [a, ...b, c] = ary;//=&gt;Uncaught SyntaxError: Rest element must be last element 剩余运算符处于解构中最后的位置</span></span><br><span class="line">-------------------------------------</span><br><span class="line"><span class="keyword">let</span> a=ary[<span class="number">0</span>],</span><br><span class="line">    b=ary[<span class="number">1</span>],</span><br><span class="line">    c=ary[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> [a, b, c] = ary;<span class="comment">//=&gt;让等号左边出现和右边相同的数据结构,左边可以创建一些变量快速获取到右侧对应位置的值(解构赋值)</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b, c);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a] = ary;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//=&gt;12</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, , c] = ary;</span><br><span class="line"><span class="built_in">console</span>.log(a, c);<span class="comment">//=&gt;12 34</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="‘…’运算符"><a href="#‘…’运算符" class="headerlink" title="‘…’运算符"></a>‘…’运算符</h3><blockquote>
+<p>“…”在ES6的语法中，三个点有三种含义</p>
+<ul>
+<li>1.剩余运算符</li>
+<li>2.拓展运算符</li>
+<li>3.展开运算符：把数组(对象/类数组)中的每一项展开 xxx,xxx,xxx…<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> ary = [<span class="number">12</span>, <span class="number">23</span>, <span class="number">34</span>];</span><br><span class="line"> <span class="keyword">let</span> [...arg] = ary; <span class="comment">//=&gt;ary.slice(0)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">context, ...arg</span>) </span>&#123;</span><br><span class="line">     <span class="comment">//=&gt;获取传递值中的第一个和剩下的</span></span><br><span class="line">     <span class="built_in">console</span>.log(context, arg);</span><br><span class="line">     <span class="comment">//=&gt;ARG是一个数组 / ARGUMENTS是类数组</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">...arg</span>) </span>&#123;</span><br><span class="line">     <span class="comment">//=&gt;传递几个实参,ARG中就存储多少个,此时的ARG和ARGUMENTS一样的,区别是ARG是一个数组,ARGUMENTS是一个类数组</span></span><br><span class="line">&#125;</span><br><span class="line">-------------------------------------------------------</span><br><span class="line"> <span class="keyword">let</span> ary = [<span class="number">12</span>, <span class="number">23</span>, <span class="number">34</span>];</span><br><span class="line"> <span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span> (<span class="params">a, b, c</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(a, b, c);</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="comment">// Math.max(...ary);//=&gt;Math.max(12,23,34)</span></span><br><span class="line"> <span class="comment">// fn(ary);//=&gt;a:ary b/c:undefined</span></span><br><span class="line"> fn(...ary);<span class="comment">//=&gt;fn(12, 23, 34) 把数组中的每一项分别传递给一个函数,此时我们使用展开运算符把数组展开即可</span></span><br><span class="line"> <span class="keyword">let</span> obj = &#123;<span class="attr">name</span>: <span class="string">'xxx'</span>, <span class="attr">age</span>: <span class="number">20</span>&#125;;</span><br><span class="line"> <span class="keyword">let</span> newObj = &#123;...obj, <span class="attr">sex</span>: <span class="number">0</span>&#125;;<span class="comment">//=&gt;&#123;name: 'xxx', age: 20,sex:0&#125; 把原有对象展开(克隆)放到新对象中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let ary = [12, 23];</span></span><br><span class="line"><span class="comment">// let newAry = [...ary, 100];//=&gt;[12, 23, 100]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="DOM的映射机制"><a href="#DOM的映射机制" class="headerlink" title="DOM的映射机制"></a>DOM的映射机制</h3><ul>
+<li>页面中的HTML元素，和JS中通过相关方法获取到的元素集合或者元素对象存在映射关系(一个改另外一个会跟着自动修改)<br>*</li>
+<li>xxx.style.color=’red’ : 把xxx元素对象对应堆内存中的style属性下的color属性值修改为’red’（本质操作的是JS堆内存） ；但是由于DOM映射关系，页面中的标签和XXX元素对象是绑在一起的，我们修改元素对象空间的值，页面中的元素会按照最新的值进行渲染；<br>*</li>
+<li>在元素绑定前，我们获取容器中元素，得到一个空的元素集合，元素数据绑定后，我们不需要重新获取，DOM的映射机制会帮我们把新增加的元素映射到之前获取的空集合中，让其变为有元素的集合（querySelectorAll获取的集合是静态集合(staticNodeList)，不存在上述所谓的映射机制，所以基于这种办法，数据绑定完成后需要重新的获取一次才可以）<br>*</li>
+<li>appendChild在追加元素对象的时候，如果这个元素之前容器中已经存在，此时不是克隆一份新的追加到末尾，而是把原有的元素移动到末尾位置</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/03/js知识梳理四/" rel="next" title="js知识梳理四">
+                <i class="fa fa-chevron-left"></i> js知识梳理四
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js严格模式"><span class="nav-number">1.</span> <span class="nav-text">js严格模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型设计模式"><span class="nav-number">2.</span> <span class="nav-text">原型设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less"><span class="nav-number">3.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less的编译"><span class="nav-number">4.</span> <span class="nav-text">less的编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call、aplly、bind"><span class="nav-number">5.</span> <span class="nav-text">call、aplly、bind</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call细节"><span class="nav-number">6.</span> <span class="nav-text">call细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构赋值"><span class="nav-number">7.</span> <span class="nav-text">解构赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘…’运算符"><span class="nav-number">8.</span> <span class="nav-text">‘…’运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM的映射机制"><span class="nav-number">9.</span> <span class="nav-text">DOM的映射机制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
