@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-04T14:03:21.634Z</updated>
+  <updated>2019-03-05T14:29:50.214Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js知识梳理六</title>
+    <link href="https://huchenh.github.io/2019/03/05/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%85%AD/"/>
+    <id>https://huchenh.github.io/2019/03/05/js知识梳理六/</id>
+    <published>2019-03-05T14:28:36.000Z</published>
+    <updated>2019-03-05T14:29:50.214Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;正则特殊元字符&quot;&gt;&lt;a href=&quot;#正则特殊元字符&quot; class=&quot;headerlink&quot; title=&quot;正则特殊元字符&quot;&gt;&lt;/a&gt;正则特殊元字符&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;\d  0~9之间的一个数字&lt;/li&gt;
+&lt;li&gt;\D  非0~9之间的任意字符&lt;/li&gt;
+&lt;li&gt;\w  “数字、字母、下划线”中的任意一个 =&amp;gt;/[0-9a-zA-Z_]/等价于\w&lt;/li&gt;
+&lt;li&gt;\s  匹配任意一个空白字符（包括\t制表符[TAB键四个空格]）&lt;/li&gt;
+&lt;li&gt;\b  匹配边界符  ‘zhu’(z左边和u右边就是边界)  ‘zhu-feng’(z左边、u右边、f左边、g右边是边界)&lt;/li&gt;
+&lt;li&gt;\n  匹配一个换行符&lt;/li&gt;
+&lt;li&gt;\  转义字符(把一个普通字符转义为特殊的字符,例如:\d，把有特殊含义的转换为普通意思，例如：. 此处的点就不是任意字符，而是一个小数点)&lt;/li&gt;
+&lt;li&gt;. 不仅仅是小数点，代表除了\n以外的任意字符&lt;/li&gt;
+&lt;li&gt;^ 以某个元字符开头&lt;/li&gt;
+&lt;li&gt;$  以某个元字符结尾&lt;/li&gt;
+&lt;li&gt;x|y  x或者y中的任意一个(a|z…)&lt;/li&gt;
+&lt;li&gt;[xyz] x或者y或者z中的任意一个&lt;/li&gt;
+&lt;li&gt;[^xyz] 除了x\y\z以外的任意字符&lt;/li&gt;
+&lt;li&gt;[a-z] 获取a-z中的任意一个字符([0-9] 等价于\d …)&lt;/li&gt;
+&lt;li&gt;[^a-z] 除了a-z的任意字符&lt;/li&gt;
+&lt;li&gt;()  正则分组&lt;/li&gt;
+&lt;li&gt;(?:) 当前分组只匹配不捕获&lt;/li&gt;
+&lt;li&gt;(?=) 正向预查&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(?!) 负向预查&lt;/p&gt;
+&lt;h3 id=&quot;量词元字符&quot;&gt;&lt;a href=&quot;#量词元字符&quot; class=&quot;headerlink&quot; title=&quot;量词元字符&quot;&gt;&lt;/a&gt;量词元字符&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;让其左边的元字符出现多少次]&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;出现零到多次&lt;/li&gt;
+&lt;li&gt;? 出现零到一次&lt;/li&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;出现一到多次&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;{n} 出现N次&lt;/li&gt;
+&lt;li&gt;{n,} 出现N到多次&lt;/li&gt;
+&lt;li&gt;{n,m} 出现N到M次&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;普通元字符&quot;&gt;&lt;a href=&quot;#普通元字符&quot; class=&quot;headerlink&quot; title=&quot;普通元字符&quot;&gt;&lt;/a&gt;普通元字符&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;只要在正则中出现的元字符（在基于字面方式创建），除了特殊和有量词意义的以外，其余的都是普通元字符&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;中括号的一些细节&quot;&gt;&lt;a href=&quot;#中括号的一些细节&quot; class=&quot;headerlink&quot; title=&quot;中括号的一些细节&quot;&gt;&lt;/a&gt;中括号的一些细节&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;[xyz]&amp;nbsp;&amp;nbsp;&amp;nbsp;[^xyz]&amp;nbsp;&amp;nbsp; [a-z]&amp;nbsp;&amp;nbsp; [^a-z]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.中括号中出现的元字符一般都是代表本身含义的&lt;ul&gt;
+&lt;li&gt;2.中括号中出现的两位数，不是两位数，而是两个数字中的任意一个&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; reg = &lt;span class=&quot;regexp&quot;&gt;/^.+$/&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;一个正则设置了^和$，那么代表的含义其实就是只能是xxx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;n&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;1&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;nn&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;\n&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; reg = &lt;span class=&quot;regexp&quot;&gt;/^[.]+$/&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;n&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;1&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;nn&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;\n&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;false&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(reg.test(&lt;span class=&quot;string&quot;&gt;&#39;...&#39;&lt;/span&gt;));&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理五</title>
