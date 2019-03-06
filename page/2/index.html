@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="记录学习，记录生活，记录点滴">
+<meta name="keywords" content="JavaScript react">
+<meta property="og:type" content="website">
+<meta property="og:title" content="追风">
+<meta property="og:url" content="https://huchenh.github.io/page/2/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="记录学习，记录生活，记录点滴">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="追风">
+<meta name="twitter:description" content="记录学习，记录生活，记录点滴">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/page/2/">
+
+
+
+
+
+  <title>追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/02/28/js知识梳理三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/js知识梳理三/" itemprop="url">js知识梳理三</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T23:40:19+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="数组常用方法"><a href="#数组常用方法" class="headerlink" title="数组常用方法"></a>数组常用方法</h3><ul>
+<li>方法的作用 </li>
+<li>方法的参数 </li>
+<li>方法的返回值</li>
+<li>原有数组是否改变</li>
+</ul>
+<p><strong><code>push</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：向数组“末尾”追加新的内容</span></span><br><span class="line"><span class="comment">// 参数：追加的内容（可以是一个，也可是多个）</span></span><br><span class="line"><span class="comment">// 返回值：新增后数组的长度</span></span><br><span class="line"><span class="comment">// 原有数组改变</span></span><br><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">34</span>];</span><br><span class="line">ary.push(<span class="number">100</span>); <span class="comment">//=&gt;4  ary:[12,23,24,1000]</span></span><br><span class="line">ary.push(<span class="number">100</span>,&#123;<span class="attr">name</span>:<span class="string">'xxx'</span>&#125;); <span class="comment">//=&gt;6</span></span><br><span class="line">ary:[<span class="number">12</span>,<span class="number">23</span>,<span class="number">34</span>,<span class="number">100</span>,<span class="number">100</span>,&#123;...&#125;]</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>pop</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：删除数组最后一项</span></span><br><span class="line"><span class="comment">// 参数：无</span></span><br><span class="line"><span class="comment">// 返回：被删除的那一项内容</span></span><br><span class="line"><span class="comment">// 原有数组改变</span></span><br><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">34</span>];</span><br><span class="line">ary.pop() =&gt; <span class="comment">//34</span></span><br></pre></td></tr></table></figure></p>
+<p><strong><code>shift</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：删除数组中的第一项</span></span><br><span class="line"><span class="comment">// 参数：无</span></span><br><span class="line"><span class="comment">// 返回：被删除的那一项内容</span></span><br><span class="line"><span class="comment">// 原有数组改变</span></span><br><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">34</span>];</span><br><span class="line">ary.shfit(); =&gt; <span class="number">12</span></span><br></pre></td></tr></table></figure></p>
+<p><strong><code>unshfit</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：向数组开始位置追加新内容</span></span><br><span class="line"><span class="comment">// 参数：要新增的内容</span></span><br><span class="line"><span class="comment">// 返回：新增后数组的长度</span></span><br><span class="line"><span class="comment">// 原有数组改变</span></span><br><span class="line"><span class="keyword">var</span> ary = [<span class="number">12</span>,<span class="number">23</span>,<span class="number">34</span>];</span><br><span class="line">ary.unshfit(<span class="number">100</span>,<span class="literal">true</span>) <span class="comment">//=&gt;5</span></span><br><span class="line"><span class="comment">// ary =&gt; [100,true,12,23,34]</span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/28/js知识梳理三/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/02/28/js知识梳理二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/js知识梳理二/" itemprop="url">js知识梳理二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T00:08:19+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="JS中数据类型转型汇总"><a href="#JS中数据类型转型汇总" class="headerlink" title="JS中数据类型转型汇总"></a>JS中数据类型转型汇总</h3><p>JS中的数据类型分为<br><code>基本数据类型</code></p>
+<ul>
+<li>数字 number</li>
+<li>字符串 string</li>
+<li>布尔 boolean</li>
+<li>空 null</li>
+<li>未定义 undefined</li>
+</ul>
+<p><code>引用数据类型</code></p>
+<ul>
+<li>对象 object<ul>
+<li>普通对象</li>
+<li>数组对象 (Array)</li>
+<li>正则对象 (RegExp)</li>
+<li>日期对象 (Date)</li>
+<li>数学函数 (Math)<br>…<br>-函数 function<h3 id="把其它数据类型转换为number类型"><a href="#把其它数据类型转换为number类型" class="headerlink" title="把其它数据类型转换为number类型"></a>把其它数据类型转换为number类型</h3><code>1.发生的情况</code><ul>
+<li>isNaN检测的时候：当检测的值不是数字类型,浏览器会自己调用Number方法把它先转换为数字，然后再检测是否为非有效数字<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="string">'3'</span>) =&gt;<span class="literal">false</span></span><br><span class="line">  <span class="built_in">Number</span>(<span class="string">'3'</span>)-&gt;<span class="number">3</span></span><br><span class="line">  <span class="built_in">isNaN</span>(<span class="number">3</span>)-&gt;<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">isNaN</span>(<span class="string">'3px'</span>) =&gt;<span class="literal">true</span></span><br><span class="line">  <span class="built_in">Number</span>(<span class="string">'3px'</span>)-&gt;<span class="literal">NaN</span></span><br><span class="line">  <span class="built_in">isNaN</span>(<span class="literal">NaN</span>)-&gt;<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>基于parseInt/parseFloat/Number手动转换为数字类型</li>
+<li><p>数学运算： + - * / % ，但是“+”不仅仅是数学运算，还可能是字符串拼接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'3'</span><span class="number">-1</span> =&gt;<span class="number">2</span></span><br><span class="line">  <span class="built_in">Number</span>(<span class="string">'3'</span>)-&gt;<span class="number">3</span></span><br><span class="line">  <span class="number">3</span><span class="number">-1</span>-&gt;<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="string">'3px'</span><span class="number">-1</span> =&gt;<span class="literal">NaN</span></span><br><span class="line"></span><br><span class="line"><span class="string">'3px'</span>+<span class="number">1</span> =&gt;<span class="string">'3px1'</span> 字符串拼接</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> i=<span class="string">'3'</span>;</span><br><span class="line">i=i+<span class="number">1</span>; =&gt;<span class="string">'31'</span></span><br><span class="line">i+=<span class="number">1</span>; =&gt;<span class="string">'31'</span></span><br><span class="line">i++; =&gt;<span class="number">4</span>  i++就是单纯的数学运算，已经摒弃掉字符串拼接的规则</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在基于“==”比较的时候，有时候也会把其它值转换为数字类型</p>
+</li>
+</ul>
+<p><code>2.转换规律</code><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;转换的方法：Number（浏览器自行转换都是基于这个方法完成的）</span></span><br><span class="line"></span><br><span class="line">【把字符串转换为数字】</span><br><span class="line">只要遇到一个非有效数字字符，结果就是<span class="literal">NaN</span></span><br><span class="line"><span class="string">''</span> -&gt;<span class="number">0</span></span><br><span class="line"><span class="string">' '</span> -&gt;<span class="number">0</span> 空格(Space)</span><br><span class="line"><span class="string">'\n'</span> -&gt;<span class="number">0</span> 换行符(Enter)</span><br><span class="line"><span class="string">'\t'</span> -&gt;<span class="number">0</span> 制表符(Tab)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">【把布尔转换为数字】</span><br><span class="line"><span class="literal">true</span> -&gt;<span class="number">1</span></span><br><span class="line"><span class="literal">false</span> -&gt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">【把没有转换为数字】</span><br><span class="line"><span class="literal">null</span> -&gt;<span class="number">0</span></span><br><span class="line"><span class="literal">undefined</span> -&gt;<span class="literal">NaN</span></span><br><span class="line"></span><br><span class="line">【把引用类型值转换为数字】</span><br><span class="line">首先都先转换为字符串（toString），然后再转换为数字（<span class="built_in">Number</span>）</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/28/js知识梳理二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/02/28/js知识梳理一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/28/js知识梳理一/" itemprop="url">js知识梳理一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T00:05:32+08:00">
+                2019-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <!-- cp -R public/* .deploy/huchenh.github.io -->
+<h3 id="数据类型的详细剖析"><a href="#数据类型的详细剖析" class="headerlink" title="数据类型的详细剖析"></a>数据类型的详细剖析</h3><ol>
+<li><p>number数字类型<br>NaN：not a number 但是它是数字类型的<br>isNaN：检测当前值是否不是有效数字，返回true代表不是有效数字，返回false是有效数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//=&gt;语法：isNaN([value])</span><br><span class="line">var num=12;</span><br><span class="line">isNaN(num); //-&gt;检测num变量存储的值是否为非有效数字 false</span><br><span class="line"></span><br><span class="line">isNaN(&apos;13&apos;) =&gt;false</span><br><span class="line">isNaN(&apos;珠峰&apos;) =&gt;true</span><br><span class="line">isNaN(true) =&gt;false</span><br><span class="line">isNaN(false) =&gt;false</span><br><span class="line">isNaN(null) =&gt;false</span><br><span class="line">isNaN(undefined) =&gt;true</span><br><span class="line">isNaN(&#123;age:9&#125;) =&gt;true</span><br><span class="line">isNaN([12,23]) =&gt;true</span><br><span class="line">isNaN([12]) =&gt;false</span><br><span class="line">isNaN(/^$/) =&gt;true</span><br><span class="line">isNaN(function()&#123;&#125;) =&gt;true</span><br><span class="line"></span><br><span class="line">重要：isNaN检测的机制</span><br><span class="line">1、首先验证当前要检测的值是否为数字类型的，如果不是，浏览器会默认的把值转换为数字类型</span><br><span class="line"></span><br><span class="line">  把非数字类型的值转换为数字</span><br><span class="line">  - 其它基本类型转换为数字：直接使用Number这个方法转换的</span><br><span class="line"></span><br><span class="line">  [字符串转数字]</span><br><span class="line">    Number(&apos;13&apos;) -&gt;13</span><br><span class="line">    Number(&apos;13px&apos;) -&gt;NaN 如果当前字符串中出现任意一个非有效数字字符，结果则为NaN</span><br><span class="line">    Number(&apos;13.5&apos;) -&gt;13.5 可以识别小数</span><br><span class="line"></span><br><span class="line">  [布尔转数字]</span><br><span class="line">    Number(true) -&gt;1</span><br><span class="line">    Number(false) -&gt;0</span><br><span class="line"></span><br><span class="line">  [其它]</span><br><span class="line">    Number(null) -&gt;0</span><br><span class="line">    Number(undefined) -&gt;NaN</span><br><span class="line"></span><br><span class="line">  - 把引用数据类型值转换为数字：先把引用值调取toString转换为字符串，然后再把字符串调取Number转换为数字</span><br><span class="line"></span><br><span class="line">   [对象]</span><br><span class="line">     (&#123;&#125;).toString() -&gt;&apos;[object Object]&apos; -&gt;NaN</span><br><span class="line"></span><br><span class="line">   [数组]</span><br><span class="line">     [12,23].toString() -&gt;&apos;12,23&apos; -&gt;NaN</span><br><span class="line">     [12].toString() -&gt;&apos;12&apos; -&gt;12</span><br><span class="line"></span><br><span class="line">   [正则]</span><br><span class="line">     /^$/.toString() -&gt;&apos;/^$/&apos; -&gt;NaN</span><br><span class="line"></span><br><span class="line">  Number(&apos;&apos;) -&gt;0</span><br><span class="line">  [].toString() -&gt;&apos;&apos;</span><br><span class="line">  =&gt; isNaN([])：false</span><br><span class="line"></span><br><span class="line">2、当前检测的值已经是数字类型，是有效数字返回false，不是返回true（数字类型中只有NaN不是有效数字，其余都是有效数字）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>parseInt / parseFloat</p>
+<blockquote>
+<p>等同于Number，也是为了把其它类型的值转换为数字类型</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>和Number的区别在于字符串转换分析上</p>
+<p>Number：出现任意非有效数字字符，结果就是NaN</p>
+<p>parseInt：把一个字符串中的整数部分解析出来，parseFloat是把一个字符串中小数(浮点数)部分解析出来</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;13.5px&apos;) =&gt;13</span><br><span class="line">parseFloat(&apos;13.5px&apos;) =&gt;13.5</span><br><span class="line"></span><br><span class="line">parseInt(&apos;width:13.5px&apos;) =&gt;NaN 从字符串最左边字符开始查找有效数字字符，并且转换为数字，但是一但遇到一个非有效数字字符，查找结束</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>NaN的比较<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN==NaN：false NaN和谁都不相等，包括自己</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><blockquote>
+<p>只有两个值：true / false </p>
+</blockquote>
+<p>如何把其它数据类型转换为布尔类型?</p>
+<ul>
+<li>Boolean</li>
+<li>!</li>
+<li>!!</li>
+</ul>
+<p>规律：<strong><code>在JS中只有“0/NaN/空字符串/null/undefined”这五个值转换为布尔类型的false，其余都转换为true</code></strong></p>
+<hr>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/02/28/js知识梳理一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="DOM的属性和方法获取元素或者元素集合getElementById    上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）ID重复了获取第一个IE6~7中会把表单元素的name当做id使用  getElementsByTagName  获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素  getElementsByClassName  I">
+<meta name="keywords" content="javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js知识梳理七">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/06/js知识梳理七/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="DOM的属性和方法获取元素或者元素集合getElementById    上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）ID重复了获取第一个IE6~7中会把表单元素的name当做id使用  getElementsByTagName  获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素  getElementsByClassName  I">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-06T15:12:20.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js知识梳理七">
+<meta name="twitter:description" content="DOM的属性和方法获取元素或者元素集合getElementById    上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）ID重复了获取第一个IE6~7中会把表单元素的name当做id使用  getElementsByTagName  获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素  getElementsByClassName  I">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/06/js知识梳理七/">
+
+
+
+
+
+  <title>js知识梳理七 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/06/js知识梳理七/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js知识梳理七</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T23:11:43+08:00">
+                2019-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="DOM的属性和方法"><a href="#DOM的属性和方法" class="headerlink" title="DOM的属性和方法"></a>DOM的属性和方法</h2><h3 id="获取元素或者元素集合"><a href="#获取元素或者元素集合" class="headerlink" title="获取元素或者元素集合"></a>获取元素或者元素集合</h3><p><strong><code>getElementById</code></strong>  </p>
+<blockquote>
+<p>上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）<br><br>ID重复了获取第一个<br><br>IE6~7中会把表单元素的name当做id使用</p>
+</blockquote>
+<p><strong><code>getElementsByTagName</code></strong></p>
+<blockquote>
+<p>获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素<br></p>
+</blockquote>
+<p><strong><code>getElementsByClassName</code></strong></p>
+<blockquote>
+<p>IE6~8中不兼容</p>
+</blockquote>
+<p><strong><code>getElementsByName</code></strong></p>
+<blockquote>
+<p>在IE浏览器中只对表单元素的name起作用<br><br>上下文也只能是document</p>
+</blockquote>
+<p><strong><code>querySelector\querySelectorAll</code></strong></p>
+<blockquote>
+<p>不兼容IE6~8<br><br>没有DOM映射</p>
+<ul>
+<li>document.documentElement</li>
+<li>document.body</li>
+<li>document.head</li>
+<li>…</li>
+</ul>
+</blockquote>
+<h3 id="offset系列"><a href="#offset系列" class="headerlink" title="offset系列"></a>offset系列</h3><p> <strong><code>offsetParent</code></strong></p>
+<blockquote>
+<p>当前盒子的父级参照物</p>
+</blockquote>
+<p> <strong><code>offsetTop / offsetLeft</code></strong></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;获取当前盒子距离其父级参照物的偏移量(上偏移/左偏移)  当前盒子的外边框开始~父级参照物的内边框<br><br>&nbsp;&nbsp;&nbsp;&nbsp;“参照物”：同一个平面中，元素的父级参照物和结构没有必然联系，默认他们的父级参照物都是BODY（当前平面最外层的盒子） BODY的父级参照物是NULL</p>
+<ul>
+<li>center.offsetParent  //=&gt;BODY</li>
+<li>inner.offsetParent   //=&gt;BODY</li>
+<li>outer.offsetParent   //=&gt;BODY<br>&nbsp;&nbsp;&nbsp;&nbsp;“参照物可以改变”：构建出不同的平面即可（使用zIndex，但是这个属性只对定位有作用），所以改变元素的定位(position:relative/absolute/fixed)可以改变其父级参照物</li>
+</ul>
+</blockquote>
+<p><strong><code>scrollTop / scrollLeft</code></strong></p>
+<blockquote>
+<p>滚动条卷去的宽度或者高度</p>
+<ul>
+<li>最小卷去值：0</li>
+<li>最大卷去值：真实页面的高度 - 一屏幕的高度 document.documentElement.scrollHeight-document.documentElement.clientHeight</li>
+<li>在JS盒子模型13个属性中，只有scrollTop/scrollLeft是“可读写”属性，其余都是“只读”属性</li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="js常见操作dom的方法"><a href="#js常见操作dom的方法" class="headerlink" title="js常见操作dom的方法"></a>js常见操作dom的方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;公共方法库:项目中常用的一些方法封装</span></span><br><span class="line"><span class="keyword">let</span> utils = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;获取元素的样式</span></span><br><span class="line">    <span class="keyword">let</span> getCss = <span class="function"><span class="keyword">function</span> (<span class="params">curEle, attr</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.getComputedStyle === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> val = <span class="built_in">window</span>.getComputedStyle(curEle, <span class="literal">null</span>)[attr],</span><br><span class="line">            reg = <span class="regexp">/^-?\d+(\.\d+)?(px|rem|em|pt)?$/i</span>;</span><br><span class="line">        reg.test(val) ? val = <span class="built_in">parseFloat</span>(val) : <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;设置元素样式</span></span><br><span class="line">    <span class="keyword">let</span> setCss = <span class="function"><span class="keyword">function</span> (<span class="params">curEle, attr, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (attr === <span class="string">'opacity'</span>) &#123;</span><br><span class="line">            curEle.style.opacity = value;</span><br><span class="line">            curEle.style.filter = <span class="string">`alpha(opacity=<span class="subst">$&#123;value * <span class="number">100</span>&#125;</span>)`</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">isNaN</span>(value)) &#123;</span><br><span class="line">            <span class="keyword">let</span> reg = <span class="regexp">/^(width|height|fontSize|((margin|padding)?(top|left|right|bottom)?))$/i</span>;</span><br><span class="line">            reg.test(attr) ? value += <span class="string">'px'</span> : <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        curEle[<span class="string">'style'</span>][attr] = value;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;批量设置元素样式</span></span><br><span class="line">    <span class="keyword">let</span> setGroupCss = <span class="function"><span class="keyword">function</span> (<span class="params">curEle, options = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> options) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!options.hasOwnProperty(attr)) <span class="keyword">break</span>;</span><br><span class="line">            setCss(curEle, attr, options[attr]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;CSS操作汇总</span></span><br><span class="line">    <span class="keyword">let</span> css = <span class="function"><span class="keyword">function</span> (<span class="params">...arg</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> len = arg.length,</span><br><span class="line">            fn = getCss;</span><br><span class="line">        len &gt;= <span class="number">3</span> ? fn = setCss : <span class="literal">null</span>;</span><br><span class="line">        len === <span class="number">2</span> &amp;&amp; (arg[<span class="number">1</span>] <span class="keyword">instanceof</span> <span class="built_in">Object</span>) ? fn = setGroupCss : <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">return</span> fn(...arg);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;offset：获取当前元素距离BODY的偏移(左偏移和上偏移)</span></span><br><span class="line">    <span class="keyword">let</span> offset = <span class="function"><span class="keyword">function</span> (<span class="params">curEle</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//1.先获取当前元素本身的左/上偏移</span></span><br><span class="line">        <span class="keyword">let</span> curLeft = curEle.offsetLeft,</span><br><span class="line">            curTop = curEle.offsetTop,</span><br><span class="line">            p = curEle.offsetParent;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.累加父参照物的边框和偏移(一直向上找,找到BODY为止,每当找到一个父参照物都把它的边框和偏移累加起来,根据元素不一样,具体找几次也不知道)</span></span><br><span class="line">        <span class="comment">//TAG-NAME获取当前元素的标签名(大写的)</span></span><br><span class="line">        <span class="keyword">while</span> (p.tagName !== <span class="string">'BODY'</span>) &#123;<span class="comment">//=&gt;当找到的父参照物是BODY结束查找和累加操作</span></span><br><span class="line">            <span class="comment">//3.把找到的父参照物的边框和偏移值累加起来</span></span><br><span class="line">            curLeft += p.clientLeft;</span><br><span class="line">            curLeft += p.offsetLeft;</span><br><span class="line">            curTop += p.clientTop;</span><br><span class="line">            curTop += p.offsetTop;</span><br><span class="line">            p = p.offsetParent;<span class="comment">//=&gt;基于当前找到的父参照物继续向上查找</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            top: curTop,</span><br><span class="line">            left: curLeft</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;操作浏览器盒子模型属性的</span></span><br><span class="line">    <span class="keyword">let</span> winHandle = <span class="function"><span class="keyword">function</span> (<span class="params">attr, value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> value !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">            <span class="comment">//=&gt;设置盒子模型属性值:SCROLL-TOP/LEFT</span></span><br><span class="line">            <span class="built_in">document</span>.documentElement[attr] = value;</span><br><span class="line">            <span class="built_in">document</span>.body[attr] = value;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">document</span>.documentElement[attr] || <span class="built_in">document</span>.body[attr];</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        css, <span class="comment">//=&gt;在ES6中直接这样写相当于 css:css</span></span><br><span class="line">        offset,</span><br><span class="line">        winHandle</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="CSS中的盒子模型"><a href="#CSS中的盒子模型" class="headerlink" title="CSS中的盒子模型"></a>CSS中的盒子模型</h3><blockquote>
+<p>一个盒子的WIDTH/HEIGHT/PADDING/BORDER/MARGIN…样式属性构成一个盒子模型</p>
+</blockquote>
+<p><strong><code>传统</code></strong></p>
+<blockquote>
+<p>WIDTH/HEIGHT: 内容的宽度和高度（盒子的宽度高度是内容+填充+边框）</p>
+</blockquote>
+<p><strong><code>CSS3</code></strong></p>
+<ul>
+<li>BOX-SIZING:BORDER-BOX</li>
+<li>WIDTH/HEIGHT:一个盒子的最终宽高，我们调整PADDING/BORDER，盒子大小不变，会自动的缩减内容的宽度和高度</li>
+</ul>
+<p><strong><code>JS中的盒子模型</code></strong></p>
+<blockquote>
+<p>基于一些属性和方法获取到当前元素的相关样式</p>
+<ul>
+<li>CLIENT(WIDTH/HEIGHT/TOP/LEFT)</li>
+<li>OFFSET(WIDTH/HEIGHT/TOP/LEFT/PARENT)</li>
+<li>SCROLL(WIDTH/HEIGHT/TOP/LEFT)</li>
+</ul>
+</blockquote>
+<p><strong><code>CLIENT系列</code></strong></p>
+<ol>
+<li>CLIENT(WIDTH/HEIGHT) 内容的宽高+PADDING，代表当前盒子可视区域的宽高 “对于浏览器来说，可视区域其实就是一屏幕的宽度和高度”<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取当前浏览器一屏幕的宽度高度（兼容所有浏览器）</span></span><br><span class="line"> <span class="built_in">document</span>.documentElement.clientWidth || <span class="built_in">document</span>.body.clientWidth</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight</span><br><span class="line"><span class="comment">//2.CLIENT(TOP/LEFT) 盒子边框的宽度(上/左)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong><code>OFFSET系列</code></strong></p>
+<ul>
+<li>OFFSET(WIDTH/HEIGHT)：在CLIENT的基础上加上BORDER（内容宽高+PADDING+BORDER）</li>
+</ul>
+<ul>
+<li>注意：当我们设置了固定的宽高，不管内容是否溢出，对宽高都不会有影响，所以CLIENT \ OFFSET 获取的结果不受内容是否溢出的影响</li>
+</ul>
+<p><strong><code>SCROLL(WIDTH/HEIGHT)</code></strong></p>
+<ul>
+<li>真实内容的宽高(包含溢出部分的内容)+左或者上PADDING，当内容没有溢出的情况下和CLIENT相同</li>
+<li>基于这个属性获取的值每个浏览器都不太一样，而且同一个浏览器设置了OVERFLOW：HIDDEN也会对结果产生影响（这个值是一个参考值）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;获取当前页面真实的高度</span></span><br><span class="line"> <span class="built_in">document</span>.documentElement.scrollHeight||<span class="built_in">document</span>.body.scrollHeight</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong><code>以上8个属性具备一些特点</code></strong></p>
+<ol>
+<li>获取的结果是一个数字(没有单位)</li>
+<li>获取的结果是几个样式组合到一起的值（局限性：我只想获取宽高或者PADDING就不能基于这几个属性完成了）</li>
+<li>获取的结果都是整数（一般情况下会自己进行小数的四舍五入）</li>
+</ol>
+<p>需求：只想获取WIDTH（获取当前元素具体的某个样式属性的值）</p>
+<ul>
+<li>getComputedStyle</li>
+<li>在IE6~8中没有这个方法，需要使用 xxx.currentStyle 这个属性获取</li>
+</ul>
+<p><strong><code>window.getComputedStyle([元素],[元素伪类，一般都是不写或者写NULL])</code></strong></p>
+<blockquote>
+<p>结果是一个对象，包含当前元素所有经过浏览器计算的样式属性和值（只要当前元素可以在页面中呈现，都是被浏览器计算过的），有些样式属性是我们自己设定的，还有很多都是浏览器的默认样式值</p>
+</blockquote>
+<p><code>GET-CSS</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取某一个元素对象指定的样式属性值</span></span><br><span class="line"><span class="comment">//ELE:元素对象</span></span><br><span class="line"><span class="comment">//ATTR:元素的样式属性名(字符串格式)</span></span><br><span class="line"><span class="keyword">let</span> getCss = <span class="function"><span class="keyword">function</span> (<span class="params">ele, attr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> val = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//=&gt;验证是否兼容:不兼容WIN中没有这个属性(属性值是UNDEFINED)</span></span><br><span class="line">    <span class="comment">//if(typeof window.getComputedStyle !== 'undefined')</span></span><br><span class="line">    <span class="comment">//if(window.getComputedStyle)</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'getComputedStyle'</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span><br><span class="line">        val = <span class="built_in">window</span>.getComputedStyle(ele)[attr];</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;把获取的结果去除单位（只有符合 纯数字或者数字加单位的 两种字符串我们再基于PARSE-FLOAT去掉单位即可）</span></span><br><span class="line">        <span class="keyword">let</span> reg = <span class="regexp">/^-?\d+(\.\d+)?(px|pt|em|rem)?$/i</span>;</span><br><span class="line">        reg.test(val) ? val = <span class="built_in">parseFloat</span>(val) : <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>SET-CSS</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置当前元素某一个样式属性的具体值</span></span><br><span class="line"><span class="comment">//ELE:元素对象</span></span><br><span class="line"><span class="comment">//ATTR:元素的样式属性名(字符串格式)</span></span><br><span class="line"><span class="comment">//VALUE:设置的值</span></span><br><span class="line"><span class="keyword">let</span> setCss = <span class="function"><span class="keyword">function</span> (<span class="params">ele, attr, value</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;对于某些样式属性，如果传递的值没有单位，我们手动增加PX单位</span></span><br><span class="line">    <span class="comment">//1.传递的需要是数字才有可能加单位</span></span><br><span class="line">    <span class="comment">//2.对于Z-INDEX/OPACITY等样式属性，属性值就是数字，不须要加单位</span></span><br><span class="line">    <span class="comment">// if (!isNaN(value)) &#123;//=&gt;传递的是有效数字(纯数字字符串)</span></span><br><span class="line">    <span class="comment">//     if (!/^(zIndex|opacity)$/i.test(attr)) &#123;//=&gt;操作的样式或属性不是层级和透明度两个</span></span><br><span class="line">    <span class="comment">//         value += 'px';</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    !<span class="built_in">isNaN</span>(value) &amp;&amp; !<span class="regexp">/^(zIndex|opacity)$/i</span>.test(attr) ? value += <span class="string">'px'</span> : <span class="literal">null</span>;</span><br><span class="line">    ele[<span class="string">'style'</span>][attr] = value;</span><br><span class="line">    <span class="comment">//=&gt;在JS中给元素设置样式只有两种</span></span><br><span class="line">    <span class="comment">//1.xxx.className=xxx 设置样式类(前提已经把样式写在样式类中了)</span></span><br><span class="line">    <span class="comment">//2.xxx.style.xxx=xxx 给元素设置行内样式值</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>SET-GROUP-CSS</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给当前元素批量设置样式</span></span><br><span class="line"><span class="comment">//ELE:元素对象</span></span><br><span class="line"><span class="comment">//OPTIONS:给当前元素需要设置的样式对象</span></span><br><span class="line"><span class="comment">//批量设置也是迭代样式对象，有几个样式属性我们就分别调取SET-CSS几次，给其设置样式</span></span><br><span class="line"><span class="keyword">let</span> setGroupCss = <span class="function"><span class="keyword">function</span> (<span class="params">ele, options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;迭代对象使用FOR-IN循环</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> options) &#123;</span><br><span class="line">        <span class="comment">//=&gt;OPTIONS对象中有多少组键值对，循环就执行几次，每一次KEY是当前迭代的属性名，OPTIONS[KEY]就是每一次迭代的属性值</span></span><br><span class="line">        <span class="comment">// KEY:background / opacity</span></span><br><span class="line">        <span class="comment">// OPTIONS[KEY]:'lightblue' / 0.2</span></span><br><span class="line">        <span class="keyword">if</span> (options.hasOwnProperty(key)) &#123;</span><br><span class="line">            setCss(ele, key, options[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Object.prototype.AA = 100;</span></span><br><span class="line"><span class="comment">let obj = &#123;name: 'xxx', 1: 1, age: 25, 0: 0&#125;;//=&gt;obj.__proto__===Object.prototype</span></span><br><span class="line"><span class="comment">for (let key in obj) &#123;</span></span><br><span class="line"><span class="comment">    /!*</span></span><br><span class="line"><span class="comment">     * 1.有多少组键值对就迭代多少次(可以使用BREAK/CONTINUE)</span></span><br><span class="line"><span class="comment">     * 2.迭代的时候，先把数字属性名按照由小到大依次迭代，完成后在迭代字符串属性名（数字优先迭代）</span></span><br><span class="line"><span class="comment">     * 3.FOR-IN在迭代的时候，会把当前实例原型链上自己扩展的属性和方法也迭代到（迭代公有属性），内置的不能迭代（因为他们是不可枚举的）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *!/</span></span><br><span class="line"><span class="comment">    if (obj.hasOwnProperty(key)) &#123;</span></span><br><span class="line"><span class="comment">        console.log(key);</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/js知识梳理六/" rel="next" title="js知识梳理六">
+                <i class="fa fa-chevron-left"></i> js知识梳理六
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM的属性和方法"><span class="nav-number">1.</span> <span class="nav-text">DOM的属性和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取元素或者元素集合"><span class="nav-number">1.1.</span> <span class="nav-text">获取元素或者元素集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#offset系列"><span class="nav-number">1.2.</span> <span class="nav-text">offset系列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js常见操作dom的方法"><span class="nav-number">1.3.</span> <span class="nav-text">js常见操作dom的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS中的盒子模型"><span class="nav-number">1.4.</span> <span class="nav-text">CSS中的盒子模型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
