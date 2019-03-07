@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-06T15:12:20.995Z</updated>
+  <updated>2019-03-07T15:35:24.313Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js知识梳理八</title>
+    <link href="https://huchenh.github.io/2019/03/07/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%85%AB/"/>
+    <id>https://huchenh.github.io/2019/03/07/js知识梳理八/</id>
+    <published>2019-03-07T15:29:45.000Z</published>
+    <updated>2019-03-07T15:35:24.313Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;JQuery&quot;&gt;&lt;a href=&quot;#JQuery&quot; class=&quot;headerlink&quot; title=&quot;JQuery&quot;&gt;&lt;/a&gt;JQuery&lt;/h2&gt;&lt;h3 id=&quot;JQuery中常用的方法&quot;&gt;&lt;a href=&quot;#JQuery中常用的方法&quot; class=&quot;headerlink&quot; title=&quot;JQuery中常用的方法&quot;&gt;&lt;/a&gt;JQuery中常用的方法&lt;/h3&gt;&lt;p&gt;参考网站：[&lt;a href=&quot;http://jquery.cuishifeng.cn/]&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://jquery.cuishifeng.cn/]&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;1.原型  $().xxx()&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;get / eq&lt;/li&gt;
+&lt;li&gt;children&lt;/li&gt;
+&lt;li&gt;find&lt;/li&gt;
+&lt;li&gt;filter&lt;/li&gt;
+&lt;li&gt;index&lt;/li&gt;
+&lt;li&gt;next / nextAll&lt;/li&gt;
+&lt;li&gt;prev / prevAll&lt;/li&gt;
+&lt;li&gt;siblings&lt;/li&gt;
+&lt;li&gt;parent&lt;/li&gt;
+&lt;li&gt;parents&lt;/li&gt;
+&lt;li&gt;each&lt;/li&gt;
+&lt;li&gt;css&lt;/li&gt;
+&lt;li&gt;addClass / removeClass  / toggleClass / hasClass&lt;/li&gt;
+&lt;li&gt;attr / removeAttr&lt;/li&gt;
+&lt;li&gt;prop / removeProp&lt;/li&gt;
+&lt;li&gt;animate&lt;/li&gt;
+&lt;li&gt;stop&lt;/li&gt;
+&lt;li&gt;finish&lt;/li&gt;
+&lt;li&gt;html&lt;/li&gt;
+&lt;li&gt;val&lt;/li&gt;
+&lt;li&gt;text&lt;/li&gt;
+&lt;li&gt;append / appendTo&lt;/li&gt;
+&lt;li&gt;insertBefore&lt;/li&gt;
+&lt;li&gt;insertAfter&lt;/li&gt;
+&lt;li&gt;width / height&lt;/li&gt;
+&lt;li&gt;innerWidth / innerHeight&lt;/li&gt;
+&lt;li&gt;outerWidth / outerHeight&lt;/li&gt;
+&lt;li&gt;scrollTop / scrollLeft&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.对象 $.xxx()&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;检测数据类型的&lt;/li&gt;
+&lt;li&gt;isArray&lt;/li&gt;
+&lt;li&gt;isFunction&lt;/li&gt;
+&lt;li&gt;ajax&lt;/li&gt;
+&lt;li&gt;toArray&lt;/li&gt;
+&lt;li&gt;toJSON
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="jQuery" scheme="https://huchenh.github.io/tags/jQuery/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理七</title>
