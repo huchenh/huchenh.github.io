@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-07T15:35:24.313Z</updated>
+  <updated>2019-03-08T15:44:25.407Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js知识梳理九</title>
+    <link href="https://huchenh.github.io/2019/03/08/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%B9%9D/"/>
+    <id>https://huchenh.github.io/2019/03/08/js知识梳理九/</id>
+    <published>2019-03-08T15:42:46.000Z</published>
+    <updated>2019-03-08T15:44:25.407Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;正则捕获&quot;&gt;&lt;a href=&quot;#正则捕获&quot; class=&quot;headerlink&quot; title=&quot;正则捕获&quot;&gt;&lt;/a&gt;正则捕获&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;把一个字符串中和正则匹配的部分获取到&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;正则&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exec&lt;/li&gt;
+&lt;li&gt;test&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;字符串&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;replace&lt;/li&gt;
+&lt;li&gt;split&lt;/li&gt;
+&lt;li&gt;match&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;基于EXEC可以实现正则的捕获&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果当前正则和字符串不匹配，捕获的结果是NULL&lt;/li&gt;
+&lt;li&gt;如果匹配，捕获的结果是一个数组&lt;ul&gt;
+&lt;li&gt;0:大正则捕获的内容&lt;/li&gt;
+&lt;li&gt;index:正则捕获的起始索引&lt;/li&gt;
+&lt;li&gt;input:原始操作的字符串&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;执行一次EXEC只能捕获到第一个和正则匹配的内容，其余匹配的内容还没有捕获到，而且更恶心的是，我傻傻的执行多次，然而并没啥卵用 =&amp;gt;“正则的捕获有懒惰性”：只能捕获到第一个匹配的内容，剩余的默认捕获不到&lt;/li&gt;
+&lt;li&gt;解决正则捕获的懒惰性，我们需要加全局修饰符G（这个是唯一的方案，而且不加G不管用什么办法捕获，也都不能把全部匹配的捕获到）
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="正则" scheme="https://huchenh.github.io/tags/%E6%AD%A3%E5%88%99/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理八</title>
