@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,正则,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="正则应用12345678let str = &apos;54389&apos;,    ary = [&apos;零&apos;, &apos;壹&apos;, &apos;贰&apos;, &apos;叁&apos;, &apos;肆&apos;, &apos;伍&apos;, &apos;陆&apos;, &apos;柒&apos;, &apos;捌&apos;, &apos;玖&apos;];str = str.replace(/\d/g, item =&amp;gt; &amp;#123;    //=&amp;gt;item =&amp;gt;arg[0] =&amp;gt;正则每一次捕获的内容 5/4/3/8/9    //=&amp;gt;把捕获">
+<meta name="keywords" content="javaScript,正则">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js知识梳理十一">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/11/js知识梳理十一/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="正则应用12345678let str = &apos;54389&apos;,    ary = [&apos;零&apos;, &apos;壹&apos;, &apos;贰&apos;, &apos;叁&apos;, &apos;肆&apos;, &apos;伍&apos;, &apos;陆&apos;, &apos;柒&apos;, &apos;捌&apos;, &apos;玖&apos;];str = str.replace(/\d/g, item =&amp;gt; &amp;#123;    //=&amp;gt;item =&amp;gt;arg[0] =&amp;gt;正则每一次捕获的内容 5/4/3/8/9    //=&amp;gt;把捕获">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-11T11:40:08.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js知识梳理十一">
+<meta name="twitter:description" content="正则应用12345678let str = &apos;54389&apos;,    ary = [&apos;零&apos;, &apos;壹&apos;, &apos;贰&apos;, &apos;叁&apos;, &apos;肆&apos;, &apos;伍&apos;, &apos;陆&apos;, &apos;柒&apos;, &apos;捌&apos;, &apos;玖&apos;];str = str.replace(/\d/g, item =&amp;gt; &amp;#123;    //=&amp;gt;item =&amp;gt;arg[0] =&amp;gt;正则每一次捕获的内容 5/4/3/8/9    //=&amp;gt;把捕获">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/11/js知识梳理十一/">
+
+
+
+
+
+  <title>js知识梳理十一 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/11/js知识梳理十一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js知识梳理十一</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T19:39:26+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="正则应用"><a href="#正则应用" class="headerlink" title="正则应用"></a>正则应用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'54389'</span>,</span><br><span class="line">    ary = [<span class="string">'零'</span>, <span class="string">'壹'</span>, <span class="string">'贰'</span>, <span class="string">'叁'</span>, <span class="string">'肆'</span>, <span class="string">'伍'</span>, <span class="string">'陆'</span>, <span class="string">'柒'</span>, <span class="string">'捌'</span>, <span class="string">'玖'</span>];</span><br><span class="line">str = str.replace(<span class="regexp">/\d/g</span>, item =&gt; &#123;</span><br><span class="line">    <span class="comment">//=&gt;item =&gt;arg[0] =&gt;正则每一次捕获的内容 5/4/3/8/9</span></span><br><span class="line">    <span class="comment">//=&gt;把捕获的数字做为索引，到ARY中找到对应的汉字，用找到的结果替换当前捕获的内容</span></span><br><span class="line">    <span class="keyword">return</span> ary[item];</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//30. 在javascript对象上定义一个repeatify函数,这个函数接受一个整数参数,来明确子字符串需要重复几次,这个函数要求字符串重复指定的次数,比如:’abc’.repeatify(3); //=&gt;”abcabcabc”</span></span><br><span class="line"><span class="built_in">String</span>.prototype.repeatify = <span class="function"><span class="keyword">function</span> <span class="title">repeatify</span>(<span class="params">n = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;this:需要处理的字符串</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="string">''</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        result += <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'abc'</span>.repeatify());</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//31. `var str='hello&lt;img src="haha.png" alt="哈哈"/&gt;world';`正确匹配输出’hello[哈哈]world’</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'hello&lt;img alt="哈哈" src="haha.png"/&gt;world&lt;img src="xiee.png" alt="邪恶"/&gt;'</span>,</span><br><span class="line">    reg = <span class="regexp">/&lt;img(?:[^&lt;&gt;]*alt="([\u4e00-\u9fa5]*)")\/&gt;/g</span>;</span><br><span class="line">str = str.replace(reg, (...arg) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`[<span class="subst">$&#123;arg[<span class="number">1</span>]&#125;</span>]`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br><span class="line"></span><br><span class="line">----------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'hello&lt;img alt="哈哈" src="haha.png"/&gt;world&lt;img src="xiee.png" alt="邪恶"/&gt;'</span>,</span><br><span class="line">    reg = <span class="regexp">/&lt;img([^&lt;&gt;]*)\/&gt;/g</span>;</span><br><span class="line">str = str.replace(reg, (...arg) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> val = arg[<span class="number">1</span>],</span><br><span class="line">        regVal = <span class="regexp">/alt=("|')([\u4e00-\u9fa5]*)\1/</span>,</span><br><span class="line">        flag = regVal.test(val);</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        val = regVal.exec(val)[<span class="number">2</span>] || <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`[<span class="subst">$&#123;val&#125;</span>]`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个url 后面好多key-value 如localhost?key=val&amp;key2=val2&amp;key3=val3 封装一个函数 getParam(‘key’) 通过key获得相应等号后面的值.</span></span><br><span class="line"><span class="keyword">let</span> getParam = <span class="function"><span class="keyword">function</span> (<span class="params">attr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;先把URL问号后面的值获取到</span></span><br><span class="line">    <span class="keyword">let</span> str = <span class="string">'localhost?name=zhufeng&amp;year=9&amp;teacher=zxt'</span>,</span><br><span class="line">        obj = &#123;&#125;,</span><br><span class="line">        reg = <span class="regexp">/([^?&amp;=#]+)=([^?&amp;=#]+)/g</span>;</span><br><span class="line">    str.replace(reg, (...arg) =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> [, key, value] = arg;</span><br><span class="line">        obj[key] = value;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> obj[attr];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(getParam(<span class="string">'xxx'</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  写出完整的验证函数</span></span><br><span class="line"><span class="comment">    &gt; 1)长度不能小于6位</span></span><br><span class="line"><span class="comment">    &gt; 2)首字母必须是字母</span></span><br><span class="line"><span class="comment">    &gt; 3)合法字符只能是数字、字母、下划线</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/^[a-zA-Z]\w&#123;5,&#125;$/</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取字符串中出现次数最多的字符及出现的次数</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'zhufengpeixunzhouxiaotian'</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 思路一：获取字符串中的每一个字母，然后以对象键值对的方式存储起来（属性名是字符，属性值是出现的次数）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//1.获取每一个字符出现的次数，以及出现的最大次数</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;&#125;,</span><br><span class="line">    max = <span class="number">1</span>,</span><br><span class="line">    result = [];</span><br><span class="line">str.replace(<span class="regexp">/./g</span>, char =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(char)) &#123;</span><br><span class="line">        obj[char]++;</span><br><span class="line">        <span class="keyword">if</span> (obj[char] &gt; max) &#123;</span><br><span class="line">            max = obj[char];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    obj[char] = <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//2.获取和MAX相匹配次数的字符</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> char <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj.hasOwnProperty(char)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (obj[char] === max) &#123;</span><br><span class="line">            result.push(char);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`最多出现的次数是：<span class="subst">$&#123;max&#125;</span> 次，对应的字符有：<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 思路二：先把字符串中的每一个字符变为数组中的每一项，给数组排序，在变为字符串（相同的字符挨着），在基于正则捕获替换</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">let</span> max = <span class="number">1</span>;</span><br><span class="line">str = str.split(<span class="string">''</span>).sort().join(<span class="string">''</span>);<span class="comment">//=&gt;'aaeefghhiiinnnooptuuuxxzz'</span></span><br><span class="line">str = str.replace(<span class="regexp">/(.)\1*/g</span>, (...arg) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> [value, char] = arg,</span><br><span class="line">        len = value.length;</span><br><span class="line">    len &gt; max ? max = len : <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;char&#125;</span>&#123;<span class="subst">$&#123;len&#125;</span>&#125;`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// console.log(str);//=&gt;'a&#123;2&#125;e&#123;2&#125;f&#123;1&#125;g&#123;1&#125;h&#123;2&#125;i&#123;3&#125;n&#123;3&#125;o&#123;2&#125;p&#123;1&#125;t&#123;1&#125;u&#123;3&#125;x&#123;2&#125;z&#123;2&#125;'</span></span><br><span class="line"><span class="comment">// let reg =/([^\d&#123;&#125;])\&#123;"+max+"\&#125;/g;//=&gt;字面创建正则的方式，正则中的每一个字符都是元字符，不能实现把一个变量的值作为正则一部分的需求</span></span><br><span class="line"><span class="keyword">let</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'([^\\d&#123;&#125;])\\&#123;'</span> + max + <span class="string">'\\&#125;'</span>, <span class="string">'g'</span>);</span><br><span class="line">str.replace(reg, (...arg) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg[<span class="number">1</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="同步异步编程"><a href="#同步异步编程" class="headerlink" title="同步异步编程"></a>同步异步编程</h3><blockquote>
+<p>JS中的同步编程和异步编程</p>
+<ul>
+<li>同步编程：任务是按照顺序依次处理，当前这件事没有彻底做完，下一件事是执行不了的</li>
+<li>异步编程：当前这件事没有彻底做完，需要等待一段时间才能继续处理，此时我们不等，继续执行下面的任务，当后面的任务完成后，再去把没有彻底完成的事情完成<br>JS中的异步编程</li>
+<li>所有的事件绑定都是异步编程   xxx.onclick=function(){}</li>
+<li>所有的定时器都是异步编程 setTimeout(function(){},1000)</li>
+<li>AJAX中一般都使用异步编程处理</li>
+<li>回调函数也算是异步编程</li>
+</ul>
+</blockquote>
+<h3 id="浏览器是如何规划同步异步机制的"><a href="#浏览器是如何规划同步异步机制的" class="headerlink" title="浏览器是如何规划同步异步机制的"></a>浏览器是如何规划同步异步机制的</h3><ol>
+<li><p>浏览器是多线程的，JS是单线程的（浏览器只给JS执行分配一个线程）：单线程的特点就是一次只能处理一件事情</p>
+<ul>
+<li>进程：每一个应用程序都可以理解为一个进程（浏览器打开一个页面，就相当于开辟一个进程），在一个程序中（进程中）我们经常会同时干很多事情，此时我们可以分配多个线程去同时完成多项任务</li>
+</ul>
+</li>
+<li><p>JS在单线程中实现异步的机制，主要依赖于浏览器的任务队列完成的。浏览器中有两个任务队列（主任务队列、等待任务队列）</p>
+</li>
+</ol>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
+<p>它是ES6中新增加的类 (new Promise)，目的是为了管理JS中的异步编程的，所以我们也把它称为“Promise设计模式”</p>
+<ul>
+<li>三个状态：pending(准备:初始化成功，开始执行异步的任务)\fulfilled(成功)\rejected(失败)</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//=&gt;执行一个异步的任务（new Promise的时候，创建Promise的一个实例，立即会把当前函数体中的异步操作执行） =&gt;“Promise是同步的，它可以管理异步操作”</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);<span class="comment">//=&gt;先输出1</span></span><br><span class="line">&#125;).then();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);<span class="comment">//=&gt;再输出2</span></span><br><span class="line">------------------------------------------------</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//=&gt;resolve：当异步操作执行成功，我们执行resolve方法</span></span><br><span class="line">    <span class="comment">//=&gt;reject：当异步操作执行失败，我们执行reject方法</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        resolve(<span class="number">100</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//=&gt;第一个传递的函数是resolve</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ok'</span>, res);</span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">    <span class="comment">//=&gt;第二个传递的函数是reject</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'no'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="js动画"><a href="#js动画" class="headerlink" title="js动画"></a>js动画</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*==ANIMATE动画库==*/</span></span><br><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;准备操作CSS样式的方法 GET-CSS/SET-CSS/SET-GROUP-CSS/CSS</span></span><br><span class="line">    <span class="keyword">let</span> utils = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;获取样式</span></span><br><span class="line">        <span class="keyword">let</span> getCss = <span class="function">(<span class="params">ele, attr</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> val = <span class="literal">null</span>,</span><br><span class="line">                reg = <span class="regexp">/^-?\d+(\.\d+)?(px|rem|em)?$/</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">'getComputedStyle'</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span><br><span class="line">                val = <span class="built_in">window</span>.getComputedStyle(ele)[attr];</span><br><span class="line">                <span class="keyword">if</span> (reg.test(val)) &#123;</span><br><span class="line">                    val = <span class="built_in">parseFloat</span>(val);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;设置样式</span></span><br><span class="line">        <span class="keyword">let</span> setCss = <span class="function">(<span class="params">ele, attr, value</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">isNaN</span>(value)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!<span class="regexp">/^(opacity|zIndex)$/</span>.test(attr)) &#123;</span><br><span class="line">                    value += <span class="string">'px'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ele[<span class="string">'style'</span>][attr] = value;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;批量设置样式</span></span><br><span class="line">        <span class="keyword">let</span> setGroupCss = <span class="function">(<span class="params">ele, options</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> options) &#123;</span><br><span class="line">                <span class="keyword">if</span> (options.hasOwnProperty(attr)) &#123;</span><br><span class="line">                    setCss(ele, attr, options[attr]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;合并为一个</span></span><br><span class="line">        <span class="keyword">let</span> css = <span class="function">(<span class="params">...arg</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> len = arg.length,</span><br><span class="line">                fn = getCss;</span><br><span class="line">            <span class="keyword">if</span> (len &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                fn = setCss;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (len === <span class="number">2</span> &amp;&amp; <span class="keyword">typeof</span> arg[<span class="number">1</span>] === <span class="string">'object'</span>) &#123;</span><br><span class="line">                fn = setGroupCss;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> fn(...arg);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> &#123;css&#125;</span><br><span class="line">    &#125;)();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;EFFECT：准备运动的公式</span></span><br><span class="line">    <span class="keyword">let</span> effect = &#123;</span><br><span class="line">        Linear: <span class="function">(<span class="params">t, b, c, d</span>) =&gt;</span> t / d * c + b</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;封装动画库</span></span><br><span class="line">    <span class="built_in">window</span>.animate = <span class="function"><span class="keyword">function</span> (<span class="params">ele, target = &#123;&#125;, duration = <span class="number">1000</span>, callback = new Function(</span>)) </span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;不传递CALL-BACK，让其默认为一个空函数（回调函数：当动画结束后做什么事，都放到回调函数完成即可）</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> duration === <span class="string">'function'</span>) &#123;</span><br><span class="line">            <span class="comment">//=&gt;我们有四个形参，但是传递的时候只传递三个，最后一个回调函数传递给duration这个参数了，我们需要改一下参数的值</span></span><br><span class="line">            callback = duration;</span><br><span class="line">            duration = <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.基于TARGET计算出BEGIN/CHANGE</span></span><br><span class="line">        <span class="keyword">let</span> begin = &#123;&#125;,</span><br><span class="line">            change = &#123;&#125;,</span><br><span class="line">            time = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> target) &#123;</span><br><span class="line">            <span class="keyword">if</span> (target.hasOwnProperty(attr)) &#123;</span><br><span class="line">                begin[attr] = utils.css(ele, attr);</span><br><span class="line">                change[attr] = target[attr] - begin[attr];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.实现动画</span></span><br><span class="line">        clearInterval(ele.animteTimer);<span class="comment">//=&gt;在给当前元素设置新的动画之前,先清空原有正在运行的动画(防止多动画共存,把动画的返回值赋值给当前元素的自定义属性，这样只要元素不变，我们不管啥时候在哪执行都可以清除元素的动画)</span></span><br><span class="line">        ele.animteTimer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            time += <span class="number">17</span>;</span><br><span class="line">            <span class="comment">//=&gt;边界判断</span></span><br><span class="line">            <span class="keyword">if</span> (time &gt;= duration) &#123;</span><br><span class="line">                utils.css(ele, target);</span><br><span class="line">                clearInterval(ele.animteTimer);</span><br><span class="line"></span><br><span class="line">                callback.call(ele);<span class="comment">//=&gt;动画完成后执行CALL-BACK(并且让回调函数中的THIS是当前操作的元素本身)</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//=&gt;依托TARGET计算出每个方向的当前位置</span></span><br><span class="line">            <span class="keyword">let</span> cur = &#123;&#125;;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (target.hasOwnProperty(attr)) &#123;</span><br><span class="line">                    cur[attr] = effect.Linear(time, begin[attr], change[attr], duration);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            utils.css(ele, cur);</span><br><span class="line">        &#125;, <span class="number">17</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<h3 id="动画函数封装"><a href="#动画函数封装" class="headerlink" title="动画函数封装"></a>动画函数封装</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;UTILS操作CSS工具库</span></span><br><span class="line"><span class="keyword">let</span> utils = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;获取样式</span></span><br><span class="line">    <span class="keyword">let</span> getCss = <span class="function">(<span class="params">ele, attr</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> val = <span class="literal">null</span>,</span><br><span class="line">            reg = <span class="regexp">/^-?\d+(\.\d+)?(px|rem|em)?$/</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'getComputedStyle'</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span><br><span class="line">            val = <span class="built_in">window</span>.getComputedStyle(ele)[attr];</span><br><span class="line">            <span class="keyword">if</span> (reg.test(val)) &#123;</span><br><span class="line">                val = <span class="built_in">parseFloat</span>(val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;设置样式</span></span><br><span class="line">    <span class="keyword">let</span> setCss = <span class="function">(<span class="params">ele, attr, value</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">isNaN</span>(value)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="regexp">/^(opacity|zIndex)$/</span>.test(attr)) &#123;</span><br><span class="line">                value += <span class="string">'px'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ele[<span class="string">'style'</span>][attr] = value;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;批量设置样式</span></span><br><span class="line">    <span class="keyword">let</span> setGroupCss = <span class="function">(<span class="params">ele, options</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> options) &#123;</span><br><span class="line">            <span class="keyword">if</span> (options.hasOwnProperty(attr)) &#123;</span><br><span class="line">                setCss(ele, attr, options[attr]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;合并为一个</span></span><br><span class="line">    <span class="keyword">let</span> css = <span class="function">(<span class="params">...arg</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> len = arg.length,</span><br><span class="line">            fn = getCss;</span><br><span class="line">        <span class="keyword">if</span> (len &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">            fn = setCss;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (len === <span class="number">2</span> &amp;&amp; <span class="keyword">typeof</span> arg[<span class="number">1</span>] === <span class="string">'object'</span>) &#123;</span><br><span class="line">            fn = setGroupCss;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fn(...arg);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;EACH：遍历对象、数组、类数组</span></span><br><span class="line">    <span class="keyword">let</span> each = <span class="function">(<span class="params">obj, callback</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'length'</span> <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; obj.length; i++) &#123;</span><br><span class="line">                <span class="keyword">let</span> item = obj[i],</span><br><span class="line">                    res = callback &amp;&amp; callback.call(item, i, item);</span><br><span class="line">                <span class="keyword">if</span> (res === <span class="literal">false</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.hasOwnProperty(attr)) &#123;</span><br><span class="line">                <span class="keyword">let</span> item = obj[attr],</span><br><span class="line">                    res = callback &amp;&amp; callback.call(item, attr, item);</span><br><span class="line">                <span class="keyword">if</span> (res === <span class="literal">false</span>) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;css, each&#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;ANIMATE动画库</span></span><br><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;匀速运动公式</span></span><br><span class="line">    <span class="keyword">let</span> effect = &#123;</span><br><span class="line">        Linear: <span class="function">(<span class="params">t, b, c, d</span>) =&gt;</span> t / d * c + b</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=&gt;开始运动</span></span><br><span class="line">    <span class="built_in">window</span>.animate = <span class="function"><span class="keyword">function</span> <span class="title">animate</span>(<span class="params">ele, target, duration = <span class="number">1000</span>, callback</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;参数处理(传递三个值,第三个值是函数,其实本身想要代表的意思：第三个是回调函数，总时间是默认值即可)</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> duration === <span class="string">'function'</span>) &#123;</span><br><span class="line">            callback = duration;</span><br><span class="line">            duration = <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;准备数据</span></span><br><span class="line">        <span class="keyword">let</span> time = <span class="number">0</span>,</span><br><span class="line">            begin = &#123;&#125;,</span><br><span class="line">            change = &#123;&#125;;</span><br><span class="line">        utils.each(target, (key, value) =&gt; &#123;</span><br><span class="line">            begin[key] = utils.css(ele, key);</span><br><span class="line">            change[key] = value - begin[key];</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;设置新动画之前清除原有正在运行的动画</span></span><br><span class="line">        clearInterval(ele.animateTimer);</span><br><span class="line">        ele.animateTimer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            time += <span class="number">17</span>;</span><br><span class="line">            <span class="comment">//-&gt;动画结束</span></span><br><span class="line">            <span class="keyword">if</span> (time &gt;= duration) &#123;</span><br><span class="line">                clearInterval(ele.animateTimer);</span><br><span class="line">                utils.css(ele, target);</span><br><span class="line">                callback &amp;&amp; callback.call(ele);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//-&gt;获取每个方向的当前位置，并且给元素设置</span></span><br><span class="line">            utils.each(target, (key, value) =&gt; &#123;</span><br><span class="line">                <span class="keyword">let</span> cur = effect.Linear(time, begin[key], change[key], duration);</span><br><span class="line">                utils.css(ele, key, cur);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;, <span class="number">17</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
+          
+            <a href="/tags/正则/" rel="tag"><i class="fa fa-tag"></i> 正则</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/10/js知识梳理十/" rel="next" title="js知识梳理十">
+                <i class="fa fa-chevron-left"></i> js知识梳理十
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#正则应用"><span class="nav-number">1.</span> <span class="nav-text">正则应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步异步编程"><span class="nav-number">2.</span> <span class="nav-text">同步异步编程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器是如何规划同步异步机制的"><span class="nav-number">3.</span> <span class="nav-text">浏览器是如何规划同步异步机制的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise"><span class="nav-number">4.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js动画"><span class="nav-number">5.</span> <span class="nav-text">js动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画函数封装"><span class="nav-number">6.</span> <span class="nav-text">动画函数封装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
