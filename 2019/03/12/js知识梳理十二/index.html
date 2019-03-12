@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javaScript,jQuery,">
+  <meta name="keywords" content="javaScript,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="JQueryJQuery中常用的方法参考网站：[http://jquery.cuishifeng.cn/] 1.原型  $().xxx()  get / eq children find filter index next / nextAll prev / prevAll siblings parent parents each css addClass / removeClass  / togg">
-<meta name="keywords" content="javaScript,jQuery">
+<meta name="description" content="viewport 视口 在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面   移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&amp;gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页">
+<meta name="keywords" content="javaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js知识梳理八">
-<meta property="og:url" content="https://huchenh.github.io/2019/03/07/js知识梳理八/index.html">
+<meta property="og:title" content="js知识梳理十二">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/12/js知识梳理十二/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="JQueryJQuery中常用的方法参考网站：[http://jquery.cuishifeng.cn/] 1.原型  $().xxx()  get / eq children find filter index next / nextAll prev / prevAll siblings parent parents each css addClass / removeClass  / togg">
+<meta property="og:description" content="viewport 视口 在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面   移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&amp;gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-07T15:35:24.313Z">
+<meta property="og:updated_time" content="2019-03-12T13:15:03.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js知识梳理八">
-<meta name="twitter:description" content="JQueryJQuery中常用的方法参考网站：[http://jquery.cuishifeng.cn/] 1.原型  $().xxx()  get / eq children find filter index next / nextAll prev / prevAll siblings parent parents each css addClass / removeClass  / togg">
+<meta name="twitter:title" content="js知识梳理十二">
+<meta name="twitter:description" content="viewport 视口 在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面   移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&amp;gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/03/07/js知识梳理八/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/12/js知识梳理十二/">
 
 
 
 
 
-  <title>js知识梳理八 | 追风</title>
+  <title>js知识梳理十二 | 追风</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/07/js知识梳理八/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/12/js知识梳理十二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js知识梳理八</h1>
+          <h1 class="post-title" itemprop="name headline">js知识梳理十二</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T23:29:45+08:00">
-                2019-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T21:13:43+08:00">
+                2019-03-12
               </time>
             
 
@@ -361,56 +361,96 @@
       
 
       
-        <h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h2><h3 id="JQuery中常用的方法"><a href="#JQuery中常用的方法" class="headerlink" title="JQuery中常用的方法"></a>JQuery中常用的方法</h3><p>参考网站：[<a href="http://jquery.cuishifeng.cn/]" target="_blank" rel="noopener">http://jquery.cuishifeng.cn/]</a></p>
-<p>1.原型  $().xxx()</p>
-<ul>
-<li>get / eq</li>
-<li>children</li>
-<li>find</li>
-<li>filter</li>
-<li>index</li>
-<li>next / nextAll</li>
-<li>prev / prevAll</li>
-<li>siblings</li>
-<li>parent</li>
-<li>parents</li>
-<li>each</li>
-<li>css</li>
-<li>addClass / removeClass  / toggleClass / hasClass</li>
-<li>attr / removeAttr</li>
-<li>prop / removeProp</li>
-<li>animate</li>
-<li>stop</li>
-<li>finish</li>
-<li>html</li>
-<li>val</li>
-<li>text</li>
-<li>append / appendTo</li>
-<li>insertBefore</li>
-<li>insertAfter</li>
-<li>width / height</li>
-<li>innerWidth / innerHeight</li>
-<li>outerWidth / outerHeight</li>
-<li>scrollTop / scrollLeft</li>
-</ul>
-<p>2.对象 $.xxx()</p>
-<ul>
-<li>检测数据类型的</li>
-<li>isArray</li>
-<li>isFunction</li>
-<li>ajax</li>
-<li>toArray</li>
-<li>toJSON<a id="more"></a>
-<h3 id="jquery-个人理解"><a href="#jquery-个人理解" class="headerlink" title="jquery 个人理解"></a>jquery 个人理解</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector,context</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;执行jQuery方法：new jQuery.fn.init 创建INIT这个类的实例,把传递给JQ的参数原封不动的传递给了INIT这个类</span></span><br><span class="line">        <span class="keyword">return</span> jQuery.fn.init(selector,context)</span><br><span class="line">    &#125;</span><br><span class="line">    jQuery.fn = jQuery.prototype = &#123;</span><br><span class="line">        <span class="keyword">constructor</span>:jQuery,</span><br><span class="line">        // $() 实例的方法 。。。。</span><br><span class="line">    &#125;</span><br><span class="line">    var init =  jQuery.fn.init = function(selector,context)&#123;</span><br><span class="line">        <span class="comment">// $() / jQuery()调用此方法，避免使用new jQuery() 来创建实例对象</span></span><br><span class="line">    &#125;</span><br><span class="line">    init.prototype = jQuery.prototype; <span class="comment">// 执行jQuery原型，init() 方法new 出来的就是 jquery实例对象</span></span><br><span class="line">    <span class="built_in">window</span>.jQuery = <span class="built_in">window</span>.$ = jQuery;</span><br><span class="line">&#125;)(<span class="built_in">window</span>)</span><br><span class="line"><span class="comment">// $() &lt;==&gt; jQuery() ：创建JQ这个类的一个实例</span></span><br><span class="line"><span class="comment">// new jQuery();</span></span><br><span class="line"><span class="comment">//=&gt;饶了一圈的目的即使把JQ像普通函数一样执行，但是返回的结果依然是这个类的一个实例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// JQ即是一个类也是一个对象</span></span><br><span class="line"><span class="comment">// $()创建它的一个实例，可以调取jQuery.fn/jQuery.prototype上的属性和方法：$().xxx()</span></span><br><span class="line"><span class="comment">// jQuery.xxx=xxx，这些是作为对象给JQ加的私有属性和访问，使用的时候：$.xxx()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;extend在对象和原型上都存在，但是是一个方法</span></span><br><span class="line"><span class="comment">// $.extend()</span></span><br><span class="line"><span class="comment">// $.fn.extend()  $.prototype.extend()</span></span><br><span class="line"><span class="comment">// $().extend()</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="关于JQ中的EACH"><a href="#关于JQ中的EACH" class="headerlink" title="关于JQ中的EACH"></a>关于JQ中的EACH</h3><blockquote>
-<ul>
-<li>JQ中的原型和对象上都提供了EACH方法，但是最后用的还是JQ对象上的EACH，JQ中的EACH本质上只有一个（对象中的EACH）</li>
-<li>$.each([obj],[function]) 遍历对象、数组、类数组中的每一项的，有点类似于数组内置方法forEach<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> jQuery.prototype.each = <span class="function"><span class="keyword">function</span> (<span class="params">callback, args</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> jQuery.each(<span class="keyword">this</span>, callback, args);</span><br><span class="line"> &#125;;</span><br><span class="line"> jQuery.extend(&#123;</span><br><span class="line">     each: <span class="function"><span class="keyword">function</span> (<span class="params">obj, callback, args</span>) </span>&#123;</span><br><span class="line">         <span class="comment">//...</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"> <span class="comment">// let $boxList = $('div');//=&gt;基于JQ选择器获取的是一个类数组集合</span></span><br><span class="line"><span class="comment">//  $boxList.each(function()&#123;&#125;); //=&gt; jQuery.each($boxList, function()&#123;&#125;); 遍历$boxList</span></span><br><span class="line"><span class="comment">// $.each($boxList, function (index, item) &#123;</span></span><br><span class="line"><span class="comment">//     //=&gt;当前类数组中有多少项，函数就被执行多少次</span></span><br><span class="line"><span class="comment">//     //index:当前这一次循环的索引</span></span><br><span class="line"><span class="comment">//     //item:当前循环这一次对应项的内容</span></span><br><span class="line"><span class="comment">//     //this:item</span></span><br><span class="line"><span class="comment">// &#125;);</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport 视口"></a>viewport 视口</h3><blockquote>
+<p>在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面</p>
 </blockquote>
+<blockquote>
+<p>移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页面进行缩放，HTML页面缩放了，那么页面中所有内容都缩放了</p>
+</blockquote>
+<p><strong><code>解决方案</code></strong></p>
+<blockquote>
+<p>只要让H5页面的宽度和手机设备的宽度保持一致即可，就不会出现手机渲染页面的时候把页面缩放的事情了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">此META标签就是在设置VP(视口)的规则</span><br><span class="line">   width=device-width：让HTML页面的宽度等于设备的宽度</span><br><span class="line">   height=：设置HTML页面的高度（一般不用）</span><br><span class="line">   initial-scale=1.0：初始缩放比例是1:1（也就是既不放大也不多小）</span><br><span class="line">   user-scalable=no：禁止用户手动缩放</span><br><span class="line">   maximum-scale=1.0</span><br><span class="line">   minimum-scale=1.0：设置最大最小的缩放比例1:1(既不放大也不缩小 =&gt;部分安卓机中只设置user-scalable是不起作用的，需要同这两个一起使用)</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<p>  layout viewport：布局（页面）视口（和开发CSS等相关）<br>  visual viewport：手机视口<br>  ideal viewport：理想视口</p>
+<h3 id="移动端项目"><a href="#移动端项目" class="headerlink" title="移动端项目"></a>移动端项目</h3><ol>
+<li><p>PC端和移动端公用一套项目的（结构相对简单的：一般都是展示类的企业站）</p>
+<p><code>设计师一般只给一套设计稿</code></p>
+<ul>
+<li><p>先做PC端（设计给的设计稿一般都是给PC端的）<br>一般宽度都是自适应的（具体情况有所不同）</p>
+</li>
+<li><p>切换到手机端，使用@media（媒体查询）把不同设备上不合适的样式进行修改</p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>PC端和移动端是分开的两套不同项目</p>
+<p><code>设计师一般会给两套设计稿 (PC+移动)</code></p>
+<ul>
+<li><p>PC端单独做（做它的时候不需要考虑移动端响应式）<br>固定布局</p>
+</li>
+<li><p>移动端单独做（只需要考虑移动端的响应式适配即可）</p>
+</li>
+<li><p>响应式布局</p>
+<ul>
+<li>依然可以基于@MEDIA来处理（麻烦一些）</li>
+<li>固定布局(viewport =&gt; width=320px)：按照设计稿把320尺寸的写好即可（所有的尺寸都可以固定，而且都是设计稿的一半 [因为设计稿是大一倍的]），在其它的设备上，让320的页面居中展示即可</li>
+<li>SCALE等比缩放布局（严格按照设计稿的尺寸来写样式[没有啥自适应宽度，都是固定值]，在其它设备上，首先获取设备的宽度，让其除以设计稿的宽度，然后让原始写好的页面按照这个比例整体缩小即可） =&gt;会导致一些问题例如字体变模糊…</li>
+<li>REM等比缩放：它是参考SCALE，只是用的REM单位来实现的等比缩放（严格按照设计稿的尺寸编写 [但是一般宽度让他自适应]，其余的值可以写成固定值 -&gt; 在编写CSS样式的时候，我们把所有的PX单位都换算成REM单位 -&gt; 当加载页面的时候，根据当前设备的尺寸除以设计稿，根据比例动态调整REM和PX的换算比例）</li>
+<li><p>CSS3中提供了flex-box伸缩盒子模型，基于这个属性，可以让某些效果处理起来更加的方便</p>
+<p>A&amp;&amp;D&amp;&amp;E是目前最常用的响应式布局方案</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="设计是给的移动端设计稿一般都是：6401136-980或者不定高度-、7501334…"><a href="#设计是给的移动端设计稿一般都是：6401136-980或者不定高度-、7501334…" class="headerlink" title="设计是给的移动端设计稿一般都是：6401136(980或者不定高度)、7501334…"></a>设计是给的移动端设计稿一般都是：640<em>1136(980或者不定高度)、750</em>1334…</h3><ol>
+<li><p>为啥我们的设计稿都比参照的手机大一倍?</p>
+<blockquote>
+<p>目的是保证我们切下来的素材资源图片是大图</p>
+</blockquote>
+</li>
+<li><p>为啥要保证是大图？</p>
+<blockquote>
+<p>因为很多手机都是二倍及三倍屏幕像素密度比(DPR)的</p>
+</blockquote>
+</li>
+<li><p>即使给的是二倍设计稿，但是部分手机的设备尺寸要大于设计稿的一半，有的手机是3倍DPR的，这样就导致一个问题：部分图片还是会变的模糊一些，此时我们找设计师单独的把模糊图片要一张大图即可</p>
+</li>
+</ol>
+<h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><p><strong><code>HTTP请求阶段：向服务器发送请求</code></strong></p>
+<ol>
+<li>浏览器首先向DNS域名解析服务器发送请求</li>
+<li>DNS反解析：根据浏览器请求地址中的域名，到DNS服务器中找到对应的服务器外网IP地址</li>
+<li>通过找到的外网IP，向对应的服务器发送请求（首先访问的是服务器的WEB站点管理工具:准确来说是我们先基于工具在服务器上创建很多服务，当有客户端访问的时候，服务器会匹配出具体是请求哪个服务）</li>
+<li>通过URL地址中携带的端口号，找到服务器上对应的服务，以及服务所管理的项目源文件</li>
+</ol>
+<p><strong><code>HTTP响应阶段：服务器把客户端需要的内容准备好，并且返回给客户端</code></strong></p>
+<ol start="5">
+<li>服务器端根据请求地址中的路径名称、问号传参或者哈希值，把客户端需要的内容进行准备和处理</li>
+<li>把准备的内容响应给客户端（如果请求的是HTML或者CSS等这样的资源文件，服务器返回的是资源文件中的源代码[不是文件本身]）</li>
+</ol>
+<p><strong><code>浏览器渲染阶段</code></strong></p>
+<ol start="7">
+<li>客户端浏览器接受到服务器返回的源代码，基于自己内部的渲染引擎（内核）开始进行页面的绘制和渲染<ul>
+<li>首先计算DOM结构，生成DOM TREE</li>
+<li>自上而下运行代码，加载CSS等资源内容</li>
+<li>根据获取的CSS生成带样式的RENDER TREE</li>
+<li>开始渲染和绘制</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>我们把一次完整的 请求+响应 称之为 “HTTP事务”<br>事务就是完整的一次操作，请求和响应缺一不可</p>
+</li>
+<li><p>一个页面完全加载完成，需要向服务器发起很多次HTTP事务操作<br>一般来说：首先把HTML源代码拿回来，加载HTML的时候，遇到link/script/img[src]/iframe/video和audio[没有设置preload=’none’]…都会重新和服务器端建立HTTP事务交互</p>
+<p>特殊情况：如果我们做了资源缓存处理(304)，而且即将加载的资源在之前已经加载过了，这样的操作和传统的HTTP事务有所不一样，他们是从服务器和浏览器的缓存中读取数据，比传统的读取快很多</p>
+</li>
+<li><p>在客户端向服务器发送请求，以及服务器把内容响应给客户端的时候，中间相互传递了很多内容(客户端把一些内容传递服务器，服务器把一些内容响应给客户端)，我们把传递的内容统称为“HTTP报文”</p>
+</li>
+</ul>
 
       
     </div>
@@ -438,8 +478,6 @@
           
             <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
           
-            <a href="/tags/jQuery/" rel="tag"><i class="fa fa-tag"></i> jQuery</a>
-          
         </div>
       
 
@@ -451,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/06/js知识梳理七/" rel="next" title="js知识梳理七">
-                <i class="fa fa-chevron-left"></i> js知识梳理七
+              <a href="/2019/03/11/js知识梳理十一/" rel="next" title="js知识梳理十一">
+                <i class="fa fa-chevron-left"></i> js知识梳理十一
               </a>
             
           </div>
@@ -460,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/08/js知识梳理九/" rel="prev" title="js知识梳理九">
-                js知识梳理九 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JQuery"><span class="nav-number">1.</span> <span class="nav-text">JQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JQuery中常用的方法"><span class="nav-number">1.1.</span> <span class="nav-text">JQuery中常用的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jquery-个人理解"><span class="nav-number">1.2.</span> <span class="nav-text">jquery 个人理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于JQ中的EACH"><span class="nav-number">1.3.</span> <span class="nav-text">关于JQ中的EACH</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#viewport-视口"><span class="nav-number">1.</span> <span class="nav-text">viewport 视口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动端项目"><span class="nav-number">2.</span> <span class="nav-text">移动端项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计是给的移动端设计稿一般都是：6401136-980或者不定高度-、7501334…"><span class="nav-number">3.</span> <span class="nav-text">设计是给的移动端设计稿一般都是：6401136(980或者不定高度)、7501334…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">4.</span> <span class="nav-text">http</span></a></li></ol></div>
             
 
           </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-11T11:40:08.431Z</updated>
+  <updated>2019-03-12T13:15:03.225Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js知识梳理十二</title>
+    <link href="https://huchenh.github.io/2019/03/12/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81%E4%BA%8C/"/>
+    <id>https://huchenh.github.io/2019/03/12/js知识梳理十二/</id>
+    <published>2019-03-12T13:13:43.000Z</published>
+    <updated>2019-03-12T13:15:03.225Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;viewport-视口&quot;&gt;&lt;a href=&quot;#viewport-视口&quot; class=&quot;headerlink&quot; title=&quot;viewport 视口&quot;&gt;&lt;/a&gt;viewport 视口&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&amp;gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页面进行缩放，HTML页面缩放了，那么页面中所有内容都缩放了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;解决方案&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;只要让H5页面的宽度和手机设备的宽度保持一致即可，就不会出现手机渲染页面的时候把页面缩放的事情了&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;viewport&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;此META标签就是在设置VP(视口)的规则&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   width=device-width：让HTML页面的宽度等于设备的宽度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   height=：设置HTML页面的高度（一般不用）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   initial-scale=1.0：初始缩放比例是1:1（也就是既不放大也不多小）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   user-scalable=no：禁止用户手动缩放&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   maximum-scale=1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   minimum-scale=1.0：设置最大最小的缩放比例1:1(既不放大也不缩小 =&amp;gt;部分安卓机中只设置user-scalable是不起作用的，需要同这两个一起使用)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理十一</title>
