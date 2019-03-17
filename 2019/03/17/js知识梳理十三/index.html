@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTTP,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一：减少HTTP请求的次数及请求内容的大小 URL/URN/URIURI=URL+URNURI：统一资源标识符URL：统一资源定位符URN：统一资源名称  http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&amp;amp;age=25#teacher   传输协议 用来传输客户端和服务器端交互的信息的（类似于快递小哥）  HTTP：超文本传输协议">
+<meta name="keywords" content="HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js知识梳理十三">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/17/js知识梳理十三/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="一：减少HTTP请求的次数及请求内容的大小 URL/URN/URIURI=URL+URNURI：统一资源标识符URL：统一资源定位符URN：统一资源名称  http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&amp;amp;age=25#teacher   传输协议 用来传输客户端和服务器端交互的信息的（类似于快递小哥）  HTTP：超文本传输协议">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-17T14:31:29.680Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js知识梳理十三">
+<meta name="twitter:description" content="一：减少HTTP请求的次数及请求内容的大小 URL/URN/URIURI=URL+URNURI：统一资源标识符URL：统一资源定位符URN：统一资源名称  http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&amp;amp;age=25#teacher   传输协议 用来传输客户端和服务器端交互的信息的（类似于快递小哥）  HTTP：超文本传输协议">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/17/js知识梳理十三/">
+
+
+
+
+
+  <title>js知识梳理十三 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/17/js知识梳理十三/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js知识梳理十三</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T22:30:48+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一：减少HTTP请求的次数及请求内容的大小"><a href="#一：减少HTTP请求的次数及请求内容的大小" class="headerlink" title="一：减少HTTP请求的次数及请求内容的大小"></a>一：减少HTTP请求的次数及请求内容的大小</h3><ol>
+<li><p>URL/URN/URI<br>URI=URL+URN<br>URI：统一资源标识符<br>URL：统一资源定位符<br>URN：统一资源名称</p>
+</li>
+<li><p><a href="http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&amp;age=25#teacher" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?name=xxx&amp;age=25#teacher</a></p>
+</li>
+</ol>
+<h3 id="传输协议"><a href="#传输协议" class="headerlink" title="传输协议"></a><code>传输协议</code></h3><blockquote>
+<p>用来传输客户端和服务器端交互的信息的（类似于快递小哥）</p>
+<ul>
+<li>HTTP：超文本传输协议（除了传递普通的文本，还可以传递文件流或者进制编码等信息），是目前最常用的WEB传输协议</li>
+<li>HTTPS：基于SSL（Secure Sockets Layer 安全套接层）加密的HTTP传输协议，比HTTP更加的安全（涉及支付的网站一般都是基于HTTPS完成的）</li>
+<li>FTP：文件传输协议，一般用来实现资源文件在服务器上的上传下载</li>
+</ul>
+</blockquote>
+<p><strong><code>[域名] Domain Name</code></strong></p>
+<pre><code>一级域名（顶级域名）  www.qq.com
+二级域名   sports.qq.com
+三级域名   kbs.sports.qq.com
+
+.com 供商用的国际域名
+.cn 供商用的中文域名
+.net 用于网络供应服务商（系统类的经常使用NET域名）
+.org 用于官方组织
+.edu 用于教育院校
+.gov 用于政府机构
+</code></pre><a id="more"></a>
+<p><strong><code>端口号</code></strong></p>
+<blockquote>
+<p>用来区分同一台服务器上不同服务的标识（基于WEB服务管理器创建服务的时候可以指定），不同服务之间一般是不能使用相同的端口号的</p>
+</blockquote>
+<ul>
+<li>HTTP =&gt;默认端口号80</li>
+<li>HTTPS =&gt;默认端口号443</li>
+<li>FTP =&gt;默认端口号21</li>
+<li><p>如果当前网站服务，采用的是协议对应的默认端口管理，那么当用户输入网址的时候可以不指定端口号，浏览器会默认把用户把默认的端口传递给服务器</p>
+<p>一台服务器上的端口号范围：0~65535之间</p>
+<p>WEBSTORM预览页面：WS把自己的电脑当做服务器，在服务器上创建一个服务，端口号是63342，自己电脑上的浏览器预览自己电脑上的服务，属于本机服务请求，用localhost(127.0.0.1)本地域名即可<br><a href="http://localhost:63342/201802LESSON/WEEK7/0522DAY1/1.html" target="_blank" rel="noopener">http://localhost:63342/201802LESSON/WEEK7/0522DAY1/1.html</a></p>
+<p>服务器上安装一款应用都可能会作为一个服务，占用一个端口号</p>
+</li>
+</ul>
+<p><strong><code>请求路径名称</code></strong></p>
+<ul>
+<li>path<br>pathname<blockquote>
+<p>例如：/stu/index.html 一般都是请求当前服务对应的项目目录中，STU文件夹中的INDEX.HTML页面。但是也有特情况，就是当前的URL是被“伪URL重写”的，我们看到的URL请求其实不是真实的请求（例如 <a href="https://item.jd.com/4679424.html" target="_blank" rel="noopener">https://item.jd.com/4679424.html</a> 这个URL就是被重写的，它的真实URL地址很可能是 <a href="https://item.jd.com/detail.jsp?id=4679424，其实就是跳转到详情页，通过问号传递不同的产品编号，展示不同的产品详情信息，但是.jsp这种服务器渲染的动态页面不能被搜索引擎收录，不利于页面的SEO，所以我们会把动态页面静态化，这也就用到了URL重写技术）" target="_blank" rel="noopener">https://item.jd.com/detail.jsp?id=4679424，其实就是跳转到详情页，通过问号传递不同的产品编号，展示不同的产品详情信息，但是.jsp这种服务器渲染的动态页面不能被搜索引擎收录，不利于页面的SEO，所以我们会把动态页面静态化，这也就用到了URL重写技术）</a></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>例如：/stu/info 这种没有任何后缀信息，一般都不是用来请求资源文件的，而是用于AJAX数据请求的接口地址（如果后缀是.json类的，也是同理），但是有一种除外 /stu/info/ 这种的很可能不是接口地址，而是没有指定请求的资源名称，服务器会请求默认的资源文件，一般都是index.html/default.html…</p>
+</blockquote>
+<p><strong><code>DHTML</code></strong></p>
+<blockquote>
+<p>动态页面，泛指当前页面中的内容不是写死的而是动态绑定的，例如.jsp/.php/.aspx…这些页面中的数据都是基于AJAX或者是后台编程语言处理，由服务器端渲染，最后把渲染后的结果返回给客户端呈现的</p>
+</blockquote>
+<p><strong><code>问号传参及哈希值</code></strong></p>
+<ul>
+<li>?xxx=xxx&amp;…#xxx</li>
+</ul>
+<blockquote>
+<p>在HTTP事务中，问号传参是客户端把信息传递给服务器的一种方式(也有可能是跳转到某一个页面，把参数值传递给页面用来标识的)</p>
+</blockquote>
+<ul>
+<li>哈希值一般都跟客户端服务器交互没啥关系，主要用于页面中的锚点定位和HASH路由切换</li>
+</ul>
+<h3 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">起始行：请求起始行、响应起始行</span><br><span class="line">首部（头）：请求头、响应头、通用头</span><br><span class="line">主体：请求主体、响应主体</span><br><span class="line"></span><br><span class="line">General 通用头</span><br><span class="line"></span><br><span class="line">`Request URL`:</span><br><span class="line"> http://www.zhufengpeixun.cn/  请求地址</span><br><span class="line">Request Method: GET  请求方式:GET/POST/DELETE/PUT/HEAD/OPTION...</span><br><span class="line">Status Code: 304 Not Modified   响应的</span><br></pre></td></tr></table></figure>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><p>Remote Address: 125.39.174.137:80  主机地址(服务器外网IP地址)<br>Referrer Policy: no-referrer-when-downgrade<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Request Headers 请求头 [客户端设置，服务器接收]</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>GET / HTTP/1.1  =&gt;起始行(描述当前请求的一些基本信息：用的是1.1版本传输协议进行内容传输的)</li>
+<li>Host: <a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a></li>
+<li>Connection: keep-alive</li>
+<li>Cache-Control: max-age=0</li>
+<li>Upgrade-Insecure-Requests: 1</li>
+<li>User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) - Chrome/66.0.3359.139 Safari/537.36</li>
+<li>Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,<em>/</em>;q=0.8</li>
+<li>Accept-Encoding: gzip, deflate</li>
+<li>Accept-Language: zh-CN,zh;q=0.9</li>
+<li>Cookie: … =&gt;cookie信息一般都是放到头文件中实现和服务器端的数据通信的</li>
+<li>If-Modified-Since: Sun, 06 May 2018 10:02:42 GMT</li>
+</ul>
+<p><strong><code>Response Headers 响应头 [服务器端设置，客户端获取]</code></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 304 Not Modified  =&gt;响应起始行（HTTP状态码）</span><br><span class="line">Date: Tue, 22 May 2018 09:18:56 GMT  =&gt;服务器响应内容时候的“服务器端时间”（客户端获取这个时间的时候已经和真实的时间产生误差了，因为服务器返回内容到客户端接收到，也是需要时间的），并且这个时间是格林尼治时间（比北京时间慢8小时，北京时间是GMT+0800）</span><br><span class="line">Connection: keep-alive</span><br><span class="line">ETag: &quot;700a6f-17f43-56b86a77513d3&quot;</span><br><span class="line">Vary: Accept-Encoding,User-Agent</span><br><span class="line">Server: yunjiasu-nginx  //=&gt;管理WEB服务的工具</span><br><span class="line">CF-RAY: 41ee32c192db66b8-TSN</span><br></pre></td></tr></table></figure></p>
+<p>Response [响应主体]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">服务器返回的是啥就是啥</span><br></pre></td></tr></table></figure></p>
+<p>Request Payload / Form Data  [请求主体]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端传递给服务器的内容</span><br></pre></td></tr></table></figure></p>
+<h3 id="HTTP报文开发和BUG调试至关重要"><a href="#HTTP报文开发和BUG调试至关重要" class="headerlink" title="HTTP报文开发和BUG调试至关重要"></a>HTTP报文开发和BUG调试至关重要</h3><blockquote>
+<p>以后涉及到交互功能（前端&lt;=&gt;后台）出现问题，都按照如下方式查找问题原因</p>
+<ul>
+<li>打开控制台，在NET-WORK中找到当前交互的请求地址，点击进去看详情</li>
+<li>如果是传递给服务器的参数或者方式错误 [前端问题]</li>
+<li>如果服务器返回的信息有错误或者和API接口文档规定的内容不一样 [后台问题]</li>
+<li>如果返回数据是对的，但是展示有问题 [前端问题]</li>
+</ul>
+</blockquote>
+<ul>
+<li>确定是自己前端的问题后，基于断点(或者代码中的debugger)或者控制台输出等方式，开始逐步调试即可</li>
+</ul>
+<h3 id="客户端和服务器端信息交互的方式"><a href="#客户端和服务器端信息交互的方式" class="headerlink" title="客户端和服务器端信息交互的方式"></a>客户端和服务器端信息交互的方式</h3><p>  [客户端传递给服务器]<br>     A:问号传参<br>      请求的URL地址末尾通过问号传参方式，把一些信息传递给服务器<br>      /stu/info?id=12&amp;lx=man</p>
+<pre><code>B:设置请求头
+ 客户端把需要传递给服务器的内容设置到请求头信息中（自定义请求头）,服务器可以通过接收请求头信息把内容得到
+
+C:设置请求主体
+ xhr.send([AJAX SEND中传递的内容，就是客户端设置的请求主体内容，服务器端可以接收到这些信息的]);
+</code></pre><p>  [服务器返回给客户端]<br>     A:设置响应头信息<br>      例如把服务时间通过响应头返回给客户端，客户端通过获取响应头信息得到这个时间（响应头返回的速度是优先于响应主体的）</p>
+<pre><code>B:设置响应主体
+ 主要的返回信息都在响应主体中
+</code></pre>
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP/" rel="tag"><i class="fa fa-tag"></i> HTTP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/14/node01/" rel="next" title="node基础01">
+                <i class="fa fa-chevron-left"></i> node基础01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一：减少HTTP请求的次数及请求内容的大小"><span class="nav-number">1.</span> <span class="nav-text">一：减少HTTP请求的次数及请求内容的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输协议"><span class="nav-number">2.</span> <span class="nav-text">传输协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP报文"><span class="nav-number">3.</span> <span class="nav-text">HTTP报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">4.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP报文开发和BUG调试至关重要"><span class="nav-number">5.</span> <span class="nav-text">HTTP报文开发和BUG调试至关重要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端和服务器端信息交互的方式"><span class="nav-number">6.</span> <span class="nav-text">客户端和服务器端信息交互的方式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
