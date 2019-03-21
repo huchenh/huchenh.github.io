@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-17T14:31:29.680Z</updated>
+  <updated>2019-03-21T15:01:55.739Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git基础二</title>
+    <link href="https://huchenh.github.io/2019/03/21/git%E5%9F%BA%E7%A1%80%E4%BA%8C/"/>
+    <id>https://huchenh.github.io/2019/03/21/git基础二/</id>
+    <published>2019-03-21T15:00:44.000Z</published>
+    <updated>2019-03-21T15:01:55.739Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;GIT：分布式版本控制系统&lt;br&gt;  1.版本控制系统&lt;br&gt;    开发中我们把每一次的修改都有效的进行记录（记录成一个版本），后期如果需要回退到原有的有个版本或者是用当前的和某一个版本进行比较等，都可以有效的进行管理&lt;br&gt;    常用的版本控制系统：SVN(集中式) / GIT(分布式)&lt;/p&gt;
+&lt;p&gt;  2.分布式版本管理系统的特点&lt;/p&gt;
+&lt;p&gt;  3.Linux团队开发的git，所以git中的命令大部分都是linux命令&lt;/p&gt;
+&lt;p&gt;=======================&lt;br&gt;后期我们更多的都是基于命令来完成GIT管理的,所以我们学一些简单的LINUX命令&lt;br&gt;  WINDOWS操作系统：DOS窗口和DOS命令&lt;br&gt;  LINUX服务器操作系统：LINUX命令 （MAC的终端使用的也是LINUX命令）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理十三</title>
