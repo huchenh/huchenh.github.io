@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,性能优化,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="前端开发性能优化方案一、减少HTTP请求次数和请求大小代码优化  有利于SEO 有利于扩展维护 有利于减少性能消耗[JS代码优化的108条建议]  [雅虎CSS优化的36条建议]… DNS及HTTP通信方式的优化  在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存） 循环给元素做事件绑定的时候，尽可能的把后期需要的信息（例如索引）存储到元素的自定义属性上，而不是创建闭包存储 可以在最外层">
+<meta name="keywords" content="javaScript,性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js知识梳理十四">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/24/js知识梳理十四/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="前端开发性能优化方案一、减少HTTP请求次数和请求大小代码优化  有利于SEO 有利于扩展维护 有利于减少性能消耗[JS代码优化的108条建议]  [雅虎CSS优化的36条建议]… DNS及HTTP通信方式的优化  在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存） 循环给元素做事件绑定的时候，尽可能的把后期需要的信息（例如索引）存储到元素的自定义属性上，而不是创建闭包存储 可以在最外层">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-24T10:22:13.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js知识梳理十四">
+<meta name="twitter:description" content="前端开发性能优化方案一、减少HTTP请求次数和请求大小代码优化  有利于SEO 有利于扩展维护 有利于减少性能消耗[JS代码优化的108条建议]  [雅虎CSS优化的36条建议]… DNS及HTTP通信方式的优化  在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存） 循环给元素做事件绑定的时候，尽可能的把后期需要的信息（例如索引）存储到元素的自定义属性上，而不是创建闭包存储 可以在最外层">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/24/js知识梳理十四/">
+
+
+
+
+
+  <title>js知识梳理十四 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/24/js知识梳理十四/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js知识梳理十四</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T18:21:33+08:00">
+                2019-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前端开发性能优化方案"><a href="#前端开发性能优化方案" class="headerlink" title="前端开发性能优化方案"></a>前端开发性能优化方案</h2><h3 id="一、减少HTTP请求次数和请求大小"><a href="#一、减少HTTP请求次数和请求大小" class="headerlink" title="一、减少HTTP请求次数和请求大小"></a>一、减少HTTP请求次数和请求大小</h3><p><strong><code>代码优化</code></strong></p>
+<ul>
+<li>有利于SEO</li>
+<li>有利于扩展维护</li>
+<li>有利于减少性能消耗<br>[JS代码优化的108条建议]  [雅虎CSS优化的36条建议]<br>…</li>
+<li>DNS及HTTP通信方式的优化</li>
+</ul>
+<h3 id="在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）"><a href="#在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）" class="headerlink" title="在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）"></a>在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）</h3><ul>
+<li>循环给元素做事件绑定的时候，尽可能的把后期需要的信息（例如索引）存储到元素的自定义属性上，而不是创建闭包存储</li>
+<li>可以在最外层形成一个闭包，把一些后续需要的公共信息进行存储，而不是每一个方法都创建闭包(例如单例模式)</li>
+<li>尽可能的手动释放不被占用的内存<br>…</li>
+</ul>
+<h3 id="尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小"><a href="#尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小" class="headerlink" title="尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小"></a>尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小</h3><ol>
+<li>webpack这种自动化构建工具，可以帮我们实现代码的合并和压缩（工程化开发）</li>
+<li>在移动开发(或者追求高性能的PC端开发[例如百度首页])，如果CSS或者JS不是需要很多，我们可以选择把css和js编程内嵌式（也就是代码直接写在HTML中）<a id="more"></a></li>
+<li>尽量使用字体图标或者SVG图标，来代替传统的PNG等格式的图片（因为字体图标等是矢量图(基于代码编写出来的)，放大不会变形，而且渲染速度快，相对比位图要小一些）</li>
+</ol>
+<h3 id="减少对DOM的操作（主要是减少DOM的重绘和回流-重排-）"><a href="#减少对DOM的操作（主要是减少DOM的重绘和回流-重排-）" class="headerlink" title="减少对DOM的操作（主要是减少DOM的重绘和回流(重排)）"></a>减少对DOM的操作（主要是减少DOM的重绘和回流(重排)）</h3><ul>
+<li>关于重排的分离读写</li>
+<li>使用文档碎片或者字符串拼接做数据绑定(DOM的动态创建)</li>
+<li>在JS中避免“嵌套循环”（这种会额外增加很多循环次数）和“死循环”（一旦遇到死循环浏览器就卡壳了）</li>
+</ul>
+<h3 id="采用图片的“懒加载”（延迟加载）"><a href="#采用图片的“懒加载”（延迟加载）" class="headerlink" title="采用图片的“懒加载”（延迟加载）"></a>采用图片的“懒加载”（延迟加载）</h3><blockquote>
+<p>目的是为了减少页面“第一次加载”过程中HTTP的请求次数，让页面打开速度变快</p>
+<ul>
+<li>步骤：开始加载页面的时候，所有的真实图片都不去发送HTTP请求加载，而是给一张占位的背景图，当页面加载完，并且图片在可视区域内我们再去做图片加载</li>
+</ul>
+</blockquote>
+<h3 id="利用浏览器和服务器端的缓存技术-304缓存"><a href="#利用浏览器和服务器端的缓存技术-304缓存" class="headerlink" title="利用浏览器和服务器端的缓存技术(304缓存)"></a>利用浏览器和服务器端的缓存技术(304缓存)</h3><blockquote>
+<p>把一些不经常更新的静态资源文件做缓存处理（例如：JS、CSS、静态图片等都可以做缓存）<br>   原理是为了减少HTTP请求大小，让获取速度更快</p>
+</blockquote>
+<h3 id="尽可能使用事件委托-事件代理"><a href="#尽可能使用事件委托-事件代理" class="headerlink" title="尽可能使用事件委托(事件代理)"></a>尽可能使用事件委托(事件代理)</h3><blockquote>
+<p>处理事件绑定的操作，减少DOM的频繁操作，其中包括给每一个DOM元素做事件绑定</p>
+</blockquote>
+<h3 id="尽量减少CSS表达式的使用-expression"><a href="#尽量减少CSS表达式的使用-expression" class="headerlink" title="尽量减少CSS表达式的使用(expression)"></a>尽量减少CSS表达式的使用(expression)</h3>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#myDiv &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  width: 100px;</span><br><span class="line">  height: 100px;</span><br><span class="line">  left: expression(document.body.offsetWidth - 110 + &quot;px&quot;);</span><br><span class="line">  top: expression(document.body.offsetHeight - 110 + &quot;px&quot;);</span><br><span class="line">  background: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS选择器解析规则是从右向左解析"><a href="#CSS选择器解析规则是从右向左解析" class="headerlink" title="CSS选择器解析规则是从右向左解析"></a>CSS选择器解析规则是从右向左解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container .link a&#123;</span><br><span class="line">   先找到所有的A，再筛选是在.link样式类中的，再次筛选是在.container样式类中的... 先找到的是所有的A，操作起来是消耗性能的，我们在使用CSS选择器的时候尽可能减少对标签选择器的使用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CSS雪碧图技术-css-sprite-css-图片精灵"><a href="#CSS雪碧图技术-css-sprite-css-图片精灵" class="headerlink" title="CSS雪碧图技术(css sprite / css 图片精灵)"></a>CSS雪碧图技术(css sprite / css 图片精灵)</h3><p>  把所有相对较小资源图片汇总到一张大图上，后期我们只需要把大图加载下来，用背景定位的方式展示对应的小图即可<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.bg&#123;</span><br><span class="line">  background:url(&apos;xxx.png&apos;);</span><br><span class="line">&#125;</span><br><span class="line">.box1&#123;</span><br><span class="line">   background-position:xx xx;</span><br><span class="line">&#125;</span><br><span class="line">.box2&#123;</span><br><span class="line">   background-position:xx xx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&apos;bg box1&apos;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）"><a href="#减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）" class="headerlink" title="减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）"></a>减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）</h3><blockquote>
+<p>因为客户端操作COOKIE的时候，这些信息总是在客户端和服务器端传来传去</p>
+</blockquote>
+<h3 id="页面中的数据获取采用异步编程和延迟分批加载"><a href="#页面中的数据获取采用异步编程和延迟分批加载" class="headerlink" title="页面中的数据获取采用异步编程和延迟分批加载"></a>页面中的数据获取采用异步编程和延迟分批加载</h3><ul>
+<li>使用异步获取数据，是为了降低HTTP通道的堵塞，不会因为数据没有请求回来耽误下面信息的渲染，提高页面的打开速度（我们可以这样处理：需要动态绑定数据的区域先隐藏，等数据返回并且绑定完成后在让其显示）</li>
+<li>延迟分批加载类似于图片懒加载，是为了减少第一次页面加载时候的HTTP请求次数</li>
+</ul>
+<h3 id="音视频标签"><a href="#音视频标签" class="headerlink" title="音视频标签"></a>音视频标签</h3><blockquote>
+<p>页面中出现音视频标签，我们不让页面加载的时候就去加载这些资源（要不然页面加载速度会变慢）（方案：只需要设置 preload=’none’ 即可），等待页面加载完成，音视频播放的时候我们在去加载音视频资源</p>
+</blockquote>
+<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>在客户端和服务器端进行信息交互的时候，对于多项数据我们尽可能基于JSON格式来进行传送（JSON格式的数据处理方便，资源偏小） ==&gt;相对于XML格式的传输才会有这个优势</p>
+<h3 id="代码封装"><a href="#代码封装" class="headerlink" title="代码封装"></a>代码封装</h3><p>尽可能实现JS的封装（低耦合高内聚），减少页面中的冗余代码（减少HTTP请求资源的大小）</p>
+<h3 id="减少css重绘"><a href="#减少css重绘" class="headerlink" title="减少css重绘"></a>减少css重绘</h3><ul>
+<li>CSS中设置定位后，最好使用Z-INDEX改变盒子的层级，让所有的盒子不在相同的平面上，这样后续处理的时候，性能有那么一丢丢的提高</li>
+<li>尽量减少对于filter滤镜属性的使用(这个属性消耗性能较大一些)</li>
+<li>在CSS导入的时候尽量减少使用@import导入式，因为@import是同步操作，只有把这个对应的CSS导入，才会向下加载，而link是异步操作</li>
+</ul>
+<h3 id="相同访问地址缓存"><a href="#相同访问地址缓存" class="headerlink" title="相同访问地址缓存"></a>相同访问地址缓存</h3><p>在基于AJAX的GET请求进行数据交互的时候，根据需求可以让其产生缓存（这个缓存不是304缓存），这样下一次从相同地址获取的数据是上一次缓存的数据（但是很少用，项目中一般刻意清除这个缓存的时候偏多）</p>
+<h3 id="配置ETag"><a href="#配置ETag" class="headerlink" title="配置ETag"></a>配置ETag</h3><blockquote>
+<p>有点类似于304缓存</p>
+</blockquote>
+<ul>
+<li><p>使用window.requestAnimationFrame（JS中的帧动画）代替传统的定时器动画</p>
+</li>
+<li><p>减少递归的使用，避免死递归，避免由于递归导致的栈内存嵌套（建议使用尾递归）</p>
+</li>
+<li><p>避免使用iframe（不仅不好管控样式，而且相当于在A页面中加载了其它页面，消耗较大）</p>
+</li>
+<li><p>利用H5中提供的localstorage本地存储或者是manifest离线缓存，做一些信息的本地存储，下一次加载页面的时候直接从本地获取，减少HTTP请求次数</p>
+</li>
+<li><p>基于SCRIPT调取JS的时候，可已使用 defer或者async 来异步加载</p>
+</li>
+</ul>
+<h3 id="重量级优化"><a href="#重量级优化" class="headerlink" title="重量级优化"></a>重量级优化</h3><blockquote>
+<p>做CDN加速（烧钱机器）</p>
+</blockquote>
+<p>===额外技巧===</p>
+<ol>
+<li><p>我们一般都把CSS放到BODY上，把JS放到BODY下面（原因：让其先加载CSS在加载JS，先加载CSS是为了保证页面渲染的过程中，元素是带着样式渲染的，而JS一般都是用来操作DOM元素的，需要等到元素加载完再操作）</p>
+</li>
+<li><p>能用CSS搞定的绝对不用JS，能用原生JS搞定的绝对不用插件，绝对不使用FLASH（除了音视频的低版本浏览器播放）<br>=&gt;CSS处理动画等功能的性能优于JS，而且CSS中的transform变形还开起了硬件加速</p>
+</li>
+<li><p>JS中尽量减少对EVAL的使用，因为JS合并压缩的时候，可能出现由于符号不完善，导致的代码执行优先级错乱问题，EVAL处理起来消耗的性能也是偏大一点的</p>
+</li>
+<li><p>使用keep-alive实现客户端和服务器端的长连接</p>
+</li>
+<li><p>尽量使用设计模式来管理我们的代码（单例、构造、Promise、发布订阅），方便后期的升级和维护</p>
+</li>
+<li><p>开启服务器端的gzip压缩（这个压缩可以有效减少请求资源文件的大小），其实客户端的图片等资源也是可以进行压缩的（但是对于24位的位图，压缩后可能会变模糊）</p>
+</li>
+<li><p>页面中不要出现无效的链接（利于SEO优化），还有其它技巧：提高关键字曝光率、img需要加alt、设置meta标签、标签语义化…</p>
+</li>
+<li><p>避免使用with语句（非常耗性能）</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
+          
+            <a href="/tags/性能优化/" rel="tag"><i class="fa fa-tag"></i> 性能优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/21/git基础二/" rel="next" title="git基础二">
+                <i class="fa fa-chevron-left"></i> git基础二
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/24/js知识梳理十五/" rel="prev" title="js知识梳理十五">
+                js知识梳理十五 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端开发性能优化方案"><span class="nav-number">1.</span> <span class="nav-text">前端开发性能优化方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、减少HTTP请求次数和请求大小"><span class="nav-number">1.1.</span> <span class="nav-text">一、减少HTTP请求次数和请求大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）"><span class="nav-number">1.2.</span> <span class="nav-text">在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小"><span class="nav-number">1.3.</span> <span class="nav-text">尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少对DOM的操作（主要是减少DOM的重绘和回流-重排-）"><span class="nav-number">1.4.</span> <span class="nav-text">减少对DOM的操作（主要是减少DOM的重绘和回流(重排)）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#采用图片的“懒加载”（延迟加载）"><span class="nav-number">1.5.</span> <span class="nav-text">采用图片的“懒加载”（延迟加载）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用浏览器和服务器端的缓存技术-304缓存"><span class="nav-number">1.6.</span> <span class="nav-text">利用浏览器和服务器端的缓存技术(304缓存)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽可能使用事件委托-事件代理"><span class="nav-number">1.7.</span> <span class="nav-text">尽可能使用事件委托(事件代理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量减少CSS表达式的使用-expression"><span class="nav-number">1.8.</span> <span class="nav-text">尽量减少CSS表达式的使用(expression)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS选择器解析规则是从右向左解析"><span class="nav-number">1.9.</span> <span class="nav-text">CSS选择器解析规则是从右向左解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS雪碧图技术-css-sprite-css-图片精灵"><span class="nav-number">1.10.</span> <span class="nav-text">CSS雪碧图技术(css sprite / css 图片精灵)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）"><span class="nav-number">1.11.</span> <span class="nav-text">减少对于COOKIE的使用（最主要的是减少本地COOKIE存储内容的大小）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#页面中的数据获取采用异步编程和延迟分批加载"><span class="nav-number">1.12.</span> <span class="nav-text">页面中的数据获取采用异步编程和延迟分批加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#音视频标签"><span class="nav-number">1.13.</span> <span class="nav-text">音视频标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">1.14.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码封装"><span class="nav-number">1.15.</span> <span class="nav-text">代码封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减少css重绘"><span class="nav-number">1.16.</span> <span class="nav-text">减少css重绘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相同访问地址缓存"><span class="nav-number">1.17.</span> <span class="nav-text">相同访问地址缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置ETag"><span class="nav-number">1.18.</span> <span class="nav-text">配置ETag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重量级优化"><span class="nav-number">1.19.</span> <span class="nav-text">重量级优化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

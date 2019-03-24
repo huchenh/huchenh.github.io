@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-21T15:01:55.739Z</updated>
+  <updated>2019-03-24T10:26:22.990Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js知识梳理十五</title>
+    <link href="https://huchenh.github.io/2019/03/24/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81%E4%BA%94/"/>
+    <id>https://huchenh.github.io/2019/03/24/js知识梳理十五/</id>
+    <published>2019-03-24T10:25:43.000Z</published>
+    <updated>2019-03-24T10:26:22.990Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;知识点：AJAX&quot;&gt;&lt;a href=&quot;#知识点：AJAX&quot; class=&quot;headerlink&quot; title=&quot;知识点：AJAX&quot;&gt;&lt;/a&gt;知识点：AJAX&lt;/h2&gt;&lt;h3 id=&quot;async-javascript-and-xml-异步的JS和XML&quot;&gt;&lt;a href=&quot;#async-javascript-and-xml-异步的JS和XML&quot; class=&quot;headerlink&quot; title=&quot;async javascript and xml 异步的JS和XML&quot;&gt;&lt;/a&gt;async javascript and xml 异步的JS和XML&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在AJAX中的异步不是我们理解的同步异步编程，而是泛指“局部刷新”，但是我们在以后的AJAX请求中尽可能使用异步获取数据（因为异步数据获取不会阻塞下面代码的执行）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;XML是一种文件格式（我们可以把HTML理解为XML的一种）：可扩展的标记语言，它的作用是用自己扩展的一些语义标签来存储一些数据和内容，这样存储的好处是清晰的展示出数据的结构&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;很久以前，AJAX刚刚兴起的时候，客户端从服务器端获取数据，服务器为了清晰的表达数据结构，都是返回XML格式的内容，当下，我们获取的数据一般都是JSON格式的内容，JSON相对于XML来说，也能清晰表达数据结构，而且访问里面数据的时候操作起来比XML更简便（但是现在某些项目中，服务器返回给客户端的数据不单纯是数据，而是数据和需要展示的结构拼接好的结果(类似于我们自己做的字符串拼接)，换句话说，是服务器端把数据和结构拼接好返回给我们，此时返回的数据格式一般都是XML格式的字符串）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;AJAX操作&quot;&gt;&lt;a href=&quot;#AJAX操作&quot; class=&quot;headerlink&quot; title=&quot;AJAX操作&quot;&gt;&lt;/a&gt;AJAX操作&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;创建AJAX实例：IE6中是不兼容的，使用的是new ActiveXObject来实现的&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; xhr = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; XMLHttpRequest();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;打开请求：发送请求之前的一些配置项&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//1.HTTP METHOD 请求方式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// GET/DELETE/HEAD/OPTIONS/TRACE/CONNECT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// POST/PUT&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//2.URL 向服务器端发送请求的API（Application Programming Interface）接口地址&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//3.ASYNC 设置AJAX请求的同步异步，默认是异步（写TRUE也是异步），FALSE是同步，项目中都使用异步编程，防止阻塞后续代码执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//4.USER-NAME/USER-PASS：用户名密码，一般不用&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.open([HTTP METHOD],[URL],[ASYNC],[USER-NAME],[USER-PASS]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;3.事件监听：一般监听的都是 READY-STATE-CHANGE 事件（AJAX状态改变事件），基于这个事件可以获取服务器返回的响应头响应主体内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.onreadystatechange=&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;=&amp;gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(xhr.readyState===&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt; &amp;amp;&amp;amp; xhr.status===&lt;span class=&quot;number&quot;&gt;200&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       xhr.responseText;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;4.发送AJAX请求：从这步开始，当前AJAX任务开始，如果AJAX是同步的，后续代码不会执行，要等到AJAX状态成功后在执行，反之异步不会&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;xhr.send([请求主体内容]);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="HTTP" scheme="https://huchenh.github.io/categories/HTTP/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="ajax" scheme="https://huchenh.github.io/tags/ajax/"/>
+    
+      <category term="http" scheme="https://huchenh.github.io/tags/http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js知识梳理十四</title>
+    <link href="https://huchenh.github.io/2019/03/24/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81%E5%9B%9B/"/>
+    <id>https://huchenh.github.io/2019/03/24/js知识梳理十四/</id>
+    <published>2019-03-24T10:21:33.000Z</published>
+    <updated>2019-03-24T10:22:13.504Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前端开发性能优化方案&quot;&gt;&lt;a href=&quot;#前端开发性能优化方案&quot; class=&quot;headerlink&quot; title=&quot;前端开发性能优化方案&quot;&gt;&lt;/a&gt;前端开发性能优化方案&lt;/h2&gt;&lt;h3 id=&quot;一、减少HTTP请求次数和请求大小&quot;&gt;&lt;a href=&quot;#一、减少HTTP请求次数和请求大小&quot; class=&quot;headerlink&quot; title=&quot;一、减少HTTP请求次数和请求大小&quot;&gt;&lt;/a&gt;一、减少HTTP请求次数和请求大小&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;代码优化&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有利于SEO&lt;/li&gt;
+&lt;li&gt;有利于扩展维护&lt;/li&gt;
+&lt;li&gt;有利于减少性能消耗&lt;br&gt;[JS代码优化的108条建议]  [雅虎CSS优化的36条建议]&lt;br&gt;…&lt;/li&gt;
+&lt;li&gt;DNS及HTTP通信方式的优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）&quot;&gt;&lt;a href=&quot;#在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）&quot; class=&quot;headerlink&quot; title=&quot;在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）&quot;&gt;&lt;/a&gt;在JS中尽量减少闭包的使用（原因：闭包会产生不释放的栈内存）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;循环给元素做事件绑定的时候，尽可能的把后期需要的信息（例如索引）存储到元素的自定义属性上，而不是创建闭包存储&lt;/li&gt;
+&lt;li&gt;可以在最外层形成一个闭包，把一些后续需要的公共信息进行存储，而不是每一个方法都创建闭包(例如单例模式)&lt;/li&gt;
+&lt;li&gt;尽可能的手动释放不被占用的内存&lt;br&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小&quot;&gt;&lt;a href=&quot;#尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小&quot; class=&quot;headerlink&quot; title=&quot;尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小&quot;&gt;&lt;/a&gt;尽量合并CSS和JS文件（把需要引入的CSS合并为一个，JS也是合并为一个），原理是在减少HTTP请求次数，尽可能的把合并后的代码进行压缩，减小HTTP请求资源的大小&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;webpack这种自动化构建工具，可以帮我们实现代码的合并和压缩（工程化开发）&lt;/li&gt;
+&lt;li&gt;在移动开发(或者追求高性能的PC端开发[例如百度首页])，如果CSS或者JS不是需要很多，我们可以选择把css和js编程内嵌式（也就是代码直接写在HTML中）
+    
+    </summary>
+    
+      <category term="HTTP" scheme="https://huchenh.github.io/categories/HTTP/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="性能优化" scheme="https://huchenh.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>git基础二</title>
@@ -35,9 +102,9 @@
       <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
     
     
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
       <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
