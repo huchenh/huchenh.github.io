@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-24T10:26:22.990Z</updated>
+  <updated>2019-03-26T12:24:46.246Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react01</title>
+    <link href="https://huchenh.github.io/2019/03/26/react01/"/>
+    <id>https://huchenh.github.io/2019/03/26/react01/</id>
+    <published>2019-03-26T12:23:36.000Z</published>
+    <updated>2019-03-26T12:24:46.246Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;React是FaceBook（脸书）公司研发的一款JS框架（MVC）&lt;/p&gt;
+&lt;h3 id=&quot;React的脚手架&quot;&gt;&lt;a href=&quot;#React的脚手架&quot; class=&quot;headerlink&quot; title=&quot;React的脚手架&quot;&gt;&lt;/a&gt;React的脚手架&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;React是一款框架：具备自己开发的独立思想(MVC：Model View Controller)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;划分组件开发&lt;/li&gt;
+&lt;li&gt;基于路由的SPA单页面开发&lt;/li&gt;
+&lt;li&gt;基于ES6来编写代码(最后部署上线的时候，我们需要把ES6编译成ES5 =&amp;gt;基于Babel来完成编译)&lt;/li&gt;
+&lt;li&gt;可能用到Less/Sass等，我们也需要使用对应的插件把他们进行预编译&lt;/li&gt;
+&lt;li&gt;最后为了优化性能（减少HTTP请求次数），我们需要把JS或者CSS进行合并压缩&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;li&gt;webpack来完成以上页面组件合并、JS/CSS编译加合并等工作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;前端工程化开发&quot;&gt;&lt;a href=&quot;#前端工程化开发&quot; class=&quot;headerlink&quot; title=&quot;前端工程化开发&quot;&gt;&lt;/a&gt;前端工程化开发&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;基于框架的组件化/模块化开发&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基于WEBPACK的自动部署&lt;/p&gt;
+&lt;p&gt;但是配置WEBPACK是一个相对复杂的工作，我们需要自己安装很多的包，还需要自己写相对复杂的配置文件…如果我们有一个插件，基于它可以快速构建一套完整的自动化工程项目结构，那么有助于提高开发的效率 =&amp;gt;“脚手架”&lt;br&gt;VUE：VUE-CLI&lt;br&gt;REACT：CREATE-REACT-APP&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;create-react-app-的使用&quot;&gt;&lt;a href=&quot;#create-react-app-的使用&quot; class=&quot;headerlink&quot; title=&quot;create-react-app 的使用&quot;&gt;&lt;/a&gt;create-react-app 的使用&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;$ npm install create-react-app -g&lt;br&gt;  把模块安装在全局环境下（目的：可以使用命令），MAC电脑安装的时候，前面需要加SUDO，否则没有权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;$ create-react-app [项目名称]&lt;br&gt;  基于脚手架命令，创建出一个基于React的自动化/工程化项目目录，和npm发包时候的命名规范一样，项目名称中不能出现：大写字母、中文汉字、特殊符号（-或者_是可以的）等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="React" scheme="https://huchenh.github.io/categories/React/"/>
+    
+    
+      <category term="React" scheme="https://huchenh.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>js知识梳理十五</title>
@@ -102,9 +150,9 @@
       <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
     
     
-      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
-    
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
     
   </entry>
   
@@ -769,57 +817,6 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code&gt;2.转换规律&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;转换的方法：Number（浏览器自行转换都是基于这个方法完成的）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;【把字符串转换为数字】&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;只要遇到一个非有效数字字符，结果就是&lt;span class=&quot;literal&quot;&gt;NaN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39; &#39;&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; 空格(Space)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;\n&#39;&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; 换行符(Enter)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;&#39;\t&#39;&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; 制表符(Tab)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;【把布尔转换为数字】&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;【把没有转换为数字】&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt; -&amp;gt;&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;literal&quot;&gt;undefined&lt;/span&gt; -&amp;gt;&lt;span class=&quot;literal&quot;&gt;NaN&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;【把引用类型值转换为数字】&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;首先都先转换为字符串（toString），然后再转换为数字（&lt;span class=&quot;built_in&quot;&gt;Number&lt;/span&gt;）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js知识梳理一</title>
-    <link href="https://huchenh.github.io/2019/02/28/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%B8%80/"/>
-    <id>https://huchenh.github.io/2019/02/28/js知识梳理一/</id>
-    <published>2019-02-27T16:05:32.000Z</published>
-    <updated>2019-02-28T16:01:49.051Z</updated>
-    
-    <summary type="html">
-    
-      &lt;!-- cp -R public/* .deploy/huchenh.github.io --&gt;
-&lt;h3 id=&quot;数据类型的详细剖析&quot;&gt;&lt;a href=&quot;#数据类型的详细剖析&quot; class=&quot;headerlink&quot; title=&quot;数据类型的详细剖析&quot;&gt;&lt;/a&gt;数据类型的详细剖析&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;number数字类型&lt;br&gt;NaN：not a number 但是它是数字类型的&lt;br&gt;isNaN：检测当前值是否不是有效数字，返回true代表不是有效数字，返回false是有效数字&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;41&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;43&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;44&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;45&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;46&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;47&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;48&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;49&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;50&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;51&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;52&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//=&amp;gt;语法：isNaN([value])&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var num=12;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(num); //-&amp;gt;检测num变量存储的值是否为非有效数字 false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;apos;13&amp;apos;) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;apos;珠峰&amp;apos;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(true) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(false) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(null) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(undefined) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(&amp;#123;age:9&amp;#125;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN([12,23]) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN([12]) =&amp;gt;false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(/^$/) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;isNaN(function()&amp;#123;&amp;#125;) =&amp;gt;true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;重要：isNaN检测的机制&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;1、首先验证当前要检测的值是否为数字类型的，如果不是，浏览器会默认的把值转换为数字类型&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  把非数字类型的值转换为数字&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - 其它基本类型转换为数字：直接使用Number这个方法转换的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [字符串转数字]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13&amp;apos;) -&amp;gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13px&amp;apos;) -&amp;gt;NaN 如果当前字符串中出现任意一个非有效数字字符，结果则为NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(&amp;apos;13.5&amp;apos;) -&amp;gt;13.5 可以识别小数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [布尔转数字]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(true) -&amp;gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(false) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [其它]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(null) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Number(undefined) -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - 把引用数据类型值转换为数字：先把引用值调取toString转换为字符串，然后再把字符串调取Number转换为数字&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [对象]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     (&amp;#123;&amp;#125;).toString() -&amp;gt;&amp;apos;[object Object]&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [数组]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     [12,23].toString() -&amp;gt;&amp;apos;12,23&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     [12].toString() -&amp;gt;&amp;apos;12&amp;apos; -&amp;gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   [正则]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     /^$/.toString() -&amp;gt;&amp;apos;/^$/&amp;apos; -&amp;gt;NaN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Number(&amp;apos;&amp;apos;) -&amp;gt;0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [].toString() -&amp;gt;&amp;apos;&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  =&amp;gt; isNaN([])：false&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2、当前检测的值已经是数字类型，是有效数字返回false，不是返回true（数字类型中只有NaN不是有效数字，其余都是有效数字）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;parseInt / parseFloat&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;等同于Number，也是为了把其它类型的值转换为数字类型&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;和Number的区别在于字符串转换分析上&lt;/p&gt;
-&lt;p&gt;Number：出现任意非有效数字字符，结果就是NaN&lt;/p&gt;
-&lt;p&gt;parseInt：把一个字符串中的整数部分解析出来，parseFloat是把一个字符串中小数(浮点数)部分解析出来&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;parseInt(&amp;apos;13.5px&amp;apos;) =&amp;gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;parseFloat(&amp;apos;13.5px&amp;apos;) =&amp;gt;13.5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;parseInt(&amp;apos;width:13.5px&amp;apos;) =&amp;gt;NaN 从字符串最左边字符开始查找有效数字字符，并且转换为数字，但是一但遇到一个非有效数字字符，查找结束&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;ol start=&quot;3&quot;&gt;
-&lt;li&gt;NaN的比较&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NaN==NaN：false NaN和谁都不相等，包括自己&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;布尔类型&quot;&gt;&lt;a href=&quot;#布尔类型&quot; class=&quot;headerlink&quot; title=&quot;布尔类型&quot;&gt;&lt;/a&gt;布尔类型&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;只有两个值：true / false &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;如何把其它数据类型转换为布尔类型?&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Boolean&lt;/li&gt;
-&lt;li&gt;!&lt;/li&gt;
-&lt;li&gt;!!&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;规律：&lt;strong&gt;&lt;code&gt;在JS中只有“0/NaN/空字符串/null/undefined”这五个值转换为布尔类型的false，其余都转换为true&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;hr&gt;
     
     </summary>
     
