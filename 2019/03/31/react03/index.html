@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javaScript,node,">
+  <meta name="keywords" content="React,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="什么是NODE？基于V8引擎（谷歌浏览器的引擎）渲染JS的工具或者环境-&amp;gt;安装NODE-&amp;gt;把JS代码放到NODE环境中执行  安装NODEhttps://nodejs.org/en/  node安装完成后  当前电脑上自动安装了npm(Node Package Manager)：一个JS模块（所有封装好可以供其它人调取使用的都可以称之为模块或者包）管理的工具，基于npm可以安装下载J">
-<meta name="keywords" content="javaScript,node">
+<meta name="description" content="JSX中的事件绑定：12345678910render()&amp;#123;   return &amp;lt;button className=&apos;btn btn-success&apos;              onClick=&amp;#123;this.support&amp;#125;&amp;gt;          支持&amp;lt;/button&amp;gt;;&amp;#125;support(ev)&amp;#123;   //=&amp;gt;THIS:u">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node基础01">
-<meta property="og:url" content="https://huchenh.github.io/2019/03/14/node01/index.html">
+<meta property="og:title" content="react03">
+<meta property="og:url" content="https://huchenh.github.io/2019/03/31/react03/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="什么是NODE？基于V8引擎（谷歌浏览器的引擎）渲染JS的工具或者环境-&amp;gt;安装NODE-&amp;gt;把JS代码放到NODE环境中执行  安装NODEhttps://nodejs.org/en/  node安装完成后  当前电脑上自动安装了npm(Node Package Manager)：一个JS模块（所有封装好可以供其它人调取使用的都可以称之为模块或者包）管理的工具，基于npm可以安装下载J">
+<meta property="og:description" content="JSX中的事件绑定：12345678910render()&amp;#123;   return &amp;lt;button className=&apos;btn btn-success&apos;              onClick=&amp;#123;this.support&amp;#125;&amp;gt;          支持&amp;lt;/button&amp;gt;;&amp;#125;support(ev)&amp;#123;   //=&amp;gt;THIS:u">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-14T13:35:52.141Z">
+<meta property="og:updated_time" content="2019-03-31T13:02:36.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node基础01">
-<meta name="twitter:description" content="什么是NODE？基于V8引擎（谷歌浏览器的引擎）渲染JS的工具或者环境-&amp;gt;安装NODE-&amp;gt;把JS代码放到NODE环境中执行  安装NODEhttps://nodejs.org/en/  node安装完成后  当前电脑上自动安装了npm(Node Package Manager)：一个JS模块（所有封装好可以供其它人调取使用的都可以称之为模块或者包）管理的工具，基于npm可以安装下载J">
+<meta name="twitter:title" content="react03">
+<meta name="twitter:description" content="JSX中的事件绑定：12345678910render()&amp;#123;   return &amp;lt;button className=&apos;btn btn-success&apos;              onClick=&amp;#123;this.support&amp;#125;&amp;gt;          支持&amp;lt;/button&amp;gt;;&amp;#125;support(ev)&amp;#123;   //=&amp;gt;THIS:u">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/03/14/node01/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/03/31/react03/">
 
 
 
 
 
-  <title>node基础01 | 追风</title>
+  <title>react03 | 追风</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/14/node01/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/31/react03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">node基础01</h1>
+          <h1 class="post-title" itemprop="name headline">react03</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T21:29:47+08:00">
-                2019-03-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T21:01:29+08:00">
+                2019-03-31
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
                   </a>
                 </span>
 
@@ -361,101 +361,44 @@
       
 
       
-        <ol>
-<li><p>什么是NODE？<br>基于V8引擎（谷歌浏览器的引擎）渲染JS的工具或者环境<br>-&gt;安装NODE<br>-&gt;把JS代码放到NODE环境中执行</p>
-</li>
-<li><p>安装NODE<br><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
-<blockquote>
-<p>node安装完成后</p>
+        <h3 id="JSX中的事件绑定："><a href="#JSX中的事件绑定：" class="headerlink" title="JSX中的事件绑定："></a>JSX中的事件绑定：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">'btn btn-success'</span></span></span></span><br><span class="line"><span class="xml">              onClick=&#123;this.support&#125;&gt;</span></span><br><span class="line"><span class="xml">          支持<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support(ev)&#123;</span><br><span class="line">   <span class="comment">//=&gt;THIS:undefined（不是我们理解的当前操作的元素）</span></span><br><span class="line">   <span class="comment">//=&gt;ev.target：通过事件源可以获取当前操作的元素（一般很少操作，因为框架主要是数据驱动所有DOM的改变）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果能让方法中的THIS变成当前类的实例就好了，这样可以操作属性和状态等信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">   return &lt;button className=&apos;btn btn-success&apos;</span><br><span class="line">              onClick=&#123;this.support.bind(this)&#125;&gt;</span><br><span class="line">          支持&lt;/button&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support(ev)&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">   return &lt;button className=&apos;btn btn-success&apos;</span><br><span class="line">              onClick=&#123;this.support&#125;&gt;</span><br><span class="line">          支持&lt;/button&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support=ev=&gt;&#123;</span><br><span class="line">  //=&gt;THIS:继承上下文中的THIS（实例）, 真实项目中，给JSX元素绑定的事件方法一般都是箭头函数，目的是为了保证函数中的THIS还是实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="REACT组件"><a href="#REACT组件" class="headerlink" title="REACT组件"></a>REACT组件</h3><ol>
+<li>基于数据驱动（修改状态数据，REACT帮助我们重新渲染视图）完成的组件叫做“受控组件（受数据控制的组件）”</li>
+<li>基于REF操作DOM实现视图更新的，叫做“非受控组件”<br>=&gt;真实项目中，建议大家多使用“受控组件”</li>
+</ol>
 <ul>
-<li>当前电脑上自动安装了npm(Node Package Manager)：一个JS模块（所有封装好可以供其它人调取使用的都可以称之为模块或者包）管理的工具，基于npm可以安装下载JS模块</li>
-<li>它会生成一个node执行的命令（可以在DOS窗口或者终端命令中执行）：node xxx.js</li>
-<li>如果不成功，可以找相同电脑配置的人员，把安装成功的NODE文件夹拷贝到自己的电脑上，通过配置环境变量，来实现NODE安装<a id="more"></a></li>
+<li>VUE：[MVVM] 数据更改视图跟着更改，视图更改数据也跟着更改（双向数据绑定）</li>
+<li>REACT：[MVC] 数据更改视图跟着更改（原本是单向数据绑定，但是我们可以自己构建出双向的效果）</li>
 </ul>
+<h3 id="react的DOM"><a href="#react的DOM" class="headerlink" title="react的DOM"></a>react的DOM</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* ref='spanLeft'</span></span><br><span class="line"><span class="comment">  *   是在当前实例上挂载一个属性refs（对象），存储所有的ref元素</span></span><br><span class="line"><span class="comment">  *</span></span><br><span class="line"><span class="comment">  * x =&gt; this.spanLeft = x</span></span><br><span class="line"><span class="comment">  *   x代表当前元素，它的意思是，把当前元素直接挂载到实例上，后期需要用到元素，直接this.spanLeft获取即可 */</span></span><br></pre></td></tr></table></figure>
+<h3 id="生命周期函数（钩子函数）："><a href="#生命周期函数（钩子函数）：" class="headerlink" title="生命周期函数（钩子函数）："></a>生命周期函数（钩子函数）：</h3><p>  描述一个组件或者程序从创建到销毁的过程，我们可以在过程中间基于钩子函数完成一些自己的操作（例如：在第一次渲染完成做什么，或者在二次即将重新渲染之前做什么等…）</p>
+<p>  <code>基本流程</code></p>
+<ul>
+<li>constructor  创建一个组件</li>
+<li>componentWillMount 第一次渲染之前</li>
+<li>render 第一次渲染</li>
+<li><p>componentDidMount 第一次渲染之后</p>
+<p><code>修改流程</code></p>
+<blockquote>
+<p>当组件的状态数据发生改变(SET-STATE)或者传递给组件的属性发生改变(重新调用组件传递不同的属性)都会引发RENDER重新执行渲染(渲染也是差异渲染)]</p>
 </blockquote>
 </li>
-<li><p>如何在NODE中渲染和解析JS</p>
-<ul>
-<li><p>REPL模式 (Read-Evaluate-Print-Loop，输入-求值-输出-循环)</p>
+<li>shouldComponentUpdate 是否允许组件重新渲染(允许则执行后面函数，不允许直接结束即可)</li>
+<li>componentWillUpdate 重现渲染之前</li>
+<li>render 第二次及以后重新渲染</li>
+<li><p>componentDidUpdate 重现渲染之后</p>
 </li>
-<li><p>直接基于NODE来执行JS文件<br>1）在命令窗口中执行（DOS窗口 &amp; 终端窗口）<br>2）WB中的Terminal中也可以执行node命令<br>3）直接在WB中执行（右键=&gt;RUN xxx.js），这种方式可能会产生缓存（尤其是文件的目录改动后）</p>
+<li><p>componentWillReceiveProps：父组件把传递给子组件的属性发生改变后触发的钩子函数</p>
+<p><code>卸载</code></p>
+<blockquote>
+<p>原有渲染的内容是不消失的，只不过以后不能基于数据改变视图了</p>
+</blockquote>
 </li>
+<li>componentWillUnmount：卸载组件之前（一般不用）</li>
 </ul>
-</li>
-<li><p>之所以把NODE作为后台编程语言，是因为：</p>
-<ul>
-<li>我们可以把NODE安装在服务器上</li>
-<li>我们可以把编写的JS代码放到服务器上，通过NODE来执行它（我们可以使用JS来操作服务器，换句话说，使用JS来实现服务器端的一些功能操作 =&gt;其实说NODE是后台语言，想要表达的是JS是后台语言 “JS是一门全栈编程语言”）</li>
-</ul>
-</li>
-<li><p>NODE做后台的优势和特点<br>传统后台语言：JAVA/Python/PHP/C#(.NET)…<br>=&gt;单线程的<br>=&gt;基于V8引擎渲染：快<br>=&gt;异步无阻塞的I/O操作：I/O (INPUT/OUTPUT) 对文件的读写<br>=&gt;event-driven事件驱动：类似于发布订阅或者回调函数</p>
-</li>
-<li><p>在WB中开启NODE内置方法的代码提示<br>File -&gt; settings -&gt; languages &amp; frameworks -&gt; node.js and npm -&gt; 开起代码提示只要点击“Enable”按钮即可（Disable是取消代码提示）</p>
-</li>
-</ol>
-<p>============================</p>
-<p><strong><code>NPM的应用</code></strong><br>  目前“工程化/自动化”开发（不一定是写后台），都是基于NODE环境，基于NPM管理模块，基于WEBPACK实现模块之间的依赖打包，部署上线等</p>
-<p>  NPM常规操作<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install xxx  把模块安装到当前目录（在哪个目录下执行的命令，这个目录就是当前目录）下</span><br><span class="line">npm install xxx -g 把模块安装在全局目录下</span><br><span class="line"></span><br><span class="line">npm uninstall xxx / npm uninstall xxx -g 卸载模块</span><br><span class="line"></span><br><span class="line">npm install xxx@xxx 安装指定版本号的模块</span><br><span class="line"></span><br><span class="line">npm view xxx &gt; xxx.version.txt  查看模块的历史版本信息</span><br></pre></td></tr></table></figure></p>
-<p>  NPM的默认安装源都是在 <a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a> 网站中查找的，在国内安装，下载速度较慢，想要下载速度快一些，我们可以如下处理：</p>
-<ol>
-<li><p>使用淘宝镜像<br>-&gt;安装cnpm，后期都是基于cnpm安装管理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install cnpm -g</span><br><span class="line">cnpm install zepto</span><br></pre></td></tr></table></figure>
-<p>-&gt;安装nrm切源工具，基于nrm把源切换到淘宝源上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install nrm -g</span><br><span class="line"></span><br><span class="line">nrm ls 查看当前可用的源</span><br><span class="line">nrm use xxx 使用某个源</span><br><span class="line"></span><br><span class="line">这样处理完成后，后期模块的管理依然基于npm即可</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>基于YARN安装：它也是模块管理器，类似于NPM，但是安装管理的速度比NPM快很多</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install yarn -g</span><br><span class="line"></span><br><span class="line">yarn add xxx</span><br><span class="line">yarn remove xxx</span><br><span class="line"></span><br><span class="line">使用yarn只能把模块安装到当前目录下，不能安装到全局环境下</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>bower也是类似于npm的包管理器，只不过它是从gitHub下载安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install bower -g</span><br><span class="line"></span><br><span class="line">bower install xxx</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="常见文件操作promise封装"><a href="#常见文件操作promise封装" class="headerlink" title="常见文件操作promise封装"></a>常见文件操作promise封装</h3><pre><code class="js"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>),
-    path = <span class="built_in">require</span>(<span class="string">'path'</span>);
-
-<span class="comment">//=&gt;存储的是当前模块执行所在的绝对路径(!==__dirname)</span>
-<span class="keyword">let</span> dirname = path.resolve();
-
-<span class="comment">//=&gt;MKDIR &amp;&amp; RMDIR &amp;&amp; READ-DIR &amp;&amp; READ-FILE &amp;&amp; COPY-FILE</span>
-[<span class="string">'mkdir'</span>, <span class="string">'rmdir'</span>, <span class="string">'readdir'</span>, <span class="string">'readFile'</span>, <span class="string">'copyFile'</span>, <span class="string">'unlink'</span>].forEach(<span class="function"><span class="params">item</span> =&gt;</span> {
-    exports[item] = <span class="function"><span class="keyword">function</span> (<span class="params">pathname, copypath = <span class="string">''</span></span>) </span>{
-        pathname = path.resolve(dirname, pathname);
-        copypath = path.resolve(dirname, copypath);
-        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {
-            <span class="keyword">let</span> arg = [<span class="function">(<span class="params">err, result</span>) =&gt;</span> {
-                <span class="keyword">if</span> (err) {
-                    reject(err);
-                    <span class="keyword">return</span>;
-                }
-                resolve(result || <span class="string">''</span>);
-            }];
-            item === <span class="string">'readFile'</span> ? arg.unshift(<span class="string">'utf8'</span>) : <span class="literal">null</span>;
-            item === <span class="string">'copyFile'</span> ? arg.unshift(copypath) : <span class="literal">null</span>;
-            fs[item](pathname, ...arg);
-        });
-    };
-});
-
-<span class="comment">//=&gt;WRITE &amp;&amp; APPEND</span>
-[<span class="string">'writeFile'</span>, <span class="string">'appendFile'</span>].forEach(<span class="function"><span class="params">item</span> =&gt;</span> {
-    exports[item] = <span class="function"><span class="keyword">function</span> (<span class="params">pathname, content</span>) </span>{
-        pathname = path.resolve(dirname, pathname);
-        <span class="keyword">if</span> (<span class="keyword">typeof</span> content !== <span class="string">'string'</span>) {
-            <span class="comment">//=&gt;写入的内容我们规定必须是字符串才可以</span>
-            content = <span class="built_in">JSON</span>.stringify(content);
-        }
-        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {
-            fs[item](pathname, content, <span class="string">'utf8'</span>, (err, result) =&gt; {
-                <span class="keyword">if</span> (err) {
-                    reject(err);
-                    <span class="keyword">return</span>;
-                }
-                resolve(result || <span class="string">''</span>);
-            });
-        });
-    };
-});
-</code></pre>
 
       
     </div>
@@ -481,9 +424,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
-          
-            <a href="/tags/node/" rel="tag"><i class="fa fa-tag"></i> node</a>
+            <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
           
         </div>
       
@@ -496,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/12/promiseA+02/" rel="next" title="promiseA+02">
-                <i class="fa fa-chevron-left"></i> promiseA+02
+              <a href="/2019/03/29/react02/" rel="next" title="react02">
+                <i class="fa fa-chevron-left"></i> react02
               </a>
             
           </div>
@@ -505,10 +446,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/17/js知识梳理十三/" rel="prev" title="js知识梳理十三">
-                js知识梳理十三 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -654,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见文件操作promise封装"><span class="nav-number">1.</span> <span class="nav-text">常见文件操作promise封装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX中的事件绑定："><span class="nav-number">1.</span> <span class="nav-text">JSX中的事件绑定：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REACT组件"><span class="nav-number">2.</span> <span class="nav-text">REACT组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react的DOM"><span class="nav-number">3.</span> <span class="nav-text">react的DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期函数（钩子函数）："><span class="nav-number">4.</span> <span class="nav-text">生命周期函数（钩子函数）：</span></a></li></ol></div>
             
 
           </div>
