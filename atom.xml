@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-03-31T13:02:36.763Z</updated>
+  <updated>2019-04-02T12:54:20.320Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react04</title>
+    <link href="https://huchenh.github.io/2019/04/02/react04/"/>
+    <id>https://huchenh.github.io/2019/04/02/react04/</id>
+    <published>2019-04-02T12:53:54.000Z</published>
+    <updated>2019-04-02T12:54:20.320Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;REACT基础知识复习（一）：&quot;&gt;&lt;a href=&quot;#REACT基础知识复习（一）：&quot; class=&quot;headerlink&quot; title=&quot;REACT基础知识复习（一）：&quot;&gt;&lt;/a&gt;REACT基础知识复习（一）：&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;REACT是FACE-BOOK公司开发的一款MVC版JS框架&lt;br&gt;MVC：Model（数据层）、VIEW（视图层）、CONTROLLER（控制层）&lt;br&gt;核心思想：通过数据的改变来影响视图的渲染（数据驱动）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基于脚手架 CREATE-REACT-APP 快速构建一个REACT工程项目结构&lt;br&gt;自动安装REACT的核心组件：REACT/REACT-DOM&lt;br&gt;自动安装WEBPACK，并且完成相关的配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;区分了开发环境和生产环境&lt;/li&gt;
+&lt;li&gt;安装BABEL以及对应的语言解析包，可以把REACT和ES6进行编译处理&lt;/li&gt;
+&lt;li&gt;安装CSS/STYLE/FILE等加载器，处理CSS等合并压缩的问题&lt;/li&gt;
+&lt;li&gt;安装了ES-LINT，可以进行代码检测&lt;/li&gt;
+&lt;li&gt;安装了很多的插件，可以实现JS和CSS以及HTML的分离，打包，压缩等&lt;/li&gt;
+&lt;li&gt;安装了WEBPACK-DEV-SERVER，可以在开发环境下，编译后自动创建服务，打开浏览器，当代码修改后，自动保存编译，页面自动刷新渲染等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;使用脚手架&quot;&gt;&lt;a href=&quot;#使用脚手架&quot; class=&quot;headerlink&quot; title=&quot;使用脚手架&quot;&gt;&lt;/a&gt;使用脚手架&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;把脚手架安装到全局环境下，以后应用命令操作，完成项目结构的搭建&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  $ npm install create-react-app -g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;创建项目结构目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  项目名遵循NPM发包命名规范：名字只能是/^[a-z0-9_-]$/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  $ create-react-app  项目名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;特点：如果当前电脑安装了YARN，创建工程目录的时候，走的是YARN安装，YARN和NPM主体相同，但是处理起来还有一定的区别，所以我们以后继续向工程中安装模块以及执行配置脚本打包编译的时候，尽可能使用YARN，不建议和NPM混用&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="React" scheme="https://huchenh.github.io/categories/React/"/>
+    
+    
+      <category term="React" scheme="https://huchenh.github.io/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>react03</title>
@@ -198,9 +233,9 @@
       <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
     
     
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
       <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
@@ -763,35 +798,6 @@
     
     
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git基础</title>
-    <link href="https://huchenh.github.io/2019/03/01/git%E5%9F%BA%E7%A1%80/"/>
-    <id>https://huchenh.github.io/2019/03/01/git基础/</id>
-    <published>2019-03-01T14:15:37.000Z</published>
-    <updated>2019-03-01T14:18:00.130Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;git基础管理&quot;&gt;&lt;a href=&quot;#git基础管理&quot; class=&quot;headerlink&quot; title=&quot;git基础管理&quot;&gt;&lt;/a&gt;git基础管理&lt;/h3&gt;&lt;p&gt;&lt;code&gt;基础命令配置&lt;/code&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;git
-        
-      
-    
-    </summary>
-    
-      <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
-    
-    
-      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
     
   </entry>
   
