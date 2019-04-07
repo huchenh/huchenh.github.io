@@ -272,6 +272,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/12/promiseA+02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/12/promiseA+02/" itemprop="url">promiseA+02</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T23:43:17+08:00">
+                2019-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="promise代码实现"><a href="#promise代码实现" class="headerlink" title="promise代码实现"></a>promise代码实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Promise 实现 遵循promise/A+规范</span></span><br><span class="line"><span class="comment"> * Promise/A+规范译文:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// promise 三个状态</span></span><br><span class="line"><span class="keyword">const</span> PENDING = <span class="string">"pending"</span>;</span><br><span class="line"><span class="keyword">const</span> FULFILLED = <span class="string">"fulfilled"</span>;</span><br><span class="line"><span class="keyword">const</span> REJECTED = <span class="string">"rejected"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Promise</span>(<span class="params">excutor</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>; <span class="comment">// 缓存当前promise实例对象</span></span><br><span class="line">  <span class="keyword">this</span>.status = PENDING; <span class="comment">// 初始状态</span></span><br><span class="line">  <span class="keyword">this</span>.value = <span class="literal">undefined</span>; <span class="comment">//  fulfilled状态时 返回的信息</span></span><br><span class="line">  <span class="keyword">this</span>.reason = <span class="literal">undefined</span>; <span class="comment">//  rejected状态时 拒绝的原因</span></span><br><span class="line">  that.onFulfilledCallbacks = []; <span class="comment">// 存储fulfilled状态对应的onFulfilled函数</span></span><br><span class="line">  that.onRejectedCallbacks = []; <span class="comment">// 存储rejected状态对应的onRejected函数</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">resolve</span>(<span class="params">value</span>)</span>&#123; <span class="comment">// value成功态时接收的终值</span></span><br><span class="line">    <span class="keyword">if</span>(value <span class="keyword">instanceof</span> promise)&#123;</span><br><span class="line">      <span class="keyword">return</span> value.then(resolve,reject)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 为什么resolve 加setTimeout?</span></span><br><span class="line">        <span class="comment">// 2.2.4规范 onFulfilled 和 onRejected 只允许在 execution context 栈仅包含平台代码时运行.</span></span><br><span class="line">        <span class="comment">// 注1 这里的平台代码指的是引擎、环境以及 promise 的实施代码。实践中要确保 onFulfilled 和 onRejected 方法异步执行，且应该在 then 方法被调用的那一轮事件循环之后的新执行栈中执行。</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">       <span class="comment">// 调用resolve 回调对应onFulfilled函数</span></span><br><span class="line">       <span class="keyword">if</span>(that.status == PENDING)&#123;</span><br><span class="line">        <span class="comment">// 只能由pending状态 =&gt; fulfilled状态 (避免调用多次resolve reject)</span></span><br><span class="line">          that.status = FULFILLED;</span><br><span class="line">          that.value = value;</span><br><span class="line">          that.onFulfilledCallbacks.forEach(<span class="function"><span class="params">cb</span>=&gt;</span>cb(that.value))</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">reason</span>)</span>&#123;<span class="comment">// reason失败态时接收的拒因</span></span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">      <span class="comment">// 调用reject 回调对应onRejected函数</span></span><br><span class="line">      <span class="keyword">if</span>(that.status == PENDING)&#123;</span><br><span class="line">        <span class="comment">// 只能由pending状态 =&gt; rejected状态 (避免调用多次resolve reject)</span></span><br><span class="line">        that.status = REJECTED;</span><br><span class="line">        that.value = reason;</span><br><span class="line">        that.onRejectedCallbacks.ForEach(<span class="function"><span class="params">cb</span>=&gt;</span>cb(that.reason))</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 捕获在excutor执行器中抛出的异常</span></span><br><span class="line">  <span class="comment">// new Promise((resolve, reject) =&gt; &#123;</span></span><br><span class="line">  <span class="comment">//     throw new Error('error in excutor')</span></span><br><span class="line">  <span class="comment">// &#125;)</span></span><br><span class="line">  <span class="keyword">try</span>&#123;</span><br><span class="line">    excutor(resolve,reject)</span><br><span class="line">  &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">    reject(e)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/12/promiseA+02/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/12/promiseA+01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -898,179 +1046,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/08/js知识梳理九/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/js知识梳理九/" itemprop="url">js知识梳理九</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T23:42:46+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="正则捕获"><a href="#正则捕获" class="headerlink" title="正则捕获"></a>正则捕获</h3><blockquote>
-<p>把一个字符串中和正则匹配的部分获取到</p>
-</blockquote>
-<p><strong><code>正则</code></strong></p>
-<ul>
-<li>exec</li>
-<li>test</li>
-</ul>
-<p><strong><code>字符串</code></strong></p>
-<ul>
-<li>replace</li>
-<li>split</li>
-<li>match</li>
-</ul>
-<p><strong><code>基于EXEC可以实现正则的捕获</code></strong></p>
-<ol>
-<li>如果当前正则和字符串不匹配，捕获的结果是NULL</li>
-<li>如果匹配，捕获的结果是一个数组<ul>
-<li>0:大正则捕获的内容</li>
-<li>index:正则捕获的起始索引</li>
-<li>input:原始操作的字符串</li>
-<li>…</li>
-</ul>
-</li>
-<li>执行一次EXEC只能捕获到第一个和正则匹配的内容，其余匹配的内容还没有捕获到，而且更恶心的是，我傻傻的执行多次，然而并没啥卵用 =&gt;“正则的捕获有懒惰性”：只能捕获到第一个匹配的内容，剩余的默认捕获不到</li>
-<li>解决正则捕获的懒惰性，我们需要加全局修饰符G（这个是唯一的方案，而且不加G不管用什么办法捕获，也都不能把全部匹配的捕获到）
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/08/js知识梳理九/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ol></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1123,7 +1098,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
