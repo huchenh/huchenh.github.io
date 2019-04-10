@@ -272,6 +272,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/10/react05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/10/react05/" itemprop="url">react05</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T21:48:30+08:00">
+                2019-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="复合组件：父组件嵌套子组件"><a href="#复合组件：父组件嵌套子组件" class="headerlink" title="复合组件：父组件嵌套子组件"></a>复合组件：父组件嵌套子组件</h3><p><strong><code>传递信息的方式</code></strong></p>
+<ol>
+<li><p>父组件需要把信息传递给子组件<br>“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的；</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Vote</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> &#123;title, count&#125; = <span class="keyword">this</span>.props;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">section</span> <span class="attr">className</span>=<span class="string">&#123;</span>'<span class="attr">panel</span> <span class="attr">panel-default</span>'&#125; <span class="attr">style</span>=<span class="string">&#123;&#123;width:</span> '<span class="attr">50</span>%', <span class="attr">margin:</span> '<span class="attr">20px</span> <span class="attr">auto</span>'&#125;&#125;&gt;</span></span></span><br><span class="line">            &lt;VoteHead title=&#123;title&#125;/&gt;</span><br><span class="line">            ...</span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">section</span>&gt;</span>;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong><code>上下文传递</code></strong></p>
+<blockquote>
+<p>父组件先把需要给后代元素（包括孙子元素）使用的信息都设置好（设置在上下文中），后代组件需要用到父组件中的信息，主动去父组件中调取使用即可</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/10/react05/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </blockquote></li></ol></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/07/防抖和节流/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,187 +1034,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/26/react01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/26/react01/" itemprop="url">react01</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T20:23:36+08:00">
-                2019-03-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>React是FaceBook（脸书）公司研发的一款JS框架（MVC）</p>
-<h3 id="React的脚手架"><a href="#React的脚手架" class="headerlink" title="React的脚手架"></a>React的脚手架</h3><blockquote>
-<p>React是一款框架：具备自己开发的独立思想(MVC：Model View Controller)</p>
-<ul>
-<li>划分组件开发</li>
-<li>基于路由的SPA单页面开发</li>
-<li>基于ES6来编写代码(最后部署上线的时候，我们需要把ES6编译成ES5 =&gt;基于Babel来完成编译)</li>
-<li>可能用到Less/Sass等，我们也需要使用对应的插件把他们进行预编译</li>
-<li>最后为了优化性能（减少HTTP请求次数），我们需要把JS或者CSS进行合并压缩</li>
-<li>…</li>
-<li>webpack来完成以上页面组件合并、JS/CSS编译加合并等工作</li>
-</ul>
-</blockquote>
-<h3 id="前端工程化开发"><a href="#前端工程化开发" class="headerlink" title="前端工程化开发"></a>前端工程化开发</h3><ul>
-<li>基于框架的组件化/模块化开发</li>
-<li><p>基于WEBPACK的自动部署</p>
-<p>但是配置WEBPACK是一个相对复杂的工作，我们需要自己安装很多的包，还需要自己写相对复杂的配置文件…如果我们有一个插件，基于它可以快速构建一套完整的自动化工程项目结构，那么有助于提高开发的效率 =&gt;“脚手架”<br>VUE：VUE-CLI<br>REACT：CREATE-REACT-APP</p>
-</li>
-</ul>
-<h3 id="create-react-app-的使用"><a href="#create-react-app-的使用" class="headerlink" title="create-react-app 的使用"></a>create-react-app 的使用</h3><blockquote>
-<ul>
-<li>$ npm install create-react-app -g<br>  把模块安装在全局环境下（目的：可以使用命令），MAC电脑安装的时候，前面需要加SUDO，否则没有权限</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>$ create-react-app [项目名称]<br>  基于脚手架命令，创建出一个基于React的自动化/工程化项目目录，和npm发包时候的命名规范一样，项目名称中不能出现：大写字母、中文汉字、特殊符号（-或者_是可以的）等</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/26/react01/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1108,7 +1086,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

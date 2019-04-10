@@ -272,6 +272,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/04/js知识梳理五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/04/js知识梳理五/" itemprop="url">js知识梳理五</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T22:01:29+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="js严格模式"><a href="#js严格模式" class="headerlink" title="js严格模式"></a>js严格模式</h3><blockquote>
+<p>1.在严格模式下不支持使用 “arguments.callee / arguments.callee.caller” （Uncaught TypeError: ‘caller’, ‘callee’, and ‘arguments’ properties may not be accessed on strict mode functions or the arguments objects for calls to them）<br><br>2.在严格模式下ARGUMENTS和形参没有映射机制<br><br>3.在严格模式下不允许给一个对象设置重复属性名的：“obj={n:10,n:20}”<br><br>4.在严格模式下，函数执行，如果没有明确指定执行的主体（函数前面没有点），不再像非严格模式下一样，统一都交给window，而是让this指向undefined，代表没有执行主体：“严格模式下，有执行主体this就指向谁，没有执行主体，this就是undefined”<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">/*function fn(x) &#123;</span></span><br><span class="line"><span class="comment">        arguments[0]=100;</span></span><br><span class="line"><span class="comment">        console.log(x);//=&gt;100 存在映射机制</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    fn(10);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*var obj=&#123;</span></span><br><span class="line"><span class="comment">        n:10,</span></span><br><span class="line"><span class="comment">        n:20</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">    console.log(obj.n);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//=&gt;window</span></span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    <span class="comment">/*function fn(x) &#123;</span></span><br><span class="line"><span class="comment">        arguments[0]=100;</span></span><br><span class="line"><span class="comment">        console.log(x);//=&gt;10 不存在映射机制</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    fn(10);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*var obj=&#123;</span></span><br><span class="line"><span class="comment">        n:10,</span></span><br><span class="line"><span class="comment">        n:20</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">    console.log(obj.n);*/</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//=&gt;undefined</span></span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="原型设计模式"><a href="#原型设计模式" class="headerlink" title="原型设计模式"></a>原型设计模式</h3><blockquote>
+<p>在实际项目基于面向对象开发的时候(构造原型设计模式),我们根据需要,很多时候会重定向类的原型(让类的原型指向自己开辟的堆内存</p>
+<ul>
+<li>自己开辟的堆内存中没有constructor属性,导致类的原型构造函数缺失（解决：自己手动在堆内存中增加constructor属性）</li>
+<li>当原型重定向后，浏览器默认开辟的那个原型堆内存会被释放掉，如果之前已经存储了一些方法或者属性，这些东西都会丢失（所以：内置类的原型不允许重定向到自己开辟的堆内存，因为内置类原型上自带很多属性方法，重定向后都没了，这样是不被允许的）</li>
+</ul>
+</blockquote>
+<h3 id="less"><a href="#less" class="headerlink" title="less"></a>less</h3><blockquote>
+<p>它是CSS预编译语言，和它类似的还有sass/stylus…</p>
+<p>css是标记语言，不是编程语言，没有类、实例、函数、变量等东西；而less等预编译语言就是让css具备面向对象编程的思想；但是浏览器不能直接识别和渲染less代码，需要我们把less代码预先编译为正常的css后，再交给浏览器渲染解析；</p>
+</blockquote>
+<h3 id="less的编译"><a href="#less的编译" class="headerlink" title="less的编译"></a>less的编译</h3><ul>
+<li>在开发环境下编译(产品没有开发完，正在开发中，这个是开发环境)<blockquote>
+<p>导入less.js即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//=&gt;rel=&quot;stylesheet/less&quot; 这块有修改</span><br><span class="line">&lt;link rel=&quot;stylesheet/less&quot; href=&quot;css/demo1.less&quot;&gt;</span><br><span class="line"></span><br><span class="line">//=&gt;导入JS文件即可</span><br><span class="line">&lt;script src=&quot;js/less-2.5.3.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/04/js知识梳理五/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/03/js知识梳理四/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -959,190 +1127,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/02/28/js知识梳理一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/28/js知识梳理一/" itemprop="url">js知识梳理一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-28T00:05:32+08:00">
-                2019-02-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <!-- cp -R public/* .deploy/huchenh.github.io -->
-<h3 id="数据类型的详细剖析"><a href="#数据类型的详细剖析" class="headerlink" title="数据类型的详细剖析"></a>数据类型的详细剖析</h3><ol>
-<li><p>number数字类型<br>NaN：not a number 但是它是数字类型的<br>isNaN：检测当前值是否不是有效数字，返回true代表不是有效数字，返回false是有效数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//=&gt;语法：isNaN([value])</span><br><span class="line">var num=12;</span><br><span class="line">isNaN(num); //-&gt;检测num变量存储的值是否为非有效数字 false</span><br><span class="line"></span><br><span class="line">isNaN(&apos;13&apos;) =&gt;false</span><br><span class="line">isNaN(&apos;珠峰&apos;) =&gt;true</span><br><span class="line">isNaN(true) =&gt;false</span><br><span class="line">isNaN(false) =&gt;false</span><br><span class="line">isNaN(null) =&gt;false</span><br><span class="line">isNaN(undefined) =&gt;true</span><br><span class="line">isNaN(&#123;age:9&#125;) =&gt;true</span><br><span class="line">isNaN([12,23]) =&gt;true</span><br><span class="line">isNaN([12]) =&gt;false</span><br><span class="line">isNaN(/^$/) =&gt;true</span><br><span class="line">isNaN(function()&#123;&#125;) =&gt;true</span><br><span class="line"></span><br><span class="line">重要：isNaN检测的机制</span><br><span class="line">1、首先验证当前要检测的值是否为数字类型的，如果不是，浏览器会默认的把值转换为数字类型</span><br><span class="line"></span><br><span class="line">  把非数字类型的值转换为数字</span><br><span class="line">  - 其它基本类型转换为数字：直接使用Number这个方法转换的</span><br><span class="line"></span><br><span class="line">  [字符串转数字]</span><br><span class="line">    Number(&apos;13&apos;) -&gt;13</span><br><span class="line">    Number(&apos;13px&apos;) -&gt;NaN 如果当前字符串中出现任意一个非有效数字字符，结果则为NaN</span><br><span class="line">    Number(&apos;13.5&apos;) -&gt;13.5 可以识别小数</span><br><span class="line"></span><br><span class="line">  [布尔转数字]</span><br><span class="line">    Number(true) -&gt;1</span><br><span class="line">    Number(false) -&gt;0</span><br><span class="line"></span><br><span class="line">  [其它]</span><br><span class="line">    Number(null) -&gt;0</span><br><span class="line">    Number(undefined) -&gt;NaN</span><br><span class="line"></span><br><span class="line">  - 把引用数据类型值转换为数字：先把引用值调取toString转换为字符串，然后再把字符串调取Number转换为数字</span><br><span class="line"></span><br><span class="line">   [对象]</span><br><span class="line">     (&#123;&#125;).toString() -&gt;&apos;[object Object]&apos; -&gt;NaN</span><br><span class="line"></span><br><span class="line">   [数组]</span><br><span class="line">     [12,23].toString() -&gt;&apos;12,23&apos; -&gt;NaN</span><br><span class="line">     [12].toString() -&gt;&apos;12&apos; -&gt;12</span><br><span class="line"></span><br><span class="line">   [正则]</span><br><span class="line">     /^$/.toString() -&gt;&apos;/^$/&apos; -&gt;NaN</span><br><span class="line"></span><br><span class="line">  Number(&apos;&apos;) -&gt;0</span><br><span class="line">  [].toString() -&gt;&apos;&apos;</span><br><span class="line">  =&gt; isNaN([])：false</span><br><span class="line"></span><br><span class="line">2、当前检测的值已经是数字类型，是有效数字返回false，不是返回true（数字类型中只有NaN不是有效数字，其余都是有效数字）</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>parseInt / parseFloat</p>
-<blockquote>
-<p>等同于Number，也是为了把其它类型的值转换为数字类型</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>和Number的区别在于字符串转换分析上</p>
-<p>Number：出现任意非有效数字字符，结果就是NaN</p>
-<p>parseInt：把一个字符串中的整数部分解析出来，parseFloat是把一个字符串中小数(浮点数)部分解析出来</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;13.5px&apos;) =&gt;13</span><br><span class="line">parseFloat(&apos;13.5px&apos;) =&gt;13.5</span><br><span class="line"></span><br><span class="line">parseInt(&apos;width:13.5px&apos;) =&gt;NaN 从字符串最左边字符开始查找有效数字字符，并且转换为数字，但是一但遇到一个非有效数字字符，查找结束</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>NaN的比较<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NaN==NaN：false NaN和谁都不相等，包括自己</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><blockquote>
-<p>只有两个值：true / false </p>
-</blockquote>
-<p>如何把其它数据类型转换为布尔类型?</p>
-<ul>
-<li>Boolean</li>
-<li>!</li>
-<li>!!</li>
-</ul>
-<p>规律：<strong><code>在JS中只有“0/NaN/空字符串/null/undefined”这五个值转换为布尔类型的false，其余都转换为true</code></strong></p>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/02/28/js知识梳理一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1190,7 +1179,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
