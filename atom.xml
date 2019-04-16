@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-04-14T08:11:37.897Z</updated>
+  <updated>2019-04-16T15:48:42.061Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨域</title>
+    <link href="https://huchenh.github.io/2019/04/16/%E8%B7%A8%E5%9F%9F/"/>
+    <id>https://huchenh.github.io/2019/04/16/跨域/</id>
+    <published>2019-04-16T15:47:58.000Z</published>
+    <updated>2019-04-16T15:48:42.061Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;跨域解决方案：&quot;&gt;&lt;a href=&quot;#跨域解决方案：&quot; class=&quot;headerlink&quot; title=&quot;跨域解决方案：&quot;&gt;&lt;/a&gt;跨域解决方案：&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;jsonp （常用）&lt;/li&gt;
+&lt;li&gt;cors  （常用）&lt;/li&gt;
+&lt;li&gt;window.name&lt;/li&gt;
+&lt;li&gt;document.domain  （特定场景）&lt;/li&gt;
+&lt;li&gt;postMessage (H5)&lt;/li&gt;
+&lt;li&gt;webpack proxy （webScoket） （常用）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;什么是跨域？&quot;&gt;&lt;a href=&quot;#什么是跨域？&quot; class=&quot;headerlink&quot; title=&quot;什么是跨域？&quot;&gt;&lt;/a&gt;什么是跨域？&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;拿当前HTML页面的地址和在页面中AJAX请求的API地址做比较：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果两个地址的协议域名端口号都相同，相当于HTML页面从同一个源下根据某个地址获取数据，属于“同源策略请求”，基于AJAX是可以直接请求到数据的！&lt;/li&gt;
+&lt;li&gt;如果三者（协议域名端口号）只要有一个不一样，那么就是“非同源策略请求（跨域请求）”，使用AJAX不能直接获取数据了！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;   HTML页面的地址：&lt;a href=&quot;http://localhost:8000/A.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/A.html&lt;/a&gt;&lt;br&gt;   AJAX请求的地址：&lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;   HTML页面地址：&lt;a href=&quot;http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html&lt;/a&gt;&lt;br&gt;   AJAX请求接口地址：&lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;   [报错]&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Failed to load &lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘&lt;a href=&quot;http://localhost:63342&amp;#39;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:63342&amp;#39;&lt;/a&gt; is therefore not allowed access.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="跨域" scheme="https://huchenh.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>node02</title>
@@ -647,73 +686,6 @@
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
       <category term="jQuery" scheme="https://huchenh.github.io/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js知识梳理七</title>
-    <link href="https://huchenh.github.io/2019/03/06/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E4%B8%83/"/>
-    <id>https://huchenh.github.io/2019/03/06/js知识梳理七/</id>
-    <published>2019-03-06T15:11:43.000Z</published>
-    <updated>2019-03-06T15:12:20.995Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;DOM的属性和方法&quot;&gt;&lt;a href=&quot;#DOM的属性和方法&quot; class=&quot;headerlink&quot; title=&quot;DOM的属性和方法&quot;&gt;&lt;/a&gt;DOM的属性和方法&lt;/h2&gt;&lt;h3 id=&quot;获取元素或者元素集合&quot;&gt;&lt;a href=&quot;#获取元素或者元素集合&quot; class=&quot;headerlink&quot; title=&quot;获取元素或者元素集合&quot;&gt;&lt;/a&gt;获取元素或者元素集合&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;getElementById&lt;/code&gt;&lt;/strong&gt;  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）&lt;br&gt;&lt;br&gt;ID重复了获取第一个&lt;br&gt;&lt;br&gt;IE6~7中会把表单元素的name当做id使用&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;getElementsByTagName&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素&lt;br&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;getElementsByClassName&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;IE6~8中不兼容&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;getElementsByName&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在IE浏览器中只对表单元素的name起作用&lt;br&gt;&lt;br&gt;上下文也只能是document&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;querySelector\querySelectorAll&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;不兼容IE6~8&lt;br&gt;&lt;br&gt;没有DOM映射&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;document.documentElement&lt;/li&gt;
-&lt;li&gt;document.body&lt;/li&gt;
-&lt;li&gt;document.head&lt;/li&gt;
-&lt;li&gt;…&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;offset系列&quot;&gt;&lt;a href=&quot;#offset系列&quot; class=&quot;headerlink&quot; title=&quot;offset系列&quot;&gt;&lt;/a&gt;offset系列&lt;/h3&gt;&lt;p&gt; &lt;strong&gt;&lt;code&gt;offsetParent&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;当前盒子的父级参照物&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt; &lt;strong&gt;&lt;code&gt;offsetTop / offsetLeft&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;获取当前盒子距离其父级参照物的偏移量(上偏移/左偏移)  当前盒子的外边框开始~父级参照物的内边框&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;“参照物”：同一个平面中，元素的父级参照物和结构没有必然联系，默认他们的父级参照物都是BODY（当前平面最外层的盒子） BODY的父级参照物是NULL&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;center.offsetParent  //=&amp;gt;BODY&lt;/li&gt;
-&lt;li&gt;inner.offsetParent   //=&amp;gt;BODY&lt;/li&gt;
-&lt;li&gt;outer.offsetParent   //=&amp;gt;BODY&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;“参照物可以改变”：构建出不同的平面即可（使用zIndex，但是这个属性只对定位有作用），所以改变元素的定位(position:relative/absolute/fixed)可以改变其父级参照物&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;scrollTop / scrollLeft&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;滚动条卷去的宽度或者高度&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;最小卷去值：0&lt;/li&gt;
-&lt;li&gt;最大卷去值：真实页面的高度 - 一屏幕的高度 document.documentElement.scrollHeight-document.documentElement.clientHeight&lt;/li&gt;
-&lt;li&gt;在JS盒子模型13个属性中，只有scrollTop/scrollLeft是“可读写”属性，其余都是“只读”属性&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
