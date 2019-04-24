@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-04-21T14:32:20.371Z</updated>
+  <updated>2019-04-24T13:50:33.899Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js调试console</title>
+    <link href="https://huchenh.github.io/2019/04/24/js%E8%B0%83%E8%AF%95console/"/>
+    <id>https://huchenh.github.io/2019/04/24/js调试console/</id>
+    <published>2019-04-24T13:49:39.000Z</published>
+    <updated>2019-04-24T13:50:33.899Z</updated>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Web开发最常用的高度就是 console.log ，虽然 console.log 占有一席之地，但很多人并没有意识到 console 本身除了基本 log 方法之外还有很多其他方法。 适当使用这些方法可以使调试更容易，更快速，更直观。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;console-log&quot;&gt;&lt;a href=&quot;#console-log&quot; class=&quot;headerlink&quot; title=&quot;console.log()&quot;&gt;&lt;/a&gt;console.log()&lt;/h3&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在&lt;code&gt;console.log&lt;/code&gt;中除了常用的打印功能，如&lt;code&gt;console.log(object)&lt;/code&gt;用来查看对象，也可以&lt;code&gt;console.log(object,otherObject,string)&lt;/code&gt;这样对象和字符串都会整齐的记录下来。&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;格式化功能&lt;code&gt;cosnole.log(msg,values)&lt;/code&gt;，有点像java中的println。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;I like %s but I do not like %s&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;Skittles&#39;&lt;/span&gt;,;pus)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 会得到下面结果&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;I like Skittles but I &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; not like pus.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这里面用到了占位符，常见的占位符有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;%o（字母o） 接收对象&lt;/li&gt;
+&lt;li&gt;%s         接收字符串&lt;/li&gt;
+&lt;li&gt;%d         小数或整数&lt;/li&gt;
+&lt;li&gt;%c         css首位占位符，后面的参数必须是css语句，用来对输出的内容进行css渲染，常见的方式有：文字样式，图片输出。&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;I am a %cbutton&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;color: white; background-color: orange; padding: 2px 5px; border-radius: 2px&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 后面的css样式  会应用在 字符串 ‘button’上，即占位符 %c 后面的内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="调试" scheme="https://huchenh.github.io/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>前端渲染机制</title>
@@ -431,9 +463,9 @@
       <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
     
     
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
       <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
@@ -632,37 +664,6 @@
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
       <category term="正则" scheme="https://huchenh.github.io/tags/%E6%AD%A3%E5%88%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js知识梳理十</title>
-    <link href="https://huchenh.github.io/2019/03/10/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81/"/>
-    <id>https://huchenh.github.io/2019/03/10/js知识梳理十/</id>
-    <published>2019-03-10T14:08:28.000Z</published>
-    <updated>2019-03-10T14:09:15.913Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;js中的this&quot;&gt;&lt;a href=&quot;#js中的this&quot; class=&quot;headerlink&quot; title=&quot;js中的this&quot;&gt;&lt;/a&gt;js中的this&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;JS中的THIS汇总&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt; THIS:当前方法执行的主体(谁执行的这个方法,那么THIS就是谁,所以THIS和当前方法在哪创建的或者在哪执行的都没有必然的关系)&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;给元素的某个事件绑定方法，方法中的THIS都是当前操作的元素本身&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.body.onclick = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;this:body&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;ol start=&quot;2&quot;&gt;
-&lt;li&gt;函数执行，看函数前面是否有点，有的话，点前面是谁THIS就是谁，没有点，THIS是WINDOW（在JS的严格模式下，没有点THIS是UNDEFINED）&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; fn = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; obj = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: &lt;span class=&quot;string&quot;&gt;&#39;哈哈&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    fn: fn&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fn();&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;this:window&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;obj.fn();&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;this:obj&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
