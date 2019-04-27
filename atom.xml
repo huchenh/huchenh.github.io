@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-04-24T13:50:33.899Z</updated>
+  <updated>2019-04-27T15:16:51.669Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redux01</title>
+    <link href="https://huchenh.github.io/2019/04/27/redux01/"/>
+    <id>https://huchenh.github.io/2019/04/27/redux01/</id>
+    <published>2019-04-27T15:14:20.000Z</published>
+    <updated>2019-04-27T15:16:51.669Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;redux基本概念&quot;&gt;&lt;a href=&quot;#redux基本概念&quot; class=&quot;headerlink&quot; title=&quot;redux基本概念&quot;&gt;&lt;/a&gt;redux基本概念&lt;/h2&gt;&lt;h3 id=&quot;createStore&quot;&gt;&lt;a href=&quot;#createStore&quot; class=&quot;headerlink&quot; title=&quot;createStore&quot;&gt;&lt;/a&gt;createStore&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;创建容器：需要把REDUCER传递进来&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;reducer作用&quot;&gt;&lt;a href=&quot;#reducer作用&quot; class=&quot;headerlink&quot; title=&quot;reducer作用&quot;&gt;&lt;/a&gt;reducer作用&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;记录所有状态修改的信息（根据标识action.type 设置修改状态）&lt;/li&gt;
+&lt;li&gt;修改容器中的状态信息&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;参数&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;state: 容器中原有的状态信息（如果第一次使用，没有原有状态，我们需要赋予一个默认值）&lt;/li&gt;
+&lt;li&gt;action：dispatch任务派发时传递的行为对象（这个对象必有一个type属性，是操作的行为标识，REDUCER就是根据这个行为标识来识别该如何修改状态信息）&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &amp;#123;createStore&amp;#125; &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;redux&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; reducer = &lt;span class=&quot;function&quot;&gt;(&lt;span class=&quot;params&quot;&gt;state = &amp;#123;n: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;, m: &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;&amp;#125;, action&lt;/span&gt;) =&amp;gt;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;switch&lt;/span&gt; (action.type) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;VOTE_SUPPORT&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            state = &amp;#123;...state, &lt;span class=&quot;attr&quot;&gt;n&lt;/span&gt;: state.n + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;VOTE_AGAINST&#39;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            state = &amp;#123;...state, &lt;span class=&quot;attr&quot;&gt;m&lt;/span&gt;: state.m + &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;break&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; state;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;只有把最新的STATE返回，原有的状态才会被修改&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; store = createStore(reducer);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="redux" scheme="https://huchenh.github.io/categories/redux/"/>
+    
+    
+      <category term="redux" scheme="https://huchenh.github.io/tags/redux/"/>
+    
+  </entry>
   
   <entry>
     <title>js调试console</title>
@@ -641,29 +673,6 @@
     
     
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js知识梳理十一</title>
-    <link href="https://huchenh.github.io/2019/03/11/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81%E4%B8%80/"/>
-    <id>https://huchenh.github.io/2019/03/11/js知识梳理十一/</id>
-    <published>2019-03-11T11:39:26.000Z</published>
-    <updated>2019-03-11T11:40:08.431Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;正则应用&quot;&gt;&lt;a href=&quot;#正则应用&quot; class=&quot;headerlink&quot; title=&quot;正则应用&quot;&gt;&lt;/a&gt;正则应用&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; str = &lt;span class=&quot;string&quot;&gt;&#39;54389&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ary = [&lt;span class=&quot;string&quot;&gt;&#39;零&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;壹&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;贰&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;叁&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;肆&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;伍&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;陆&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;柒&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;捌&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;玖&#39;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;str = str.replace(&lt;span class=&quot;regexp&quot;&gt;/\d/g&lt;/span&gt;, item =&amp;gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;item =&amp;gt;arg[0] =&amp;gt;正则每一次捕获的内容 5/4/3/8/9&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;把捕获的数字做为索引，到ARY中找到对应的汉字，用找到的结果替换当前捕获的内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ary[item];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(str);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//30. 在javascript对象上定义一个repeatify函数,这个函数接受一个整数参数,来明确子字符串需要重复几次,这个函数要求字符串重复指定的次数,比如:’abc’.repeatify(3); //=&amp;gt;”abcabcabc”&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;String&lt;/span&gt;.prototype.repeatify = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;repeatify&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;n = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;this:需要处理的字符串&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; result = &lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; n; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        result += &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; result;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;abc&#39;&lt;/span&gt;.repeatify());&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-      <category term="正则" scheme="https://huchenh.github.io/tags/%E6%AD%A3%E5%88%99/"/>
     
   </entry>
   
