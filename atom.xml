@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-04-27T15:16:51.669Z</updated>
+  <updated>2019-04-29T14:31:42.229Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react-router</title>
+    <link href="https://huchenh.github.io/2019/04/29/react-router/"/>
+    <id>https://huchenh.github.io/2019/04/29/react-router/</id>
+    <published>2019-04-29T14:30:40.000Z</published>
+    <updated>2019-04-29T14:31:42.229Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;HashRouter&quot;&gt;&lt;a href=&quot;#HashRouter&quot; class=&quot;headerlink&quot; title=&quot;HashRouter&quot;&gt;&lt;/a&gt;HashRouter&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;当前项目一旦使用HASH-ROUTER，则默认在页面的地址后面加上“#/”，也就是HASH默认值是一个斜杠，我们一般让其显示首页组件信息内容&lt;/li&gt;
+&lt;li&gt;HASH-ROUTER中只能出现一个子元素&lt;/li&gt;
+&lt;li&gt;HASH-ROUTER机制中，我们需要根据哈希地址不同，展示不同的组件内容，此时需要使用ROUTE&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;ROUTE&quot;&gt;&lt;a href=&quot;#ROUTE&quot; class=&quot;headerlink&quot; title=&quot;ROUTE&quot;&gt;&lt;/a&gt;ROUTE&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;PATH：设置匹配地址，但是默认不是严格匹配，当前页面哈希地址只要包含完整的它（内容是不变的），都能被匹配上&lt;/li&gt;
+&lt;li&gt;PATH=’/‘ ：和它匹配的地址只有要斜杠即可（都能和它匹配）&lt;/li&gt;
+&lt;li&gt;PATH=’/user’：“#/user/login”也可以匹配，但是“#/user2”这个无法匹配&lt;/li&gt;
+&lt;li&gt;COMPONENT：一但哈希值和当前ROUTE的PATH相同了，则渲染COMPONENT指定的组件&lt;/li&gt;
+&lt;li&gt;EXACT：让PATH的匹配严谨和严格一些（只有URL哈希值和PATH设定的值相等才可以匹配到）&lt;/li&gt;
+&lt;li&gt;PATH=’/‘：“#/”匹配，但是“#/user”就不再匹配了&lt;/li&gt;
+&lt;li&gt;STRICT&lt;/li&gt;
+&lt;li&gt;RENDER：当页面的哈希地址和PATH匹配，会把RENDER规划的方法执行，在方法中一般做“权限校验”（渲染组件之前验证是否存在权限，不存在做一些特殊处理）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;默认情况下，会和每一个ROUTE都做校验（哪怕之前已经有校验成功的），SWITCH组件可以解决这个问题，和SWITCH CASE一样，只要有一种情况校验成功，就不在向后校验了&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="路由" scheme="https://huchenh.github.io/categories/%E8%B7%AF%E7%94%B1/"/>
+    
+    
+      <category term="react-router" scheme="https://huchenh.github.io/tags/react-router/"/>
+    
+  </entry>
   
   <entry>
     <title>redux01</title>
@@ -644,35 +682,6 @@
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
       <category term="promise" scheme="https://huchenh.github.io/tags/promise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js知识梳理十二</title>
-    <link href="https://huchenh.github.io/2019/03/12/js%E7%9F%A5%E8%AF%86%E6%A2%B3%E7%90%86%E5%8D%81%E4%BA%8C/"/>
-    <id>https://huchenh.github.io/2019/03/12/js知识梳理十二/</id>
-    <published>2019-03-12T13:13:43.000Z</published>
-    <updated>2019-03-12T13:15:03.225Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;viewport-视口&quot;&gt;&lt;a href=&quot;#viewport-视口&quot; class=&quot;headerlink&quot; title=&quot;viewport 视口&quot;&gt;&lt;/a&gt;viewport 视口&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&amp;gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页面进行缩放，HTML页面缩放了，那么页面中所有内容都缩放了&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;解决方案&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;只要让H5页面的宽度和手机设备的宽度保持一致即可，就不会出现手机渲染页面的时候把页面缩放的事情了&lt;br&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;viewport&quot;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;      &lt;span class=&quot;attr&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;width=device-width, initial-scale=1.0&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;此META标签就是在设置VP(视口)的规则&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   width=device-width：让HTML页面的宽度等于设备的宽度&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   height=：设置HTML页面的高度（一般不用）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   initial-scale=1.0：初始缩放比例是1:1（也就是既不放大也不多小）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   user-scalable=no：禁止用户手动缩放&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   maximum-scale=1.0&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   minimum-scale=1.0：设置最大最小的缩放比例1:1(既不放大也不缩小 =&amp;gt;部分安卓机中只设置user-scalable是不起作用的，需要同这两个一起使用)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   ...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   

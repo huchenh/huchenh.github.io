@@ -272,6 +272,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/16/跨域/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/16/跨域/" itemprop="url">跨域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T23:47:58+08:00">
+                2019-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="跨域解决方案："><a href="#跨域解决方案：" class="headerlink" title="跨域解决方案："></a>跨域解决方案：</h3><ol>
+<li>jsonp （常用）</li>
+<li>cors  （常用）</li>
+<li>window.name</li>
+<li>document.domain  （特定场景）</li>
+<li>postMessage (H5)</li>
+<li>webpack proxy （webScoket） （常用）</li>
+</ol>
+<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><blockquote>
+<p>拿当前HTML页面的地址和在页面中AJAX请求的API地址做比较：</p>
+<ul>
+<li>如果两个地址的协议域名端口号都相同，相当于HTML页面从同一个源下根据某个地址获取数据，属于“同源策略请求”，基于AJAX是可以直接请求到数据的！</li>
+<li>如果三者（协议域名端口号）只要有一个不一样，那么就是“非同源策略请求（跨域请求）”，使用AJAX不能直接获取数据了！</li>
+</ul>
+</blockquote>
+<p>   HTML页面的地址：<a href="http://localhost:8000/A.html" target="_blank" rel="noopener">http://localhost:8000/A.html</a><br>   AJAX请求的地址：<a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a></p>
+<p>   HTML页面地址：<a href="http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html" target="_blank" rel="noopener">http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html</a><br>   AJAX请求接口地址：<a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a></p>
+<p>   [报错]</p>
+<blockquote>
+<p>Failed to load <a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a>: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘<a href="http://localhost:63342&#39;" target="_blank" rel="noopener">http://localhost:63342&#39;</a> is therefore not allowed access.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/16/跨域/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></blockquote></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/14/node02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -878,156 +1045,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/31/react03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/31/react03/" itemprop="url">react03</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-31T21:01:29+08:00">
-                2019-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="JSX中的事件绑定："><a href="#JSX中的事件绑定：" class="headerlink" title="JSX中的事件绑定："></a>JSX中的事件绑定：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">'btn btn-success'</span></span></span></span><br><span class="line"><span class="xml">              onClick=&#123;this.support&#125;&gt;</span></span><br><span class="line"><span class="xml">          支持<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support(ev)&#123;</span><br><span class="line">   <span class="comment">//=&gt;THIS:undefined（不是我们理解的当前操作的元素）</span></span><br><span class="line">   <span class="comment">//=&gt;ev.target：通过事件源可以获取当前操作的元素（一般很少操作，因为框架主要是数据驱动所有DOM的改变）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果能让方法中的THIS变成当前类的实例就好了，这样可以操作属性和状态等信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">   return &lt;button className=&apos;btn btn-success&apos;</span><br><span class="line">              onClick=&#123;this.support.bind(this)&#125;&gt;</span><br><span class="line">          支持&lt;/button&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support(ev)&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">   //=&gt;THIS:实例</span><br><span class="line">   return &lt;button className=&apos;btn btn-success&apos;</span><br><span class="line">              onClick=&#123;this.support&#125;&gt;</span><br><span class="line">          支持&lt;/button&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">support=ev=&gt;&#123;</span><br><span class="line">  //=&gt;THIS:继承上下文中的THIS（实例）, 真实项目中，给JSX元素绑定的事件方法一般都是箭头函数，目的是为了保证函数中的THIS还是实例</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/31/react03/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1080,7 +1097,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1091,7 +1108,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1102,7 +1119,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
