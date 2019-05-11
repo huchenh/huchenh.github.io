@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-05-06T15:39:07.096Z</updated>
+  <updated>2019-05-11T09:29:54.002Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redux04</title>
+    <link href="https://huchenh.github.io/2019/05/11/redux04/"/>
+    <id>https://huchenh.github.io/2019/05/11/redux04/</id>
+    <published>2019-05-11T09:28:28.000Z</published>
+    <updated>2019-05-11T09:29:54.002Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;&lt;code&gt;react-redux梳理&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Provider根组件&quot;&gt;&lt;a href=&quot;#Provider根组件&quot; class=&quot;headerlink&quot; title=&quot;Provider根组件&quot;&gt;&lt;/a&gt;Provider根组件&lt;/h3&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;PROVIDER：当前项目的“根”组件&lt;/li&gt;
+&lt;li&gt;接收通过属性传递进来的STORE，把STOR&amp;gt;挂载到上下文中，这样当前项目中任何一个组&amp;gt;中，想要使用REDUX中的STORE，直接通过上下文&amp;gt;取即可&lt;/li&gt;
+&lt;li&gt;在组件的RENDER中，把传递给PROVIDE&amp;gt;的子元素渲染&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight jsx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; React &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;react&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; PropsTypes &lt;span class=&quot;keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;prop-types&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Provider&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;Component&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;设置上下文信息类型&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; childContextTypes = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    store:PropsTypes.object&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//=&amp;gt;设置上下文信息值&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  getChildContext()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      store:&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.props.store&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;(props,context)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(props,context)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  render()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.props.children;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="redux" scheme="https://huchenh.github.io/categories/redux/"/>
+    
+    
+      <category term="redux" scheme="https://huchenh.github.io/tags/redux/"/>
+    
+  </entry>
   
   <entry>
     <title>redux03</title>
@@ -655,37 +683,6 @@
     
     
       <category term="HTTP" scheme="https://huchenh.github.io/tags/HTTP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node基础01</title>
-    <link href="https://huchenh.github.io/2019/03/14/node01/"/>
-    <id>https://huchenh.github.io/2019/03/14/node01/</id>
-    <published>2019-03-14T13:29:47.000Z</published>
-    <updated>2019-03-14T13:35:52.141Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;什么是NODE？&lt;br&gt;基于V8引擎（谷歌浏览器的引擎）渲染JS的工具或者环境&lt;br&gt;-&amp;gt;安装NODE&lt;br&gt;-&amp;gt;把JS代码放到NODE环境中执行&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装NODE&lt;br&gt;&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://nodejs.org/en/&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;node安装完成后&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;当前电脑上自动安装了npm(Node Package Manager)：一个JS模块（所有封装好可以供其它人调取使用的都可以称之为模块或者包）管理的工具，基于npm可以安装下载JS模块&lt;/li&gt;
-&lt;li&gt;它会生成一个node执行的命令（可以在DOS窗口或者终端命令中执行）：node xxx.js&lt;/li&gt;
-&lt;li&gt;如果不成功，可以找相同电脑配置的人员，把安装成功的NODE文件夹拷贝到自己的电脑上，通过配置环境变量，来实现NODE安装
-    
-    </summary>
-    
-      <category term="node" scheme="https://huchenh.github.io/categories/node/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-      <category term="node" scheme="https://huchenh.github.io/tags/node/"/>
     
   </entry>
   

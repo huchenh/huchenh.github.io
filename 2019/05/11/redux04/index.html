@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="redux,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="复合组件：父组件嵌套子组件传递信息的方式  父组件需要把信息传递给子组件“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的； 123456789export default class Vote extends React.Component &amp;">
-<meta name="keywords" content="React">
+<meta name="description" content="react-redux梳理 Provider根组件  PROVIDER：当前项目的“根”组件 接收通过属性传递进来的STORE，把STOR&amp;gt;挂载到上下文中，这样当前项目中任何一个组&amp;gt;中，想要使用REDUX中的STORE，直接通过上下文&amp;gt;取即可 在组件的RENDER中，把传递给PROVIDE&amp;gt;的子元素渲染   123456789101112131415161718192021">
+<meta name="keywords" content="redux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react05">
-<meta property="og:url" content="https://huchenh.github.io/2019/04/10/react05/index.html">
+<meta property="og:title" content="redux04">
+<meta property="og:url" content="https://huchenh.github.io/2019/05/11/redux04/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="复合组件：父组件嵌套子组件传递信息的方式  父组件需要把信息传递给子组件“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的； 123456789export default class Vote extends React.Component &amp;">
+<meta property="og:description" content="react-redux梳理 Provider根组件  PROVIDER：当前项目的“根”组件 接收通过属性传递进来的STORE，把STOR&amp;gt;挂载到上下文中，这样当前项目中任何一个组&amp;gt;中，想要使用REDUX中的STORE，直接通过上下文&amp;gt;取即可 在组件的RENDER中，把传递给PROVIDE&amp;gt;的子元素渲染   123456789101112131415161718192021">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-10T13:49:12.979Z">
+<meta property="og:updated_time" content="2019-05-11T09:29:54.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react05">
-<meta name="twitter:description" content="复合组件：父组件嵌套子组件传递信息的方式  父组件需要把信息传递给子组件“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的； 123456789export default class Vote extends React.Component &amp;">
+<meta name="twitter:title" content="redux04">
+<meta name="twitter:description" content="react-redux梳理 Provider根组件  PROVIDER：当前项目的“根”组件 接收通过属性传递进来的STORE，把STOR&amp;gt;挂载到上下文中，这样当前项目中任何一个组&amp;gt;中，想要使用REDUX中的STORE，直接通过上下文&amp;gt;取即可 在组件的RENDER中，把传递给PROVIDE&amp;gt;的子元素渲染   123456789101112131415161718192021">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/04/10/react05/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/05/11/redux04/">
 
 
 
 
 
-  <title>react05 | 追风</title>
+  <title>redux04 | 追风</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/10/react05/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/11/redux04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react05</h1>
+          <h1 class="post-title" itemprop="name headline">redux04</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-10T21:48:30+08:00">
-                2019-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-11T17:28:28+08:00">
+                2019-05-11
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
+                  <a href="/categories/redux/" itemprop="url" rel="index">
+                    <span itemprop="name">redux</span>
                   </a>
                 </span>
 
@@ -361,35 +361,42 @@
       
 
       
-        <h3 id="复合组件：父组件嵌套子组件"><a href="#复合组件：父组件嵌套子组件" class="headerlink" title="复合组件：父组件嵌套子组件"></a>复合组件：父组件嵌套子组件</h3><p><strong><code>传递信息的方式</code></strong></p>
-<ol>
-<li><p>父组件需要把信息传递给子组件<br>“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的；</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Vote</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> &#123;title, count&#125; = <span class="keyword">this</span>.props;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">section</span> <span class="attr">className</span>=<span class="string">&#123;</span>'<span class="attr">panel</span> <span class="attr">panel-default</span>'&#125; <span class="attr">style</span>=<span class="string">&#123;&#123;width:</span> '<span class="attr">50</span>%', <span class="attr">margin:</span> '<span class="attr">20px</span> <span class="attr">auto</span>'&#125;&#125;&gt;</span></span></span><br><span class="line">            &lt;VoteHead title=&#123;title&#125;/&gt;</span><br><span class="line">            ...</span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">section</span>&gt;</span>;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong><code>上下文传递</code></strong></p>
-<blockquote>
-<p>父组件先把需要给后代元素（包括孙子元素）使用的信息都设置好（设置在上下文中），后代组件需要用到父组件中的信息，主动去父组件中调取使用即可</p>
+        <p><strong><code>react-redux梳理</code></strong></p>
+<h3 id="Provider根组件"><a href="#Provider根组件" class="headerlink" title="Provider根组件"></a>Provider根组件</h3><blockquote>
+<ul>
+<li>PROVIDER：当前项目的“根”组件</li>
+<li>接收通过属性传递进来的STORE，把STOR&gt;挂载到上下文中，这样当前项目中任何一个组&gt;中，想要使用REDUX中的STORE，直接通过上下文&gt;取即可</li>
+<li>在组件的RENDER中，把传递给PROVIDE&gt;的子元素渲染</li>
+</ul>
+</blockquote>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> PropsTypes <span class="keyword">from</span> <span class="string">'prop-types'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Provider</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">   <span class="comment">//=&gt;设置上下文信息类型</span></span><br><span class="line">  <span class="keyword">static</span> childContextTypes = &#123;</span><br><span class="line">    store:PropsTypes.object</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//=&gt;设置上下文信息值</span></span><br><span class="line">  getChildContext()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      store:<span class="keyword">this</span>.props.store</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">constructor</span>(props,context)&#123;</span><br><span class="line">    <span class="keyword">super</span>(props,context)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.props.children;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 在父组件中</span></span><br><span class="line"><span class="comment">     *   需要安装:prop-types</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *   1. 设置子组件上下文属性值类型</span></span><br><span class="line"><span class="comment">     *      static childContextTypes = &#123;&#125;;</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *   2. 获取子组件的上下文（设置子组件的上下文属性信息）</span></span><br><span class="line"><span class="comment">     *      getChildContext()&#123;return &#123;&#125;&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">     <span class="comment">//=&gt;父组件设置信息</span></span><br><span class="line">     <span class="keyword">static</span> childContextTypes = &#123;</span><br><span class="line">         <span class="comment">//=&gt;设置上下文中信息值的类型</span></span><br><span class="line">         n: PropTypes.number,</span><br><span class="line">         m: PropTypes.number</span><br><span class="line">     &#125;;</span><br><span class="line">     getChildContext() &#123;</span><br><span class="line">         <span class="comment">//-&gt;RETURN的是啥，相当相当于往上下文中放了啥</span></span><br><span class="line">         <span class="keyword">let</span> &#123;<span class="attr">count</span>: &#123;n = <span class="number">0</span>, m = <span class="number">0</span>&#125;&#125; = <span class="keyword">this</span>.props;</span><br><span class="line">         <span class="keyword">return</span> &#123;</span><br><span class="line">             n,</span><br><span class="line">             m</span><br><span class="line">         &#125;;</span><br><span class="line">     &#125;</span><br><span class="line">--------------------------------------------------------------------------</span><br><span class="line">     <span class="comment">//=&gt;子组件主动获取需要的信息</span></span><br><span class="line">     <span class="keyword">static</span> contextTypes = &#123;</span><br><span class="line">         <span class="comment">//=&gt;首先类型需要和设置时候类型一样，否则报错；并且你需要用啥，就写啥即可；</span></span><br><span class="line">         n: PropTypes.number,</span><br><span class="line">         m: PropTypes.number</span><br><span class="line">     &#125;;</span><br><span class="line">    <span class="keyword">constructor</span>(props, context) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props, context);</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">let</span> &#123;m,n&#125; = <span class="keyword">this</span>.context;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><blockquote>
+<p>CONNECT：高阶组件（基于高阶函数：柯理化函数）创建的组件就是高阶组件</p>
+<ul>
+<li>@PARAMS<br>mapStateToProps：回调函数，把REDUX中的部分状态信息挂载到指定组件的属性上<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//=&gt;state:REDUX容器中的状态信息</span></span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;  <span class="comment">//=&gt;RETURN对象中有啥，就把啥挂载到属性上</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>mapDispatchToProps：回调函数，把一些需要派发的任务方法也挂载到组件的属性上<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapDispatchToProps</span>(<span class="params">dispatch</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;dispatch:store中的dispatch</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">        init()&#123;</span><br><span class="line">          dispatch(&#123;...&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//=&gt;RETURN啥就把啥挂载到属性上（返回的方法中有执行dispatch派发任务的操作）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>@RETURN<br>  返回一个新的函数 CONNECT-HOT</p>
+</blockquote>
+<p><strong><code>CONNECT-HOT</code></strong></p>
+<ul>
+<li><p>@PARAMS</p>
+<blockquote>
+<p>   传递进来的是要操作的组件，我们需要把指定的属性和方法都挂载到当前组件的属性上</p>
 </blockquote>
 </li>
-</ol>
-<p><code>`</code><br><strong><code>属性 VS 上下文</code></strong></p>
-<ol>
-<li>属性操作起来简单，子组件是被动接收传递的值（组件内的属性是只读的），只能父传子（子传父不行，父传孙也需要处理：父传子，子再传孙）；</li>
-<li>上下文操作起来相对复杂一些，子组件是主动获取信息使用的（子组件是可以修改获取到的上下文信息的，但是不会影响到父组件中的信息，其它组件不受影响）,一旦父组件设置了上下文信息，它后代组件都可以直接拿来用，不需要一层层的传递；</li>
-</ol>
-<p><strong><code>其实子组件也能修改父组件中的信息</code></strong></p>
+<li><p>@RETURN</p>
 <blockquote>
-<p>利用回调函数机制：父组件把一个函数通过属性或者上下文的方式传递给子组件，子组件中只要把这个方法执行即可（也就是子组件中执行了父组件方法，还可以传递一些值过去），这样父组件在这个方法中，想把自己的信息改成啥就改成啥</p>
+<p>  返回一个新的组件Proxy（代理组件），在代理组件中，我们要获取Provider在上下文中存储的store，紧接着获取store中的state和dispatch，把mapStateToProps、mapDispatchToProps回调函数执行，接收返回的结果，在把这些结果挂载到Component这个要操作组件的属性上</p>
 </blockquote>
-<h3 id="平行组件"><a href="#平行组件" class="headerlink" title="平行组件"></a>平行组件</h3><blockquote>
-<p>兄弟组件或者毫无关系的两个组件</p>
-</blockquote>
-<ul>
-<li>方案一：让两个平行组件拥一个共同的父组件<br>   父：Parent<br>   子：A / B<br>   父组件中有一些信息，父组件把一个方法传递给A，A中把方法执行（方法执行修改父组件信息值），父组件再把最新的信息传递给B即可，等价于A操作，影响了B</li>
-</ul>
-<ul>
-<li>方案二：基于REDUX来进行状态管理，实现组件之间的信息传输（常用方案）<br>   REDUX可以应用在任何的项目中（VUE/JQ/RERACT的都可以），REACT-REDUX才是专门给REACT项目提供的方案</li>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">connect</span>(<span class="params">mapStateToProps, mapDispatchToProps</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">connectHot</span>(<span class="params">Component</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="class"><span class="keyword">class</span> <span class="title">Proxy</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">      <span class="comment">//=&gt;获取上下文中的STORE</span></span><br><span class="line">      <span class="keyword">static</span> contextType = &#123;</span><br><span class="line">        store: PropsTypes.object</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">constructor</span>(props,context)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props,context)</span><br><span class="line">        <span class="keyword">this</span>.state = <span class="keyword">this</span>.queryMountProps();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//=&gt;基于REDUX中的SUBSCRIBE向事件池中追加一个方法，当容器中状态改变，我们需要重新获取最新的状态信息，并且重新把COMPONENT渲染，把最新的状态信息通过属性传递给COMPONENT</span></span><br><span class="line">      componentDidMount()&#123;</span><br><span class="line">        <span class="keyword">this</span>.context.store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">this</span>.setState(<span class="keyword">this</span>.queryMountProps());</span><br><span class="line">         &#125;);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">//=&gt;从REDUX中获取最新的信息，基于回调函数筛选，返回的是需要挂载到组件属性上的信息</span></span><br><span class="line">      queryMountProps = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> &#123; store &#125; = <span class="keyword">this</span>.context,</span><br><span class="line">            state = store.getState();</span><br><span class="line">        <span class="keyword">let</span> propsState = <span class="keyword">typeof</span> mapStateToProps === <span class="string">'function'</span> ? mapStateToProps(state) : &#123;&#125;; </span><br><span class="line">        <span class="keyword">let</span> porpsDispatch = <span class="keyword">typeof</span> mapDispatchToProps == <span class="string">'function'</span> ?mapDispatchToProps(store.dispatch) : &#123;&#125; </span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          ...propsState,</span><br><span class="line">          ...propsDispatch</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//=&gt;渲染COMPONENT组件，并且把获取的信息（状态、方法）挂载到组件属性上（单独调取POXY组件的是时候传递的属性也给COMPONENT）</span></span><br><span class="line">      render()&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Component</span> &#123;<span class="attr">...this.state</span>&#125; &#123;<span class="attr">...this.props</span>&#125;/&gt;</span></span></span><br><span class="line"><span class="xml">      &#125;</span></span><br><span class="line"><span class="xml">    &#125;</span></span><br><span class="line"><span class="xml">  &#125;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">export &#123;</span></span><br><span class="line"><span class="xml">  Provider,</span></span><br><span class="line"><span class="xml">  connect</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 
       
@@ -416,7 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
+            <a href="/tags/redux/" rel="tag"><i class="fa fa-tag"></i> redux</a>
           
         </div>
       
@@ -429,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/07/防抖和节流/" rel="next" title="防抖和节流">
-                <i class="fa fa-chevron-left"></i> 防抖和节流
+              <a href="/2019/05/06/redux03/" rel="next" title="redux03">
+                <i class="fa fa-chevron-left"></i> redux03
               </a>
             
           </div>
@@ -438,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/14/node02/" rel="prev" title="node02">
-                node02 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#复合组件：父组件嵌套子组件"><span class="nav-number">1.</span> <span class="nav-text">复合组件：父组件嵌套子组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平行组件"><span class="nav-number">2.</span> <span class="nav-text">平行组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Provider根组件"><span class="nav-number">1.</span> <span class="nav-text">Provider根组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#connect"><span class="nav-number">2.</span> <span class="nav-text">connect</span></a></li></ol></div>
             
 
           </div>
