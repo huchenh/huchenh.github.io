@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-05-14T16:09:53.581Z</updated>
+  <updated>2019-05-16T15:44:49.311Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git常用命令</title>
+    <link href="https://huchenh.github.io/2019/05/16/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>https://huchenh.github.io/2019/05/16/git常用命令/</id>
+    <published>2019-05-16T15:41:41.000Z</published>
+    <updated>2019-05-16T15:44:49.311Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;git使用指南&quot;&gt;&lt;a href=&quot;#git使用指南&quot; class=&quot;headerlink&quot; title=&quot;git使用指南&quot;&gt;&lt;/a&gt;git使用指南&lt;/h1&gt;&lt;p&gt;​    公司一直是使用git作为代码管理，现在整理一些常用的git命令，供大家查看，不再依赖图形化工具&lt;/p&gt;
+&lt;h3 id=&quot;基本使用&quot;&gt;&lt;a href=&quot;#基本使用&quot; class=&quot;headerlink&quot; title=&quot;基本使用&quot;&gt;&lt;/a&gt;基本使用&lt;/h3&gt;&lt;p&gt;1、克隆仓库&lt;/p&gt;
+&lt;p&gt;克隆仓库会下载仓库完整的文件、分支和历史记录。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git clone [&amp;lt;options&amp;gt;] [--] &amp;lt;repo&amp;gt; [&amp;lt;dir&amp;gt;]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 克隆完整的仓库到 ./git-learning 目录下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git clone git@github.com:x-cold/git-learning.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 只克隆 dev 分支到 ./dev 目录下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gti clone -b dev git@github.com:x-cold/git-learning.git dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;2、将文件变更记录写入到本地的索引库&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git add [&amp;lt;option&amp;gt;] [--] [pathsec]...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 添加当前目录下所有文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 添加部分文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git add src/ app/ index.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3、提交变更到工作区&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git commit [&amp;lt;options&amp;gt;] [--] &amp;lt;pathsec&amp;gt;...&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 最普通的提交&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit -m&amp;apos;feat: support canvas&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 修改当前的 commit message&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit --amend&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 重置当前的 commit author 和 message&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git commit --amend --reset-author&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4、推送代码到远程仓库&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git push [&amp;lt;options&amp;gt;] [&amp;lt;repository&amp;gt;] [&amp;lt;refspec&amp;gt;...]]&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 提交本地仓库当前分支到远程仓库的 master 分支&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push origin master&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;# 提交本地仓库 dev 分支到远程的 master 分支&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;git push origin master:dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​      Git 是一个分布式的版本控制工具，因此远程和本地可以视为两个独立的 Git 仓库。上图是一张经典的 Git 中的数据流与存储级别的介绍，其中储存级别主要包含几部分：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工作区 (Working Files)，指的是我们时刻在编辑的文件的目录，通常来说我们修改文件都是在工作区体现的&lt;/li&gt;
+&lt;li&gt;暂存区（Stage），暂存将本地的修改，然后提交到本地仓库&lt;/li&gt;
+&lt;li&gt;本地仓库（Local），commit 后 形成的历史记录区&lt;/li&gt;
+&lt;li&gt;远程仓库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总体的流程就是：：工作区 -&amp;gt; 暂存区 -&amp;gt; 本地仓库 -&amp;gt; 远程仓库&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Function&amp;Object原型</title>
@@ -639,31 +680,6 @@
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
       <category term="性能优化" scheme="https://huchenh.github.io/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git基础二</title>
-    <link href="https://huchenh.github.io/2019/03/21/git%E5%9F%BA%E7%A1%80%E4%BA%8C/"/>
-    <id>https://huchenh.github.io/2019/03/21/git基础二/</id>
-    <published>2019-03-21T15:00:44.000Z</published>
-    <updated>2019-03-21T15:01:55.739Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;GIT：分布式版本控制系统&lt;br&gt;  1.版本控制系统&lt;br&gt;    开发中我们把每一次的修改都有效的进行记录（记录成一个版本），后期如果需要回退到原有的有个版本或者是用当前的和某一个版本进行比较等，都可以有效的进行管理&lt;br&gt;    常用的版本控制系统：SVN(集中式) / GIT(分布式)&lt;/p&gt;
-&lt;p&gt;  2.分布式版本管理系统的特点&lt;/p&gt;
-&lt;p&gt;  3.Linux团队开发的git，所以git中的命令大部分都是linux命令&lt;/p&gt;
-&lt;p&gt;=======================&lt;br&gt;后期我们更多的都是基于命令来完成GIT管理的,所以我们学一些简单的LINUX命令&lt;br&gt;  WINDOWS操作系统：DOS窗口和DOS命令&lt;br&gt;  LINUX服务器操作系统：LINUX命令 （MAC的终端使用的也是LINUX命令）&lt;br&gt;
-    
-    </summary>
-    
-      <category term="git" scheme="https://huchenh.github.io/categories/git/"/>
-    
-    
-      <category term="git" scheme="https://huchenh.github.io/tags/git/"/>
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
