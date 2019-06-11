@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。 尽量使用 padding 代替 margin​        padding 和 margin 两个是常用的属性，但是属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠，所以如果 margin 使用的过于频繁的">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css实战小技巧">
+<meta property="og:url" content="https://huchenh.github.io/2019/06/11/css实战小技巧/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。 尽量使用 padding 代替 margin​        padding 和 margin 两个是常用的属性，但是属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠，所以如果 margin 使用的过于频繁的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-11T15:51:13.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css实战小技巧">
+<meta name="twitter:description" content="这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。 尽量使用 padding 代替 margin​        padding 和 margin 两个是常用的属性，但是属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠，所以如果 margin 使用的过于频繁的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/06/11/css实战小技巧/">
+
+
+
+
+
+  <title>css实战小技巧 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/11/css实战小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css实战小技巧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T23:47:50+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。</p>
+<h3 id="尽量使用-padding-代替-margin"><a href="#尽量使用-padding-代替-margin" class="headerlink" title="尽量使用 padding 代替 margin"></a>尽量使用 padding 代替 margin</h3><p>​        <code>padding</code> 和 <code>margin</code> 两个是常用的属性，但是<strong>属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠</strong>，所以如果 <code>margin</code> 使用的过于频繁的时候，Box 的垂直距离可能就会发生重叠。第一个子元素的 <code>margin-top</code> 值会加在父元素上的 bug，最后一个子元素的 <code>margin-bottom</code> 也存在类似的问题。</p>
+<p>​        原因：所有毗邻的两个或多个盒元素的 <code>margin</code> 将会合并为一个 <code>margin</code> 共享。所以我们可以在首位元素使用 <code>padding</code> 来替代 <code>margin</code>。当然有的时候使用 <code>padding</code> 不能满足需求，这时你也可以在“非空内容”这个条件做文章。即在父元素添加一个伪元素。</p>
+<h3 id="position-fixed-降级问题"><a href="#position-fixed-降级问题" class="headerlink" title="position:fixed 降级问题"></a>position:fixed 降级问题</h3><p>​        开发中遇到的“吸顶”问题，就是<code>position:fixed</code> 这个属性。如果父元素有使用<code>transform</code>,<code>fixed</code> 的效果会降级为 <code>absolute</code></p>
+<p><strong><code>解决方案</code></strong></p>
+<p>​        既然会降级为 <code>absolute</code> 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 <code>fixed</code>和 <code>absolute</code> 的表现效果会是一样的。即当使用 <code>fixed</code> 的直接父元素的高度和屏幕的高度相同时 <code>fixed</code> 和 <code>absolute</code> 的表现效果会是一样的。如果这个直接父级内的元素存在滚动的情况，那就加上 <code>overflow-y:auto</code>。</p>
+<h3 id="合理使用-px-em-rem-等单位"><a href="#合理使用-px-em-rem-等单位" class="headerlink" title="合理使用 px | em | rem | % 等单位"></a>合理使用 px | em | rem | % 等单位</h3><p>​        在 CSS 中有许多距离单位，比如 px | em | rem | %，还有 CSS3 中的 vh | vw 等单位。px是pc端最常用的单位，但是再移动端自适应的要求下，使用的场景就不是很多了，以下几种小的适用场景。</p>
+<h4 id="比较小的图案"><a href="#比较小的图案" class="headerlink" title="比较小的图案"></a><strong>比较小的图案</strong></h4><p>​        比如画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// less </span></span><br><span class="line"><span class="comment">//使用 px 配合 dpr 来实现：</span></span><br><span class="line"><span class="comment">/*@size 建议取双数*/</span></span><br><span class="line"><span class="selector-class">.circle</span>(<span class="variable">@size</span>,<span class="variable">@backgroundColor</span>)&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="variable">@backgroundColor</span>;</span><br><span class="line">    <span class="selector-attr">[data-dpr="1"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-attr">[data-dpr="3"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="字体大小"><a href="#字体大小" class="headerlink" title="字体大小"></a><strong>字体大小</strong></h4><p>​        移动端，一般情况字体的大小会使用 rem 作为单位，它 是 CSS3 新增的一个相对单位（root em），即相对 HTML 根元素的字体大小的值； em 也是一个相对单位，却是相对当前元素的字体大小。<strong>line-height</strong>建议使用使用 em，因为在需要调整字体大小的时候，只需修改 <code>font-size</code> 的值，而 <code>line-height</code> 已经设置成了相对行高了。<strong>首行缩进两个字符</strong>，也适合使用<code>em</code>这个单位</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-indent</span>: 2<span class="selector-tag">em</span></span><br></pre></td></tr></table></figure>
+<h3 id="视口单位-vw-vh"><a href="#视口单位-vw-vh" class="headerlink" title="视口单位 vw | vh"></a>视口单位 vw | vh</h3><blockquote>
+<p>vw: 1vw = 视口宽度的 1%<br>vh: 1vh = 视口高度的 1%</p>
+</blockquote>
+<p>​        视口单位 vw | vh，可以用来解决rem单位设计弹性布局，需要再头部加载一段脚本来监听分辨率变化，动态改变根元素字体的大小，css与js耦合的问题。</p>
+<p><code>上大佬们代码</code></p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推</span></span><br><span class="line">$vm_fontsize:75;</span><br><span class="line"><span class="variable">@function</span> rem($px)&#123;</span><br><span class="line">    <span class="variable">@return</span> ($px / $vm_fontsize) * <span class="number">1rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// vm</span></span><br><span class="line">$<span class="attribute">vm_design</span>:<span class="number">750</span>;</span><br><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:($vm_fontsize / ($vm_design / <span class="number">2</span>)) * <span class="number">100</span>vm; <span class="comment">//rem 的值用 vm表示，后面就可以使用rem了</span></span><br><span class="line">    <span class="keyword">@media</span> screen and (<span class="attribute">max-width</span>: <span class="number">320px</span>) &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">64px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">@media</span> screen and (<span class="attribute">min-width</span>: <span class="number">540px</span>) &#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">108px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">540px</span>;</span><br><span class="line">  <span class="attribute">min-width</span>: <span class="number">320px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1px-细线问题"><a href="#1px-细线问题" class="headerlink" title="1px 细线问题"></a>1px 细线问题</h3><p>​        处理 <code>1px</code> 细线问题是移动端需求必不可免的，目前没有什么兼容性特别好的方案，这里我只是提供两种种相对较好的方案。</p>
+<h4 id="使用伪类-transform"><a href="#使用伪类-transform" class="headerlink" title="使用伪类 + transform"></a>使用伪类 + transform</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border_bottom</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">border</span>: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.border_bottom</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">'.'</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#d4d6d7</span>; </span><br><span class="line">    <span class="attribute">-webkit-transform-origin</span>: <span class="number">0</span> <span class="number">0</span>;  </span><br><span class="line">    <span class="attribute">transform-origin</span>: <span class="number">0</span> <span class="number">0</span>; </span><br><span class="line">    <span class="attribute">-webkit-transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scaleY</span>(0.5);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然这个方案在一些版本较低的机型也是会出现粗细不均、细线消失断裂的兼容性问题。</p>
+<h4 id="使用-box-shadow-模拟"><a href="#使用-box-shadow-模拟" class="headerlink" title="使用 box-shadow 模拟"></a>使用 box-shadow 模拟</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border_bottom</span> &#123;</span><br><span class="line">  <span class="attribute">box-shadow</span>: inset <span class="number">0px</span> -<span class="number">1px</span> <span class="number">1px</span> -<span class="number">1px</span> <span class="number">#d4d6d7</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 本可以满足所有场景，不过有个缺点也就是颜色会变浅。*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="从-html-元素继承-box-sizing"><a href="#从-html-元素继承-box-sizing" class="headerlink" title="从 html 元素继承 box-sizing"></a>从 html 元素继承 box-sizing</h3><p>​        在设置元素的 <code>border</code> 和 <code>padding</code> 并不希望改变元素的 <code>width,height</code>值，就可以为该元素设置 <code>box-sizing:border-box;</code>。如果不希望每次都重写一遍，可以继承来实现。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*, *<span class="selector-pseudo">:before</span>, *<span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: inherit;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*不会覆盖其他组件的 box-sizing 值，又无需为每一个元素重复设置 box-sizing:border-box;*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="内联首屏关键-CSS"><a href="#内联首屏关键-CSS" class="headerlink" title="内联首屏关键 CSS"></a>内联首屏关键 CSS</h3><p>​        性能优化中有一个重要的指标 —— 首次有效绘制（FMP），即指页面的首要内容（primary content）出现在屏幕上的时间。这一指标影响用户看到页面前所需等待的时间，而 <strong>内联首屏关键 CSS（即 Critical CSS，可以称之为首屏关键 CSS）</strong> 能给用户一个更好的心理预期。内联 CSS 能够使浏览器开始页面渲染的时间提前，即在 HTML 下载完成之后就能渲染,我们可以将首屏的css内联再html中。</p>
+<h3 id="文字超出省略、文字两端对齐"><a href="#文字超出省略、文字两端对齐" class="headerlink" title="文字超出省略、文字两端对齐"></a>文字超出省略、文字两端对齐</h3><h4 id="超出省略"><a href="#超出省略" class="headerlink" title="超出省略"></a>超出省略</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.line-camp( @clamp:2) &#123;</span><br><span class="line">    <span class="selector-tag">text-overflow</span>: <span class="selector-tag">-o-ellipsis-lastline</span>;</span><br><span class="line">    <span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line">    <span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</span><br><span class="line">    <span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;</span><br><span class="line">    <span class="selector-tag">-webkit-line-clamp</span>: @<span class="keyword">clamp</span>;</span><br><span class="line">    <span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="两端对齐"><a href="#两端对齐" class="headerlink" title="两端对齐"></a>两端对齐</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- html --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>姓名<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>手机号码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>账号<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">0</span>; </span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">    <span class="attribute">text-align-last</span>: justify;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/05/aysnc函数错误处理/" rel="next" title="aysnc函数错误处理">
+                <i class="fa fa-chevron-left"></i> aysnc函数错误处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#尽量使用-padding-代替-margin"><span class="nav-number">1.</span> <span class="nav-text">尽量使用 padding 代替 margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-fixed-降级问题"><span class="nav-number">2.</span> <span class="nav-text">position:fixed 降级问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合理使用-px-em-rem-等单位"><span class="nav-number">3.</span> <span class="nav-text">合理使用 px | em | rem | % 等单位</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较小的图案"><span class="nav-number">3.1.</span> <span class="nav-text">比较小的图案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字体大小"><span class="nav-number">3.2.</span> <span class="nav-text">字体大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视口单位-vw-vh"><span class="nav-number">4.</span> <span class="nav-text">视口单位 vw | vh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1px-细线问题"><span class="nav-number">5.</span> <span class="nav-text">1px 细线问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用伪类-transform"><span class="nav-number">5.1.</span> <span class="nav-text">使用伪类 + transform</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-box-shadow-模拟"><span class="nav-number">5.2.</span> <span class="nav-text">使用 box-shadow 模拟</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从-html-元素继承-box-sizing"><span class="nav-number">6.</span> <span class="nav-text">从 html 元素继承 box-sizing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内联首屏关键-CSS"><span class="nav-number">7.</span> <span class="nav-text">内联首屏关键 CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文字超出省略、文字两端对齐"><span class="nav-number">8.</span> <span class="nav-text">文字超出省略、文字两端对齐</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#超出省略"><span class="nav-number">8.1.</span> <span class="nav-text">超出省略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两端对齐"><span class="nav-number">8.2.</span> <span class="nav-text">两端对齐</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

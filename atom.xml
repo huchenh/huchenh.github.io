@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-06-05T15:44:39.016Z</updated>
+  <updated>2019-06-11T15:51:13.521Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css实战小技巧</title>
+    <link href="https://huchenh.github.io/2019/06/11/css%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    <id>https://huchenh.github.io/2019/06/11/css实战小技巧/</id>
+    <published>2019-06-11T15:47:50.000Z</published>
+    <updated>2019-06-11T15:51:13.521Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。&lt;/p&gt;
+&lt;h3 id=&quot;尽量使用-padding-代替-margin&quot;&gt;&lt;a href=&quot;#尽量使用-padding-代替-margin&quot; class=&quot;headerlink&quot; title=&quot;尽量使用 padding 代替 margin&quot;&gt;&lt;/a&gt;尽量使用 padding 代替 margin&lt;/h3&gt;&lt;p&gt;​        &lt;code&gt;padding&lt;/code&gt; 和 &lt;code&gt;margin&lt;/code&gt; 两个是常用的属性，但是&lt;strong&gt;属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠&lt;/strong&gt;，所以如果 &lt;code&gt;margin&lt;/code&gt; 使用的过于频繁的时候，Box 的垂直距离可能就会发生重叠。第一个子元素的 &lt;code&gt;margin-top&lt;/code&gt; 值会加在父元素上的 bug，最后一个子元素的 &lt;code&gt;margin-bottom&lt;/code&gt; 也存在类似的问题。&lt;/p&gt;
+&lt;p&gt;​        原因：所有毗邻的两个或多个盒元素的 &lt;code&gt;margin&lt;/code&gt; 将会合并为一个 &lt;code&gt;margin&lt;/code&gt; 共享。所以我们可以在首位元素使用 &lt;code&gt;padding&lt;/code&gt; 来替代 &lt;code&gt;margin&lt;/code&gt;。当然有的时候使用 &lt;code&gt;padding&lt;/code&gt; 不能满足需求，这时你也可以在“非空内容”这个条件做文章。即在父元素添加一个伪元素。&lt;/p&gt;
+&lt;h3 id=&quot;position-fixed-降级问题&quot;&gt;&lt;a href=&quot;#position-fixed-降级问题&quot; class=&quot;headerlink&quot; title=&quot;position:fixed 降级问题&quot;&gt;&lt;/a&gt;position:fixed 降级问题&lt;/h3&gt;&lt;p&gt;​        开发中遇到的“吸顶”问题，就是&lt;code&gt;position:fixed&lt;/code&gt; 这个属性。如果父元素有使用&lt;code&gt;transform&lt;/code&gt;,&lt;code&gt;fixed&lt;/code&gt; 的效果会降级为 &lt;code&gt;absolute&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;解决方案&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;​        既然会降级为 &lt;code&gt;absolute&lt;/code&gt; 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 &lt;code&gt;fixed&lt;/code&gt;和 &lt;code&gt;absolute&lt;/code&gt; 的表现效果会是一样的。即当使用 &lt;code&gt;fixed&lt;/code&gt; 的直接父元素的高度和屏幕的高度相同时 &lt;code&gt;fixed&lt;/code&gt; 和 &lt;code&gt;absolute&lt;/code&gt; 的表现效果会是一样的。如果这个直接父级内的元素存在滚动的情况，那就加上 &lt;code&gt;overflow-y:auto&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;合理使用-px-em-rem-等单位&quot;&gt;&lt;a href=&quot;#合理使用-px-em-rem-等单位&quot; class=&quot;headerlink&quot; title=&quot;合理使用 px | em | rem | % 等单位&quot;&gt;&lt;/a&gt;合理使用 px | em | rem | % 等单位&lt;/h3&gt;&lt;p&gt;​        在 CSS 中有许多距离单位，比如 px | em | rem | %，还有 CSS3 中的 vh | vw 等单位。px是pc端最常用的单位，但是再移动端自适应的要求下，使用的场景就不是很多了，以下几种小的适用场景。&lt;/p&gt;
+&lt;h4 id=&quot;比较小的图案&quot;&gt;&lt;a href=&quot;#比较小的图案&quot; class=&quot;headerlink&quot; title=&quot;比较小的图案&quot;&gt;&lt;/a&gt;&lt;strong&gt;比较小的图案&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;​        比如画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。&lt;/p&gt;
+&lt;figure class=&quot;highlight less&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// less &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//使用 px 配合 dpr 来实现：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*@size 建议取双数*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.circle&lt;/span&gt;(&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;,&lt;span class=&quot;variable&quot;&gt;@backgroundColor&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;background-color&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@backgroundColor&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;selector-attr&quot;&gt;[data-dpr=&quot;1&quot;]&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;&amp;amp;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;selector-attr&quot;&gt;[data-dpr=&quot;3&quot;]&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;&amp;amp;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="css" scheme="https://huchenh.github.io/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>aysnc函数错误处理</title>
@@ -598,41 +626,6 @@
     
     
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react04</title>
-    <link href="https://huchenh.github.io/2019/04/02/react04/"/>
-    <id>https://huchenh.github.io/2019/04/02/react04/</id>
-    <published>2019-04-02T12:53:54.000Z</published>
-    <updated>2019-04-02T12:54:20.320Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;REACT基础知识复习（一）：&quot;&gt;&lt;a href=&quot;#REACT基础知识复习（一）：&quot; class=&quot;headerlink&quot; title=&quot;REACT基础知识复习（一）：&quot;&gt;&lt;/a&gt;REACT基础知识复习（一）：&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;REACT是FACE-BOOK公司开发的一款MVC版JS框架&lt;br&gt;MVC：Model（数据层）、VIEW（视图层）、CONTROLLER（控制层）&lt;br&gt;核心思想：通过数据的改变来影响视图的渲染（数据驱动）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;基于脚手架 CREATE-REACT-APP 快速构建一个REACT工程项目结构&lt;br&gt;自动安装REACT的核心组件：REACT/REACT-DOM&lt;br&gt;自动安装WEBPACK，并且完成相关的配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;区分了开发环境和生产环境&lt;/li&gt;
-&lt;li&gt;安装BABEL以及对应的语言解析包，可以把REACT和ES6进行编译处理&lt;/li&gt;
-&lt;li&gt;安装CSS/STYLE/FILE等加载器，处理CSS等合并压缩的问题&lt;/li&gt;
-&lt;li&gt;安装了ES-LINT，可以进行代码检测&lt;/li&gt;
-&lt;li&gt;安装了很多的插件，可以实现JS和CSS以及HTML的分离，打包，压缩等&lt;/li&gt;
-&lt;li&gt;安装了WEBPACK-DEV-SERVER，可以在开发环境下，编译后自动创建服务，打开浏览器，当代码修改后，自动保存编译，页面自动刷新渲染等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;使用脚手架&quot;&gt;&lt;a href=&quot;#使用脚手架&quot; class=&quot;headerlink&quot; title=&quot;使用脚手架&quot;&gt;&lt;/a&gt;使用脚手架&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;把脚手架安装到全局环境下，以后应用命令操作，完成项目结构的搭建&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  $ npm install create-react-app -g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;创建项目结构目录&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  项目名遵循NPM发包命名规范：名字只能是/^[a-z0-9_-]$/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  $ create-react-app  项目名&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;特点：如果当前电脑安装了YARN，创建工程目录的时候，走的是YARN安装，YARN和NPM主体相同，但是处理起来还有一定的区别，所以我们以后继续向工程中安装模块以及执行配置脚本打包编译的时候，尽可能使用YARN，不建议和NPM混用&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-      <category term="React" scheme="https://huchenh.github.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://huchenh.github.io/tags/React/"/>
     
   </entry>
   
