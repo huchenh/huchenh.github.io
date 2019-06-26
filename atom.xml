@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-06-17T14:14:52.316Z</updated>
+  <updated>2019-06-26T16:05:51.366Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack-babelrc</title>
+    <link href="https://huchenh.github.io/2019/06/27/webpack-babelrc/"/>
+    <id>https://huchenh.github.io/2019/06/27/webpack-babelrc/</id>
+    <published>2019-06-26T16:05:08.000Z</published>
+    <updated>2019-06-26T16:05:51.366Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;babelrc的基本配置&quot;&gt;&lt;a href=&quot;#babelrc的基本配置&quot; class=&quot;headerlink&quot; title=&quot;.babelrc的基本配置&quot;&gt;&lt;/a&gt;.babelrc的基本配置&lt;/h2&gt;&lt;p&gt;​        ES6引入了新的语法和API，使我们编写js代码更加得心应手，比如class，let,for…of promise等等这样的，但是这些js新特性只被最新版本的浏览器支持，低版本浏览器并不支持，babel可以把es6代码转换成低版本浏览器能识别的代码。可以理解为 babel是javascript语法的编译器。&lt;/p&gt;
+&lt;h3 id=&quot;Babel编译器&quot;&gt;&lt;a href=&quot;#Babel编译器&quot; class=&quot;headerlink&quot; title=&quot;Babel编译器&quot;&gt;&lt;/a&gt;&lt;strong&gt;Babel编译器&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​    在Babel执行编译的过程中，会从项目的根目录下的 .babelrc文件中读取配置。.babelrc是一个json格式的文件。在.babelrc配置文件中，主要是对预设(presets) 和 插件(plugins) 进行配置。.babelrc配置文件一般为如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight json&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;&quot;plugins&quot;&lt;/span&gt;:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [&lt;span class=&quot;string&quot;&gt;&quot;transform-runtime&quot;&lt;/span&gt;,&amp;#123;&lt;span class=&quot;attr&quot;&gt;&quot;polyfill&quot;&lt;/span&gt;:&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;&quot;presets&quot;&lt;/span&gt;:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [&lt;span class=&quot;string&quot;&gt;&quot;env&quot;&lt;/span&gt;,&amp;#123;&lt;span class=&quot;attr&quot;&gt;&quot;moudules&quot;&lt;/span&gt;:&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;stage-2&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;plugins&quot;&gt;&lt;a href=&quot;#plugins&quot; class=&quot;headerlink&quot; title=&quot;plugins&quot;&gt;&lt;/a&gt;plugins&lt;/h3&gt;&lt;p&gt;​    该属性是告诉babel要使用那些插件，这些插件可以控制如何转换代码，babel默认只转换新的javascript语法，而不转换新的API，比如Iterator、Promise、Set、Map等，还有Object、数组、字符串原型上新增的方法。因此我们需要使用 &lt;code&gt;babel-polyfill&lt;/code&gt;和&lt;code&gt;babel-runtime&lt;/code&gt;这样的插件来完成转换。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;babel-polyfill&lt;/code&gt; 的原理是如果当前环境没有实现这些API，它会做兼容处理，向js中原有对象的原型prototype添加，但是这样做但造成一定全局污染&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;babel-runtime&lt;/code&gt;是将es6编译成es5去执行，它不会影响全局变量。但我们需要针对每个API做引用，如Promise就需要&lt;code&gt;import Promise from &amp;#39;babel-runtime/core-js/promise&amp;#39;&lt;/code&gt; 但是这样手动加入会很麻烦，因此我们通常使用&lt;code&gt;babel-plugin-transform-runtime&lt;/code&gt; 避免手动引入 import的痛苦，并且它还做了公用方法的抽离。比如说我们有100个模块都使用promise，但是promise的polyfill仅仅存在1份。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="webpack" scheme="https://huchenh.github.io/categories/webpack/"/>
+    
+    
+      <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack-devserver</title>
@@ -598,32 +625,6 @@
       <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
       <category term="node" scheme="https://huchenh.github.io/tags/node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>react05</title>
-    <link href="https://huchenh.github.io/2019/04/10/react05/"/>
-    <id>https://huchenh.github.io/2019/04/10/react05/</id>
-    <published>2019-04-10T13:48:30.000Z</published>
-    <updated>2019-04-10T13:49:12.979Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;复合组件：父组件嵌套子组件&quot;&gt;&lt;a href=&quot;#复合组件：父组件嵌套子组件&quot; class=&quot;headerlink&quot; title=&quot;复合组件：父组件嵌套子组件&quot;&gt;&lt;/a&gt;复合组件：父组件嵌套子组件&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;传递信息的方式&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;父组件需要把信息传递给子组件&lt;br&gt;“属性传递”：调取子组件的时候，把信息基于属性的方式传递给子组件（子组件PROPS中存储传递的信息）;这种方式只能父组件把信息传递子组件，子组件无法直接的把信息传递给父组件，也就是属性传递信息是单向传递的；&lt;/p&gt;
-&lt;figure class=&quot;highlight jsx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Vote&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;React&lt;/span&gt;.&lt;span class=&quot;title&quot;&gt;Component&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    render() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; &amp;#123;title, count&amp;#125; = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.props;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;section&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;className&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;#123;&lt;/span&gt;&#39;&lt;span class=&quot;attr&quot;&gt;panel&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;panel-default&lt;/span&gt;&#39;&amp;#125; &lt;span class=&quot;attr&quot;&gt;style&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;#123;&amp;#123;width:&lt;/span&gt; &#39;&lt;span class=&quot;attr&quot;&gt;50&lt;/span&gt;%&#39;, &lt;span class=&quot;attr&quot;&gt;margin:&lt;/span&gt; &#39;&lt;span class=&quot;attr&quot;&gt;20px&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;auto&lt;/span&gt;&#39;&amp;#125;&amp;#125;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;lt;VoteHead title=&amp;#123;title&amp;#125;/&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;section&lt;/span&gt;&amp;gt;&lt;/span&gt;;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;上下文传递&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;父组件先把需要给后代元素（包括孙子元素）使用的信息都设置好（设置在上下文中），后代组件需要用到父组件中的信息，主动去父组件中调取使用即可&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="React" scheme="https://huchenh.github.io/categories/React/"/>
-    
-    
-      <category term="React" scheme="https://huchenh.github.io/tags/React/"/>
     
   </entry>
   
