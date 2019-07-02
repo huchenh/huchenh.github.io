@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-06-26T16:05:51.366Z</updated>
+  <updated>2019-07-02T09:26:55.324Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SourceMap</title>
+    <link href="https://huchenh.github.io/2019/07/02/SourceMap/"/>
+    <id>https://huchenh.github.io/2019/07/02/SourceMap/</id>
+    <published>2019-07-02T09:25:38.000Z</published>
+    <updated>2019-07-02T09:26:55.324Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是SourceMap&quot;&gt;&lt;a href=&quot;#什么是SourceMap&quot; class=&quot;headerlink&quot; title=&quot;什么是SourceMap?&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是SourceMap?&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​        webpack4在项目进行打包后，会将开发中的多个文件代码打包到一个文件中，并且经过压缩，去掉多余的空格，且babel编译化后，最终会用于线上环境，那么这样处理后的代码和源代码会有很大的差别，当有bug的时候，我们只能定位到压缩处理后的代码位置，无法定位到开发环境中的代码，对于开发不好调式，因此sourceMap出现了，它就是为了解决不好调式代码问题。&lt;/p&gt;
+&lt;h3 id=&quot;webpack中的SourceMap&quot;&gt;&lt;a href=&quot;#webpack中的SourceMap&quot; class=&quot;headerlink&quot; title=&quot;webpack中的SourceMap&quot;&gt;&lt;/a&gt;&lt;strong&gt;webpack中的SourceMap&lt;/strong&gt;&lt;/h3&gt;&lt;h4 id=&quot;eval&quot;&gt;&lt;a href=&quot;#eval&quot; class=&quot;headerlink&quot; title=&quot;eval&quot;&gt;&lt;/a&gt;&lt;strong&gt;eval&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;​        eval 会将每一个module模块，执行eval，执行后不会生成sourcemap文件，仅仅是在每一个模块后，增加sourceURL来关联模块处理前后对应的关系。在webpack中配置devtool: ‘eval’&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;modules&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;// webpackBootstrap&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;  &quot;use strict&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \&quot;default\&quot;, function() &amp;#123; return printMe; &amp;#125;);\n\nfunction printMe() &amp;#123;\n  console.log(&#39;11111111&#39;);\n&amp;#125;\n\n//# sourceURL=webpack:///./js/demo1.js?&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/***/&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;./js/main.js&quot;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*!********************!*\&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;    !*** ./js/main.js ***!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;    \********************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*! no exports provided */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/***/&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  (&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;module, __webpack_exports__, __webpack_require__&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;    &quot;use strict&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _demo1_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./demo1.js */ \&quot;./js/demo1.js\&quot;);\n\n\nconsole.log(&#39;main.js&#39;);\n\n//# sourceURL=webpack:///./js/main.js?&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;​        每一个打包后的模块后面都增加了包含sourceURL的注释，sourceURL的值是压缩前存放的代码的位置，这样就通过sourceURL关联了压缩前后的代码。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优点是：&lt;/strong&gt;打包速度非常快，因为不需要生成sourcemap文件。&lt;br&gt;&lt;strong&gt;缺点是：&lt;/strong&gt;由于会映射到转换后的代码，而不是映射到原始代码，所以不能正确的显示行数。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="webpack" scheme="https://huchenh.github.io/categories/webpack/"/>
+    
+    
+      <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack-babelrc</title>
@@ -603,28 +627,6 @@
     
     
       <category term="跨域" scheme="https://huchenh.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>node02</title>
-    <link href="https://huchenh.github.io/2019/04/14/node02/"/>
-    <id>https://huchenh.github.io/2019/04/14/node02/</id>
-    <published>2019-04-14T08:11:01.000Z</published>
-    <updated>2019-04-14T08:11:37.897Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1.在本地项目中基于NPM/YARN安装第三方模块&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;第一步：在本地项目中创建一个“package.json”的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  作用：把当前项目所有依赖的第三方模块信息（包含：模块名称以及版本号等信息）都记录下来；可以在这里配置一些可执行的命令脚本等；&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  基于YARN会默认生成一个“配置清单”，只是信息没有手动创建的全面&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  npm init -y 或者 yarn init -y&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  创建配置清单的时候，项目目录中不应该出现中文和特殊符号，这样有可能识别不了&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;第二步：安装&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  开发依赖：只有在项目开发阶段依赖的第三方模块&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  生产依赖：项目部署实施的时候，也需要依赖的第三方模块&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [npm]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    npm install xxx --save  保存到配置清单的生产依赖中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    --save-dev  保存到开发依赖中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  [yarn]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    yarn add xxx 默认就是保存到生产依赖中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             --dev / -D  保存到开发依赖中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;第三步：部署的时候“跑环境”&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  不要自己一个个的安装，只需要执行 npm install 或者 yarn install 即可，npm会自己先检测目录中是否有package.json文件，如果有的话，会按照文件中的配置清单依次安装&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;=&amp;gt;开发一个项目，我们生成一个配置清单“package.json”，当我们安装第三方模块使用的时候，把安装的模块信息记录到配置清单中，这样以后不管是团队协作开发还是项目部署上线，我们都没有必要把node_modules发文件发送给别人，只需要把配置清单传递给其它人即可，其他人拿到配置清单后，按照清单中依赖项及版本号，重新安装即可（重新安装：“跑环境”）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="node" scheme="https://huchenh.github.io/categories/node/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
-    
-      <category term="node" scheme="https://huchenh.github.io/tags/node/"/>
     
   </entry>
   
