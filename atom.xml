@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-07-02T09:26:55.324Z</updated>
+  <updated>2019-07-06T05:03:14.906Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>postCss</title>
+    <link href="https://huchenh.github.io/2019/07/06/postCss/"/>
+    <id>https://huchenh.github.io/2019/07/06/postCss/</id>
+    <published>2019-07-06T05:02:17.000Z</published>
+    <updated>2019-07-06T05:03:14.906Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;PostCss&quot;&gt;&lt;a href=&quot;#PostCss&quot; class=&quot;headerlink&quot; title=&quot;PostCss&quot;&gt;&lt;/a&gt;&lt;strong&gt;PostCss&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​    PostCss是一个样式处理工具，它通过自定义的插件和工具生态体系来重新定义css。这些插件可以检查（lint）你的 CSS，支持 CSS Variables 和 Mixins， 编译尚未被浏览器广泛支持的先进的 CSS 语法，内联图片，以及其它很多优秀的功能。&lt;a href=&quot;https://github.com/postcss/postcss/blob/HEAD/README-cn.md&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;插件链接&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;webpack中使用postcss&quot;&gt;&lt;a href=&quot;#webpack中使用postcss&quot; class=&quot;headerlink&quot; title=&quot;webpack中使用postcss&quot;&gt;&lt;/a&gt;&lt;strong&gt;webpack中使用postcss&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​        比如我们使用less来编写css代码，因此文件就是这样的文件 文件名.less了，因此该文件需要依次经过less-loader, postcss-loader css-loader, style-loader编译。因此需要如下配置：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;module&lt;/span&gt;.exports = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;module&lt;/span&gt;: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    rules: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        test: &lt;span class=&quot;regexp&quot;&gt;/\.css$/&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        exclude: &lt;span class=&quot;regexp&quot;&gt;/node_modules/&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        use: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            loader: &lt;span class=&quot;string&quot;&gt;&#39;style-loader&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            loader: &lt;span class=&quot;string&quot;&gt;&#39;css-loader&#39;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            options: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;              importLoaders: &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            loader: &lt;span class=&quot;string&quot;&gt;&#39;postcss-loader&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &lt;span class=&quot;string&quot;&gt;&quot;less-loader&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;运行&lt;code&gt;npm run dev&lt;/code&gt; 会报错，因为less需要安装less包支持：&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install less --save-dev&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="webpack" scheme="https://huchenh.github.io/categories/webpack/"/>
+    
+    
+      <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>SourceMap</title>
@@ -588,45 +612,6 @@
     
     
       <category term="性能" scheme="https://huchenh.github.io/tags/%E6%80%A7%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跨域</title>
-    <link href="https://huchenh.github.io/2019/04/16/%E8%B7%A8%E5%9F%9F/"/>
-    <id>https://huchenh.github.io/2019/04/16/跨域/</id>
-    <published>2019-04-16T15:47:58.000Z</published>
-    <updated>2019-04-16T15:48:42.061Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;跨域解决方案：&quot;&gt;&lt;a href=&quot;#跨域解决方案：&quot; class=&quot;headerlink&quot; title=&quot;跨域解决方案：&quot;&gt;&lt;/a&gt;跨域解决方案：&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;jsonp （常用）&lt;/li&gt;
-&lt;li&gt;cors  （常用）&lt;/li&gt;
-&lt;li&gt;window.name&lt;/li&gt;
-&lt;li&gt;document.domain  （特定场景）&lt;/li&gt;
-&lt;li&gt;postMessage (H5)&lt;/li&gt;
-&lt;li&gt;webpack proxy （webScoket） （常用）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&quot;什么是跨域？&quot;&gt;&lt;a href=&quot;#什么是跨域？&quot; class=&quot;headerlink&quot; title=&quot;什么是跨域？&quot;&gt;&lt;/a&gt;什么是跨域？&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;拿当前HTML页面的地址和在页面中AJAX请求的API地址做比较：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果两个地址的协议域名端口号都相同，相当于HTML页面从同一个源下根据某个地址获取数据，属于“同源策略请求”，基于AJAX是可以直接请求到数据的！&lt;/li&gt;
-&lt;li&gt;如果三者（协议域名端口号）只要有一个不一样，那么就是“非同源策略请求（跨域请求）”，使用AJAX不能直接获取数据了！&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;   HTML页面的地址：&lt;a href=&quot;http://localhost:8000/A.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/A.html&lt;/a&gt;&lt;br&gt;   AJAX请求的地址：&lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;   HTML页面地址：&lt;a href=&quot;http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html&lt;/a&gt;&lt;br&gt;   AJAX请求接口地址：&lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;   [报错]&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Failed to load &lt;a href=&quot;http://localhost:8000/queryInfo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:8000/queryInfo&lt;/a&gt;: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘&lt;a href=&quot;http://localhost:63342&amp;#39;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://localhost:63342&amp;#39;&lt;/a&gt; is therefore not allowed access.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="跨域" scheme="https://huchenh.github.io/tags/%E8%B7%A8%E5%9F%9F/"/>
     
   </entry>
   
