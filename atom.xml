@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-07-06T05:03:14.906Z</updated>
+  <updated>2019-07-12T13:56:42.112Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>weakMap</title>
+    <link href="https://huchenh.github.io/2019/07/12/weakMap/"/>
+    <id>https://huchenh.github.io/2019/07/12/weakMap/</id>
+    <published>2019-07-12T13:54:36.000Z</published>
+    <updated>2019-07-12T13:56:42.112Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;weakMap的特性及应用场景总结：&lt;/p&gt;
+&lt;h3 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h3&gt;&lt;h4 id=&quot;WeakMap-只接受对象作为键名&quot;&gt;&lt;a href=&quot;#WeakMap-只接受对象作为键名&quot; class=&quot;headerlink&quot; title=&quot;WeakMap 只接受对象作为键名&quot;&gt;&lt;/a&gt;WeakMap 只接受对象作为键名&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; map = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;WeakMap&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;map.set(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// TypeError: Invalid value used as weak map key&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;map.set(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// TypeError: Invalid value used as weak map key&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;WeakMap-的键名所引用的对象是弱引用&quot;&gt;&lt;a href=&quot;#WeakMap-的键名所引用的对象是弱引用&quot; class=&quot;headerlink&quot; title=&quot;WeakMap 的键名所引用的对象是弱引用&quot;&gt;&lt;/a&gt;WeakMap 的键名所引用的对象是弱引用&lt;/h4&gt;&lt;p&gt;​       WeakMaps 保持了对键名所引用的对象的弱引用。在计算机程序中弱引用和强应用是相对的，是指不能确保其引用的对象不会被垃圾回收器回收的引用。一个对象若只被弱引用所引用，则被认为是不可访问（或弱可访问）的，并因此可能在任何时刻被回收。&lt;/p&gt;
+&lt;p&gt;在JavaScript中，一般我们创建的对象，都是强引用；&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;只有当我们手动设置为null时，才会回收obj&lt;/p&gt;
+&lt;p&gt;如果创建一个弱引用对象：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 假设可以这样创建一个&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; WeakObject();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>postCss</title>
@@ -560,51 +587,6 @@
 &lt;li&gt;Rendering Tree 渲染树并不等同于DOM树，渲染树只会包括需要显示的节点和这些节点的样式信息。&lt;/li&gt;
 &lt;li&gt;CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个Element（也就是每个Frame）。&lt;/li&gt;
 &lt;li&gt;计算每个Frame 的位置，这又叫layout和reflow过程。&lt;br&gt;&lt;code&gt;最后通过调用操作系统Native GUI的API绘制。&lt;/code&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="性能" scheme="https://huchenh.github.io/tags/%E6%80%A7%E8%83%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端性能监控</title>
-    <link href="https://huchenh.github.io/2019/04/19/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/"/>
-    <id>https://huchenh.github.io/2019/04/19/前端性能监控/</id>
-    <published>2019-04-19T15:20:12.000Z</published>
-    <updated>2019-04-19T15:21:20.908Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;W3C性能小组引入的新的API window.performance，目前IE9以上的浏览器都支持。它是一个浏览器中用于记录页面加载和解析过程中关键时间点的对象。放置在global环境下，通过JavaScript可以访问到它。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;使用性能API&quot;&gt;&lt;a href=&quot;#使用性能API&quot; class=&quot;headerlink&quot; title=&quot;使用性能API&quot;&gt;&lt;/a&gt;使用性能API&lt;/h3&gt;&lt;p&gt;&lt;code&gt;探测和兼容performance：&lt;/code&gt;&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; performance = &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.performance || &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.msPerformance || &lt;span class=&quot;built_in&quot;&gt;window&lt;/span&gt;.webkitPerformance;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(performance)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;// 支持性能 API&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;performance api结构&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;performance.memory&lt;/code&gt; 显示内存的占用情况，是一个动态值：&lt;ul&gt;
-&lt;li&gt;usedJSHeapSize：表示：JS 对象（包括V8引擎内部对象）占用的内存数&lt;/li&gt;
-&lt;li&gt;totalJSHeapSize： 可使用的内存&lt;/li&gt;
-&lt;li&gt;jsHeapSizeLimit： 内存大小限制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;performance.navigation&lt;/code&gt; 显示页面的来源信息&lt;ul&gt;
-&lt;li&gt;redirectCount：重定向的话，页面通过几次重定向跳转而来，默认为0；&lt;/li&gt;
-&lt;li&gt;type：表示页面打开的方式&lt;ul&gt;
-&lt;li&gt;0 表示 TYPE_NAVIGATENEXT 正常进入的页面（非刷新、非重定向等）&lt;/li&gt;
-&lt;li&gt;1 表示 TYPE_RELOAD 通过 window.location.reload() 刷新的页面&lt;/li&gt;
-&lt;li&gt;2 表示 TYPE_BACK_FORWARD 通过浏览器的前进后退按钮进入的页面（历史记录）&lt;/li&gt;
-&lt;li&gt;255 表示 TYPE_UNDEFINED 非以上方式进入的页面&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;performance.onresourcetimingbufferfull&lt;/code&gt;属性是一个在resourcetimingbufferfull事件触发时会被调用的 event handler 。它的值是一个手动设置的回调函数，这个回调函数会在浏览器的资源时间性能缓冲区满时执行。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;performance.timeOrigin&lt;/code&gt; 是一系列时间点的基准点，可以精确到万分之一毫秒&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;performance.timing&lt;/code&gt;:是一系列关键时间点，它包含了网络、解析等一系列的时间数据
     
     </summary>
     
