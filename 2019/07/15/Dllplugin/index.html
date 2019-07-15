@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="webpack,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="DllPlugin   在平常的项目中，我们要使用到很多的第三方库，如react 、vue 、jquery等。但是他们的内容基本是不变的，版本升级除外。而且这些库每次打包时都要重复的构建，所以我们需要把他们和我们自己写的项目源代码分开。webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库，那么第三方库在第一次打包的时候只打包一次，以后只要我们不升级第三方包的时候，那么webpack">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dllplugin">
+<meta property="og:url" content="https://huchenh.github.io/2019/07/15/Dllplugin/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="DllPlugin   在平常的项目中，我们要使用到很多的第三方库，如react 、vue 、jquery等。但是他们的内容基本是不变的，版本升级除外。而且这些库每次打包时都要重复的构建，所以我们需要把他们和我们自己写的项目源代码分开。webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库，那么第三方库在第一次打包的时候只打包一次，以后只要我们不升级第三方包的时候，那么webpack">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:updated_time" content="2019-07-15T14:03:58.206Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dllplugin">
+<meta name="twitter:description" content="DllPlugin   在平常的项目中，我们要使用到很多的第三方库，如react 、vue 、jquery等。但是他们的内容基本是不变的，版本升级除外。而且这些库每次打包时都要重复的构建，所以我们需要把他们和我们自己写的项目源代码分开。webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库，那么第三方库在第一次打包的时候只打包一次，以后只要我们不升级第三方包的时候，那么webpack">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2019/07/15/Dllplugin/">
+
+
+
+
+
+  <title>Dllplugin | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/07/15/Dllplugin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dllplugin</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T22:02:37+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="DllPlugin"><a href="#DllPlugin" class="headerlink" title="DllPlugin"></a>DllPlugin</h3><p>   在平常的项目中，我们要使用到很多的第三方库，如react 、vue 、jquery等。但是他们的内容基本是不变的，版本升级除外。而且这些库每次打包时都要重复的构建，所以我们需要把他们和我们自己写的项目源代码分开。webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库，那么第三方库在第一次打包的时候只打包一次，以后只要我们不升级第三方包的时候，那么webpack就不会对这些库去打包，因此为了解决这个问题，DllPlugin 和DllReferencePlugin插件就产生了。</p>
+<ul>
+<li>DLLPlugin 这个插件是在一个额外独立的webpack设置中创建一个只有dll的bundle，也就是说我们在项目根目录下除了有webpack.config.js，还会新建一个webpack.dll.config.js文件。<code>webpack.dll.config.js</code>作用是把所有的第三方库依赖打包到一个bundle的dll文件里面，还会生成一个名为 <code>manifest.json</code>文件。该manifest.json的作用是用来让 DllReferencePlugin 映射到相关的依赖上去的。</li>
+<li>DllReferencePlugin 这个插件是在webpack.config.js中使用的，该插件的作用是把刚刚在webpack.dll.config.js中打包生成的dll文件引用到需要的预编译的依赖上来。</li>
+</ul>
+<h3 id="webpack-dll-config-js"><a href="#webpack-dll-config-js" class="headerlink" title="webpack.dll.config.js"></a>webpack.dll.config.js</h3><pre><code>在项目根目录下创建一个 `webpack.dll.config.js` 文件。然后配置代码如下：
+</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> DllPlugin = <span class="built_in">require</span>(<span class="string">'webpack/lib/DllPlugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:&#123;</span><br><span class="line">    <span class="comment">// 项目中用到该两个依赖库文件</span></span><br><span class="line">    react: [<span class="string">'react'</span>],</span><br><span class="line">    reactDom: [<span class="string">'react-dom'</span>],</span><br><span class="line">    loadsh: [<span class="string">'loadsh'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output:&#123;</span><br><span class="line">    <span class="comment">// 文件名称</span></span><br><span class="line">    filename: <span class="string">'[name].dll.js'</span>,</span><br><span class="line">    <span class="comment">// 将输出的文件放到dist目录下</span></span><br><span class="line">    path: path.resolve(__dirname,<span class="string">'dist/dll'</span>),</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     存放相关的dll文件的全局变量名称，比如对于jquery来说的话就是 _dll_jquery, 在前面加 _dll</span></span><br><span class="line"><span class="comment">     是为了防止全局变量冲突。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    library: <span class="string">'_dll_[name]'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[</span><br><span class="line">     <span class="comment">// 使用插件 DllPlugin</span></span><br><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">       该插件的name属性值需要和 output.library保存一致，该字段值，也就是输出的 manifest.json文件中name字段的值。</span></span><br><span class="line"><span class="comment">       比如在jquery.manifest文件中有 name: '_dll_jquery'</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">    <span class="keyword">new</span> DllPlugin(&#123;</span><br><span class="line">      name: <span class="string">'_dll_[name]'</span>,</span><br><span class="line">       <span class="comment">/* 生成manifest文件输出的位置和文件名称 */</span></span><br><span class="line">       path: path.join(__dirname, <span class="string">'dist/dll'</span>, <span class="string">'[name].manifest.json'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>执行语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webpack --config webpack.dll.config.js</span><br></pre></td></tr></table></figure></p>
+<p>生成文件目录</p>
+<p><img src="data:image/png;base64,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" alt="image"></p>
+<h3 id="DllReferencePlugin"><a href="#DllReferencePlugin" class="headerlink" title="DllReferencePlugin"></a>DllReferencePlugin</h3><p><code>DllReferencePlugin项的参数有如下：</code></p>
+<ul>
+<li>context: manifest文件中请求的上下文。</li>
+<li>manifest: 编译时的一个用于加载的JSON的manifest的绝对路径。</li>
+<li>context: 请求到模块id的映射(默认值为 manifest.content)</li>
+<li>name: dll暴露的地方的名称(默认值为manifest.name)</li>
+<li>scope: dll中内容的前缀。</li>
+<li>sourceType: dll是如何暴露的libraryTarget。<br>webpack.config.js 所有代码如下：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> &#123;CleanWebpackPlugin&#125;  = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="comment">// 引入 DllReferencePlugin</span></span><br><span class="line"><span class="keyword">const</span> DllReferencePlugin = <span class="built_in">require</span>(<span class="string">'webpack/lib/DllReferencePlugin'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode:<span class="string">'development'</span>,</span><br><span class="line">  entry:<span class="string">'./index.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path:path.resolve(__dirname,<span class="string">'dist'</span>),</span><br><span class="line">    <span class="comment">// filename:'bundle.js',  [name].[contenthash].js 上线生产环境使用</span></span><br><span class="line">    filename: <span class="string">'[name].[hash].js'</span></span><br><span class="line">    <span class="comment">// publicPath:'dist'  引入文件路径 和图片路径均变化</span></span><br><span class="line">  &#125;,</span><br><span class="line">  devtool:<span class="string">'cheap-module-eval-source-map'</span>,</span><br><span class="line">  <span class="built_in">module</span>:&#123;</span><br><span class="line">    rules:[</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.jsx?$/</span>,</span><br><span class="line">        exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        loader:<span class="string">'babel-loader'</span>,</span><br><span class="line">        options:&#123;</span><br><span class="line">         </span><br><span class="line">            <span class="comment">// ['@babel/preset-env',&#123;useBuiltIns:'usage'&#125;]</span></span><br><span class="line"></span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">        &#125; </span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.css$/</span>,</span><br><span class="line">        use:[<span class="string">'style-loader'</span>,<span class="string">'css-loader'</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test:<span class="regexp">/\.png|jpg|gif$/</span>,</span><br><span class="line">        use:[</span><br><span class="line">          &#123; </span><br><span class="line">            loader:<span class="string">'url-loader'</span>,</span><br><span class="line">            options:&#123;</span><br><span class="line">              name:<span class="string">'images/[name].[ext]'</span>,</span><br><span class="line">              <span class="comment">// outputPath:'images/',</span></span><br><span class="line">              limit: <span class="number">1024</span>*<span class="number">4</span>,</span><br><span class="line">              <span class="comment">// publicPath:'dist/images'</span></span><br><span class="line">            &#125;&#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  optimization:&#123;</span><br><span class="line">    <span class="comment">// tree Shaking 只支持 es moudle</span></span><br><span class="line">    usedExports: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 代码分割</span></span><br><span class="line">    splitChunks:&#123;</span><br><span class="line">      chunks:<span class="string">'all'</span>,</span><br><span class="line">      cacheGroups: &#123;</span><br><span class="line">        vendors:<span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">'./index.html'</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">    <span class="comment">// new webpack.HotModuleReplacementPlugin() 与contenthash 冲突</span></span><br><span class="line">    <span class="comment">// 告诉webpack使用了哪些第三方库代码</span></span><br><span class="line">    <span class="keyword">new</span> DllReferencePlugin(&#123;</span><br><span class="line">      manifest: <span class="built_in">require</span>(<span class="string">'./dist/dll/reactDom.manifest.json'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> DllReferencePlugin(&#123;</span><br><span class="line">      manifest: <span class="built_in">require</span>(<span class="string">'./dist/dll/react.manifest.json'</span>)</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> DllReferencePlugin(&#123;</span><br><span class="line">      manifest: <span class="built_in">require</span>(<span class="string">'./dist/dll/loadsh.manifest.json'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    clientLogLevel: <span class="string">'warning'</span>,</span><br><span class="line">    historyApiFallback: <span class="literal">true</span>,</span><br><span class="line">    hot: <span class="literal">true</span>,</span><br><span class="line">    compress: <span class="literal">true</span>,</span><br><span class="line">    host: <span class="string">'localhost'</span>,</span><br><span class="line">    port: <span class="number">9000</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"><i class="fa fa-tag"></i> webpack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/12/weakMap/" rel="next" title="weakMap">
+                <i class="fa fa-chevron-left"></i> weakMap
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DllPlugin"><span class="nav-number">1.</span> <span class="nav-text">DllPlugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webpack-dll-config-js"><span class="nav-number">2.</span> <span class="nav-text">webpack.dll.config.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DllReferencePlugin"><span class="nav-number">3.</span> <span class="nav-text">DllReferencePlugin</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
