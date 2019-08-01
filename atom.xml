@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-07-15T14:03:58.206Z</updated>
+  <updated>2019-08-01T14:42:41.771Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HappyPack构建优化</title>
+    <link href="https://huchenh.github.io/2019/08/01/HappyPack%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96/"/>
+    <id>https://huchenh.github.io/2019/08/01/HappyPack构建优化/</id>
+    <published>2019-08-01T14:40:58.000Z</published>
+    <updated>2019-08-01T14:42:41.771Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是HappyPack-作用是什么&quot;&gt;&lt;a href=&quot;#什么是HappyPack-作用是什么&quot; class=&quot;headerlink&quot; title=&quot;什么是HappyPack? 作用是什么&quot;&gt;&lt;/a&gt;&lt;strong&gt;什么是HappyPack? 作用是什么&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​        webpack在构建文件时，比如js，css，图片及字体时，它需要一个一个去解析和编译，不能同时处理多个任务。特别当文件数量变多后，webpack构建慢的问题会显得更为严重。因此HappyPack出现了，它能让webpack同时处理多个任务，它将任务分解给多个子进程去并发执行，子进程处理完成后再将结果发送给主进程中。&lt;/p&gt;
+&lt;p&gt;​        &lt;strong&gt;HappyPack的基本原理&lt;/strong&gt;：在webpack构建过程中，我们需要使用Loader对js，css，图片，字体等文件做转换操作，并且转换的文件数据量也是非常大的，且这些转换操作不能并发处理文件，而是需要一个个文件进行处理，HappyPack的基本原理是将这部分任务分解到多个子进程中去并行处理，子进程处理完成后把结果发送到主进程中，从而减少总的构建时间。&lt;/p&gt;
+&lt;h3 id=&quot;在配置中使用HappyPack&quot;&gt;&lt;a href=&quot;#在配置中使用HappyPack&quot; class=&quot;headerlink&quot; title=&quot;在配置中使用HappyPack&quot;&gt;&lt;/a&gt;&lt;strong&gt;在配置中使用HappyPack&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;js/main.js 入口文件代码如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;../styles/main.styl&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; $ = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;jquery&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;#app&#39;&lt;/span&gt;).html(&lt;span class=&quot;string&quot;&gt;&#39;欢迎你来我的博客&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;这是main.js&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;./demo1.js&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;js/demo1.js 文件如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;printMe&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;11111111&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;styles/main.styl 代码如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@import &quot;./index.styl&quot;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-id&quot;&gt;#app&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;font-size&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;18px&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;200px&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;200px&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;display&lt;/span&gt; flex&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;border&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;PX solid &lt;span class=&quot;number&quot;&gt;#ccc&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="webpack" scheme="https://huchenh.github.io/categories/webpack/"/>
+    
+    
+      <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>Dllplugin</title>
@@ -548,38 +575,6 @@
     
     
       <category term="redux" scheme="https://huchenh.github.io/tags/redux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js调试console</title>
-    <link href="https://huchenh.github.io/2019/04/24/js%E8%B0%83%E8%AF%95console/"/>
-    <id>https://huchenh.github.io/2019/04/24/js调试console/</id>
-    <published>2019-04-24T13:49:39.000Z</published>
-    <updated>2019-04-24T13:50:33.899Z</updated>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Web开发最常用的高度就是 console.log ，虽然 console.log 占有一席之地，但很多人并没有意识到 console 本身除了基本 log 方法之外还有很多其他方法。 适当使用这些方法可以使调试更容易，更快速，更直观。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;console-log&quot;&gt;&lt;a href=&quot;#console-log&quot; class=&quot;headerlink&quot; title=&quot;console.log()&quot;&gt;&lt;/a&gt;console.log()&lt;/h3&gt;&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在&lt;code&gt;console.log&lt;/code&gt;中除了常用的打印功能，如&lt;code&gt;console.log(object)&lt;/code&gt;用来查看对象，也可以&lt;code&gt;console.log(object,otherObject,string)&lt;/code&gt;这样对象和字符串都会整齐的记录下来。&lt;/p&gt;
-&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;格式化功能&lt;code&gt;cosnole.log(msg,values)&lt;/code&gt;，有点像java中的println。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;I like %s but I do not like %s&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;Skittles&#39;&lt;/span&gt;,;pus)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 会得到下面结果&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;I like Skittles but I &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; not like pus.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;这里面用到了占位符，常见的占位符有：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;%o（字母o） 接收对象&lt;/li&gt;
-&lt;li&gt;%s         接收字符串&lt;/li&gt;
-&lt;li&gt;%d         小数或整数&lt;/li&gt;
-&lt;li&gt;%c         css首位占位符，后面的参数必须是css语句，用来对输出的内容进行css渲染，常见的方式有：文字样式，图片输出。&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&#39;I am a %cbutton&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;color: white; background-color: orange; padding: 2px 5px; border-radius: 2px&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 后面的css样式  会应用在 字符串 ‘button’上，即占位符 %c 后面的内容&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="调试" scheme="https://huchenh.github.io/tags/%E8%B0%83%E8%AF%95/"/>
     
   </entry>
   
