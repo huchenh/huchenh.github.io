@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javaScript,">
+  <meta name="keywords" content="vue,">
 
 
 
@@ -88,18 +88,20 @@
 
 
 
-<meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一名前端开发者，我们经常会处理各种事件，比如常见的click、scroll、 resize等等。仔细一想，会发现像scroll、scroll、onchange这类事件会频繁触发，如果我们在回调中计算元素位置、做一些跟DOM相关的操作，引起浏览器回流和重绘，频繁触发回调，很可能会造成浏览器掉帧，甚至会使浏览器崩溃，影响用户体">
-<meta name="keywords" content="javaScript">
+<meta name="description" content="基础：Vue.js 组件的三个 API：props、event、slot 我们自己写的vue组件，通常由三部分组成：props、event、slot，这就是我们自己编写组件的API。如果开发一个通用组件，那一定要事先设计好这三部分，因为组件一旦发布，后面再修改 API 就很困难了，使用者都是希望不断新增功能，修复 bug，而不是经常变更接口。如果你阅读别人写的组件，也可以从这三个部分展开，它们可以">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="防抖和节流">
-<meta property="og:url" content="https://huchenh.github.io/2019/04/07/防抖和节流/index.html">
+<meta property="og:title" content="vue组件三个API：prop、event、slot">
+<meta property="og:url" content="https://huchenh.github.io/2019/08/04/vue组件三个API：prop、event、slot/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一名前端开发者，我们经常会处理各种事件，比如常见的click、scroll、 resize等等。仔细一想，会发现像scroll、scroll、onchange这类事件会频繁触发，如果我们在回调中计算元素位置、做一些跟DOM相关的操作，引起浏览器回流和重绘，频繁触发回调，很可能会造成浏览器掉帧，甚至会使浏览器崩溃，影响用户体">
+<meta property="og:description" content="基础：Vue.js 组件的三个 API：props、event、slot 我们自己写的vue组件，通常由三部分组成：props、event、slot，这就是我们自己编写组件的API。如果开发一个通用组件，那一定要事先设计好这三部分，因为组件一旦发布，后面再修改 API 就很困难了，使用者都是希望不断新增功能，修复 bug，而不是经常变更接口。如果你阅读别人写的组件，也可以从这三个部分展开，它们可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-07T04:06:23.245Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/10/18/166864d066bbcf69?w=790&h=632&f=png&s=36436">
+<meta property="og:updated_time" content="2019-08-04T14:45:05.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="防抖和节流">
-<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一名前端开发者，我们经常会处理各种事件，比如常见的click、scroll、 resize等等。仔细一想，会发现像scroll、scroll、onchange这类事件会频繁触发，如果我们在回调中计算元素位置、做一些跟DOM相关的操作，引起浏览器回流和重绘，频繁触发回调，很可能会造成浏览器掉帧，甚至会使浏览器崩溃，影响用户体">
+<meta name="twitter:title" content="vue组件三个API：prop、event、slot">
+<meta name="twitter:description" content="基础：Vue.js 组件的三个 API：props、event、slot 我们自己写的vue组件，通常由三部分组成：props、event、slot，这就是我们自己编写组件的API。如果开发一个通用组件，那一定要事先设计好这三部分，因为组件一旦发布，后面再修改 API 就很困难了，使用者都是希望不断新增功能，修复 bug，而不是经常变更接口。如果你阅读别人写的组件，也可以从这三个部分展开，它们可以">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/10/18/166864d066bbcf69?w=790&h=632&f=png&s=36436">
 
 
 
@@ -129,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/04/07/防抖和节流/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/08/04/vue组件三个API：prop、event、slot/">
 
 
 
 
 
-  <title>防抖和节流 | 追风</title>
+  <title>vue组件三个API：prop、event、slot | 追风</title>
   
 
 
@@ -304,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/07/防抖和节流/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/04/vue组件三个API：prop、event、slot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -321,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">防抖和节流</h1>
+          <h1 class="post-title" itemprop="name headline">vue组件三个API：prop、event、slot</h1>
         
 
         <div class="post-meta">
@@ -333,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T12:05:36+08:00">
-                2019-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-04T22:42:27+08:00">
+                2019-08-04
               </time>
             
 
@@ -356,8 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -393,53 +395,46 @@
       
 
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为一名前端开发者，我们经常会处理各种事件，比如常见的click、scroll、 resize等等。仔细一想，会发现像scroll、scroll、onchange这类事件会频繁触发，如果我们在回调中计算元素位置、做一些跟DOM相关的操作，引起浏览器回流和重绘，频繁触发回调，很可能会造成浏览器掉帧，甚至会使浏览器崩溃，影响用户体验。针对这种现象，目前有两种常用的解决方案：防抖和节流。</p>
-<h3 id="防抖（debounce）"><a href="#防抖（debounce）" class="headerlink" title="防抖（debounce）"></a>防抖（debounce）</h3><blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓防抖，就是指触发事件后，就是把触发非常频繁的事件合并成一次去执行。即在指定时间内只执行一次回调函数，如果在指定的时间内又触发了该事件，则回调函数的执行时间会基于此刻重新开始计算。</p>
+        <h2 id="基础：Vue-js-组件的三个-API：props、event、slot"><a href="#基础：Vue-js-组件的三个-API：props、event、slot" class="headerlink" title="基础：Vue.js 组件的三个 API：props、event、slot"></a>基础：Vue.js 组件的三个 API：props、event、slot</h2><blockquote>
+<p>我们自己写的vue组件，通常由三部分组成：props、event、slot，这就是我们自己编写组件的API。如果开发一个通用组件，那一定要事先设计好这三部分，因为组件一旦发布，后面再修改 API 就很困难了，使用者都是希望不断新增功能，修复 bug，而不是经常变更接口。如果你阅读别人写的组件，也可以从这三个部分展开，它们可以帮助你快速了解一个组件的所有功能。</p>
 </blockquote>
-<p>例如：<br><code>以我们生活中乘车刷卡的情景举例，只要乘客不断地在刷卡，司机师傅就不能开车，乘客刷卡完毕之后，司机会等待几分钟，确定乘客坐稳再开车。如果司机在最后等待的时间内又有新的乘客上车，那么司机等乘客刷卡完毕之后，还要再等待一会，等待所有乘客坐稳再开车。</code></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体应该怎么去实现这样的功能呢？第一时间肯定会想到使用setTimeout方法，那我们就尝试写一个简单的函数来实现这个功能吧~</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> debounce = <span class="function"><span class="keyword">function</span>(<span class="params">fn,delaytime</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timeId;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = <span class="keyword">this</span>,</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">    timeId &amp;&amp; clearTimeout(timeId);</span><br><span class="line">    timeId = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      fn.apply(context,args)</span><br><span class="line">    &#125;, delaytime);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="属性props"><a href="#属性props" class="headerlink" title="属性props"></a>属性props</h3><p>vue 父子组件是通过props进行单向的数据传递，props定义了子组件可配置的属性。写通用组件props最好是使用<strong>对象</strong>的写法，这样可以针对每个属性设置类型、默认值或自定义校验属性的值。如果直接使用props数组的用法，这样往往不够严谨，下面是一个<a href="https://github.com/iview/iview" target="_blank" rel="noopener">iView</a>的一个按钮组件<code>&lt;i-button&gt;&lt;/i-button&gt;</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"'i-button-size'+size"</span> <span class="attr">:disabled</span>=<span class="string">"disabled"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">// 判断参数是否是其中之一</span></span><br><span class="line"><span class="undefined">function oneOf(value,validList)&#123;</span></span><br><span class="line"><span class="undefined">  for (let i = 0; i &lt; validList.length; i++) &#123;</span></span><br><span class="line"><span class="undefined">      if (value === validList[i]) &#123;</span></span><br><span class="line"><span class="undefined">        return true;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    return false;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">export default &#123;</span></span><br><span class="line"><span class="undefined">  props: &#123;</span></span><br><span class="line"><span class="undefined">    size:&#123;</span></span><br><span class="line"><span class="undefined">      validator (value)&#123;</span></span><br><span class="line"><span class="undefined">        return oneOf(value, ['small', 'large', 'default']);</span></span><br><span class="line"><span class="undefined">      &#125;,</span></span><br><span class="line"><span class="undefined">      default: 'default'</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    disabled: &#123;</span></span><br><span class="line"><span class="undefined">      type: Boolean,</span></span><br><span class="line"><span class="undefined">      default: false</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">lang</span>=<span class="string">"less"</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.i-button-sizesmall&#123;&#125;</span></span><br><span class="line"><span class="undefined">.i-button-sizelarge&#123;&#125;</span></span><br><span class="line"><span class="undefined">.i-button-sizedefault&#123;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>使用组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i-button</span> <span class="attr">size</span>=<span class="string">"large"</span>&gt;</span><span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i-button</span> <span class="attr">disabled</span>&gt;</span><span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<p><strong><code>思路解析</code></strong></p>
-<blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执行debounce函数之后会返回一个新的函数，通过闭包的形式，维护一个变量timeId，每次执行该函数的时候会结束之前的延迟操作，重新执行setTimeout方法，也就实现了上面所说的指定的时间内多次触发同一个事件，会合并执行一次。</p>
-</blockquote>
-<ol>
-<li><p>上述代码中arguments只会保存事件回调函数中的参数，譬如：事件对象等，并不会保存fn、delayTime</p>
-</li>
-<li><p>使用apply改变传入的fn方法中的this指向，指向绑定事件的DOM元素。</p>
-</li>
-</ol>
-<h3 id="节流（throttle）"><a href="#节流（throttle）" class="headerlink" title="节流（throttle）"></a>节流（throttle）</h3><blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓节流，是指频繁触发事件时，只会在指定的时间段内执行事件回调，即触发事件间隔大于等于指定的时间才会执行回调函数。</p>
-</blockquote>
-<p><code>类比到生活中的水龙头，拧紧水龙头到某种程度会发现，每隔一段时间，就会有水滴流出。</code></p>
-<p>说到时间间隔，大家肯定会想到使用setTimeout来实现，在这里，我们使用两种方法来简单实现这种功能：时间戳和setTimeout定时器。</p>
-<p><strong><code>时间戳</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">fn,delaytime</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _now = <span class="built_in">Date</span>.now(),</span><br><span class="line">      context = <span class="keyword">this</span>,</span><br><span class="line">      args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(_now - _start &gt;= delaytime)&#123;</span><br><span class="line">      fn.apply(context,args)</span><br><span class="line">      _start = <span class="built_in">Date</span>.now();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>通过比较两次时间戳的间隔是否大于等于我们事先指定的时间来决定是否执行事件回调。</code></p>
-<p><strong><code>定时器</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">fn,delaytime</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> flag;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = <span class="keyword">this</span>,</span><br><span class="line">        args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">      flag = setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        fn.apply(context,args);</span><br><span class="line">        <span class="comment">// clearTimeout(timer)</span></span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;,delaytime)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>对比上述两种实现:</code></p>
-<ol>
-<li><p>使用时间戳方式，页面加载的时候就会开始计时，如果页面加载时间大于我们设定的delayTime，第一次触发事件回调的时候便会立即fn，并不会延迟。如果最后一次触发回调与前一次触发回调的时间差小于delayTime，则最后一次触发事件并不会执行fn；</p>
-</li>
-<li><p>使用定时器方式，我们第一次触发回调的时候才会开始计时，如果最后一次触发回调事件与前一次时间间隔小于delayTime，delayTime之后仍会执行fn。</p>
-</li>
-<li><p>我们考虑把这两种方式结合起来，便会在第一次触发事件时执行fn，最后一次与前一次间隔比较短，delayTime之后再次执行fn。</p>
-</li>
-</ol>
-<h3 id="最终节流实现"><a href="#最终节流实现" class="headerlink" title="最终节流实现"></a>最终节流实现</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">fn,delaytime</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> timer,_start = <span class="built_in">Date</span>.now();</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = <span class="keyword">this</span>,</span><br><span class="line">        args = <span class="built_in">arguments</span>,</span><br><span class="line">        _now = <span class="built_in">Date</span>.now(),</span><br><span class="line">        remainTime = delaytime - (_now - _start);</span><br><span class="line">      timer &amp;&amp; clearTimeout(timer);</span><br><span class="line">      <span class="keyword">if</span>(remainTime &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        fn.apply(context,args)</span><br><span class="line">        _start = <span class="built_in">Date</span>.now();</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          fn.apply(context,args)</span><br><span class="line">        &#125;,remainTime)</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>通过上面的分析，可以很明显的看出函数防抖和函数节流的区别：</code></p>
-<blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;频繁触发事件时，函数防抖只会在最后一次触发事件只会才会执行回调内容，其他情况下会重新计算延迟事件，而函数节流便会很有规律的每隔一定时间执行一次回调函数。</p>
-</blockquote>
-<h3 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h3><p>如果我们不考虑兼容性，追求精度比较高的页面效果，可以考虑试试html5提供的API <code>requestAnimationFrame</code>实现防抖和节流功能</p>
-<p>与setTimeout相比，requestAnimationFrame的时间间隔是有系统来决定，保证屏幕刷新一次，回调函数只会执行一次，比如屏幕的刷新频率是60HZ，即间隔1000ms/60会执行一次回调。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> throttle = <span class="function"><span class="keyword">function</span>(<span class="params">fn,delaytime</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> flag;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">      requestAnimationFrame(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        fn();</span><br><span class="line">        flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      flag = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong><code>注意：</code></strong></p>
+<p>组件中定义了两个属性：尺寸 size 和 是否禁用 disabled。其中 size 使用 <code>validator</code> 进行了值的自定义验证，也就是说，从父级传入的 size，它的值必须是指定的 <strong>small、large、default</strong> 中的一个，默认值是 default，如果传入这三个以外的值，都会抛出一条警告。</p>
+<p>要注意的是，组件里定义的 props，都是<strong>单向数据流</strong>，也就是只能通过父级修改，组件自己不能修改 props 的值，只能修改定义在 data 里的数据，非要修改，也是通过后面介绍的自定义事件通知父级，由父级来修改。</p>
+<p>在使用组件时，也可以传入一些标准的 html 特性，比如 <strong>id</strong>、<strong>class</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-button id=&quot;btn1&quot; class=&quot;btn-submit&quot;&gt;&lt;/i-button&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样的 html 特性，在组件内的 <code>&lt;button&gt;</code> 元素上会继承，并不需要在 props 里再定义一遍。这个特性是默认支持的，如果不期望开启，在组件选项里配置 <code>inheritAttrs: false</code> 就可以禁用了。实例属性 <code>$attrs</code>可以让这些特性生效，且可以通过 v-bind 显性的绑定到非根元素上。</p>
+<h3 id="插槽-slot"><a href="#插槽-slot" class="headerlink" title="插槽 slot"></a>插槽 slot</h3><p>如果我们需要自定义按钮<code>&lt;i-button&gt;</code>添加文字内容，就要用到插槽 slot，它可以分发组件的内容，比如在上面的按钮组件中定义一个插槽：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">:class</span>=<span class="string">"'i-button-size' + size"</span> <span class="attr">:disabled</span>=<span class="string">"disabled"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i-button</span>&gt;</span>按钮 1<span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">strong</span>&gt;</span>按钮 2<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当需要多个插槽时，会用到具名 slot：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button :class=&quot;&apos;i-button-size&apos; + size&quot; :disabled=&quot;disabled&quot;&gt;</span><br><span class="line">    &lt;slot name=&quot;icon&quot;&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;i-button&gt;</span><br><span class="line">  &lt;i-icon slot=&quot;icon&quot; type=&quot;checkmark&quot;&gt;&lt;/i-icon&gt;</span><br><span class="line">  按钮 1</span><br><span class="line">&lt;/i-button&gt;</span><br></pre></td></tr></table></figure>
+<p>这样，父级内定义的内容，就会出现在组件对应的 slot 里，没有写名字的，就是默认的 slot。</p>
+<h3 id="自定义事件-event"><a href="#自定义事件-event" class="headerlink" title="自定义事件 event"></a>自定义事件 event</h3><p>给组件 <code>&lt;i-button&gt;</code> 加一个点击事件，我们先看自定义事件 event（部分代码省略）：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"handleClick"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  export default &#123;</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="undefined">      handleClick (event) &#123;</span></span><br><span class="line"><span class="undefined">        this.$emit('on-click', event);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>通过 <code>$emit</code>，就可以触发自定义的事件 <code>on-click</code> ，在父级通过 <code>@on-click</code> 来监听：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i-button</span> @<span class="attr">on-click</span>=<span class="string">"handleClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的 click 事件，是在组件内部的 <code>&lt;button&gt;</code> 元素上声明的，这里还有另一种方法，直接在父级声明，但为了区分原生事件和自定义事件，要用到事件修饰符 <code>.native</code>，所以上面的示例也可以这样写：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i-button</span> @<span class="attr">click.native</span>=<span class="string">"handleClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">i-button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果不写 <code>.native</code> 修饰符，那上面的 <code>@click</code> 就是<strong>自定义事件</strong> click，而非<strong>原生事件</strong> click，但我们在组件内只触发了 <code>on-click</code> 事件，而不是 <code>click</code>，所以直接写 <code>@click</code> 会监听不到。</p>
+<h3 id="组件的通信"><a href="#组件的通信" class="headerlink" title="组件的通信"></a>组件的通信</h3><p>一般来说，组件可以有以下几种关系：</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/10/18/166864d066bbcf69?w=790&amp;h=632&amp;f=png&amp;s=36436" alt="组件关系"></p>
+<p>A 和 B、B 和 C、B 和 D 都是父子关系，C 和 D 是兄弟关系，A 和 C 是隔代关系（可能隔多代）。组件间经常会通信，Vue.js 内置的通信手段一般有两种：</p>
 <ul>
-<li>防抖和节流只是减少了事件回调函数的执行次数，并不会减少事件的触发频率。</li>
-<li>防抖和节流并没有从本质上解决性能问题，我们还应该注意优化我们事件回调函数的逻辑功能，避免在回调中执行比较复杂的DOM操作，减少浏览器reflow和repaint。</li>
+<li><code>ref</code>：给元素或组件注册引用信息；</li>
+<li><code>$parent</code> / <code>$children</code>：访问父 / 子实例。</li>
+</ul>
+<p>这两种都是直接得到组件实例，使用后可以直接调用组件的方法或访问数据，比如下面的示例中，用 ref 来访问组件（部分代码省略）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// component-a</span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      title: &apos;Vue.js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    sayHello () &#123;</span><br><span class="line">      window.alert(&apos;Hello&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;component-a ref=&quot;comA&quot;&gt;&lt;/component-a&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    mounted () &#123;</span><br><span class="line">      const comA = this.$refs.comA;</span><br><span class="line">      console.log(comA.title);  // Vue.js</span><br><span class="line">      comA.sayHello();  // 弹窗</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><code>$parent</code> 和 <code>$children</code> 类似，也是基于当前上下文访问父组件或全部子组件的。</p>
+<p>这两种方法的弊端是，无法在<strong>跨级</strong>或<strong>兄弟</strong>间通信，比如下面的结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// parent.vue</span><br><span class="line">&lt;component-a&gt;&lt;/component-a&gt;</span><br><span class="line">&lt;component-b&gt;&lt;/component-b&gt;</span><br><span class="line">&lt;component-b&gt;&lt;/component-b&gt;</span><br></pre></td></tr></table></figure>
+<p>我们想在 component-a 中，访问到引用它的页面中（这里就是 parent.vue）的两个 component-b 组件，那这种情况下，就得配置额外的插件或工具了，比如 Vuex 和 Bus 的解决方案</p>
+<h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><ul>
+<li><a href="https://juejin.im/post/5a4353766fb9a044fb080927" target="_blank" rel="noopener">Vue 组件通信之 Bus</a></li>
+<li><a href="https://juejin.im/entry/58cb4c36b123db00532076a2" target="_blank" rel="noopener">Vuex 通俗版教程</a></li>
 </ul>
 
       
@@ -466,7 +461,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
           
         </div>
       
@@ -479,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/react04/" rel="next" title="react04">
-                <i class="fa fa-chevron-left"></i> react04
+              <a href="/2019/08/01/HappyPack构建优化/" rel="next" title="HappyPack构建优化">
+                <i class="fa fa-chevron-left"></i> HappyPack构建优化
               </a>
             
           </div>
@@ -488,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/10/react05/" rel="prev" title="react05">
-                react05 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -637,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#防抖（debounce）"><span class="nav-number">1.</span> <span class="nav-text">防抖（debounce）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节流（throttle）"><span class="nav-number">2.</span> <span class="nav-text">节流（throttle）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最终节流实现"><span class="nav-number">3.</span> <span class="nav-text">最终节流实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requestAnimationFrame"><span class="nav-number">4.</span> <span class="nav-text">requestAnimationFrame</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础：Vue-js-组件的三个-API：props、event、slot"><span class="nav-number">1.</span> <span class="nav-text">基础：Vue.js 组件的三个 API：props、event、slot</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性props"><span class="nav-number">1.1.</span> <span class="nav-text">属性props</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插槽-slot"><span class="nav-number">1.2.</span> <span class="nav-text">插槽 slot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义事件-event"><span class="nav-number">1.3.</span> <span class="nav-text">自定义事件 event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件的通信"><span class="nav-number">1.4.</span> <span class="nav-text">组件的通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展阅读"><span class="nav-number">1.5.</span> <span class="nav-text">扩展阅读</span></a></li></ol></li></ol></div>
             
 
           </div>

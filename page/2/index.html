@@ -304,6 +304,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/07/02/SourceMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/SourceMap/" itemprop="url">SourceMap</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-02T17:25:38+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="什么是SourceMap"><a href="#什么是SourceMap" class="headerlink" title="什么是SourceMap?"></a><strong>什么是SourceMap?</strong></h3><p>​        webpack4在项目进行打包后，会将开发中的多个文件代码打包到一个文件中，并且经过压缩，去掉多余的空格，且babel编译化后，最终会用于线上环境，那么这样处理后的代码和源代码会有很大的差别，当有bug的时候，我们只能定位到压缩处理后的代码位置，无法定位到开发环境中的代码，对于开发不好调式，因此sourceMap出现了，它就是为了解决不好调式代码问题。</p>
+<h3 id="webpack中的SourceMap"><a href="#webpack中的SourceMap" class="headerlink" title="webpack中的SourceMap"></a><strong>webpack中的SourceMap</strong></h3><h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a><strong>eval</strong></h4><p>​        eval 会将每一个module模块，执行eval，执行后不会生成sourcemap文件，仅仅是在每一个模块后，增加sourceURL来关联模块处理前后对应的关系。在webpack中配置devtool: ‘eval’</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">modules</span>) </span>&#123; <span class="comment">// webpackBootstrap</span></span><br><span class="line"><span class="meta">  "use strict"</span>;</span><br><span class="line">  <span class="built_in">eval</span>(<span class="string">"__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() &#123; return printMe; &#125;);\n\nfunction printMe() &#123;\n  console.log('11111111');\n&#125;\n\n//# sourceURL=webpack:///./js/demo1.js?"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">/***/</span> <span class="string">"./js/main.js"</span>:</span><br><span class="line">  <span class="comment">/*!********************!*\</span></span><br><span class="line"><span class="comment">    !*** ./js/main.js ***!</span></span><br><span class="line"><span class="comment">    \********************/</span></span><br><span class="line">  <span class="comment">/*! no exports provided */</span></span><br><span class="line">  <span class="comment">/***/</span> </span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">module, __webpack_exports__, __webpack_require__</span>) </span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">"__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _demo1_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./demo1.js */ \"./js/demo1.js\");\n\n\nconsole.log('main.js');\n\n//# sourceURL=webpack:///./js/main.js?"</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>​        每一个打包后的模块后面都增加了包含sourceURL的注释，sourceURL的值是压缩前存放的代码的位置，这样就通过sourceURL关联了压缩前后的代码。</p>
+<p><strong>优点是：</strong>打包速度非常快，因为不需要生成sourcemap文件。<br><strong>缺点是：</strong>由于会映射到转换后的代码，而不是映射到原始代码，所以不能正确的显示行数。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/02/SourceMap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/27/webpack-babelrc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -904,165 +1056,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/02/前端路由跳转分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/02/前端路由跳转分析/" itemprop="url">前端路由调转解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T23:24:54+08:00">
-                2019-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/路由/" itemprop="url" rel="index">
-                    <span itemprop="name">路由</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>​        目前前端三杰 Angular、React、Vue 都推介单页面应用 SPA 开发模式，在路由切换时替换 DOM Tree 中最小修改的部分 DOM，来减少原先因为多页应用的页面跳转带来的巨量性能损耗。它们都有自己的典型路由解决方案，@angular/router、react-router、vue-router。</p>
-<p>​        一般来说，这些路由插件总是提供两种不同方式的路由方式：Hash 和 History，有时也会提供非浏览器环境下的路由方式 Abstract。Hash 和 History 除了外观上的不同之外，还一个区别是：Hash 方式的状态保存需要另行传递，而 HTML5 History 原生提供了自定义状态传递的能力，我们可以直接利用其来传递信息。</p>
-<h3 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h3><h4 id="相关-Api"><a href="#相关-Api" class="headerlink" title="相关 Api"></a><strong>相关 Api</strong></h4><p>​        Hash 方法是在路由中带有一个 #，主要原理是通过监听 # 后的 URL 路径标识符的更改而触发的浏览器 hashchange 事件，然后通过获取 location.hash 得到当前的路径标识符，再进行一些路由跳转的操作。</p>
-<ol>
-<li>location.href：返回完整的 URL</li>
-<li>location.hash：返回 URL 的锚部分</li>
-<li>location.pathname：返回 URL 路径名</li>
-<li>hashchange 事件：当 location.hash 发生改变时，将触发这个事件</li>
-</ol>
-<p>比如访问一个路径 <a href="http://sherlocked93.club/base/#/page1，那么上面几个值分别为：" target="_blank" rel="noopener">http://sherlocked93.club/base/#/page1，那么上面几个值分别为：</a></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># http://sherlocked93.club/base/#/page1</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"href"</span>: <span class="string">"http://sherlocked93.club/base/#/page1"</span>,</span><br><span class="line">  <span class="string">"pathname"</span>: <span class="string">"/base/"</span>,</span><br><span class="line">  <span class="string">"hash"</span>: <span class="string">"#/page1"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a><strong><code>简单实现</code></strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RouterClass</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>()&#123;</span><br><span class="line">        <span class="keyword">this</span>.routes = &#123;&#125;        <span class="comment">// 记录路径标识符对应的cb</span></span><br><span class="line">        <span class="keyword">this</span>.currentUrl = <span class="string">''</span>    <span class="comment">// 记录hash只为方便执行cb</span></span><br><span class="line">        <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, () =&gt; <span class="keyword">this</span>.render())</span><br><span class="line">        <span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, () =&gt; <span class="keyword">this</span>.render())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 初始化 */</span></span><br><span class="line">    <span class="keyword">static</span> init()&#123;</span><br><span class="line">        <span class="built_in">window</span>.Router = <span class="keyword">new</span> RouterClass()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     <span class="comment">/* 注册路由和回调 */</span></span><br><span class="line">     route(path, cb) &#123;</span><br><span class="line">        <span class="keyword">this</span>.routes[path] = cb || <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">     &#125;</span><br><span class="line">    <span class="comment">/* 记录当前hash，执行cb */</span></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">'/'</span></span><br><span class="line">        <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/02/前端路由跳转分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1115,7 +1108,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1126,7 +1119,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1137,7 +1130,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
