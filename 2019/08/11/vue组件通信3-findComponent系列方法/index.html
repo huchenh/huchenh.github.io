@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="javaScript,ajax,http,">
+  <meta name="keywords" content="vue,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="知识点：AJAXasync javascript and xml 异步的JS和XML 在AJAX中的异步不是我们理解的同步异步编程，而是泛指“局部刷新”，但是我们在以后的AJAX请求中尽可能使用异步获取数据（因为异步数据获取不会阻塞下面代码的执行）  XML是一种文件格式（我们可以把HTML理解为XML的一种）：可扩展的标记语言，它的作用是用自己扩展的一些语义标签来存储一些数据和内容，这样存储的好">
-<meta name="keywords" content="javaScript,ajax,http">
+<meta name="description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js知识梳理十五">
-<meta property="og:url" content="https://huchenh.github.io/2019/03/24/js知识梳理十五/index.html">
+<meta property="og:title" content="vue组件通信3-findComponent系列方法">
+<meta property="og:url" content="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="知识点：AJAXasync javascript and xml 异步的JS和XML 在AJAX中的异步不是我们理解的同步异步编程，而是泛指“局部刷新”，但是我们在以后的AJAX请求中尽可能使用异步获取数据（因为异步数据获取不会阻塞下面代码的执行）  XML是一种文件格式（我们可以把HTML理解为XML的一种）：可扩展的标记语言，它的作用是用自己扩展的一些语义标签来存储一些数据和内容，这样存储的好">
+<meta property="og:description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-24T10:26:22.990Z">
+<meta property="og:updated_time" content="2019-08-11T07:57:29.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js知识梳理十五">
-<meta name="twitter:description" content="知识点：AJAXasync javascript and xml 异步的JS和XML 在AJAX中的异步不是我们理解的同步异步编程，而是泛指“局部刷新”，但是我们在以后的AJAX请求中尽可能使用异步获取数据（因为异步数据获取不会阻塞下面代码的执行）  XML是一种文件格式（我们可以把HTML理解为XML的一种）：可扩展的标记语言，它的作用是用自己扩展的一些语义标签来存储一些数据和内容，这样存储的好">
+<meta name="twitter:title" content="vue组件通信3-findComponent系列方法">
+<meta name="twitter:description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/03/24/js知识梳理十五/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/">
 
 
 
 
 
-  <title>js知识梳理十五 | 追风</title>
+  <title>vue组件通信3-findComponent系列方法 | 追风</title>
   
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/24/js知识梳理十五/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">js知识梳理十五</h1>
+          <h1 class="post-title" itemprop="name headline">vue组件通信3-findComponent系列方法</h1>
         
 
         <div class="post-meta">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T18:25:43+08:00">
-                2019-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T15:56:03+08:00">
+                2019-08-11
               </time>
             
 
@@ -356,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTP/" itemprop="url" rel="index">
-                    <span itemprop="name">HTTP</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -393,73 +393,26 @@
       
 
       
-        <h2 id="知识点：AJAX"><a href="#知识点：AJAX" class="headerlink" title="知识点：AJAX"></a>知识点：AJAX</h2><h3 id="async-javascript-and-xml-异步的JS和XML"><a href="#async-javascript-and-xml-异步的JS和XML" class="headerlink" title="async javascript and xml 异步的JS和XML"></a>async javascript and xml 异步的JS和XML</h3><ol>
-<li><p>在AJAX中的异步不是我们理解的同步异步编程，而是泛指“局部刷新”，但是我们在以后的AJAX请求中尽可能使用异步获取数据（因为异步数据获取不会阻塞下面代码的执行）</p>
-</li>
-<li><p>XML是一种文件格式（我们可以把HTML理解为XML的一种）：可扩展的标记语言，它的作用是用自己扩展的一些语义标签来存储一些数据和内容，这样存储的好处是清晰的展示出数据的结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">很久以前，AJAX刚刚兴起的时候，客户端从服务器端获取数据，服务器为了清晰的表达数据结构，都是返回XML格式的内容，当下，我们获取的数据一般都是JSON格式的内容，JSON相对于XML来说，也能清晰表达数据结构，而且访问里面数据的时候操作起来比XML更简便（但是现在某些项目中，服务器返回给客户端的数据不单纯是数据，而是数据和需要展示的结构拼接好的结果(类似于我们自己做的字符串拼接)，换句话说，是服务器端把数据和结构拼接好返回给我们，此时返回的数据格式一般都是XML格式的字符串）</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="AJAX操作"><a href="#AJAX操作" class="headerlink" title="AJAX操作"></a>AJAX操作</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//=&gt;创建AJAX实例：IE6中是不兼容的，使用的是new ActiveXObject来实现的</span></span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;打开请求：发送请求之前的一些配置项</span></span><br><span class="line"><span class="comment">//1.HTTP METHOD 请求方式</span></span><br><span class="line"><span class="comment">// GET/DELETE/HEAD/OPTIONS/TRACE/CONNECT</span></span><br><span class="line"><span class="comment">// POST/PUT</span></span><br><span class="line"><span class="comment">//2.URL 向服务器端发送请求的API（Application Programming Interface）接口地址</span></span><br><span class="line"><span class="comment">//3.ASYNC 设置AJAX请求的同步异步，默认是异步（写TRUE也是异步），FALSE是同步，项目中都使用异步编程，防止阻塞后续代码执行</span></span><br><span class="line"><span class="comment">//4.USER-NAME/USER-PASS：用户名密码，一般不用</span></span><br><span class="line">xhr.open([HTTP METHOD],[URL],[ASYNC],[USER-NAME],[USER-PASS]);</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;3.事件监听：一般监听的都是 READY-STATE-CHANGE 事件（AJAX状态改变事件），基于这个事件可以获取服务器返回的响应头响应主体内容</span></span><br><span class="line">xhr.onreadystatechange=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState===<span class="number">4</span> &amp;&amp; xhr.status===<span class="number">200</span>)&#123;</span><br><span class="line">       xhr.responseText;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;4.发送AJAX请求：从这步开始，当前AJAX任务开始，如果AJAX是同步的，后续代码不会执行，要等到AJAX状态成功后在执行，反之异步不会</span></span><br><span class="line">xhr.send([请求主体内容]);</span><br></pre></td></tr></table></figure>
+        <h2 id="组件的通信-3：找到任意组件实例——findComponents-系列方法"><a href="#组件的通信-3：找到任意组件实例——findComponents-系列方法" class="headerlink" title="组件的通信 3：找到任意组件实例——findComponents 系列方法"></a>组件的通信 3：找到任意组件实例——findComponents 系列方法</h2><p>provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。</p>
+<p>findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组件通信的终极方案。findComponents 系列方法最终都是返回组件的实例，进而可以读取或调用该组件的数据和方法。</p>
+<p> 5 个不同的函数:</p>
+<ul>
+<li>由一个组件，向上找到最近的指定组件；</li>
+<li>由一个组件，向上找到所有的指定组件；</li>
+<li>由一个组件，向下找到最近的指定组件；</li>
+<li>由一个组件，向下找到所有指定的组件；</li>
+<li>由一个组件，找到指定组件的兄弟组件。</li>
+</ul>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>5 个函数的原理，都是通过递归、遍历，找到指定组件的 <code>name</code> 选项匹配的组件实例并返回。</p>
+<h3 id="向上找到最近的指定组件——findComponentUpward"><a href="#向上找到最近的指定组件——findComponentUpward" class="headerlink" title="向上找到最近的指定组件——findComponentUpward"></a>向上找到最近的指定组件——findComponentUpward</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assist.js</span></span><br><span class="line"><span class="comment">// 由一个组件，向上找到最近的指定组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findComponentUpward</span> (<span class="params">context, componentName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> parent = context.$parent;</span><br><span class="line">  <span class="keyword">let</span> name = parent.$options.name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(parent &amp;&amp; (!name || [componentName].indexOf(name) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    parent = parent.$parent;</span><br><span class="line">    <span class="keyword">if</span>(parent)&#123;</span><br><span class="line">      name = parent.$options.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> parent</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; findComponentUpward &#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="关于HTTP请求方式的一点学习"><a href="#关于HTTP请求方式的一点学习" class="headerlink" title="关于HTTP请求方式的一点学习"></a>关于HTTP请求方式的一点学习</h3><blockquote>
-<p>所有的请求都可以给服务器端传递内容，也都可以从服务器端获取内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET：从服务器端获取数据(给的少拿的多)</span><br><span class="line">POST：向服务器端推送数据(给的多拿的少)</span><br><span class="line">DELETE：删除服务器端的某些内容（一般是删除一些文件）</span><br><span class="line">PUT：向服务器上存放一些内容（一般也是存放文件）</span><br><span class="line">HEAD：只想获取服务器返回的响应头信息，不要响应主体中的内容</span><br><span class="line">OPTIONS：一般使用它向服务器发送一个探测性请求，如果服务器端返回的信息了，说明当前客户端和服务器端建立了连接，我们可以继续执行其它请求了（TRACE是干这件事的，但是axios这个AJAX类库在基于cross domain进行跨域请求的时候，就是先发送OPTIONS请求进行探测尝试，如果能连通服务器，才会继续发送其它的请求）</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="GET-VS-POST"><a href="#GET-VS-POST" class="headerlink" title="GET VS POST"></a>GET VS POST</h3><p> [传递给服务器信息的方式不一样]<br>  GET是基于URL地址“问号传参”的方式把信息传递给服务器，POST是基于“请求主体”把信息传递给服务器<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[GET]</span><br><span class="line">xhr.open(&apos;GET&apos;,&apos;/temp/list?xxx=xxx&amp;xxx=xxx&apos;)</span><br><span class="line"></span><br><span class="line">[POST]</span><br><span class="line">xhr.send(&apos;xxx=xxx&amp;xxx=xxx&apos;)</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>GET一般应用于拿（给服务器的会少一些），而POST给服务器的很多，如果POST是基于问号传参方式来搞会出现一些问题：URL会拼接很长，浏览器对于URL的长度有有最大限度（谷歌8KB 火狐7KB IE2KB …），超过的部分浏览器就把它截掉了</p>
-</blockquote>
-<blockquote>
-<p>所以GET请求可以基于URL传参，而POST都是使用请求主体传递（请求主体理论上是没有限制的，真实项目中我们会自己做大小限制，防止上传过大信息导致请求迟迟完不成）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[GET不安全，POST相对安全]</span><br><span class="line">  因为GET是基于“问号传参”把信息传递给服务器的，容易被骇客进行URL劫持，POST是基于请求主体传递的，相对来说不好被劫持；所以登录、注册等涉及安全性的交互操作，我们都应该用POST请求；</span><br><span class="line"></span><br><span class="line">[GET会产生不可控制的缓存,POST不会]</span><br><span class="line">  不可控：不是想要就要，想不要就不要的，这是浏览器自主记忆的缓存，我们无法基于JS控制，真实项目中我们都会把这个缓存干掉</span><br><span class="line">  GET请求产生缓存是因为：连续多次向相同的地址（并且传递的参数信息也是相同的）发送请求，浏览器会把之前获取的数据从缓存中拿到返回，导致无法获取服务器最新的数据（POST不会）</span><br><span class="line"></span><br><span class="line">  解决方案：</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<pre><code>xhr.open(&apos;GET&apos;,`/temp/list?lx=1000&amp;_=${Math.random()}`); //=&gt;保证每次请求的地址不完全一致：在每一次请求的末尾追加一个随机数即可(使用_作为属性名就是不想和其它的属性名冲突)
-</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">5.AJAX状态(READY-STATE)</span><br><span class="line">0 =&gt;UNSENT  刚开始创建XHR，还没有发送</span><br><span class="line">1 =&gt;OPENED  已经执行了OPEN这个操作</span><br><span class="line">2 =&gt;HEADERS_RECEIVED 已经发送AJAX请求（AJAX任务开始），响应头信息已经被客户端接收了（响应头中包含了：服务器的时间、返回的HTTP状态码...）</span><br><span class="line">3 =&gt;LOADING 响应主体内容正在返回</span><br><span class="line">4 =&gt;DONE 响应主体内容已经被客户端接收</span><br></pre></td></tr></table></figure>
-<h3 id="HTTP网络状态码-STATUS"><a href="#HTTP网络状态码-STATUS" class="headerlink" title="HTTP网络状态码(STATUS)"></a>HTTP网络状态码(STATUS)</h3><blockquote>
-<p>根据状态码能够清楚的反映出当前交互的结果及原因</p>
-<ul>
-<li>200 OK 成功(只能证明服务器成功返回信息了，但是信息不一定是你业务需要的)</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>301 Moved Permanently 永久转移（永久重定向）<br>  =&gt;域名更改，访问原始域名重定向到新的域名</p>
-</li>
-<li><p>302 Move temporarily 临时转移（临时重定向 =&gt;307）<br>  =&gt;网站现在是基于HTTPS协议运作的，如果访问的是HTTP协议，会基于307重定向到HTTPS协议上<br>  =&gt;302一般用作服务器负载均衡：当一台服务器达到最大并发数的时候，会把后续访问的用户临时转移到其它的服务器机组上处理<br>  =&gt;偶尔真实项目中会把所有的图片放到单独的服务器上“图片处理服务器”，这样减少主服务器的压力，当用户向主服务器访问图片的时候，主服务器都把它转移到图片服务器上处理</p>
-</li>
-<li><p>304 Not Modified 设置缓存<br>  =&gt;对于不经常更新的资源文件，例如：CSS/JS/HTML/IMG等，服务器会结合客户端设置304缓存，第一次加载过这些资源就缓存到客户端了，下次再获取的时候，是从缓存中获取；如果资源更新了，服务器端会通过最后修改时间来强制让客户端从服务器重新拉取；基于CTRL+F5强制刷新页面，304做的缓存就没有用了。</p>
-</li>
-<li><p>400 Bad Request 请求参数错误</p>
-</li>
-<li>401 Unauthorized 无权限访问</li>
-<li>404 Not Found  找不到资源(地址不存在)</li>
-<li><p>413 Request Entity Too Large 和服务器交互的内容资源超过服务器最大限制</p>
-<p>500 Internal Server Error 未知的服务器错误<br>503 Service Unavailable 服务器超负荷</p>
-</li>
-</ul>
-<h3 id="关于XHR的属性和方法"><a href="#关于XHR的属性和方法" class="headerlink" title="关于XHR的属性和方法"></a>关于XHR的属性和方法</h3><ul>
-<li>xhr.response  响应主体内容</li>
-<li>xhr.responseText 响应主体的内容是字符串（JSON或者XML格式字符串都可以）</li>
-<li><p>xhr.responseXML 响应主体的内容是XML文档</p>
-</li>
-<li><p>xhr.status 返回的HTTP状态码</p>
-</li>
-<li><p>xhr.statusText 状态码的描述</p>
-</li>
-<li><p>xhr.timeout 设置请求超时的时间</p>
-</li>
-<li><p>xhr.withCredentials 是否允许跨域（FALSE）</p>
-</li>
-<li><p>xhr.abort() 强制中断AJAX请求</p>
-</li>
-<li>xhr.getAllResponseHeaders() 获取所有响应头信息</li>
-<li><p>xhr.getResponseHeader([key]) 获取KEY对应的响应头信息，例如：- - xhr.getResponseHeader(‘date’)就是在获取响应有中的服务器时间</p>
-</li>
-<li><p>xhr.open() 打开URL请求</p>
-</li>
-<li>xhr.overrideMimeType() 重写MIME类型</li>
-<li>xhr.send() 发送AJAX请求</li>
-<li>xhr.setRequestHeader() 设置请求头 –&gt; 在open操作之前设置</li>
-</ul>
-
+<p>findComponentUpward 接收两个参数，第一个是当前上下文，比如你要基于哪个组件来向上寻找，一般都是基于当前的组件，也就是传入 <code>this</code>；第二个参数是要找的组件的 <code>name</code> 。</p>
+<p>findComponentUpward 方法会在 while 语句里不断向上覆盖当前的 <code>parent</code> 对象，通过判断组件（即 parent）的 name 与传入的 componentName 是否一致，直到直到最近的一个组件为止。</p>
+<p>与 dispatch 不同的是，findComponentUpward 是直接拿到组件的实例，而非通过事件通知组件。比如下面的示例，有组件 A 和组件 B，A 是 B 的父组件，在 B 中获取和调用 A 中的数据和方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- component-a.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    组件 A</span><br><span class="line">    <span class="tag">&lt;<span class="name">component-b</span>&gt;</span><span class="tag">&lt;/<span class="name">component-b</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> componentB <span class="keyword">from</span> <span class="string">'./component-b.vue'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'componentA'</span>,</span></span><br><span class="line"><span class="undefined">    components: &#123; componentB &#125;,</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">        name: <span class="string">'Aresn'</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="undefined">      sayHello () &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'Hello, Vue.js'</span>);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- component-b.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    组件 B</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123; findComponentUpward &#125; <span class="keyword">from</span> <span class="string">'../utils/assist.js'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'componentB'</span>,</span></span><br><span class="line"><span class="undefined">    mounted () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> comA = findComponentUpward(<span class="keyword">this</span>, <span class="string">'componentA'</span>);</span></span><br><span class="line"><span class="undefined">      </span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (comA) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(comA.name);  <span class="comment">// Aresn</span></span></span><br><span class="line"><span class="javascript">        comA.sayHello();  <span class="comment">// Hello, Vue.js</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>findComponentUpward 只会找到最近的一个组件实例，如果要找到全部符合要求的组件，就需要另外实现方法。</p>
+<h3 id="向上找到所有的指定组件——findComponentsUpward"><a href="#向上找到所有的指定组件——findComponentsUpward" class="headerlink" title="向上找到所有的指定组件——findComponentsUpward"></a>向上找到所有的指定组件——findComponentsUpward</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assist.js</span></span><br><span class="line"><span class="comment">// 由一个组件，向上找到所有的指定组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findComponentsUpward</span> (<span class="params">context, componentName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> parents = [];</span><br><span class="line">  <span class="keyword">const</span> parent = context.$parent;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(parent)&#123;</span><br><span class="line">    <span class="keyword">if</span>(parent.$options.name == componentName) parents.push(parent);</span><br><span class="line">    <span class="keyword">return</span> parents.concat(findComponentsUpward(parent, componentName))</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; findComponentsUpward &#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -484,11 +437,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
-          
-            <a href="/tags/ajax/" rel="tag"><i class="fa fa-tag"></i> ajax</a>
-          
-            <a href="/tags/http/" rel="tag"><i class="fa fa-tag"></i> http</a>
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
           
         </div>
       
@@ -501,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/24/js知识梳理十四/" rel="next" title="js知识梳理十四">
-                <i class="fa fa-chevron-left"></i> js知识梳理十四
+              <a href="/2019/08/07/vue组件通信一provide-inject/" rel="next" title="vue组件通信一provide inject">
+                <i class="fa fa-chevron-left"></i> vue组件通信一provide inject
               </a>
             
           </div>
@@ -510,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/26/react01/" rel="prev" title="react01">
-                react01 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -659,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点：AJAX"><span class="nav-number">1.</span> <span class="nav-text">知识点：AJAX</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#async-javascript-and-xml-异步的JS和XML"><span class="nav-number">1.1.</span> <span class="nav-text">async javascript and xml 异步的JS和XML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AJAX操作"><span class="nav-number">1.2.</span> <span class="nav-text">AJAX操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于HTTP请求方式的一点学习"><span class="nav-number">1.3.</span> <span class="nav-text">关于HTTP请求方式的一点学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET-VS-POST"><span class="nav-number">1.4.</span> <span class="nav-text">GET VS POST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP网络状态码-STATUS"><span class="nav-number">1.5.</span> <span class="nav-text">HTTP网络状态码(STATUS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于XHR的属性和方法"><span class="nav-number">1.6.</span> <span class="nav-text">关于XHR的属性和方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组件的通信-3：找到任意组件实例——findComponents-系列方法"><span class="nav-number">1.</span> <span class="nav-text">组件的通信 3：找到任意组件实例——findComponents 系列方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向上找到最近的指定组件——findComponentUpward"><span class="nav-number">2.1.</span> <span class="nav-text">向上找到最近的指定组件——findComponentUpward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上找到所有的指定组件——findComponentsUpward"><span class="nav-number">2.2.</span> <span class="nav-text">向上找到所有的指定组件——findComponentsUpward</span></a></li></ol></li></ol></div>
             
 
           </div>

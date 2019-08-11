@@ -304,6 +304,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/19/前端性能监控/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/19/前端性能监控/" itemprop="url">前端性能监控</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T23:20:12+08:00">
+                2019-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W3C性能小组引入的新的API window.performance，目前IE9以上的浏览器都支持。它是一个浏览器中用于记录页面加载和解析过程中关键时间点的对象。放置在global环境下，通过JavaScript可以访问到它。</p>
+</blockquote>
+<h3 id="使用性能API"><a href="#使用性能API" class="headerlink" title="使用性能API"></a>使用性能API</h3><p><code>探测和兼容performance：</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> performance = <span class="built_in">window</span>.performance || <span class="built_in">window</span>.msPerformance || <span class="built_in">window</span>.webkitPerformance;</span><br><span class="line"><span class="keyword">if</span>(performance)&#123;</span><br><span class="line">  <span class="comment">// 支持性能 API</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>performance api结构</code></strong></p>
+<ul>
+<li><code>performance.memory</code> 显示内存的占用情况，是一个动态值：<ul>
+<li>usedJSHeapSize：表示：JS 对象（包括V8引擎内部对象）占用的内存数</li>
+<li>totalJSHeapSize： 可使用的内存</li>
+<li>jsHeapSizeLimit： 内存大小限制</li>
+</ul>
+</li>
+<li><code>performance.navigation</code> 显示页面的来源信息<ul>
+<li>redirectCount：重定向的话，页面通过几次重定向跳转而来，默认为0；</li>
+<li>type：表示页面打开的方式<ul>
+<li>0 表示 TYPE_NAVIGATENEXT 正常进入的页面（非刷新、非重定向等）</li>
+<li>1 表示 TYPE_RELOAD 通过 window.location.reload() 刷新的页面</li>
+<li>2 表示 TYPE_BACK_FORWARD 通过浏览器的前进后退按钮进入的页面（历史记录）</li>
+<li>255 表示 TYPE_UNDEFINED 非以上方式进入的页面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>performance.onresourcetimingbufferfull</code>属性是一个在resourcetimingbufferfull事件触发时会被调用的 event handler 。它的值是一个手动设置的回调函数，这个回调函数会在浏览器的资源时间性能缓冲区满时执行。</li>
+<li><code>performance.timeOrigin</code> 是一系列时间点的基准点，可以精确到万分之一毫秒</li>
+<li><code>performance.timing</code>:是一系列关键时间点，它包含了网络、解析等一系列的时间数据
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/19/前端性能监控/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/16/跨域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -914,169 +1087,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/02/react04/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/02/react04/" itemprop="url">react04</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T20:53:54+08:00">
-                2019-04-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="REACT基础知识复习（一）："><a href="#REACT基础知识复习（一）：" class="headerlink" title="REACT基础知识复习（一）："></a>REACT基础知识复习（一）：</h3><ol>
-<li><p>REACT是FACE-BOOK公司开发的一款MVC版JS框架<br>MVC：Model（数据层）、VIEW（视图层）、CONTROLLER（控制层）<br>核心思想：通过数据的改变来影响视图的渲染（数据驱动）</p>
-</li>
-<li><p>基于脚手架 CREATE-REACT-APP 快速构建一个REACT工程项目结构<br>自动安装REACT的核心组件：REACT/REACT-DOM<br>自动安装WEBPACK，并且完成相关的配置：</p>
-<ul>
-<li>区分了开发环境和生产环境</li>
-<li>安装BABEL以及对应的语言解析包，可以把REACT和ES6进行编译处理</li>
-<li>安装CSS/STYLE/FILE等加载器，处理CSS等合并压缩的问题</li>
-<li>安装了ES-LINT，可以进行代码检测</li>
-<li>安装了很多的插件，可以实现JS和CSS以及HTML的分离，打包，压缩等</li>
-<li>安装了WEBPACK-DEV-SERVER，可以在开发环境下，编译后自动创建服务，打开浏览器，当代码修改后，自动保存编译，页面自动刷新渲染等</li>
-</ul>
-</li>
-</ol>
-<h3 id="使用脚手架"><a href="#使用脚手架" class="headerlink" title="使用脚手架"></a>使用脚手架</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">把脚手架安装到全局环境下，以后应用命令操作，完成项目结构的搭建</span><br><span class="line">  $ npm install create-react-app -g</span><br><span class="line"></span><br><span class="line">创建项目结构目录</span><br><span class="line">  项目名遵循NPM发包命名规范：名字只能是/^[a-z0-9_-]$/</span><br><span class="line">  $ create-react-app  项目名</span><br><span class="line"></span><br><span class="line">特点：如果当前电脑安装了YARN，创建工程目录的时候，走的是YARN安装，YARN和NPM主体相同，但是处理起来还有一定的区别，所以我们以后继续向工程中安装模块以及执行配置脚本打包编译的时候，尽可能使用YARN，不建议和NPM混用</span><br></pre></td></tr></table></figure>
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/02/react04/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1129,7 +1139,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
