@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="vue,">
 
 
 
@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="JSX渲染机制 基于BABEL中的语法解析模块（BABEL-PRESET-REACT）把JSX语法编译为 React.createElement(…) 结构 12345React.createElement(      &apos;h1&apos;,      &amp;#123;id: &apos;titleBox&apos;,className: &apos;title&apos;,style: styleObj&amp;#125;,      &apos;\u73E0\u5C">
-<meta name="keywords" content="React">
+<meta name="description" content="Vue 的构造器——extend 与手动挂载——$mount我们来看看Vue.js 内置但却不常用的 API——extend 和 $mount，它们经常一起使用。不常用，是因为在业务开发中，基本没有它们的用武之地，但在独立组件开发时，在一些特定的场景它们是至关重要的。 使用场景我们在写 Vue.js 时，不论是用 CDN 的方式还是在 Webpack 里用 npm 引入的 Vue.js，都会有一个">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react02">
-<meta property="og:url" content="https://huchenh.github.io/2019/03/29/react02/index.html">
+<meta property="og:title" content="Vue的构造器-extend">
+<meta property="og:url" content="https://huchenh.github.io/2019/08/20/Vue的构造器-extend/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="JSX渲染机制 基于BABEL中的语法解析模块（BABEL-PRESET-REACT）把JSX语法编译为 React.createElement(…) 结构 12345React.createElement(      &apos;h1&apos;,      &amp;#123;id: &apos;titleBox&apos;,className: &apos;title&apos;,style: styleObj&amp;#125;,      &apos;\u73E0\u5C">
+<meta property="og:description" content="Vue 的构造器——extend 与手动挂载——$mount我们来看看Vue.js 内置但却不常用的 API——extend 和 $mount，它们经常一起使用。不常用，是因为在业务开发中，基本没有它们的用武之地，但在独立组件开发时，在一些特定的场景它们是至关重要的。 使用场景我们在写 Vue.js 时，不论是用 CDN 的方式还是在 Webpack 里用 npm 引入的 Vue.js，都会有一个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T11:57:21.673Z">
+<meta property="og:updated_time" content="2019-08-20T13:40:26.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react02">
-<meta name="twitter:description" content="JSX渲染机制 基于BABEL中的语法解析模块（BABEL-PRESET-REACT）把JSX语法编译为 React.createElement(…) 结构 12345React.createElement(      &apos;h1&apos;,      &amp;#123;id: &apos;titleBox&apos;,className: &apos;title&apos;,style: styleObj&amp;#125;,      &apos;\u73E0\u5C">
+<meta name="twitter:title" content="Vue的构造器-extend">
+<meta name="twitter:description" content="Vue 的构造器——extend 与手动挂载——$mount我们来看看Vue.js 内置但却不常用的 API——extend 和 $mount，它们经常一起使用。不常用，是因为在业务开发中，基本没有它们的用武之地，但在独立组件开发时，在一些特定的场景它们是至关重要的。 使用场景我们在写 Vue.js 时，不论是用 CDN 的方式还是在 Webpack 里用 npm 引入的 Vue.js，都会有一个">
 
 
 
@@ -129,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/03/29/react02/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/08/20/Vue的构造器-extend/">
 
 
 
 
 
-  <title>react02 | 追风</title>
+  <title>Vue的构造器-extend | 追风</title>
   
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/29/react02/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/20/Vue的构造器-extend/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react02</h1>
+          <h1 class="post-title" itemprop="name headline">Vue的构造器-extend</h1>
         
 
         <div class="post-meta">
@@ -333,8 +333,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T19:56:38+08:00">
-                2019-03-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T21:36:42+08:00">
+                2019-08-20
               </time>
             
 
@@ -356,8 +356,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -393,78 +393,40 @@
       
 
       
-        <h3 id="JSX渲染机制"><a href="#JSX渲染机制" class="headerlink" title="JSX渲染机制"></a>JSX渲染机制</h3><ol>
-<li><p>基于BABEL中的语法解析模块（BABEL-PRESET-REACT）把JSX语法编译为 React.createElement(…) 结构</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.createElement(</span><br><span class="line">      <span class="string">'h1'</span>,</span><br><span class="line">      &#123;<span class="attr">id</span>: <span class="string">'titleBox'</span>,<span class="attr">className</span>: <span class="string">'title'</span>,<span class="attr">style</span>: styleObj&#125;,</span><br><span class="line">      <span class="string">'\u73E0\u5CF0\u57F9\u8BAD'</span> <span class="comment">//转义字符</span></span><br><span class="line">  );</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>执行React.createElement(type, props, children)，创建一个对象（虚拟DOM）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   type:<span class="string">'h1'</span></span><br><span class="line">   props:&#123;</span><br><span class="line">     id:<span class="string">'titleBox'</span>,</span><br><span class="line">     className:<span class="string">'title'</span>,</span><br><span class="line">     style:...,</span><br><span class="line">     children:<span class="string">'珠峰培训'</span>   <span class="comment">//存放的是素中的内容</span></span><br><span class="line">   &#125;    </span><br><span class="line">   ref:<span class="literal">null</span>,</span><br><span class="line">   key:<span class="literal">null</span>,</span><br><span class="line">   ...</span><br><span class="line">   __proto__:<span class="built_in">Object</span>.prototype</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<a id="more"></a>
-<ol start="3">
-<li>ReactDOM.render(JSX语法最后生成的对象,容器)，基于RENDER方法把生成的对象动态创建为DOM圆度，插入到指定的容器中</li>
-</ol>
-<h3 id="React-createElement模拟"><a href="#React-createElement模拟" class="headerlink" title="React.createElement模拟"></a>React.createElement模拟</h3></li>
-<li>创建一个对象（默认有四个属性：TYPE/PROPS/REF/KEY），最后要把这个对象返回</li>
-<li>根据传递的值修改这个对象<ul>
-<li>TYPE =&gt;传递的TYPE</li>
-<li>PROPS 需要做一些处理：大部分传递PROPS中的属性都赋值给对象的PROPS，有一些比较特殊<ul>
-<li>如果是REF或者KEY，我们需要把传递的PROPS中的这两个属性值，给创建对象的两个属性，而传递的PROPS中把这两个值删除掉</li>
-<li>把传递的CHILDREN作为新创建对象的PROPS中的一个属性<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> * CREATE-ELEMENT：创建JSX对象</span></span><br><span class="line"><span class="comment"> *   参数：至少两个 TYPE/PROPS，CHILDREN这个部分可能没有可能有多个</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">type, props, ...childrens</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> ref, key;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'ref'</span> <span class="keyword">in</span> props) &#123;</span><br><span class="line">        ref = props[<span class="string">'ref'</span>];</span><br><span class="line">        props[<span class="string">'ref'</span>] = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'key'</span> <span class="keyword">in</span> props) &#123;</span><br><span class="line">        key = props[<span class="string">'key'</span>];</span><br><span class="line">        props[<span class="string">'key'</span>] = <span class="literal">undefined</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type,</span><br><span class="line">        props: &#123;</span><br><span class="line">            ...props,</span><br><span class="line">            children: childrens.length &lt;= <span class="number">1</span> ? (childrens[<span class="number">0</span>] || <span class="string">''</span>) : childrens</span><br><span class="line">        &#125;,</span><br><span class="line">        ref,</span><br><span class="line">        key</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中"><a href="#RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中" class="headerlink" title="RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中"></a>RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">objJSX, container, callBack</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123;type, props&#125; = objJSX,</span><br><span class="line">        &#123;children&#125; = props;</span><br><span class="line">    <span class="keyword">let</span> newElement = <span class="built_in">document</span>.createElement(type);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> attr <span class="keyword">in</span> props) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!props.hasOwnProperty(attr)) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">let</span> value = props[attr];</span><br><span class="line">        <span class="keyword">if</span> (value == <span class="literal">undefined</span>) <span class="keyword">continue</span>;<span class="comment">//=&gt;NULL OR UNDEFINED</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (attr.toUpperCase()) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'CLASSNAME'</span>:</span><br><span class="line">                newElement.setAttribute(<span class="string">'class'</span>, value);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'STYLE'</span>:</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">let</span> styleAttr <span class="keyword">in</span> value) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (value.hasOwnProperty(styleAttr)) &#123;</span><br><span class="line">                        newElement[<span class="string">'style'</span>][styleAttr] = value[styleAttr];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'CHILDREN'</span>:</span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                 * 可能是一个值：可能是字符串也可能是一个JSX对象</span></span><br><span class="line"><span class="comment">                 * 可能是一个数组：数组中的每一项可能是字符串也可能是JSX对象</span></span><br><span class="line"><span class="comment">                 */</span></span><br><span class="line">                <span class="comment">//-&gt;首先把一个值也变为数组，这样后期统一操作数组即可</span></span><br><span class="line">                !(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>) ? value = [value] : <span class="literal">null</span>;</span><br><span class="line">                value.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">                    <span class="comment">//-&gt;验证ITEM是什么类型的：如果是字符串就是创建文本节点，如果是对象，我们需要再次执行RENDER方法，把创建的元素放到最开始创建的大盒子中</span></span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">typeof</span> item === <span class="string">'string'</span>) &#123;</span><br><span class="line">                        <span class="keyword">let</span> text = <span class="built_in">document</span>.createTextNode(item);</span><br><span class="line">                        newElement.appendChild(text);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        render(item, newElement);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                newElement.setAttribute(attr, value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    container.appendChild(newElement);</span><br><span class="line">    callBack &amp;&amp; callBack();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">render(objJSX, root, () =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ok'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="REACT组件"><a href="#REACT组件" class="headerlink" title="REACT组件"></a>REACT组件</h3><blockquote>
-<p>不管是VUE还是REACT框架，设计之初都是期望我们按照“组件/模块管理”的方式来构建程序的，也就是把一个程序划分为一个个的组件来单独处理</p>
-</blockquote>
-<p><strong><code>优势</code></strong></p>
+        <h2 id="Vue-的构造器——extend-与手动挂载——-mount"><a href="#Vue-的构造器——extend-与手动挂载——-mount" class="headerlink" title="Vue 的构造器——extend 与手动挂载——$mount"></a>Vue 的构造器——extend 与手动挂载——$mount</h2><p>我们来看看Vue.js 内置但却不常用的 API——extend 和 $mount，它们经常一起使用。不常用，是因为在业务开发中，基本没有它们的用武之地，但在独立组件开发时，在一些特定的场景它们是至关重要的。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>我们在写 Vue.js 时，不论是用 CDN 的方式还是在 Webpack 里用 npm 引入的 Vue.js，都会有一个根节点，并且创建一个根实例，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  const app = new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>Webpack 也类似，一般在入口文件 main.js 里，最后会创建一个实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import App from &apos;./app.vue&apos;;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>因为用 Webpack 基本都是前端路由的，它的 html 里一般都只有一个根节点 <code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code>，其余都是通过 JavaScript 完成，也就是许多的 Vue.js 组件（每个页面也是一个组件）。<br><a id="more"></a></p>
+<p>有了初始化的实例，之后所有的页面，都由 vue-router 帮我们管理，组件也都是用 <code>import</code> 导入后局部注册（也有在 main.js 全局注册的），不管哪种方式，组件（或页面）的创建过程我们是无需关心的，只是写好 <code>.vue</code> 文件并导入即可。这样的组件使用方式，有几个特点：</p>
 <ol>
-<li>有助于多人协作开发</li>
-<li><p>我们开发的组件可以被复用</p>
-<p>REACT中创建组件有两种方式：</p>
-</li>
+<li>所有的内容，都是在 <code>#app</code> 节点内渲染的；</li>
+<li>组件的模板，是事先定义好的；</li>
+<li>由于组件的特性，注册的组件只能在当前位置渲染。</li>
 </ol>
-<ul>
-<li>函数声明式组件</li>
-<li>基于继承COMPONENT类来创建组件</li>
-<li>SRC -&gt; COMPONENT ：这个文件夹中存放的就是开发的组件</li>
-</ul>
-<ol start="2">
-<li><p>基于继承COMPONENT类来创建组件<br>基于CREATE-ELEMENT把JSX转换为一个对象，当RENDER渲染这个对象的时候，遇到TYPE是一个函数或者类，不是直接创建元素，而是先把方法执行：</p>
-<blockquote>
-<ul>
-<li>如果是函数式声明的组件，就把它当做普通方法执行（方法中的THIS是UNDEFINED），把函数返回的JSX元素（也是解析后的对象）进行渲染</li>
-<li>如果是类声明式的组件，会把当前类NEW它执行，创建类的一个实例（当前本次调取的组件就是它的实例），执行CONSTRUCTOR之后，会执行THIS.RENDER()，把RENDER中返回的JSX拿过来渲染，所以“类声明式组件，必须有一个RENDER的方法，方法中需要返回一个JSX元素”</li>
-</ul>
-</blockquote>
-<p>但是不管是哪一种方式，最后都会把解析的出来的PROPS属性对象作为实参传递给对应的函数或者类</p>
-</li>
-</ol>
-<blockquote>
-<p>知识点：<br>CREATE-ELEMENT在处理的时候，遇到一个组件，返回的对象中：TYPE就不在是字符串标签名了，而是一个函数（类），但是属性还是存在PROPS中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type:Dialog,</span><br><span class="line">  props:&#123;</span><br><span class="line">     lx:1,</span><br><span class="line">     con:&apos;xxx&apos;,</span><br><span class="line">     children:一个值或者一个数组</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>RENDER渲染的时候，我们需要做处理，首先判断TYPE的类型，如果是字符串，就创建一个元素标签，如果函数或者类，就把函数执行，把PROPS中的每一项（包含CHILDREN）传递给函数<br>在执行函数的时候，把函数中RERURN的JSX转换为新的对象（通过CREATE-ELEMENT），把这个对象返回；紧接着RENDER按照以往的渲染方式，创建DOM元素，插入到指定的容器中即可</p>
-</blockquote>
-<p>===================================</p>
-<blockquote>
-<p>总结：创建组件有两种方式 “函数式”、“创建类式”</p>
-</blockquote>
-<p><strong><code>函数式</code></strong></p>
+<p>比如你要使用一个组件 <code>&lt;i-date-picker&gt;</code>，渲染时，这个自定义标签就会被替换为组件的内容，而且在哪写的自定义标签，就在哪里被替换。换句话说，常规的组件使用方式，只能在规定的地方渲染组件，这在一些特殊场景下就比较局限了，例如：</p>
 <ol>
-<li>操作非常简单</li>
-<li>能实现的功能也很简单，只是简单的调取和返回JSX而已</li>
+<li>组件的模板是通过调用接口从服务端获取的，需要动态渲染组件；</li>
+<li>实现类似原生 <code>window.alert()</code> 的提示框组件，它的位置是在 <code>&lt;body&gt;</code> 下，而非 <code>&lt;div id=&quot;app&quot;&gt;</code>，并且不会通过常规的组件自定义标签的形式使用，而是像 JS 调用函数一样使用。</li>
 </ol>
-<p><strong><code>创建类式</code></strong></p>
-<ol>
-<li>操作相对复杂一些，但是也可以实现更为复杂的业务功能</li>
-<li>能够使用生命周期函数操作业务</li>
-<li>函数式可以理解为静态组件（组件中的内容调取的时候就已经固定了，很难在修改），而类这种方式，可以基于组件内部的状态来动态更新渲染的内容</li>
-</ol>
+<p>一般来说，在我们访问页面时，组件就已经渲染就位了，对于场景 1，组件的渲染是异步的，甚至预先不知道模板是什么。对于场景 2，其实并不陌生，在 jQuery 时代，通过操作 DOM，很容易就能实现，你可以沿用这种思路，只是这种做法不那么 Vue，既然使用 Vue.js 了，就应该用 Vue 的思路来解决问题。对于这两种场景，Vue.extend 和 vm.$mount 语法就派上用场了。</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>我们说到，创建一个 Vue 实例时，都会有一个选项 <code>el</code>，来指定实例的根节点，如果不写 <code>el</code> 选项，那组件就处于未挂载状态。<code>Vue.extend</code> 的作用，就是基于 Vue 构造器，创建一个“子类”，它的参数跟 <code>new Vue</code> 的基本一样，但 <code>data</code> 要跟组件一样，是个函数，再配合 <code>$mount</code> ，就可以让组件渲染，并且挂载到任意指定的节点上，比如 body。</p>
+<p>比如上文的场景，就可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line"></span><br><span class="line">const AlertComponent = Vue.extend(&#123;</span><br><span class="line">  template: &apos;&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;&apos;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &apos;Hello, Aresn&apos;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这一步，我们创建了一个构造器，这个过程就可以解决异步获取 template 模板的问题，下面要手动渲染组件，并把它挂载到 body 下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const component = new AlertComponent().$mount();</span><br></pre></td></tr></table></figure>
+<p>这一步，我们调用了 <code>$mount</code> 方法对组件进行了手动渲染，但它仅仅是被渲染好了，并没有挂载到节点上，也就显示不了组件。此时的 <code>component</code> 已经是一个标准的 Vue 组件实例，因此它的 <code>$el</code> 属性也可以被访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.body.appendChild(component.$el);</span><br></pre></td></tr></table></figure>
+<p>当然，除了 body，你还可以挂载到其它节点上。</p>
+<p><code>$mount</code> 也有一些快捷的挂载方式，以下两种都是可以的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 在 $mount 里写参数来指定挂载的节点</span><br><span class="line">new AlertComponent().$mount(&apos;#app&apos;);</span><br><span class="line">// 不用 $mount，直接在创建实例时指定 el 选项</span><br><span class="line">new AlertComponent(&#123; el: &apos;#app&apos; &#125;);</span><br></pre></td></tr></table></figure>
+<p>实现同样的效果，除了用 extend 外，也可以直接创建 Vue 实例，并且用一个 Render 函数来渲染一个 .vue 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import Notification from &apos;./notification.vue&apos;;</span><br><span class="line"></span><br><span class="line">const props = &#123;&#125;;  // 这里可以传入一些组件的 props 选项</span><br><span class="line"></span><br><span class="line">const Instance = new Vue(&#123;</span><br><span class="line">  render (h) &#123;</span><br><span class="line">    return h(Notification, &#123;</span><br><span class="line">      props: props</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const component = Instance.$mount();</span><br><span class="line">document.body.appendChild(component.$el);</span><br></pre></td></tr></table></figure>
+<p>这样既可以使用 .vue 来写复杂的组件（毕竟在 template 里堆字符串很痛苦），还可以根据需要传入适当的 props。渲染后，如果想操作 Render 的 <code>Notification</code> 实例，也是很简单的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const notification = Instance.$children[0];</span><br></pre></td></tr></table></figure>
+<p>因为 Instance 下只 Render 了 Notification 一个子组件，所以可以用 <code>$children[0]</code> 访问到。</p>
+<p>需要注意的是，我们是用 <code>$mount</code> 手动渲染的组件，如果要销毁，也要用 <code>$destroy</code> 来手动销毁实例，必要时，也可以用 <code>removeChild</code> 把节点从 DOM 中移除。</p>
 
       
     </div>
@@ -490,7 +452,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
+            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
           
         </div>
       
@@ -503,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/26/react01/" rel="next" title="react01">
-                <i class="fa fa-chevron-left"></i> react01
+              <a href="/2019/08/15/Vue组件通信-广播与派发/" rel="next" title="Vue组件通信-广播与派发">
+                <i class="fa fa-chevron-left"></i> Vue组件通信-广播与派发
               </a>
             
           </div>
@@ -512,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/31/react03/" rel="prev" title="react03">
-                react03 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -661,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSX渲染机制"><span class="nav-number">1.</span> <span class="nav-text">JSX渲染机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-createElement模拟"><span class="nav-number">2.</span> <span class="nav-text">React.createElement模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中"><span class="nav-number">3.</span> <span class="nav-text">RENDER：把创建的对象生成对应的DOM元素，最后插入到页面中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REACT组件"><span class="nav-number">4.</span> <span class="nav-text">REACT组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-的构造器——extend-与手动挂载——-mount"><span class="nav-number">1.</span> <span class="nav-text">Vue 的构造器——extend 与手动挂载——$mount</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用场景"><span class="nav-number">1.1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.2.</span> <span class="nav-text">用法</span></a></li></ol></li></ol></div>
             
 
           </div>
