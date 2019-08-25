@@ -304,6 +304,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/27/redux01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/27/redux01/" itemprop="url">redux01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-27T23:14:20+08:00">
+                2019-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redux/" itemprop="url" rel="index">
+                    <span itemprop="name">redux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="redux基本概念"><a href="#redux基本概念" class="headerlink" title="redux基本概念"></a>redux基本概念</h2><h3 id="createStore"><a href="#createStore" class="headerlink" title="createStore"></a>createStore</h3><blockquote>
+<p>创建容器：需要把REDUCER传递进来</p>
+</blockquote>
+<h3 id="reducer作用"><a href="#reducer作用" class="headerlink" title="reducer作用"></a>reducer作用</h3><ol>
+<li>记录所有状态修改的信息（根据标识action.type 设置修改状态）</li>
+<li>修改容器中的状态信息</li>
+</ol>
+<p><strong><code>参数</code></strong></p>
+<ul>
+<li>state: 容器中原有的状态信息（如果第一次使用，没有原有状态，我们需要赋予一个默认值）</li>
+<li>action：dispatch任务派发时传递的行为对象（这个对象必有一个type属性，是操作的行为标识，REDUCER就是根据这个行为标识来识别该如何修改状态信息）<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;createStore&#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> reducer = <span class="function">(<span class="params">state = &#123;n: <span class="number">0</span>, m: <span class="number">0</span>&#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'VOTE_SUPPORT'</span>:</span><br><span class="line">            state = &#123;...state, <span class="attr">n</span>: state.n + <span class="number">1</span>&#125;;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'VOTE_AGAINST'</span>:</span><br><span class="line">            state = &#123;...state, <span class="attr">m</span>: state.m + <span class="number">1</span>&#125;;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> state;<span class="comment">//=&gt;只有把最新的STATE返回，原有的状态才会被修改</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> store = createStore(reducer);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/27/redux01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/24/js调试console/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -959,154 +1119,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/14/node02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/14/node02/" itemprop="url">node02</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-14T16:11:01+08:00">
-                2019-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/node/" itemprop="url" rel="index">
-                    <span itemprop="name">node</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>1.在本地项目中基于NPM/YARN安装第三方模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">第一步：在本地项目中创建一个“package.json”的文件</span><br><span class="line">  作用：把当前项目所有依赖的第三方模块信息（包含：模块名称以及版本号等信息）都记录下来；可以在这里配置一些可执行的命令脚本等；</span><br><span class="line"></span><br><span class="line">  基于YARN会默认生成一个“配置清单”，只是信息没有手动创建的全面</span><br><span class="line"></span><br><span class="line">  npm init -y 或者 yarn init -y</span><br><span class="line"></span><br><span class="line">  创建配置清单的时候，项目目录中不应该出现中文和特殊符号，这样有可能识别不了</span><br><span class="line"></span><br><span class="line">第二步：安装</span><br><span class="line">  开发依赖：只有在项目开发阶段依赖的第三方模块</span><br><span class="line">  生产依赖：项目部署实施的时候，也需要依赖的第三方模块</span><br><span class="line"></span><br><span class="line">  [npm]</span><br><span class="line">    npm install xxx --save  保存到配置清单的生产依赖中</span><br><span class="line">                    --save-dev  保存到开发依赖中</span><br><span class="line"></span><br><span class="line">  [yarn]</span><br><span class="line">    yarn add xxx 默认就是保存到生产依赖中</span><br><span class="line">             --dev / -D  保存到开发依赖中</span><br><span class="line"></span><br><span class="line">第三步：部署的时候“跑环境”</span><br><span class="line">  不要自己一个个的安装，只需要执行 npm install 或者 yarn install 即可，npm会自己先检测目录中是否有package.json文件，如果有的话，会按照文件中的配置清单依次安装</span><br><span class="line"></span><br><span class="line">=&gt;开发一个项目，我们生成一个配置清单“package.json”，当我们安装第三方模块使用的时候，把安装的模块信息记录到配置清单中，这样以后不管是团队协作开发还是项目部署上线，我们都没有必要把node_modules发文件发送给别人，只需要把配置清单传递给其它人即可，其他人拿到配置清单后，按照清单中依赖项及版本号，重新安装即可（重新安装：“跑环境”）</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/14/node02/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1159,7 +1171,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
