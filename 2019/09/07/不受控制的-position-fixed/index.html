@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="css,">
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="记录学习，记录生活，记录点滴">
-<meta name="keywords" content="JavaScript react">
-<meta property="og:type" content="website">
-<meta property="og:title" content="追风">
-<meta property="og:url" content="https://huchenh.github.io/archives/index.html">
+<meta name="description" content="场景  最近在一个活动H5页面中，使用了translate3d技术来移动‘小车’，实现的效果在移动端测试还不错，小车按着规定的曲线，不急不慢的运动着，一切都是完美的。然而，问题来了，我后面加上的任务栏，明明是fixed相对屏幕定位，竟然在小车运动的时候，跟着背景图滚动，我的心也跟着了。。。  抱着万事找度娘的想法，我开始了网上冲浪之旅。终于，找了fixed定位失效的场景。 失效的 position">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不受控制的 position:fixed">
+<meta property="og:url" content="https://huchenh.github.io/2019/09/07/不受控制的-position-fixed/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="记录学习，记录生活，记录点滴">
+<meta property="og:description" content="场景  最近在一个活动H5页面中，使用了translate3d技术来移动‘小车’，实现的效果在移动端测试还不错，小车按着规定的曲线，不急不慢的运动着，一切都是完美的。然而，问题来了，我后面加上的任务栏，明明是fixed相对屏幕定位，竟然在小车运动的时候，跟着背景图滚动，我的心也跟着了。。。  抱着万事找度娘的想法，我开始了网上冲浪之旅。终于，找了fixed定位失效的场景。 失效的 position">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-09-07T14:36:01.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="追风">
-<meta name="twitter:description" content="记录学习，记录生活，记录点滴">
+<meta name="twitter:title" content="不受控制的 position:fixed">
+<meta name="twitter:description" content="场景  最近在一个活动H5页面中，使用了translate3d技术来移动‘小车’，实现的效果在移动端测试还不错，小车按着规定的曲线，不急不慢的运动着，一切都是完美的。然而，问题来了，我后面加上的任务栏，明明是fixed相对屏幕定位，竟然在小车运动的时候，跟着背景图滚动，我的心也跟着了。。。  抱着万事找度娘的想法，我开始了网上冲浪之旅。终于，找了fixed定位失效的场景。 失效的 position">
 
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/archives/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/09/07/不受控制的-position-fixed/">
 
 
 
 
 
-  <title>归档 | 追风</title>
+  <title>不受控制的 position:fixed | 追风</title>
   
 
 
@@ -153,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,390 +290,214 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/09/07/不受控制的-position-fixed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">不受控制的 position:fixed</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T22:19:02+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        好! 目前共计 58 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/07/不受控制的-position-fixed/" itemprop="url">
-              
-                <span itemprop="name">不受控制的 position:fixed</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-07T22:19:02+08:00" content="2019-09-07">
-          09-07
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/25/vue递归组件/" itemprop="url">
-              
-                <span itemprop="name">vue递归组件</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-25T21:08:12+08:00" content="2019-08-25">
-          08-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/20/Vue的构造器-extend/" itemprop="url">
-              
-                <span itemprop="name">Vue的构造器-extend</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-20T21:36:42+08:00" content="2019-08-20">
-          08-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>  最近在一个活动H5页面中，使用了translate3d技术来移动‘小车’，实现的效果在移动端测试还不错，小车按着规定的曲线，不急不慢的运动着，一切都是完美的。然而，问题来了，我后面加上的任务栏，明明是fixed相对屏幕定位，竟然在小车运动的时候，跟着背景图滚动，我的心也跟着了。。。<br>  抱着万事找度娘的想法，我开始了网上冲浪之旅。终于，找了fixed定位失效的场景。</p>
+<h2 id="失效的-position-fixed"><a href="#失效的-position-fixed" class="headerlink" title="失效的 position:fixed"></a>失效的 position:fixed</h2><p>  首先MDN 用一句话概括了这种情况：</p>
+<blockquote>
+<p>当元素祖先的 transform 属性非 none 时，定位容器由视口改为该祖先。</p>
+</blockquote>
+<p>通俗的讲就是指定了 position:fixed 的元素，如果其祖先元素存在非 none 的 transform 值 ，那么该元素将相对于设定了 transform 的祖先元素进行定位。</p>
+<p>那么，为什么会发生这种情况呢？说好的相对视口（Viewport）定位呢？继续百度后，发现了堆叠上下文的概念（Stacking Context）</p>
+<ul>
+<li>任何非 none 的 transform 值都会导致一个堆叠上下文（Stacking Context）和包含块（Containing Block）的创建。</li>
+<li>由于堆叠上下文的创建，该元素会影响其子元素的固定定位。设置了 position:fixed 的子元素将不会基于 viewport 定位，而是基于这个父元素。</li>
+</ul>
+<h2 id="Stacking-Context-–-堆叠上下文"><a href="#Stacking-Context-–-堆叠上下文" class="headerlink" title="Stacking Context – 堆叠上下文"></a>Stacking Context – 堆叠上下文</h2><p>堆叠上下文是 HTML 元素的三维概念，这些 HTML 元素在一条假想的相对于面向（电脑屏幕的）视窗或者网页的用户的 z 轴上延伸，HTML 元素依据其自身属性按照优先级顺序占用层叠上下文的空间。简单理解，就是生成了 Stacking Context 的元素会影响该元素的层叠关系与定位关系。</p>
+<p>按照上面的说法，堆叠上下文的创建，该元素会影响其子元素的固定定位。设置了 position:fixed 的子元素将不会基于 viewport 定位，而是基于这个父元素。</p>
+<p>那么问题来了，是否所有能够生成堆叠上下文的元素，都会使得其子元素的 position:fixed 相对它，而不是相对视口（Viewport）进行定位呢？</p>
+<a id="more"></a>
+<p>##创建堆叠上下文的方式</p>
+<p>首先要找到所有能够使元素生成堆叠上下文的方法。如何触发一个元素形成 堆叠上下文 ？方法如下（参考自 MDN）<br>根元素 (HTML),</p>
+<ul>
+<li>z-index 值不为 “auto”的 绝对/相对定位，</li>
+<li>一个 z-index 值不为 “auto”的 flex 项目 (flex item)，即：父元素 display: flex|inline-flex，</li>
+<li>opacity 属性值小于 1 的元素（参考 the specification for opacity），</li>
+<li>transform 属性值不为 “none”的元素，</li>
+<li>mix-blend-mode 属性值不为 “normal”的元素，</li>
+<li>filter值不为“none”的元素，</li>
+<li>perspective值不为“none”的元素，</li>
+<li>isolation 属性被设置为 “isolate”的元素，position: fixed</li>
+<li>在 will-change 中指定了任意 CSS 属性，即便你没有直接指定这些属性的值</li>
+<li>-webkit-overflow-scrolling 属性被设置 “touch”的元素</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>  在最新的 Blink 内核下，发现并不是所有能够生成层叠上下文的元素都会使得 position:fixed 失效，但也不止 transform 会使 position:fixed 失效。<br>所以，MDN 关于 position:fixed 的补充描述不够完善。下述 3 种方式目前都会使得 position:fixed 定位的基准元素改变（本文重点）：</p>
+<ul>
+<li><p>transform 属性值不为 none 的元素</p>
+</li>
+<li><p>perspective 值不为 none 的元素</p>
+</li>
+<li><p>在 will-change 中指定了任意 CSS 属性</p>
+</li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/15/Vue组件通信-广播与派发/" itemprop="url">
-              
-                <span itemprop="name">Vue组件通信-广播与派发</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-15T21:51:59+08:00" content="2019-08-15">
-          08-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/11/vue组件通信3-findComponent系列方法/" itemprop="url">
-              
-                <span itemprop="name">vue组件通信3-findComponent系列方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-11T15:56:03+08:00" content="2019-08-11">
-          08-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/07/vue组件通信一provide-inject/" itemprop="url">
-              
-                <span itemprop="name">vue组件通信一provide inject</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-07T22:44:16+08:00" content="2019-08-07">
-          08-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/04/vue组件三个API：prop、event、slot/" itemprop="url">
-              
-                <span itemprop="name">vue组件三个API：prop、event、slot</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-04T22:42:27+08:00" content="2019-08-04">
-          08-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/08/01/HappyPack构建优化/" itemprop="url">
-              
-                <span itemprop="name">HappyPack构建优化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-08-01T22:40:58+08:00" content="2019-08-01">
-          08-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/15/Dllplugin/" itemprop="url">
-              
-                <span itemprop="name">Dllplugin</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-15T22:02:37+08:00" content="2019-07-15">
-          07-15
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/07/12/weakMap/" itemprop="url">
-              
-                <span itemprop="name">weakMap</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-12T21:54:36+08:00" content="2019-07-12">
-          07-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/25/vue递归组件/" rel="next" title="vue递归组件">
+                <i class="fa fa-chevron-left"></i> vue递归组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -680,6 +505,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -700,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -770,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#场景"><span class="nav-number">1.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#失效的-position-fixed"><span class="nav-number">2.</span> <span class="nav-text">失效的 position:fixed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stacking-Context-–-堆叠上下文"><span class="nav-number">3.</span> <span class="nav-text">Stacking Context – 堆叠上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -910,6 +769,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -938,6 +801,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

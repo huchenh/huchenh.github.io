@@ -304,6 +304,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/29/react-router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/29/react-router/" itemprop="url">react-router</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T22:30:40+08:00">
+                2019-04-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/路由/" itemprop="url" rel="index">
+                    <span itemprop="name">路由</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="HashRouter"><a href="#HashRouter" class="headerlink" title="HashRouter"></a>HashRouter</h3><ol>
+<li>当前项目一旦使用HASH-ROUTER，则默认在页面的地址后面加上“#/”，也就是HASH默认值是一个斜杠，我们一般让其显示首页组件信息内容</li>
+<li>HASH-ROUTER中只能出现一个子元素</li>
+<li>HASH-ROUTER机制中，我们需要根据哈希地址不同，展示不同的组件内容，此时需要使用ROUTE</li>
+</ol>
+<h3 id="ROUTE"><a href="#ROUTE" class="headerlink" title="ROUTE"></a>ROUTE</h3><ul>
+<li>PATH：设置匹配地址，但是默认不是严格匹配，当前页面哈希地址只要包含完整的它（内容是不变的），都能被匹配上</li>
+<li>PATH=’/‘ ：和它匹配的地址只有要斜杠即可（都能和它匹配）</li>
+<li>PATH=’/user’：“#/user/login”也可以匹配，但是“#/user2”这个无法匹配</li>
+<li>COMPONENT：一但哈希值和当前ROUTE的PATH相同了，则渲染COMPONENT指定的组件</li>
+<li>EXACT：让PATH的匹配严谨和严格一些（只有URL哈希值和PATH设定的值相等才可以匹配到）</li>
+<li>PATH=’/‘：“#/”匹配，但是“#/user”就不再匹配了</li>
+<li>STRICT</li>
+<li>RENDER：当页面的哈希地址和PATH匹配，会把RENDER规划的方法执行，在方法中一般做“权限校验”（渲染组件之前验证是否存在权限，不存在做一些特殊处理）</li>
+</ul>
+<hr>
+<ul>
+<li>默认情况下，会和每一个ROUTE都做校验（哪怕之前已经有校验成功的），SWITCH组件可以解决这个问题，和SWITCH CASE一样，只要有一种情况校验成功，就不在向后校验了</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/29/react-router/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/27/redux01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -952,173 +1118,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/16/跨域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/16/跨域/" itemprop="url">跨域</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-16T23:47:58+08:00">
-                2019-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="跨域解决方案："><a href="#跨域解决方案：" class="headerlink" title="跨域解决方案："></a>跨域解决方案：</h3><ol>
-<li>jsonp （常用）</li>
-<li>cors  （常用）</li>
-<li>window.name</li>
-<li>document.domain  （特定场景）</li>
-<li>postMessage (H5)</li>
-<li>webpack proxy （webScoket） （常用）</li>
-</ol>
-<h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h3><blockquote>
-<p>拿当前HTML页面的地址和在页面中AJAX请求的API地址做比较：</p>
-<ul>
-<li>如果两个地址的协议域名端口号都相同，相当于HTML页面从同一个源下根据某个地址获取数据，属于“同源策略请求”，基于AJAX是可以直接请求到数据的！</li>
-<li>如果三者（协议域名端口号）只要有一个不一样，那么就是“非同源策略请求（跨域请求）”，使用AJAX不能直接获取数据了！</li>
-</ul>
-</blockquote>
-<p>   HTML页面的地址：<a href="http://localhost:8000/A.html" target="_blank" rel="noopener">http://localhost:8000/A.html</a><br>   AJAX请求的地址：<a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a></p>
-<p>   HTML页面地址：<a href="http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html" target="_blank" rel="noopener">http://localhost:63342/201802LESSON/%E5%85%AC%E5%BC%80%E8%AF%BE/%E8%B7%A8%E5%9F%9F/static/A.html</a><br>   AJAX请求接口地址：<a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a></p>
-<p>   [报错]</p>
-<blockquote>
-<p>Failed to load <a href="http://localhost:8000/queryInfo" target="_blank" rel="noopener">http://localhost:8000/queryInfo</a>: No ‘Access-Control-Allow-Origin’ header is present on the requested resource. Origin ‘<a href="http://localhost:63342&#39;" target="_blank" rel="noopener">http://localhost:63342&#39;</a> is therefore not allowed access.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/16/跨域/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></blockquote></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1171,7 +1170,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -304,6 +304,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/12/js知识梳理十二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/12/js知识梳理十二/" itemprop="url">js知识梳理十二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T21:13:43+08:00">
+                2019-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport 视口"></a>viewport 视口</h3><blockquote>
+<p>在PC端，我们开发的HTML页面运行在浏览器中，浏览器有多宽（一般浏览器代表设备的宽度）HTML就有多宽，也就是在浏览器宽度的视口中渲染和呈现我们的页面</p>
+</blockquote>
+<blockquote>
+<p>移动端和PC端有区别：不管移动端设备(代指打开的浏览器)的宽度是多少，HTML页面的宽度是980(或者1024) =&gt;导致的问题：如果在设备窗口中想把整个页面完全呈现出来（小窗口中完全展示大页面），我们只能把大页面进行缩放，HTML页面缩放了，那么页面中所有内容都缩放了</p>
+</blockquote>
+<p><strong><code>解决方案</code></strong></p>
+<blockquote>
+<p>只要让H5页面的宽度和手机设备的宽度保持一致即可，就不会出现手机渲染页面的时候把页面缩放的事情了<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">此META标签就是在设置VP(视口)的规则</span><br><span class="line">   width=device-width：让HTML页面的宽度等于设备的宽度</span><br><span class="line">   height=：设置HTML页面的高度（一般不用）</span><br><span class="line">   initial-scale=1.0：初始缩放比例是1:1（也就是既不放大也不多小）</span><br><span class="line">   user-scalable=no：禁止用户手动缩放</span><br><span class="line">   maximum-scale=1.0</span><br><span class="line">   minimum-scale=1.0：设置最大最小的缩放比例1:1(既不放大也不缩小 =&gt;部分安卓机中只设置user-scalable是不起作用的，需要同这两个一起使用)</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/12/js知识梳理十二/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/11/js知识梳理十一/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -959,201 +1116,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/06/js知识梳理七/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/06/js知识梳理七/" itemprop="url">js知识梳理七</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T23:11:43+08:00">
-                2019-03-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="DOM的属性和方法"><a href="#DOM的属性和方法" class="headerlink" title="DOM的属性和方法"></a>DOM的属性和方法</h2><h3 id="获取元素或者元素集合"><a href="#获取元素或者元素集合" class="headerlink" title="获取元素或者元素集合"></a>获取元素或者元素集合</h3><p><strong><code>getElementById</code></strong>  </p>
-<blockquote>
-<p>上下文只能是document（只有document这个实例的原型链上才能找到这个方法，其它实例都找不到）<br><br>ID重复了获取第一个<br><br>IE6~7中会把表单元素的name当做id使用</p>
-</blockquote>
-<p><strong><code>getElementsByTagName</code></strong></p>
-<blockquote>
-<p>获取当前上下文中，所有子子孙孙中标签名叫做XXX的元素<br></p>
-</blockquote>
-<p><strong><code>getElementsByClassName</code></strong></p>
-<blockquote>
-<p>IE6~8中不兼容</p>
-</blockquote>
-<p><strong><code>getElementsByName</code></strong></p>
-<blockquote>
-<p>在IE浏览器中只对表单元素的name起作用<br><br>上下文也只能是document</p>
-</blockquote>
-<p><strong><code>querySelector\querySelectorAll</code></strong></p>
-<blockquote>
-<p>不兼容IE6~8<br><br>没有DOM映射</p>
-<ul>
-<li>document.documentElement</li>
-<li>document.body</li>
-<li>document.head</li>
-<li>…</li>
-</ul>
-</blockquote>
-<h3 id="offset系列"><a href="#offset系列" class="headerlink" title="offset系列"></a>offset系列</h3><p> <strong><code>offsetParent</code></strong></p>
-<blockquote>
-<p>当前盒子的父级参照物</p>
-</blockquote>
-<p> <strong><code>offsetTop / offsetLeft</code></strong></p>
-<blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;获取当前盒子距离其父级参照物的偏移量(上偏移/左偏移)  当前盒子的外边框开始~父级参照物的内边框<br><br>&nbsp;&nbsp;&nbsp;&nbsp;“参照物”：同一个平面中，元素的父级参照物和结构没有必然联系，默认他们的父级参照物都是BODY（当前平面最外层的盒子） BODY的父级参照物是NULL</p>
-<ul>
-<li>center.offsetParent  //=&gt;BODY</li>
-<li>inner.offsetParent   //=&gt;BODY</li>
-<li>outer.offsetParent   //=&gt;BODY<br>&nbsp;&nbsp;&nbsp;&nbsp;“参照物可以改变”：构建出不同的平面即可（使用zIndex，但是这个属性只对定位有作用），所以改变元素的定位(position:relative/absolute/fixed)可以改变其父级参照物</li>
-</ul>
-</blockquote>
-<p><strong><code>scrollTop / scrollLeft</code></strong></p>
-<blockquote>
-<p>滚动条卷去的宽度或者高度</p>
-<ul>
-<li>最小卷去值：0</li>
-<li>最大卷去值：真实页面的高度 - 一屏幕的高度 document.documentElement.scrollHeight-document.documentElement.clientHeight</li>
-<li>在JS盒子模型13个属性中，只有scrollTop/scrollLeft是“可读写”属性，其余都是“只读”属性</li>
-</ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/06/js知识梳理七/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1206,7 +1168,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

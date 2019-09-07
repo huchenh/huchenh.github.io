@@ -304,6 +304,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/16/git常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/16/git常用命令/" itemprop="url">git常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-16T23:41:41+08:00">
+                2019-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="git使用指南"><a href="#git使用指南" class="headerlink" title="git使用指南"></a>git使用指南</h1><p>​    公司一直是使用git作为代码管理，现在整理一些常用的git命令，供大家查看，不再依赖图形化工具</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>1、克隆仓库</p>
+<p>克隆仓库会下载仓库完整的文件、分支和历史记录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone [&lt;options&gt;] [--] &lt;repo&gt; [&lt;dir&gt;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 克隆完整的仓库到 ./git-learning 目录下</span><br><span class="line">git clone git@github.com:x-cold/git-learning.git</span><br><span class="line"># 只克隆 dev 分支到 ./dev 目录下</span><br><span class="line">gti clone -b dev git@github.com:x-cold/git-learning.git dev</span><br></pre></td></tr></table></figure>
+<p>2、将文件变更记录写入到本地的索引库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add [&lt;option&gt;] [--] [pathsec]...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 添加当前目录下所有文件</span><br><span class="line">git add .</span><br><span class="line"># 添加部分文件</span><br><span class="line">git add src/ app/ index.js</span><br></pre></td></tr></table></figure>
+<p>3、提交变更到工作区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit [&lt;options&gt;] [--] &lt;pathsec&gt;...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 最普通的提交</span><br><span class="line">git commit -m&apos;feat: support canvas&apos;</span><br><span class="line"># 修改当前的 commit message</span><br><span class="line">git commit --amend</span><br><span class="line"># 重置当前的 commit author 和 message</span><br><span class="line">git commit --amend --reset-author</span><br></pre></td></tr></table></figure>
+<p>4、推送代码到远程仓库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push [&lt;options&gt;] [&lt;repository&gt;] [&lt;refspec&gt;...]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 提交本地仓库当前分支到远程仓库的 master 分支</span><br><span class="line">git push origin master</span><br><span class="line"># 提交本地仓库 dev 分支到远程的 master 分支</span><br><span class="line">git push origin master:dev</span><br></pre></td></tr></table></figure>
+<p>​      Git 是一个分布式的版本控制工具，因此远程和本地可以视为两个独立的 Git 仓库。上图是一张经典的 Git 中的数据流与存储级别的介绍，其中储存级别主要包含几部分：</p>
+<ul>
+<li>工作区 (Working Files)，指的是我们时刻在编辑的文件的目录，通常来说我们修改文件都是在工作区体现的</li>
+<li>暂存区（Stage），暂存将本地的修改，然后提交到本地仓库</li>
+<li>本地仓库（Local），commit 后 形成的历史记录区</li>
+<li>远程仓库</li>
+</ul>
+<p>总体的流程就是：：工作区 -&gt; 暂存区 -&gt; 本地仓库 -&gt; 远程仓库</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/16/git常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/15/Function&Object原型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -931,172 +1100,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/04/29/react-router/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/29/react-router/" itemprop="url">react-router</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T22:30:40+08:00">
-                2019-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/路由/" itemprop="url" rel="index">
-                    <span itemprop="name">路由</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="HashRouter"><a href="#HashRouter" class="headerlink" title="HashRouter"></a>HashRouter</h3><ol>
-<li>当前项目一旦使用HASH-ROUTER，则默认在页面的地址后面加上“#/”，也就是HASH默认值是一个斜杠，我们一般让其显示首页组件信息内容</li>
-<li>HASH-ROUTER中只能出现一个子元素</li>
-<li>HASH-ROUTER机制中，我们需要根据哈希地址不同，展示不同的组件内容，此时需要使用ROUTE</li>
-</ol>
-<h3 id="ROUTE"><a href="#ROUTE" class="headerlink" title="ROUTE"></a>ROUTE</h3><ul>
-<li>PATH：设置匹配地址，但是默认不是严格匹配，当前页面哈希地址只要包含完整的它（内容是不变的），都能被匹配上</li>
-<li>PATH=’/‘ ：和它匹配的地址只有要斜杠即可（都能和它匹配）</li>
-<li>PATH=’/user’：“#/user/login”也可以匹配，但是“#/user2”这个无法匹配</li>
-<li>COMPONENT：一但哈希值和当前ROUTE的PATH相同了，则渲染COMPONENT指定的组件</li>
-<li>EXACT：让PATH的匹配严谨和严格一些（只有URL哈希值和PATH设定的值相等才可以匹配到）</li>
-<li>PATH=’/‘：“#/”匹配，但是“#/user”就不再匹配了</li>
-<li>STRICT</li>
-<li>RENDER：当页面的哈希地址和PATH匹配，会把RENDER规划的方法执行，在方法中一般做“权限校验”（渲染组件之前验证是否存在权限，不存在做一些特殊处理）</li>
-</ul>
-<hr>
-<ul>
-<li>默认情况下，会和每一个ROUTE都做校验（哪怕之前已经有校验成功的），SWITCH组件可以解决这个问题，和SWITCH CASE一样，只要有一种情况校验成功，就不在向后校验了</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/29/react-router/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1149,7 +1152,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
