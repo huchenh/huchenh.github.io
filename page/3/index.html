@@ -304,6 +304,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/07/12/weakMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/12/weakMap/" itemprop="url">weakMap</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T21:54:36+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>weakMap的特性及应用场景总结：</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><h4 id="WeakMap-只接受对象作为键名"><a href="#WeakMap-只接受对象作为键名" class="headerlink" title="WeakMap 只接受对象作为键名"></a>WeakMap 只接受对象作为键名</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</span><br><span class="line">map.set(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// TypeError: Invalid value used as weak map key</span></span><br><span class="line">map.set(<span class="literal">null</span>, <span class="number">2</span>);</span><br><span class="line"><span class="comment">// TypeError: Invalid value used as weak map key</span></span><br></pre></td></tr></table></figure>
+<h4 id="WeakMap-的键名所引用的对象是弱引用"><a href="#WeakMap-的键名所引用的对象是弱引用" class="headerlink" title="WeakMap 的键名所引用的对象是弱引用"></a>WeakMap 的键名所引用的对象是弱引用</h4><p>​       WeakMaps 保持了对键名所引用的对象的弱引用。在计算机程序中弱引用和强应用是相对的，是指不能确保其引用的对象不会被垃圾回收器回收的引用。一个对象若只被弱引用所引用，则被认为是不可访问（或弱可访问）的，并因此可能在任何时刻被回收。</p>
+<p>在JavaScript中，一般我们创建的对象，都是强引用；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+<p>只有当我们手动设置为null时，才会回收obj</p>
+<p>如果创建一个弱引用对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设可以这样创建一个</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> WeakObject();</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/12/weakMap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/07/06/postCss/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -902,162 +1057,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/11/css实战小技巧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/11/css实战小技巧/" itemprop="url">css实战小技巧</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T23:47:50+08:00">
-                2019-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。</p>
-<h3 id="尽量使用-padding-代替-margin"><a href="#尽量使用-padding-代替-margin" class="headerlink" title="尽量使用 padding 代替 margin"></a>尽量使用 padding 代替 margin</h3><p>​        <code>padding</code> 和 <code>margin</code> 两个是常用的属性，但是<strong>属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠</strong>，所以如果 <code>margin</code> 使用的过于频繁的时候，Box 的垂直距离可能就会发生重叠。第一个子元素的 <code>margin-top</code> 值会加在父元素上的 bug，最后一个子元素的 <code>margin-bottom</code> 也存在类似的问题。</p>
-<p>​        原因：所有毗邻的两个或多个盒元素的 <code>margin</code> 将会合并为一个 <code>margin</code> 共享。所以我们可以在首位元素使用 <code>padding</code> 来替代 <code>margin</code>。当然有的时候使用 <code>padding</code> 不能满足需求，这时你也可以在“非空内容”这个条件做文章。即在父元素添加一个伪元素。</p>
-<h3 id="position-fixed-降级问题"><a href="#position-fixed-降级问题" class="headerlink" title="position:fixed 降级问题"></a>position:fixed 降级问题</h3><p>​        开发中遇到的“吸顶”问题，就是<code>position:fixed</code> 这个属性。如果父元素有使用<code>transform</code>,<code>fixed</code> 的效果会降级为 <code>absolute</code></p>
-<p><strong><code>解决方案</code></strong></p>
-<p>​        既然会降级为 <code>absolute</code> 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 <code>fixed</code>和 <code>absolute</code> 的表现效果会是一样的。即当使用 <code>fixed</code> 的直接父元素的高度和屏幕的高度相同时 <code>fixed</code> 和 <code>absolute</code> 的表现效果会是一样的。如果这个直接父级内的元素存在滚动的情况，那就加上 <code>overflow-y:auto</code>。</p>
-<h3 id="合理使用-px-em-rem-等单位"><a href="#合理使用-px-em-rem-等单位" class="headerlink" title="合理使用 px | em | rem | % 等单位"></a>合理使用 px | em | rem | % 等单位</h3><p>​        在 CSS 中有许多距离单位，比如 px | em | rem | %，还有 CSS3 中的 vh | vw 等单位。px是pc端最常用的单位，但是再移动端自适应的要求下，使用的场景就不是很多了，以下几种小的适用场景。</p>
-<h4 id="比较小的图案"><a href="#比较小的图案" class="headerlink" title="比较小的图案"></a><strong>比较小的图案</strong></h4><p>​        比如画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// less </span></span><br><span class="line"><span class="comment">//使用 px 配合 dpr 来实现：</span></span><br><span class="line"><span class="comment">/*@size 建议取双数*/</span></span><br><span class="line"><span class="selector-class">.circle</span>(<span class="variable">@size</span>,<span class="variable">@backgroundColor</span>)&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="variable">@backgroundColor</span>;</span><br><span class="line">    <span class="selector-attr">[data-dpr="1"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-attr">[data-dpr="3"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/11/css实战小技巧/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1110,7 +1109,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
