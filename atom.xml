@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-10-13T10:15:31.705Z</updated>
+  <updated>2019-10-20T13:33:15.726Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js处理字符串和数字</title>
+    <link href="https://huchenh.github.io/2019/10/20/js%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97/"/>
+    <id>https://huchenh.github.io/2019/10/20/js处理字符串和数字/</id>
+    <published>2019-10-20T12:59:17.000Z</published>
+    <updated>2019-10-20T13:33:15.726Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;p&gt;字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World”
+        
+      
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>vue项目配合axios实现loading效果</title>
@@ -531,28 +557,6 @@
     
     
       <category term="css" scheme="https://huchenh.github.io/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>aysnc函数错误处理</title>
-    <link href="https://huchenh.github.io/2019/06/05/aysnc%E5%87%BD%E6%95%B0%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"/>
-    <id>https://huchenh.github.io/2019/06/05/aysnc函数错误处理/</id>
-    <published>2019-06-05T15:41:39.000Z</published>
-    <updated>2019-06-05T15:44:40.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近，搭配koa和mysql2 （sequelize）使用的时候，查询数据库，会要捕获错误，sequelize提供的模型操作方法，均是返回promise对象，我们可以用&lt;code&gt;then&lt;/code&gt;… &lt;code&gt;catch&lt;/code&gt; 这样的链式方法 来获取查询数据结果，捕获错误；但是koa 支持 aysnc/ await 语法，我们可以更简洁地操作。&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;	&lt;span class=&quot;comment&quot;&gt;// 查询用户信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;user = &lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; Models.users.findOne(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  where:&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    username: userName,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    password:mdPwd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 创建用户信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rs = &lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; Models.users.build(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  user_id:userId,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  username:userName,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  password:mdPwd&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;).save()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;try-…-catch&quot;&gt;&lt;a href=&quot;#try-…-catch&quot; class=&quot;headerlink&quot; title=&quot;try … catch&quot;&gt;&lt;/a&gt;try … catch&lt;/h3&gt;&lt;p&gt;​    在使用aync/await，我们可以像写同步代码一样来完成数据的增删该查，但是这种方式我们无法捕获数据操作过程中的错误信息。如果需要捕获错误，我们可以借助 try {} catch{}。 下面是我demo中的错误处理代码&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   

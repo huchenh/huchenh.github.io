@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="vue,">
+  <meta name="keywords" content="javaScript,">
 
 
 
@@ -88,18 +88,26 @@
 
 
 
-<meta name="description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
-<meta name="keywords" content="vue">
+<meta name="description" content="字符串字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,,W,o,r,l,d。 创建字符串在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。 123const str1 = &apos;string 1&apos;const">
+<meta name="keywords" content="javaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue组件通信3-findComponent系列方法">
-<meta property="og:url" content="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/index.html">
+<meta property="og:title" content="js处理字符串和数字">
+<meta property="og:url" content="https://huchenh.github.io/2019/10/20/js处理字符串和数字/index.html">
 <meta property="og:site_name" content="追风">
-<meta property="og:description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
+<meta property="og:description" content="字符串字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,,W,o,r,l,d。 创建字符串在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。 123const str1 = &apos;string 1&apos;const">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-11T07:57:30.000Z">
+<meta property="og:image" content="https://juejin.im/equation?tex=e">
+<meta property="og:image" content="https://juejin.im/equation?tex=e">
+<meta property="og:image" content="https://juejin.im/equation?tex=x">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Clog_e%20x">
+<meta property="og:image" content="https://juejin.im/equation?tex=e">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Clog_%5Calpha%20x%3D%5Cfrac%7B%5Clog_%5Cbeta%20x%7D%7B%5Clog_%5Cbeta%20%5Calpha%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Clog_%5Calpha%20x%3D%5Cfrac%7B%5Clog_e%20x%7D%7B%5Clog_e%20%5Calpha%7D">
+<meta property="og:updated_time" content="2019-10-20T13:33:15.726Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue组件通信3-findComponent系列方法">
-<meta name="twitter:description" content="组件的通信 3：找到任意组件实例——findComponents 系列方法provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。 findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组">
+<meta name="twitter:title" content="js处理字符串和数字">
+<meta name="twitter:description" content="字符串字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,,W,o,r,l,d。 创建字符串在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。 123const str1 = &apos;string 1&apos;const">
+<meta name="twitter:image" content="https://juejin.im/equation?tex=e">
 
 
 
@@ -129,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/">
+  <link rel="canonical" href="https://huchenh.github.io/2019/10/20/js处理字符串和数字/">
 
 
 
 
 
-  <title>vue组件通信3-findComponent系列方法 | 追风</title>
+  <title>js处理字符串和数字 | 追风</title>
   
 
 
@@ -304,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/10/20/js处理字符串和数字/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陈虎">
@@ -321,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vue组件通信3-findComponent系列方法</h1>
+          <h1 class="post-title" itemprop="name headline">js处理字符串和数字</h1>
         
 
         <div class="post-meta">
@@ -333,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-11T15:56:03+08:00">
-                2019-08-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T20:59:17+08:00">
+                2019-10-20
               </time>
             
 
@@ -356,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
                   </a>
                 </span>
 
@@ -393,26 +401,44 @@
       
 
       
-        <h2 id="组件的通信-3：找到任意组件实例——findComponents-系列方法"><a href="#组件的通信-3：找到任意组件实例——findComponents-系列方法" class="headerlink" title="组件的通信 3：找到任意组件实例——findComponents 系列方法"></a>组件的通信 3：找到任意组件实例——findComponents 系列方法</h2><p>provide / inject 和 dispatch / broadcast。它们有各自的使用场景和局限，比如前者多用于子组件获取父组件的状态，后者常用于父子组件间通过自定义事件通信。</p>
-<p>findComponents 系列方法，它并非 Vue.js 内置，而是需要自行实现，以工具函数的形式来使用，它是一系列的函数，可以说是组件通信的终极方案。findComponents 系列方法最终都是返回组件的实例，进而可以读取或调用该组件的数据和方法。</p>
-<p> 5 个不同的函数:</p>
-<ul>
-<li>由一个组件，向上找到最近的指定组件；</li>
-<li>由一个组件，向上找到所有的指定组件；</li>
-<li>由一个组件，向下找到最近的指定组件；</li>
-<li>由一个组件，向下找到所有指定的组件；</li>
-<li>由一个组件，找到指定组件的兄弟组件。</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>5 个函数的原理，都是通过递归、遍历，找到指定组件的 <code>name</code> 选项匹配的组件实例并返回。</p>
-<h3 id="向上找到最近的指定组件——findComponentUpward"><a href="#向上找到最近的指定组件——findComponentUpward" class="headerlink" title="向上找到最近的指定组件——findComponentUpward"></a>向上找到最近的指定组件——findComponentUpward</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assist.js</span></span><br><span class="line"><span class="comment">// 由一个组件，向上找到最近的指定组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findComponentUpward</span> (<span class="params">context, componentName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> parent = context.$parent;</span><br><span class="line">  <span class="keyword">let</span> name = parent.$options.name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(parent &amp;&amp; (!name || [componentName].indexOf(name) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">    parent = parent.$parent;</span><br><span class="line">    <span class="keyword">if</span>(parent)&#123;</span><br><span class="line">      name = parent.$options.name</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> parent</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; findComponentUpward &#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>findComponentUpward 接收两个参数，第一个是当前上下文，比如你要基于哪个组件来向上寻找，一般都是基于当前的组件，也就是传入 <code>this</code>；第二个参数是要找的组件的 <code>name</code> 。</p>
-<p>findComponentUpward 方法会在 while 语句里不断向上覆盖当前的 <code>parent</code> 对象，通过判断组件（即 parent）的 name 与传入的 componentName 是否一致，直到直到最近的一个组件为止。</p>
-<p>与 dispatch 不同的是，findComponentUpward 是直接拿到组件的实例，而非通过事件通知组件。比如下面的示例，有组件 A 和组件 B，A 是 B 的父组件，在 B 中获取和调用 A 中的数据和方法：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- component-a.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    组件 A</span><br><span class="line">    <span class="tag">&lt;<span class="name">component-b</span>&gt;</span><span class="tag">&lt;/<span class="name">component-b</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> componentB <span class="keyword">from</span> <span class="string">'./component-b.vue'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'componentA'</span>,</span></span><br><span class="line"><span class="undefined">    components: &#123; componentB &#125;,</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">        name: <span class="string">'Aresn'</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="undefined">      sayHello () &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'Hello, Vue.js'</span>);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- component-b.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    组件 B</span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">import</span> &#123; findComponentUpward &#125; <span class="keyword">from</span> <span class="string">'../utils/assist.js'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'componentB'</span>,</span></span><br><span class="line"><span class="undefined">    mounted () &#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> comA = findComponentUpward(<span class="keyword">this</span>, <span class="string">'componentA'</span>);</span></span><br><span class="line"><span class="undefined">      </span></span><br><span class="line"><span class="javascript">      <span class="keyword">if</span> (comA) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(comA.name);  <span class="comment">// Aresn</span></span></span><br><span class="line"><span class="javascript">        comA.sayHello();  <span class="comment">// Hello, Vue.js</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>findComponentUpward 只会找到最近的一个组件实例，如果要找到全部符合要求的组件，就需要另外实现方法。</p>
-<h3 id="向上找到所有的指定组件——findComponentsUpward"><a href="#向上找到所有的指定组件——findComponentsUpward" class="headerlink" title="向上找到所有的指定组件——findComponentsUpward"></a>向上找到所有的指定组件——findComponentsUpward</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assist.js</span></span><br><span class="line"><span class="comment">// 由一个组件，向上找到所有的指定组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findComponentsUpward</span> (<span class="params">context, componentName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> parents = [];</span><br><span class="line">  <span class="keyword">const</span> parent = context.$parent;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(parent)&#123;</span><br><span class="line">    <span class="keyword">if</span>(parent.$options.name == componentName) parents.push(parent);</span><br><span class="line">    <span class="keyword">return</span> parents.concat(findComponentsUpward(parent, componentName))</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> []</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; findComponentsUpward &#125;;</span><br></pre></td></tr></table></figure>
+        <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,<space>,W,o,r,l,d。</space></p>
+<h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><p>在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str1 = <span class="string">'string 1'</span></span><br><span class="line"><span class="keyword">const</span> str2 = <span class="string">"string 2"</span></span><br><span class="line"><span class="keyword">const</span> str3 = <span class="string">`string 3`</span></span><br></pre></td></tr></table></figure>
+<p>虽然 <code>`</code> 同样可以以与 <code>&#39;</code> 和 <code>&quot;</code> 一样的使用方式使用，但也可以有更高级的用法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'World'</span></span><br><span class="line"><span class="keyword">const</span> word = <span class="string">`Hello <span class="subst">$&#123;target&#125;</span>`</span> <span class="comment">//=&gt; Hello World</span></span><br></pre></td></tr></table></figure>
+<p>同时 <code>`</code> 也可以用于创建一个“多行字符串”，即字符串内容中包含多行文本。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">Hello</span></span><br><span class="line"><span class="string">World</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;</span></span><br><span class="line"><span class="comment">// Hello</span></span><br><span class="line"><span class="comment">// World</span></span><br></pre></td></tr></table></figure>
+<h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h3><p>一般来说人们都会使用词频统计作为数据科学的 “Hello World”，简单来说就是对一段英语内容中的单词进行频次（出现次数）统计。我们在进行词频统计之前，我们首先需要对源内容进行预处理。首先我们要了解的是，我们可以看到这段内容中有小写字母、大写字母以及标点符号（包括逗号、句号、括号、双引号、斜杠和冒号）。</p>
+<p>而从语言角度，HELLO、hello 和 Hello 都是一样的，所以我们需要先完成以下预处理任务：</p>
+<ol>
+<li>去除文本中的标点符号、数字</li>
+<li>将所有大写字母转换为小写字母</li>
+</ol>
+<p>假设原文为 “Hey dude, how is it going?”，则需要首先转换为 “hey dude how is it going”。</p>
+<p><strong><code>去除文本中的标点符号</code></strong><br>在做任何需求之前，都需要先对需求的上下文进行多方位理解，比如去除标点符号、数字这个需求在全英语的语境下可以说是约等于只保留英文字母。这样我们就可以从文本中直接筛选出英文字母和空格即可，这里可以使用 ASCII 码进行甄别。大写字母的 ASCII 码范围为 65 到 90，即 A 到 Z，而小写字母则为 97 到 122，空格的 ASCII 码为 32，换行符的 ASCII 码为 10。在 JavaScript 可以用 string.charCodeAt() 方法获取字符的 ASCII 码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalText = <span class="string">'Hey dude, how is it going?'</span></span><br><span class="line"><span class="keyword">let</span> wordOnlyText = <span class="string">''</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; originalText.length; ++i) &#123;</span><br><span class="line">  <span class="keyword">const</span> letter = originalText[i]</span><br><span class="line">  <span class="keyword">const</span> asciiCode = letter.charCodeAt()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((asciiCode &gt;= <span class="number">65</span> &amp;&amp; asciiCode &lt;= <span class="number">90</span>) || (asciiCode &gt;= <span class="number">97</span> &amp;&amp; asciiCode &lt;= <span class="number">122</span>) || asciiCode === <span class="number">32</span>) &#123;</span><br><span class="line">    wordOnlyText += letter</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(wordOnlyText) <span class="comment">//=&gt; "Hey dude how is it going"</span></span><br></pre></td></tr></table></figure>
+<p><strong><code>将所有大写字母转换为小写字母</code></strong><br>上面我们用到了 string.charCodeAt() 方法来获取字符的 ASCII 码，那么自然也有对应的方法用于将 ASCII 码转换为对应字符 String.fromCharCode(code)。</p>
+<p>而从字母的 ASCII 码范围可以看到，将大写字母的 ASCII 码数值加上 32 便是其对应小写字母的 ASCII 码数值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lowerCaseText = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; wordOnlyText.length; ++i) &#123;</span><br><span class="line">  <span class="keyword">const</span> letter = wordOnlyText[i]</span><br><span class="line">  <span class="keyword">const</span> asciiCode = letter.charCodeAt()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (asciiCode &gt;= <span class="number">65</span> &amp;&amp; asciiCode &lt;= <span class="number">90</span>) &#123;</span><br><span class="line">    lowerCaseText += <span class="built_in">String</span>.fromCharCode(asciiCode + <span class="number">32</span>)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    lowerCaseText += letter</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(lowerCaseText) <span class="comment">//=&gt; "hey dude how is it going"</span></span><br></pre></td></tr></table></figure>
+<p>JavaScript 内置将文本中的大写字母转换为小写字母的 API  —— string.toLowerCase()。</p>
+<p>完成了文本的预处理之后，就可以将文本数据进行分割了。而最主要用到的方法便是 string.split(separator)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalText = <span class="string">`</span></span><br><span class="line"><span class="string">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</span></span><br><span class="line"><span class="string">The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</span></span><br><span class="line"><span class="string">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wordOnlyText = <span class="string">''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; originalText.length; ++i) &#123;</span><br><span class="line">  <span class="keyword">const</span> letter = originalText[i]</span><br><span class="line">  <span class="keyword">const</span> asciiCode = letter.charCodeAt()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((asciiCode &gt;= <span class="number">65</span> &amp;&amp; asciiCode &lt;= <span class="number">90</span>) || (asciiCode &gt;= <span class="number">97</span> &amp;&amp; asciiCode &lt;= <span class="number">122</span>) || asciiCode === <span class="number">32</span>) &#123;</span><br><span class="line">    wordOnlyText += letter</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lowerCaseText = wordOnlyText.toLowerCase()</span><br><span class="line"></span><br><span class="line"><span class="comment">/*---------------------------------------------------------------------*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> words = lowerCaseText.split(<span class="string">' '</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(words.length) <span class="comment">//=&gt; 163</span></span><br></pre></td></tr></table></figure>
+<h3 id="组装字符串"><a href="#组装字符串" class="headerlink" title="组装字符串"></a>组装字符串</h3><p>字符串之间的连接可以直接使用 + 运算符完成。若当数据量比较大时，需要将多个数据量“嵌入”到一个文本模板中。一般情况下，开发工程师会选择一个较为顺手的模板引擎来实现这个功能，但在这里我们一切从简，使用 JavaScript 中的字符串模板特性 ` 来完成这个需求。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>除了自然语言以外，当我们需要准确地表达世界上任何事物时，我们还需要有数字的帮助。</p>
+<h3 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h3><p>四则运算是所有数学运算的基础。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">3</span></span><br><span class="line"><span class="keyword">const</span> b = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">a + b <span class="comment">//=&gt; 7</span></span><br><span class="line">b - a <span class="comment">//=&gt; 1</span></span><br><span class="line">a * b <span class="comment">//=&gt; 12</span></span><br><span class="line">a / b <span class="comment">//=&gt; 0.75</span></span><br></pre></td></tr></table></figure>
+<h3 id="幂运算"><a href="#幂运算" class="headerlink" title="幂运算"></a>幂运算</h3><p>幂运算，又称指数运算，是数学中非常重要的一种运算方式，具体定义便是同一个数值的多次自乘结果。有了幂运算才有后面更为深入的对数运算、导数运算、方差运算等等。在 JavaScript 中，使用 Math.pow(base, exponent) 来进行幂运算，其中 base 为底数即上式中的 n，而 exponent 则为指数即右上角的 3。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> V1 = <span class="number">3</span> * <span class="number">3</span> * <span class="number">3</span></span><br><span class="line"><span class="built_in">console</span>.log(V1) <span class="comment">//=&gt; 27</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> V2 = <span class="built_in">Math</span>.pow(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">console</span>.log(V2) <span class="comment">//=&gt; 27</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> calcCubeVolume = <span class="function"><span class="keyword">function</span>(<span class="params">sideLength</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.pow(sideLength, <span class="number">3</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(calcCubeVolume(<span class="number">3</span>)) <span class="comment">//=&gt; 27</span></span><br></pre></td></tr></table></figure>
+<h3 id="对数运算"><a href="#对数运算" class="headerlink" title="对数运算"></a>对数运算</h3><p>数学中这就涉及了对数运算，比如求“27 是 3 的多少次方”则为</p>
+<p>\log_3 27 = 3 \ \log_2 1024 = 10</p>
+<p>而在数学中有一个神奇的数值<strong>自然对数</strong> <img src="https://juejin.im/equation?tex=e" alt="e">，关于这个数值的传奇故事你可以搜索到非常多的文章甚至视频。在 JavaScript 中的 <code>Math.log(x)</code> 函数只接受一个参数，而这个函数的直接作用便是计算以自然对数 <img src="https://juejin.im/equation?tex=e" alt="e"> 为底 <img src="https://juejin.im/equation?tex=x" alt="x"> 的对数。</p>
+<p><img src="https://juejin.im/equation?tex=%5Clog_e%20x" alt="\log_e x"></p>
+<p>那么就很奇怪了，我们要如何在 JavaScript 中计算并非以 <img src="https://juejin.im/equation?tex=e" alt="e"> 为底的对数结果呢？这得先回到数学推导上来。对数中有一个经典公式为<strong>换底公式</strong>，定义如下：</p>
+<p><img src="https://juejin.im/equation?tex=%5Clog_%5Calpha%20x%3D%5Cfrac%7B%5Clog_%5Cbeta%20x%7D%7B%5Clog_%5Cbeta%20%5Calpha%7D" alt="\log_\alpha x=\frac{\log_\beta x}{\log_\beta \alpha}"></p>
+<p>具体推导可以参考<a href="https://zh.wikipedia.org/wiki/%E5%AF%B9%E6%95%B0" target="_blank" rel="noopener">维基百科页面 · 对数</a>。那么代入我们前面公式中就可以用这样的方式解决了。</p>
+<p><img src="https://juejin.im/equation?tex=%5Clog_%5Calpha%20x%3D%5Cfrac%7B%5Clog_e%20x%7D%7B%5Clog_e%20%5Calpha%7D" alt="\log_\alpha x=\frac{\log_e x}{\log_e \alpha}"></p>
+<p>换成使用 JavaScript 实现便是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getBaseLog</span>(<span class="params">base, x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.log(x) / <span class="built_in">Math</span>.log(base)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(getBaseLog(<span class="number">2</span>, <span class="number">1024</span>)) <span class="comment">//=&gt; 10</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -437,7 +463,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i> vue</a>
+            <a href="/tags/javaScript/" rel="tag"><i class="fa fa-tag"></i> javaScript</a>
           
         </div>
       
@@ -450,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/vue组件通信一provide-inject/" rel="next" title="vue组件通信一provide inject">
-                <i class="fa fa-chevron-left"></i> vue组件通信一provide inject
+              <a href="/2019/10/13/vue项目配合axios实现loading效果/" rel="next" title="vue项目配合axios实现loading效果">
+                <i class="fa fa-chevron-left"></i> vue项目配合axios实现loading效果
               </a>
             
           </div>
@@ -459,10 +485,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/15/Vue组件通信-广播与派发/" rel="prev" title="Vue组件通信-广播与派发">
-                Vue组件通信-广播与派发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -608,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组件的通信-3：找到任意组件实例——findComponents-系列方法"><span class="nav-number">1.</span> <span class="nav-text">组件的通信 3：找到任意组件实例——findComponents 系列方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向上找到最近的指定组件——findComponentUpward"><span class="nav-number">2.1.</span> <span class="nav-text">向上找到最近的指定组件——findComponentUpward</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向上找到所有的指定组件——findComponentsUpward"><span class="nav-number">2.2.</span> <span class="nav-text">向上找到所有的指定组件——findComponentsUpward</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建字符串"><span class="nav-number">1.1.</span> <span class="nav-text">创建字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分割字符串"><span class="nav-number">1.2.</span> <span class="nav-text">分割字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组装字符串"><span class="nav-number">1.3.</span> <span class="nav-text">组装字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">2.</span> <span class="nav-text">数字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#四则运算"><span class="nav-number">2.1.</span> <span class="nav-text">四则运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幂运算"><span class="nav-number">2.2.</span> <span class="nav-text">幂运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数运算"><span class="nav-number">2.3.</span> <span class="nav-text">对数运算</span></a></li></ol></li></ol></div>
             
 
           </div>

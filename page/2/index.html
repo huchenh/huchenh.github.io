@@ -304,6 +304,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/09/07/不受控制的-position-fixed/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/07/不受控制的-position-fixed/" itemprop="url">不受控制的 position:fixed</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T22:19:02+08:00">
+                2019-09-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>  最近在一个活动H5页面中，使用了translate3d技术来移动‘小车’，实现的效果在移动端测试还不错，小车按着规定的曲线，不急不慢的运动着，一切都是完美的。然而，问题来了，我后面加上的任务栏，明明是fixed相对屏幕定位，竟然在小车运动的时候，跟着背景图滚动，我的心也跟着了。。。<br>  抱着万事找度娘的想法，我开始了网上冲浪之旅。终于，找了fixed定位失效的场景。</p>
+<h2 id="失效的-position-fixed"><a href="#失效的-position-fixed" class="headerlink" title="失效的 position:fixed"></a>失效的 position:fixed</h2><p>  首先MDN 用一句话概括了这种情况：</p>
+<blockquote>
+<p>当元素祖先的 transform 属性非 none 时，定位容器由视口改为该祖先。</p>
+</blockquote>
+<p>通俗的讲就是指定了 position:fixed 的元素，如果其祖先元素存在非 none 的 transform 值 ，那么该元素将相对于设定了 transform 的祖先元素进行定位。</p>
+<p>那么，为什么会发生这种情况呢？说好的相对视口（Viewport）定位呢？继续百度后，发现了堆叠上下文的概念（Stacking Context）</p>
+<ul>
+<li>任何非 none 的 transform 值都会导致一个堆叠上下文（Stacking Context）和包含块（Containing Block）的创建。</li>
+<li>由于堆叠上下文的创建，该元素会影响其子元素的固定定位。设置了 position:fixed 的子元素将不会基于 viewport 定位，而是基于这个父元素。</li>
+</ul>
+<h2 id="Stacking-Context-–-堆叠上下文"><a href="#Stacking-Context-–-堆叠上下文" class="headerlink" title="Stacking Context – 堆叠上下文"></a>Stacking Context – 堆叠上下文</h2><p>堆叠上下文是 HTML 元素的三维概念，这些 HTML 元素在一条假想的相对于面向（电脑屏幕的）视窗或者网页的用户的 z 轴上延伸，HTML 元素依据其自身属性按照优先级顺序占用层叠上下文的空间。简单理解，就是生成了 Stacking Context 的元素会影响该元素的层叠关系与定位关系。</p>
+<p>按照上面的说法，堆叠上下文的创建，该元素会影响其子元素的固定定位。设置了 position:fixed 的子元素将不会基于 viewport 定位，而是基于这个父元素。</p>
+<p>那么问题来了，是否所有能够生成堆叠上下文的元素，都会使得其子元素的 position:fixed 相对它，而不是相对视口（Viewport）进行定位呢？</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/07/不受控制的-position-fixed/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/25/vue递归组件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -911,167 +1072,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/07/vue组件通信一provide-inject/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/07/vue组件通信一provide-inject/" itemprop="url">vue组件通信一provide inject</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T22:44:16+08:00">
-                2019-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="组件的通信-1：provide-inject"><a href="#组件的通信-1：provide-inject" class="headerlink" title="组件的通信 1：provide / inject"></a>组件的通信 1：provide / inject</h2><p>  vue提供的API，<code>ref</code> 和 <code>$parent / $children</code> 在<strong>跨级</strong>通信时是有弊端的。为了解决这种跨级通信情况，我们往往会借助Bus和Vuex这些第三方库。但我们还可以借用vue 内置的 provide / inject 接口，实现无依赖的组件通信。</p>
-<h3 id="provide-inject"><a href="#provide-inject" class="headerlink" title="provide / inject"></a>provide / inject</h3><p>  <code>provide / inject</code> 是 Vue.js 2.2.0 版本后新增的 API，在文档中这样介绍 ：</p>
-<blockquote>
-<p><a href="https://cn.vuejs.org/v2/api/#provide-inject" target="_blank" rel="noopener">https://cn.vuejs.org/v2/api/#provide-inject</a></p>
-<p>这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。这与 React 的上下文特性<code>context</code>很相似。<br><code>官网提示</code>provide 和 inject 主要为高阶插件/组件库提供用例。并不推荐直接用于应用程序代码中。<strong>不过建议归建议，如果你用好了，这个 API 会非常有用。</strong></p>
-</blockquote>
-<p>假设有两个组件： <strong>A.vue</strong> 和 <strong>B.vue</strong>，B 是 A 的子组件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// A.vue</span><br><span class="line">export default &#123;</span><br><span class="line">  provide: &#123;</span><br><span class="line">    name: &apos;Aresn&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// B.vue</span><br><span class="line">export defaul &#123;</span><br><span class="line">  inject: [&apos;name&apos;],</span><br><span class="line">  mounted()&#123;</span><br><span class="line">    console.log(this.name) // Aresn</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 A.vue 里，我们设置了一个 <strong>provide: name</strong>，值为 Aresn，它的作用就是将 <strong>name</strong> 这个变量提供给它的所有子组件。而在 B.vue 中，通过 <code>inject</code> 注入了从 A 组件中提供的 <strong>name</strong> 变量，那么在组件 B 中，就可以直接通过 <strong>this.name</strong> 访问这个变量了，它的值也是 Aresn。这就是 provide / inject API 最核心的用法。</p>
-<p>需要注意的是：</p>
-<blockquote>
-<p>provide 和 inject 绑定并<strong>不是可响应</strong>的。这是刻意为之的。然而，如果你传入了一个可监听的对象,具体参照<a href="https://segmentfault.com/a/1190000019836663" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019836663</a>，那么其对象的属性还是可响应的。</p>
-</blockquote>
-<p>所以，上面 A.vue 的 name 如果改变了，B.vue 的 <a href="http://this.name" target="_blank" rel="noopener">this.name</a> 是不会改变的，仍然是 Aresn。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/07/vue组件通信一provide-inject/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1124,7 +1124,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
