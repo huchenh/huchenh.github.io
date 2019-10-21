@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-10-20T13:33:15.726Z</updated>
+  <updated>2019-10-21T14:45:53.063Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -21,17 +21,22 @@
     <link href="https://huchenh.github.io/2019/10/20/js%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E5%AD%97/"/>
     <id>https://huchenh.github.io/2019/10/20/js处理字符串和数字/</id>
     <published>2019-10-20T12:59:17.000Z</published>
-    <updated>2019-10-20T13:33:15.726Z</updated>
+    <updated>2019-10-21T14:45:53.063Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;p&gt;字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World”
-        
-      
+      &lt;h2 id=&quot;字符串&quot;&gt;&lt;a href=&quot;#字符串&quot; class=&quot;headerlink&quot; title=&quot;字符串&quot;&gt;&lt;/a&gt;字符串&lt;/h2&gt;&lt;p&gt;字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,&lt;space&gt;,W,o,r,l,d。&lt;/space&gt;&lt;/p&gt;
+&lt;h3 id=&quot;创建字符串&quot;&gt;&lt;a href=&quot;#创建字符串&quot; class=&quot;headerlink&quot; title=&quot;创建字符串&quot;&gt;&lt;/a&gt;创建字符串&lt;/h3&gt;&lt;p&gt;在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; str1 = &lt;span class=&quot;string&quot;&gt;&#39;string 1&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; str2 = &lt;span class=&quot;string&quot;&gt;&quot;string 2&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; str3 = &lt;span class=&quot;string&quot;&gt;`string 3`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;虽然 &lt;code&gt;`&lt;/code&gt; 同样可以以与 &lt;code&gt;&amp;#39;&lt;/code&gt; 和 &lt;code&gt;&amp;quot;&lt;/code&gt; 一样的使用方式使用，但也可以有更高级的用法。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; target = &lt;span class=&quot;string&quot;&gt;&#39;World&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; word = &lt;span class=&quot;string&quot;&gt;`Hello &lt;span class=&quot;subst&quot;&gt;$&amp;#123;target&amp;#125;&lt;/span&gt;`&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//=&amp;gt; Hello World&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;同时 &lt;code&gt;`&lt;/code&gt; 也可以用于创建一个“多行字符串”，即字符串内容中包含多行文本。&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; str = &lt;span class=&quot;string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;Hello&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;World&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;string&quot;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//=&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// Hello&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// World&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;分割字符串&quot;&gt;&lt;a href=&quot;#分割字符串&quot; class=&quot;headerlink&quot; title=&quot;分割字符串&quot;&gt;&lt;/a&gt;分割字符串&lt;/h3&gt;&lt;p&gt;一般来说人们都会使用词频统计作为数据科学的 “Hello World”，简单来说就是对一段英语内容中的单词进行频次（出现次数）统计。我们在进行词频统计之前，我们首先需要对源内容进行预处理。首先我们要了解的是，我们可以看到这段内容中有小写字母、大写字母以及标点符号（包括逗号、句号、括号、双引号、斜杠和冒号）。&lt;/p&gt;
+&lt;p&gt;而从语言角度，HELLO、hello 和 Hello 都是一样的，所以我们需要先完成以下预处理任务：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;去除文本中的标点符号、数字&lt;/li&gt;
+&lt;li&gt;将所有大写字母转换为小写字母
     
     </summary>
     
