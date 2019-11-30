@@ -304,6 +304,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/11/css实战小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/11/css实战小技巧/" itemprop="url">css实战小技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T23:47:50+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。</p>
+<h3 id="尽量使用-padding-代替-margin"><a href="#尽量使用-padding-代替-margin" class="headerlink" title="尽量使用 padding 代替 margin"></a>尽量使用 padding 代替 margin</h3><p>​        <code>padding</code> 和 <code>margin</code> 两个是常用的属性，但是<strong>属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠</strong>，所以如果 <code>margin</code> 使用的过于频繁的时候，Box 的垂直距离可能就会发生重叠。第一个子元素的 <code>margin-top</code> 值会加在父元素上的 bug，最后一个子元素的 <code>margin-bottom</code> 也存在类似的问题。</p>
+<p>​        原因：所有毗邻的两个或多个盒元素的 <code>margin</code> 将会合并为一个 <code>margin</code> 共享。所以我们可以在首位元素使用 <code>padding</code> 来替代 <code>margin</code>。当然有的时候使用 <code>padding</code> 不能满足需求，这时你也可以在“非空内容”这个条件做文章。即在父元素添加一个伪元素。</p>
+<h3 id="position-fixed-降级问题"><a href="#position-fixed-降级问题" class="headerlink" title="position:fixed 降级问题"></a>position:fixed 降级问题</h3><p>​        开发中遇到的“吸顶”问题，就是<code>position:fixed</code> 这个属性。如果父元素有使用<code>transform</code>,<code>fixed</code> 的效果会降级为 <code>absolute</code></p>
+<p><strong><code>解决方案</code></strong></p>
+<p>​        既然会降级为 <code>absolute</code> 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 <code>fixed</code>和 <code>absolute</code> 的表现效果会是一样的。即当使用 <code>fixed</code> 的直接父元素的高度和屏幕的高度相同时 <code>fixed</code> 和 <code>absolute</code> 的表现效果会是一样的。如果这个直接父级内的元素存在滚动的情况，那就加上 <code>overflow-y:auto</code>。</p>
+<h3 id="合理使用-px-em-rem-等单位"><a href="#合理使用-px-em-rem-等单位" class="headerlink" title="合理使用 px | em | rem | % 等单位"></a>合理使用 px | em | rem | % 等单位</h3><p>​        在 CSS 中有许多距离单位，比如 px | em | rem | %，还有 CSS3 中的 vh | vw 等单位。px是pc端最常用的单位，但是再移动端自适应的要求下，使用的场景就不是很多了，以下几种小的适用场景。</p>
+<h4 id="比较小的图案"><a href="#比较小的图案" class="headerlink" title="比较小的图案"></a><strong>比较小的图案</strong></h4><p>​        比如画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// less </span></span><br><span class="line"><span class="comment">//使用 px 配合 dpr 来实现：</span></span><br><span class="line"><span class="comment">/*@size 建议取双数*/</span></span><br><span class="line"><span class="selector-class">.circle</span>(<span class="variable">@size</span>,<span class="variable">@backgroundColor</span>)&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="variable">@size</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:<span class="variable">@backgroundColor</span>;</span><br><span class="line">    <span class="selector-attr">[data-dpr="1"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">0.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-attr">[data-dpr="3"]</span> <span class="selector-tag">&amp;</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="variable">@size</span> * <span class="number">1.5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/11/css实战小技巧/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/06/05/aysnc函数错误处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -899,154 +1055,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/21/ajax封装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/21/ajax封装/" itemprop="url">ajax封装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-21T23:06:59+08:00">
-                2019-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span> <span class="title">anonymous</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">AJAX</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> init(options);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> init = <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">options = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//=&gt;INIT PARAM</span></span><br><span class="line">        <span class="keyword">let</span> &#123;</span><br><span class="line">            url,</span><br><span class="line">            method = <span class="string">'GET'</span>,</span><br><span class="line">            data = <span class="literal">null</span>,</span><br><span class="line">            dataType = <span class="string">'JSON'</span>,</span><br><span class="line">            <span class="keyword">async</span> = <span class="literal">true</span>,</span><br><span class="line">            cache = <span class="literal">true</span>,</span><br><span class="line">            success,</span><br><span class="line">            error</span><br><span class="line">        &#125; = options;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;MOUNT:把配置项挂载到实例上</span></span><br><span class="line">        [<span class="string">'url'</span>, <span class="string">'method'</span>, <span class="string">'data'</span>, <span class="string">'dataType'</span>, <span class="string">'async'</span>, <span class="string">'cache'</span>, <span class="string">'success'</span>, <span class="string">'error'</span>].forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>[item] = <span class="built_in">eval</span>(item);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//=&gt;SEND:发送AJAX请求</span></span><br><span class="line">        <span class="keyword">this</span>.sendAjax();</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    AJAX.prototype = &#123;</span><br><span class="line">        <span class="keyword">constructor</span>: AJAX,</span><br><span class="line">        init,</span><br><span class="line">        //=&gt;发送AJAX请求</span><br><span class="line">        sendAjax() &#123;</span><br><span class="line">            <span class="keyword">this</span>.handleData();</span><br><span class="line">            <span class="keyword">this</span>.handleCache();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//=&gt;SEND</span></span><br><span class="line">            <span class="keyword">let</span> &#123;method, url, <span class="keyword">async</span>, error, success, data&#125; = <span class="keyword">this</span>,</span><br><span class="line">                xhr = <span class="keyword">new</span> XMLHttpRequest;</span><br><span class="line">            xhr.open(method, url, <span class="keyword">async</span>);</span><br><span class="line">            xhr.onreadystatechange = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                    <span class="comment">//=&gt;ERROR</span></span><br><span class="line">                    <span class="keyword">if</span> (!<span class="regexp">/^(2|3)\d&#123;2&#125;$/</span>.test(xhr.status)) &#123;</span><br><span class="line">                        error &amp;&amp; error(xhr.statusText, xhr);</span><br><span class="line">                        <span class="keyword">return</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//=&gt;SUCCESS</span></span><br><span class="line">                    <span class="keyword">let</span> result = <span class="keyword">this</span>.handlDataType(xhr);</span><br><span class="line">                    success &amp;&amp; success(result, xhr);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">            xhr.send(data);</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//=&gt;处理DATA-TYPE</span></span><br><span class="line">        handlDataType(xhr) &#123;</span><br><span class="line">            <span class="keyword">let</span> dataType = <span class="keyword">this</span>.dataType.toUpperCase(),</span><br><span class="line">                result = xhr.responseText;</span><br><span class="line">            <span class="keyword">switch</span> (dataType) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'TEXT'</span>:</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'JSON'</span>:</span><br><span class="line">                    result = <span class="built_in">JSON</span>.parse(result);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'XML'</span>:</span><br><span class="line">                    result = xhr.responseXML;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//=&gt;处理CACHE</span></span><br><span class="line">        handleCache() &#123;</span><br><span class="line">            <span class="keyword">let</span> &#123;url, method, cache&#125; = <span class="keyword">this</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/^GET$/i</span>.test(method) &amp;&amp; cache === <span class="literal">false</span>) &#123;</span><br><span class="line">                <span class="comment">//=&gt;URL末尾追加时间辍</span></span><br><span class="line">                url += <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.check()&#125;</span>_=<span class="subst">$&#123;+(<span class="keyword">new</span> <span class="built_in">Date</span>())&#125;</span>`</span>;</span><br><span class="line">                <span class="keyword">this</span>.url = url;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//=&gt;处理DATA</span></span><br><span class="line">        handleData() &#123;</span><br><span class="line">            <span class="keyword">let</span> &#123;data, method&#125; = <span class="keyword">this</span>;</span><br><span class="line">            <span class="keyword">if</span> (!data) <span class="keyword">return</span>;</span><br><span class="line">            <span class="comment">//=&gt;如果是个OBJECT对象,我们把它转换为x-www-form-urlencoded这种模式,方便后期传递给服务器</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">'object'</span>) &#123;</span><br><span class="line">                <span class="keyword">let</span> str = <span class="string">``</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> data) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (data.hasOwnProperty(key)) &#123;</span><br><span class="line">                        str += <span class="string">`<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;data[key]&#125;</span>&amp;`</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                data = str.substring(<span class="number">0</span>, str.length - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//=&gt;根据请求方式不一样,传递给服务器的方式也不同</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="regexp">/^(GET|DELETE|HEAD|TRACE|OPTIONS)$/i</span>.test(method)) &#123;</span><br><span class="line">                <span class="keyword">this</span>.url += <span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.check()&#125;</span><span class="subst">$&#123;data&#125;</span>`</span>;</span><br><span class="line">                <span class="keyword">this</span>.data = <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">this</span>.data = data;<span class="comment">//=&gt;POST系列</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">//=&gt;检测URL中是否存在问号</span></span><br><span class="line">        check() &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.url.indexOf(<span class="string">'?'</span>) &gt; <span class="number">-1</span> ? <span class="string">'&amp;'</span> : <span class="string">'?'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    init.prototype = AJAX.prototype;</span><br><span class="line">    <span class="built_in">window</span>.ajax = AJAX;</span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/21/ajax封装/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1099,7 +1107,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

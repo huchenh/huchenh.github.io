@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-10-21T14:45:53.063Z</updated>
+  <updated>2019-11-30T12:03:39.792Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用js的方式实现vue弹框</title>
+    <link href="https://huchenh.github.io/2019/11/30/%E7%94%A8js%E7%9A%84%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0vue%E5%BC%B9%E6%A1%86/"/>
+    <id>https://huchenh.github.io/2019/11/30/用js的方式实现vue弹框/</id>
+    <published>2019-11-30T11:14:31.000Z</published>
+    <updated>2019-11-30T12:03:39.792Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  在平常，我们使用vue组件的时候，都要先在&lt;code&gt;.vue&lt;/code&gt;文件中引入我们要使用的组件。虽然这样能满足大部分日常开发的需求，但这种方法在某些场景下，就有些难以应对。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;组件的模板是通过调用接口从服务端获取的，需要动态渲染组件；&lt;/li&gt;
+&lt;li&gt;实现类似原生 window.alert() 的提示框组件，它的位置是在 &lt;body&gt; 下，而非 &lt;div id=&quot;app&quot;&gt;，并且不会通过常规的组件自定义标签的形式使用，而是像 JS 调用函数一样使用。&lt;/div&gt;&lt;/body&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;extend&quot;&gt;&lt;a href=&quot;#extend&quot; class=&quot;headerlink&quot; title=&quot;extend&quot;&gt;&lt;/a&gt;extend&lt;/h3&gt;&lt;p&gt;  Vue.extend 的作用，就是基于 Vue 构造器，创建一个“子类”，它的参数跟 new Vue 的基本一样，但 data 要跟组件一样，是个函数，再配合 $mount ，就可以让组件渲染，并且挂载到任意指定的节点上，比如 body。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import Vue from &amp;apos;vue&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 创建了一个构造器，这个过程就可以解决异步获取 template 模板的问题 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const AlertComponent = Vue.extend(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  template: &amp;apos;&amp;lt;div&amp;gt;&amp;#123;&amp;#123; message &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  data () &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      message: &amp;apos;Hello, Aresn&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 调用 $mount 方法对组件进行了手动渲染， --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const component = new AlertComponent().$mount();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 挂载节点 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.body.appendChild(component.$el);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 快捷的挂载方式 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;new AlertComponent().$mount(&amp;apos;#app&amp;apos;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样就可以满足我们用js方法调用的方式来控制组件，但是在平常的开发中，我们用的vue的runtime编译环境，不支持&lt;code&gt;template&lt;/code&gt;模板，而且用字符串来描述组件的模板，也有些不太友好。那么，我们可以试试用&lt;code&gt;new Vue()&lt;/code&gt;的方式。&lt;/p&gt;
+&lt;h3 id=&quot;new-Vue&quot;&gt;&lt;a href=&quot;#new-Vue&quot; class=&quot;headerlink&quot; title=&quot;new Vue&quot;&gt;&lt;/a&gt;new Vue&lt;/h3&gt;&lt;p&gt;  &lt;code&gt;new Vue()&lt;/code&gt;也可以直接创建 Vue 实例，并且用一个 Render 函数来渲染一个 .vue 文件。&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import Vue from &amp;apos;vue&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import Notification from &amp;apos;./notification.vue&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const props = &amp;#123;&amp;#125;;  // 这里可以传入一些组件的 props 选项&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const Instance = new Vue(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  render (h) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return h(Notification, &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      props: props&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const component = Instance.$mount();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;document.body.appendChild(component.$el);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;这样既可以使用 .vue 来写复杂的组件,还可以根据需要传入适当的 props。渲染后，如果想操作 Render 的 Notification 实例，也是很简单的:&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const notification = Instance.$children[0];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Vue" scheme="https://huchenh.github.io/categories/Vue/"/>
+    
+    
+      <category term="vue" scheme="https://huchenh.github.io/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>js处理字符串和数字</title>
@@ -534,34 +562,6 @@
     
     
       <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css实战小技巧</title>
-    <link href="https://huchenh.github.io/2019/06/11/css%E5%AE%9E%E6%88%98%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-    <id>https://huchenh.github.io/2019/06/11/css实战小技巧/</id>
-    <published>2019-06-11T15:47:50.000Z</published>
-    <updated>2019-06-11T15:51:14.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这次我们来看下几个css简洁优雅的的使用技巧，特此声明，这里说的 CSS 并不止包含 CSS，也包含 CSS 预处理器（Less Sass 等），愿各位看官不要纠结于此。&lt;/p&gt;
-&lt;h3 id=&quot;尽量使用-padding-代替-margin&quot;&gt;&lt;a href=&quot;#尽量使用-padding-代替-margin&quot; class=&quot;headerlink&quot; title=&quot;尽量使用 padding 代替 margin&quot;&gt;&lt;/a&gt;尽量使用 padding 代替 margin&lt;/h3&gt;&lt;p&gt;​        &lt;code&gt;padding&lt;/code&gt; 和 &lt;code&gt;margin&lt;/code&gt; 两个是常用的属性，但是&lt;strong&gt;属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠&lt;/strong&gt;，所以如果 &lt;code&gt;margin&lt;/code&gt; 使用的过于频繁的时候，Box 的垂直距离可能就会发生重叠。第一个子元素的 &lt;code&gt;margin-top&lt;/code&gt; 值会加在父元素上的 bug，最后一个子元素的 &lt;code&gt;margin-bottom&lt;/code&gt; 也存在类似的问题。&lt;/p&gt;
-&lt;p&gt;​        原因：所有毗邻的两个或多个盒元素的 &lt;code&gt;margin&lt;/code&gt; 将会合并为一个 &lt;code&gt;margin&lt;/code&gt; 共享。所以我们可以在首位元素使用 &lt;code&gt;padding&lt;/code&gt; 来替代 &lt;code&gt;margin&lt;/code&gt;。当然有的时候使用 &lt;code&gt;padding&lt;/code&gt; 不能满足需求，这时你也可以在“非空内容”这个条件做文章。即在父元素添加一个伪元素。&lt;/p&gt;
-&lt;h3 id=&quot;position-fixed-降级问题&quot;&gt;&lt;a href=&quot;#position-fixed-降级问题&quot; class=&quot;headerlink&quot; title=&quot;position:fixed 降级问题&quot;&gt;&lt;/a&gt;position:fixed 降级问题&lt;/h3&gt;&lt;p&gt;​        开发中遇到的“吸顶”问题，就是&lt;code&gt;position:fixed&lt;/code&gt; 这个属性。如果父元素有使用&lt;code&gt;transform&lt;/code&gt;,&lt;code&gt;fixed&lt;/code&gt; 的效果会降级为 &lt;code&gt;absolute&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;解决方案&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;​        既然会降级为 &lt;code&gt;absolute&lt;/code&gt; 效果，我们该怎么解决这个问题呢？我们就改考虑什么情况下 &lt;code&gt;fixed&lt;/code&gt;和 &lt;code&gt;absolute&lt;/code&gt; 的表现效果会是一样的。即当使用 &lt;code&gt;fixed&lt;/code&gt; 的直接父元素的高度和屏幕的高度相同时 &lt;code&gt;fixed&lt;/code&gt; 和 &lt;code&gt;absolute&lt;/code&gt; 的表现效果会是一样的。如果这个直接父级内的元素存在滚动的情况，那就加上 &lt;code&gt;overflow-y:auto&lt;/code&gt;。&lt;/p&gt;
-&lt;h3 id=&quot;合理使用-px-em-rem-等单位&quot;&gt;&lt;a href=&quot;#合理使用-px-em-rem-等单位&quot; class=&quot;headerlink&quot; title=&quot;合理使用 px | em | rem | % 等单位&quot;&gt;&lt;/a&gt;合理使用 px | em | rem | % 等单位&lt;/h3&gt;&lt;p&gt;​        在 CSS 中有许多距离单位，比如 px | em | rem | %，还有 CSS3 中的 vh | vw 等单位。px是pc端最常用的单位，但是再移动端自适应的要求下，使用的场景就不是很多了，以下几种小的适用场景。&lt;/p&gt;
-&lt;h4 id=&quot;比较小的图案&quot;&gt;&lt;a href=&quot;#比较小的图案&quot; class=&quot;headerlink&quot; title=&quot;比较小的图案&quot;&gt;&lt;/a&gt;&lt;strong&gt;比较小的图案&lt;/strong&gt;&lt;/h4&gt;&lt;p&gt;​        比如画一个 r 为 5px 的圆，如果我们使用 rem 作为单位，我们很快会发现在一些机型上的图案不圆，会呈现椭圆形。这是由于 rem 转 px 会存在精度丢失问题。&lt;/p&gt;
-&lt;figure class=&quot;highlight less&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// less &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//使用 px 配合 dpr 来实现：&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*@size 建议取双数*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.circle&lt;/span&gt;(&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;,&lt;span class=&quot;variable&quot;&gt;@backgroundColor&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;background-color&lt;/span&gt;:&lt;span class=&quot;variable&quot;&gt;@backgroundColor&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;selector-attr&quot;&gt;[data-dpr=&quot;1&quot;]&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;&amp;amp;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;0.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;selector-attr&quot;&gt;[data-dpr=&quot;3&quot;]&lt;/span&gt; &lt;span class=&quot;selector-tag&quot;&gt;&amp;amp;&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;variable&quot;&gt;@size&lt;/span&gt; * &lt;span class=&quot;number&quot;&gt;1.5&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="css" scheme="https://huchenh.github.io/tags/css/"/>
     
   </entry>
   
