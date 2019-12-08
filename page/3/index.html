@@ -304,6 +304,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/15/Vue组件通信-广播与派发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/15/Vue组件通信-广播与派发/" itemprop="url">Vue组件通信-广播与派发</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-15T21:51:59+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="组件的通信-2：派发与广播-dispatch-和-broadcast-方法"><a href="#组件的通信-2：派发与广播-dispatch-和-broadcast-方法" class="headerlink" title="组件的通信 2：派发与广播 dispatch 和 broadcast 方法"></a>组件的通信 2：派发与广播 dispatch 和 broadcast 方法</h2><p>provide / inject API 主要解决了跨级组件间的通信问题，不过它的使用场景，主要是子组件获取上级组件的状态，跨级组件间建立了一种主动提供与依赖注入的关系。然后有两种场景它不能很好的解决：</p>
+<ul>
+<li>父组件向子组件（支持跨级）传递数据；</li>
+<li>子组件向父组件（支持跨级）传递数据。</li>
+</ul>
+<p>这种父子（含跨级）传递数据的通信方式，Vue.js 并没有提供原生的 API 来支持，而是推荐使用大型数据状态管理工具 Vuex，而我们之前已经介绍过 Vuex 的场景与在独立组件（或库）中使用的限制。我们可采用已经废弃的api<code>dispatch</code> 和 <code>broadcast</code>实现父子组件间通信的方法 </p>
+<h3 id="on-与-emit"><a href="#on-与-emit" class="headerlink" title="$on 与 $emit"></a>$on 与 $emit</h3><p><code>$emit</code> 会在<strong>当前组件</strong>实例上触发自定义事件，并传递一些参数给监听器的回调，一般来说，都是在父级调用这个组件时，使用 <code>@on</code> 的方式来监听自定义事件的，比如在子组件中触发事件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// child.vue，部分代码省略</span><br><span class="line">export default &#123;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    handleEmitEvent ()&#123;</span><br><span class="line">      this.$emit(&apos;test&apos;,&apos;hello vue.js&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在父组件中监听由 <em>child.vue</em> 触发的自定义事件 <strong>test</strong>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- parent.vue，部分代码省略--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">child-component</span> @<span class="attr">test</span>=<span class="string">"handleEvent"</span>&gt;</span><span class="tag">&lt;/<span class="name">child-component</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  methods: &#123;</span></span><br><span class="line"><span class="undefined">    handleEvent (text)&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(text) <span class="comment">// hello vue.js</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里是在父组件 <em>parent.vue</em> 中绑定的自定义事件 <strong>test</strong> 的处理句柄，然而事件 test 并不是在父组件上触发的，而是在子组件 <em>child.vue</em> 里触发的，只是通过 <code>v-on</code> 在父组件中监听。既然是子组件自己触发的，那它自己也可以监听到，这就要使用 <code>$on</code> 来监听实例上的事件，换言之，组件使用 <code>$emit</code> 在自己实例上触发事件，并用 <code>$on</code> 监听它。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/15/Vue组件通信-广播与派发/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/11/vue组件通信3-findComponent系列方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -919,160 +1077,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/07/15/Dllplugin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/Dllplugin/" itemprop="url">Dllplugin</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T22:02:37+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/webpack/" itemprop="url" rel="index">
-                    <span itemprop="name">webpack</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="DllPlugin"><a href="#DllPlugin" class="headerlink" title="DllPlugin"></a>DllPlugin</h3><p>   在平常的项目中，我们要使用到很多的第三方库，如react 、vue 、jquery等。但是他们的内容基本是不变的，版本升级除外。而且这些库每次打包时都要重复的构建，所以我们需要把他们和我们自己写的项目源代码分开。webpack只需要打包我项目本身的文件代码，而不会再去编译第三方库，那么第三方库在第一次打包的时候只打包一次，以后只要我们不升级第三方包的时候，那么webpack就不会对这些库去打包，因此为了解决这个问题，DllPlugin 和DllReferencePlugin插件就产生了。</p>
-<ul>
-<li>DLLPlugin 这个插件是在一个额外独立的webpack设置中创建一个只有dll的bundle，也就是说我们在项目根目录下除了有webpack.config.js，还会新建一个webpack.dll.config.js文件。<code>webpack.dll.config.js</code>作用是把所有的第三方库依赖打包到一个bundle的dll文件里面，还会生成一个名为 <code>manifest.json</code>文件。该manifest.json的作用是用来让 DllReferencePlugin 映射到相关的依赖上去的。</li>
-<li>DllReferencePlugin 这个插件是在webpack.config.js中使用的，该插件的作用是把刚刚在webpack.dll.config.js中打包生成的dll文件引用到需要的预编译的依赖上来。</li>
-</ul>
-<h3 id="webpack-dll-config-js"><a href="#webpack-dll-config-js" class="headerlink" title="webpack.dll.config.js"></a>webpack.dll.config.js</h3><pre><code>在项目根目录下创建一个 `webpack.dll.config.js` 文件。然后配置代码如下：
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> DllPlugin = <span class="built_in">require</span>(<span class="string">'webpack/lib/DllPlugin'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry:&#123;</span><br><span class="line">    <span class="comment">// 项目中用到该两个依赖库文件</span></span><br><span class="line">    react: [<span class="string">'react'</span>],</span><br><span class="line">    reactDom: [<span class="string">'react-dom'</span>],</span><br><span class="line">    loadsh: [<span class="string">'loadsh'</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  output:&#123;</span><br><span class="line">    <span class="comment">// 文件名称</span></span><br><span class="line">    filename: <span class="string">'[name].dll.js'</span>,</span><br><span class="line">    <span class="comment">// 将输出的文件放到dist目录下</span></span><br><span class="line">    path: path.resolve(__dirname,<span class="string">'dist/dll'</span>),</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     存放相关的dll文件的全局变量名称，比如对于jquery来说的话就是 _dll_jquery, 在前面加 _dll</span></span><br><span class="line"><span class="comment">     是为了防止全局变量冲突。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    library: <span class="string">'_dll_[name]'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  plugins:[</span><br><span class="line">     <span class="comment">// 使用插件 DllPlugin</span></span><br><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">       该插件的name属性值需要和 output.library保存一致，该字段值，也就是输出的 manifest.json文件中name字段的值。</span></span><br><span class="line"><span class="comment">       比如在jquery.manifest文件中有 name: '_dll_jquery'</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">    <span class="keyword">new</span> DllPlugin(&#123;</span><br><span class="line">      name: <span class="string">'_dll_[name]'</span>,</span><br><span class="line">       <span class="comment">/* 生成manifest文件输出的位置和文件名称 */</span></span><br><span class="line">       path: path.join(__dirname, <span class="string">'dist/dll'</span>, <span class="string">'[name].manifest.json'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/15/Dllplugin/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1125,7 +1129,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

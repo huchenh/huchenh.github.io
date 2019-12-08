@@ -304,6 +304,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/08/js知识梳理九/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/js知识梳理九/" itemprop="url">js知识梳理九</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T23:42:46+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="正则捕获"><a href="#正则捕获" class="headerlink" title="正则捕获"></a>正则捕获</h3><blockquote>
+<p>把一个字符串中和正则匹配的部分获取到</p>
+</blockquote>
+<p><strong><code>正则</code></strong></p>
+<ul>
+<li>exec</li>
+<li>test</li>
+</ul>
+<p><strong><code>字符串</code></strong></p>
+<ul>
+<li>replace</li>
+<li>split</li>
+<li>match</li>
+</ul>
+<p><strong><code>基于EXEC可以实现正则的捕获</code></strong></p>
+<ol>
+<li>如果当前正则和字符串不匹配，捕获的结果是NULL</li>
+<li>如果匹配，捕获的结果是一个数组<ul>
+<li>0:大正则捕获的内容</li>
+<li>index:正则捕获的起始索引</li>
+<li>input:原始操作的字符串</li>
+<li>…</li>
+</ul>
+</li>
+<li>执行一次EXEC只能捕获到第一个和正则匹配的内容，其余匹配的内容还没有捕获到，而且更恶心的是，我傻傻的执行多次，然而并没啥卵用 =&gt;“正则的捕获有懒惰性”：只能捕获到第一个匹配的内容，剩余的默认捕获不到</li>
+<li>解决正则捕获的懒惰性，我们需要加全局修饰符G（这个是唯一的方案，而且不加G不管用什么办法捕获，也都不能把全部匹配的捕获到）
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/08/js知识梳理九/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ol></div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/07/js知识梳理八/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1035,186 +1208,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/03/03/js知识梳理四/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/03/js知识梳理四/" itemprop="url">js知识梳理四</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-03T13:19:11+08:00">
-                2019-03-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><blockquote>
-<p>当栈内存(作用域)形成，JS代码自上而下执行之前，浏览器首先会把所有带 “VAR”/“FUNCTION” 关键词的进行提前 “声明” 或者 “定义” ，这种预先处理机制称之为 “变量提升”</p>
-</blockquote>
-<blockquote>
-<p>声明(declare)：var a  （默认值undefined）<br>定义(defined)：a=12 （定义其实就是赋值操作）</p>
-</blockquote>
-<p><code>变量提升阶段</code></p>
-<blockquote>
-<ul>
-<li>带“VAR”的只声明未定义</li>
-<li>带“FUNCTION”的声明和赋值都完成了</li>
-<li>变量提升只发生在当前作用域（例如：开始加载页面的时候只对全局作用域下的进行提升，因为此时函数中存储的都是字符串而已）</li>
-<li>在全局作用域下声明的函数或者变量是“全局变量”，同理，在私有作用域下声明的变量是“私有变量” [带VAR/FUNCTION的才是声明]</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//=&gt;undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">12</span>;</span><br></pre></td></tr></table></figure>
-<p><code>变量带var声明和直接声明</code></p>
-<blockquote>
-<p>在全局作用域下声明一个变量，也相当于给WINDOW全局对象设置了一个属性，变量的值就是属性值（私有作用域中声明的私有变量和WINDOW没啥关系）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//=&gt;undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//=&gt;undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'a'</span> <span class="keyword">in</span> <span class="built_in">window</span>); <span class="comment">//=&gt;TRUE 在变量提升阶段，在全局作用域中声明了一个变量A，此时就已经把A当做属性赋值给WINDOW了，只不过此时还没有给A赋值，默认值UNDEFINED  in：检测某个属性是否隶属于这个对象</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">12</span>;<span class="comment">//=&gt;全局变量值修改，WIN的属性值也跟着修改</span></span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//=&gt;全局变量A  12</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//=&gt;WINDOW的一个属性名A  12</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">13</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);<span class="comment">//=&gt;13</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.a = <span class="number">14</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//=&gt;14</span></span><br><span class="line"><span class="comment">//=&gt;全局变量和WIN中的属性存在 “映射机制”</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;不加VAR的本质是WIN的属性</span></span><br><span class="line">*<span class="regexp">/</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;undefined undefined</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">12</span>,</span><br><span class="line">    b = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;undefined 12</span></span><br><span class="line">    <span class="keyword">var</span> a = b = <span class="number">13</span>;</span><br><span class="line">    <span class="comment">/*var a=13;  b=13;*/</span></span><br><span class="line">    <span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;13 13</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn();</span><br><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//=&gt;12 13</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>在当前作用域下，不管条件是否成立都要进行变量提升</p>
-<ul>
-<li>=&gt;带VAR的还是只声明</li>
-<li>=&gt;带FUNCTION的在老版本浏览器渲染机制下，声明和定义都处理，但是为了迎合ES6中的块级作用域，新版浏览器对于函数（在条件判断中的函数），不管条件是否成立，都只是先声明，没有定义，类似于VAR</li>
-</ul>
-</blockquote>
-<p> <code>重名问题</code></p>
-<ul>
-<li>带VAR和FUNCTION关键字声明相同的名字，这种也算是重名了（其实是一个FN，只是存储值的类型不一样</li>
-<li><p>2.关于重名的处理：如果名字重复了，不会重新的声明，但是会重新的定义（重新赋值）[不管是变量提升还是代码执行阶段皆是如此]</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> fn();<span class="comment">//=&gt;4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>);&#125;</span><br><span class="line">fn();<span class="comment">//=&gt;4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">2</span>);&#125;</span><br><span class="line">fn();<span class="comment">//=&gt;4</span></span><br><span class="line"><span class="keyword">var</span> fn=<span class="number">100</span>;<span class="comment">//=&gt;带VAR的在提升阶段只把声明处理了,赋值操作没有处理,所以在代码执行的时候需要完成赋值 FN=100</span></span><br><span class="line">fn();<span class="comment">//=&gt;100() Uncaught TypeError: fn is not a function</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>);&#125;</span><br><span class="line">fn();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;<span class="built_in">console</span>.log(<span class="number">4</span>);&#125;</span><br><span class="line">fn();</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/03/js知识梳理四/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ul></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1267,7 +1260,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

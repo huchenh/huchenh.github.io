@@ -304,6 +304,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/26/网络请求方式一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/26/网络请求方式一/" itemprop="url">网络请求方式一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T23:43:12+08:00">
+                2019-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
+                    <span itemprop="name">前端三剑客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="原生Ajax的用法"><a href="#原生Ajax的用法" class="headerlink" title="原生Ajax的用法"></a>原生Ajax的用法</h3><p>​    <code>Ajax</code>全称 <code>AsynchronousJavaScript+XML</code>（异步 <code>JavaScript</code>和 <code>XML</code>，网页应用能够快速地将增量更新呈现在用户界面上，而不需要重载（刷新）整个页面。<code>Ajax</code>本身不是一种新技术，而是用来描述一种使用现有技术集合实现的一个技术方案，浏览器的 <code>XMLHttpRequest</code>是实现 <code>Ajax</code>最重要的对象（ <code>IE6</code>以下使用 <code>ActiveXObject</code>）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">xhr.open(<span class="string">'post'</span>,<span class="string">'www.xxx.com'</span>,<span class="literal">true</span>);</span><br><span class="line"><span class="comment">// 接收返回值</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status &lt; <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 处理请求参数</span></span><br><span class="line"><span class="keyword">var</span> postData = &#123;<span class="string">"name1"</span>:<span class="string">"value1"</span>,<span class="string">"name2"</span>:<span class="string">"value2"</span>&#125;;</span><br><span class="line">postData = (<span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> oStr = <span class="string">''</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> value)&#123;</span><br><span class="line">        oStr += key + <span class="string">'='</span> + value[key] + <span class="string">'&amp;'</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> oStr;</span><br><span class="line">&#125;)(postData)</span><br><span class="line"><span class="comment">// 设置请求头</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-type'</span>,<span class="string">'application/x-www-form-unlencoded'</span>);</span><br><span class="line"><span class="comment">// 异常处理</span></span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'Network request failed'</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 跨域携带cookie</span></span><br><span class="line">xhr.withCredentials = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发出请求</span></span><br><span class="line">xhr.send(postData)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/26/网络请求方式一/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/21/ajax封装/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -918,168 +1067,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/05/06/redux03/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/06/redux03/" itemprop="url">redux03</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-06T23:38:35+08:00">
-                2019-05-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redux/" itemprop="url" rel="index">
-                    <span itemprop="name">redux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><strong><code>redux梳理</code></strong></p>
-<blockquote>
-<ul>
-<li>createStore：创建REDUX容器的</li>
-<li>@PARAMS</li>
-<li>reducer：函数</li>
-<li>@RETURN</li>
-<li>store : {</li>
-<li>getState,</li>
-<li>dispatch,</li>
-<li>subscribe</li>
-<li>}</li>
-</ul>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStore</span>(<span class="params">reducer</span>)</span>&#123;</span><br><span class="line">  <span class="comment">//=&gt;创建一个STORE，STATE用来存储管理的状态信息，LISTEN-ARY用来存储事件池中的方法</span></span><br><span class="line">    <span class="comment">//=&gt;STATE不用设置初始值，因为第一次DISPATCH执行REDUCER，STATE没有值，走的是REDUCER中赋值的默认值信息，我们自己会在创建容器的时候就把DISPATCH执行一次!</span></span><br><span class="line">  <span class="keyword">let</span> state,</span><br><span class="line">      listenAry = [];</span><br><span class="line">  <span class="comment">//=&gt;DISPATCH：基于DISPATCH实现任务派发</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">action</span>)</span>&#123;</span><br><span class="line">     <span class="comment">//1.执行REDUCER，修改容器中的状态信息（接收REDUCER的返回值，把返回的信息替换原有的STATE），值得注意的是：我们是把返回值全部替换STATE，所有要求REDUCER中在修改状态之前，要先把原始的状态信息克隆一份，在进行单个的属性修改</span></span><br><span class="line">    state = reducer(state,action);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2.容器中状态信息经过REDUCER修改后，通知事件池中的方法依次执行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i &lt; listenAry.length; i++)&#123;</span><br><span class="line">      <span class="keyword">let</span> item = listenAry[i];</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> item === <span class="string">'function'</span>) &#123;</span><br><span class="line">          item();</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          listenAry.splice(i, <span class="number">1</span>);</span><br><span class="line">          i--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//=&gt;GET-STATE：获取容器中的状态信息</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getState</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//1.我们需要保证返回的状态信息不能和容器中的STATE是同一个堆内存（否则外面获取状态信息后，直接就可以修改容器中的状态了，这不符合DISPATCH-&gt;REDUCER才能改状态的规范）</span></span><br><span class="line">        <span class="comment">/*//[浅克隆]</span></span><br><span class="line"><span class="comment">        AAAFFF111:&#123;vote:BBBFFF111&#125;</span></span><br><span class="line"><span class="comment">        &#123;...state&#125; =&gt; AAAFFF222:&#123;vote:BBBFFF111&#125;*/</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(state));<span class="comment">//=&gt;深度克隆对象</span></span><br><span class="line">  &#125;</span><br><span class="line">  dispatch(&#123;<span class="attr">type</span>: <span class="string">'$$INIT_DEFAULT_STATE'</span>&#125;);<span class="comment">//=&gt;创建容器的时候执行一次DISPATCH，目的是把REDUCER中的默认状态信息赋值给REDUX容器中的状态</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//=&gt;SUBSCRIBE：向事件池中追加方法</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">subscribe</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//1.向容器中追加方法（重复验证）</span></span><br><span class="line">    <span class="keyword">let</span> isExit = listenAry.includes(fn);</span><br><span class="line">    !isExit ? listenAry.push(fn) : <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//2.返回一个方法:执行返回的方法会把当前绑定的方法在事件池中移除掉</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="title">unsubscribe</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> index = listenAry.indexOf(fn)</span><br><span class="line">      <span class="comment">// listenAry.splice(index, 1);//=&gt;可能会引发数组塌陷</span></span><br><span class="line">      listenAry[index] = <span class="literal">null</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    dispatch,</span><br><span class="line">    getState,</span><br><span class="line">    subscribe</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/06/redux03/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1132,7 +1119,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
