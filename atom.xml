@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2019-12-08T12:56:08.742Z</updated>
+  <updated>2019-12-20T14:12:41.484Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vant pupop弹框锁住背景</title>
+    <link href="https://huchenh.github.io/2019/12/20/vant-pupop%E5%BC%B9%E6%A1%86%E9%94%81%E4%BD%8F%E8%83%8C%E6%99%AF/"/>
+    <id>https://huchenh.github.io/2019/12/20/vant-pupop弹框锁住背景/</id>
+    <published>2019-12-20T13:29:59.000Z</published>
+    <updated>2019-12-20T14:12:41.484Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 我们在做移动端项目开发时，经常会遇到弹框不能锁定背景的背景的问题。比如有一个站视规则并且可以滚动的弹框，这是我们滑动滚动条浏览更多内容的时候，页面会跟随着一起滑动，这种体验不太友好。那么如何解决呢？&lt;/p&gt;
+&lt;h3 id=&quot;html、body设置hidden&quot;&gt;&lt;a href=&quot;#html、body设置hidden&quot; class=&quot;headerlink&quot; title=&quot;html、body设置hidden&quot;&gt;&lt;/a&gt;html、body设置hidden&lt;/h3&gt;&lt;p&gt;  我们可以设置html和body的overflow为hidden，&lt;br&gt;&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.lock&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;100%&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;overflow&lt;/span&gt;: hidden;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;当弹框展现时，我们可通过js为html和body加上类名，弹框隐藏时，移除类名&lt;code&gt;lock&lt;/code&gt;。一些ui框架的弹框也是采用这种方法，如&lt;code&gt;vant&lt;/code&gt;的&lt;code&gt;popup&lt;/code&gt;弹出层组件。但是这种方法并不能在所有的移动设置生效。&lt;/p&gt;
+&lt;h3 id=&quot;阻止touchmove默认事件&quot;&gt;&lt;a href=&quot;#阻止touchmove默认事件&quot; class=&quot;headerlink&quot; title=&quot;阻止touchmove默认事件&quot;&gt;&lt;/a&gt;阻止touchmove默认事件&lt;/h3&gt;&lt;p&gt;  为 body 绑定 touchmove 事件，然后调用 preventDefault() 方法，禁止 touchmove 的默认行为。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;preventDefaultFn&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;event&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    event.preventDefault();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 弹出时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;body&#39;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&#39;touchmove&#39;&lt;/span&gt;, preventDefaultFn);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 隐藏时&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;body&#39;&lt;/span&gt;).off(&lt;span class=&quot;string&quot;&gt;&#39;touchmove&#39;&lt;/span&gt;, preventDefaultFn);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;如果是vue的项目，有一个更简洁的方式,在弹框的遮罩层加上&lt;a href=&quot;mailto:`@touchmove.prevent&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;`@touchmove.prevent&lt;/a&gt;`即可&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div class=&amp;quot;mask&amp;quot; @touchmove.prevent&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;但这种方法有一定的局限性，它适合于弹框内的元素不发生滚动，如果弹框的内容需要滚动，那么这种方法就不行了，滚动的内容无法继续滚动了，当然我们可以通过js模拟滚动，不过这有些麻烦。还好我们有第三种方案。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>js文件处理</title>
@@ -528,33 +553,6 @@
 &lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;modules&lt;/span&gt;) &lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;// webpackBootstrap&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;  &quot;use strict&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \&quot;default\&quot;, function() &amp;#123; return printMe; &amp;#125;);\n\nfunction printMe() &amp;#123;\n  console.log(&#39;11111111&#39;);\n&amp;#125;\n\n//# sourceURL=webpack:///./js/demo1.js?&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/***/&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;./js/main.js&quot;&lt;/span&gt;:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*!********************!*\&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;    !*** ./js/main.js ***!&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;    \********************/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/*! no exports provided */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;/***/&lt;/span&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  (&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;module, __webpack_exports__, __webpack_require__&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;    &quot;use strict&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;eval&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _demo1_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./demo1.js */ \&quot;./js/demo1.js\&quot;);\n\n\nconsole.log(&#39;main.js&#39;);\n\n//# sourceURL=webpack:///./js/main.js?&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;​        每一个打包后的模块后面都增加了包含sourceURL的注释，sourceURL的值是压缩前存放的代码的位置，这样就通过sourceURL关联了压缩前后的代码。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;优点是：&lt;/strong&gt;打包速度非常快，因为不需要生成sourcemap文件。&lt;br&gt;&lt;strong&gt;缺点是：&lt;/strong&gt;由于会映射到转换后的代码，而不是映射到原始代码，所以不能正确的显示行数。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="webpack" scheme="https://huchenh.github.io/categories/webpack/"/>
-    
-    
-      <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webpack-babelrc</title>
-    <link href="https://huchenh.github.io/2019/06/27/webpack-babelrc/"/>
-    <id>https://huchenh.github.io/2019/06/27/webpack-babelrc/</id>
-    <published>2019-06-26T16:05:08.000Z</published>
-    <updated>2019-06-26T16:05:52.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;babelrc的基本配置&quot;&gt;&lt;a href=&quot;#babelrc的基本配置&quot; class=&quot;headerlink&quot; title=&quot;.babelrc的基本配置&quot;&gt;&lt;/a&gt;.babelrc的基本配置&lt;/h2&gt;&lt;p&gt;​        ES6引入了新的语法和API，使我们编写js代码更加得心应手，比如class，let,for…of promise等等这样的，但是这些js新特性只被最新版本的浏览器支持，低版本浏览器并不支持，babel可以把es6代码转换成低版本浏览器能识别的代码。可以理解为 babel是javascript语法的编译器。&lt;/p&gt;
-&lt;h3 id=&quot;Babel编译器&quot;&gt;&lt;a href=&quot;#Babel编译器&quot; class=&quot;headerlink&quot; title=&quot;Babel编译器&quot;&gt;&lt;/a&gt;&lt;strong&gt;Babel编译器&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;​    在Babel执行编译的过程中，会从项目的根目录下的 .babelrc文件中读取配置。.babelrc是一个json格式的文件。在.babelrc配置文件中，主要是对预设(presets) 和 插件(plugins) 进行配置。.babelrc配置文件一般为如下：&lt;/p&gt;
-&lt;figure class=&quot;highlight json&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;&quot;plugins&quot;&lt;/span&gt;:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [&lt;span class=&quot;string&quot;&gt;&quot;transform-runtime&quot;&lt;/span&gt;,&amp;#123;&lt;span class=&quot;attr&quot;&gt;&quot;polyfill&quot;&lt;/span&gt;:&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;attr&quot;&gt;&quot;presets&quot;&lt;/span&gt;:[&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        [&lt;span class=&quot;string&quot;&gt;&quot;env&quot;&lt;/span&gt;,&amp;#123;&lt;span class=&quot;attr&quot;&gt;&quot;moudules&quot;&lt;/span&gt;:&lt;span class=&quot;literal&quot;&gt;false&lt;/span&gt;&amp;#125;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;stage-2&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;string&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;plugins&quot;&gt;&lt;a href=&quot;#plugins&quot; class=&quot;headerlink&quot; title=&quot;plugins&quot;&gt;&lt;/a&gt;plugins&lt;/h3&gt;&lt;p&gt;​    该属性是告诉babel要使用那些插件，这些插件可以控制如何转换代码，babel默认只转换新的javascript语法，而不转换新的API，比如Iterator、Promise、Set、Map等，还有Object、数组、字符串原型上新增的方法。因此我们需要使用 &lt;code&gt;babel-polyfill&lt;/code&gt;和&lt;code&gt;babel-runtime&lt;/code&gt;这样的插件来完成转换。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;babel-polyfill&lt;/code&gt; 的原理是如果当前环境没有实现这些API，它会做兼容处理，向js中原有对象的原型prototype添加，但是这样做但造成一定全局污染&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;babel-runtime&lt;/code&gt;是将es6编译成es5去执行，它不会影响全局变量。但我们需要针对每个API做引用，如Promise就需要&lt;code&gt;import Promise from &amp;#39;babel-runtime/core-js/promise&amp;#39;&lt;/code&gt; 但是这样手动加入会很麻烦，因此我们通常使用&lt;code&gt;babel-plugin-transform-runtime&lt;/code&gt; 避免手动引入 import的痛苦，并且它还做了公用方法的抽离。比如说我们有100个模块都使用promise，但是promise的polyfill仅仅存在1份。&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
