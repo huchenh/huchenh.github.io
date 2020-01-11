@@ -304,6 +304,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/01/11/Koa原理浅析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/11/Koa原理浅析/" itemprop="url">Koa原理浅析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-11T23:39:19+08:00">
+                2020-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>koa是现在我们最常用的node框架，它是一个轻量的web框架，只提供了http的协议的解析和中间件功能。我们要实现路由、静态页面托管和文件上传等功能均需要插件来实现。</p>
+</blockquote>
+<h2 id="koa源码结构"><a href="#koa源码结构" class="headerlink" title="koa源码结构"></a>koa源码结构</h2><p><img src="https://user-gold-cdn.xitu.io/2020/1/11/16f94cecb2ca761f?w=349&amp;h=290&amp;f=png&amp;s=15108" alt><br>上图是<code>koa</code>的源码结构，lib放着koa的核心文件：：application.js、context.js、request.js、response.js。</p>
+<h3 id="application-js"><a href="#application-js" class="headerlink" title="application.js"></a>application.js</h3><p>application.js是koa的入口文件，它向外到处了<code>Koa</code>类，即函数。Koa继承了node的事件模块<code>event</code>，因此，我们<code>new Koa()</code>的实例app，可以基于事件来实现观察订阅的功能。Koa还有内置了常用的几个函数：listen、use、createContext、toJSON。<br><br>listen方法是通过http.createServer开启并监听了http服务，并且它里面还进行了中间件的合并、上下文context的初始化,并且每次请求来的中件合并、context都会重新初始化。</p>
+<h3 id="context-js"><a href="#context-js" class="headerlink" title="context.js"></a>context.js</h3><p>这部分是对中间件上下对象<code>ctx</code>封装和暴露，里面的重点在delegate，这个就是代理，比如我们要访问ctx.repsponse.status但是我们通过delegate，可以直接访问ctx.status访问到它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 暴露出来的对象</span></span><br><span class="line"><span class="keyword">const</span> proto = <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  toJSON() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="comment">// this.request 是通过application.js 中的createContext 方法将 reques和response对象挂载</span></span><br><span class="line">      request: <span class="keyword">this</span>.request.toJSON(),</span><br><span class="line">      response: <span class="keyword">this</span>.response.toJSON(),</span><br><span class="line">      app: <span class="keyword">this</span>.app.toJSON(),</span><br><span class="line">      originalUrl: <span class="keyword">this</span>.originalUrl,</span><br><span class="line">      req: <span class="string">'&lt;original node req&gt;'</span>,</span><br><span class="line">      res: <span class="string">'&lt;original node res&gt;'</span>,</span><br><span class="line">      socket: <span class="string">'&lt;original node socket&gt;'</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">get</span> cookies() &#123;</span><br><span class="line">  <span class="comment">// ....</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="keyword">set</span> cookies(_cookies) &#123;</span><br><span class="line">    <span class="comment">// ....</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 代理 ctx.reponse 和ctx.request</span></span><br><span class="line">delegate(proto, <span class="string">'response'</span>)</span><br><span class="line">  .method(<span class="string">'attachment'</span>)</span><br><span class="line">  .method(<span class="string">'redirect'</span>)</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">delegate(proto, <span class="string">'request'</span>)</span><br><span class="line">  .method(<span class="string">'acceptsLanguages'</span>)</span><br><span class="line">  .method(<span class="string">'acceptsEncodings'</span>)</span><br><span class="line"> <span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/11/Koa原理浅析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/12/20/vant-pupop弹框锁住背景/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -911,155 +1065,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/10/13/vue项目配合axios实现loading效果/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/13/vue项目配合axios实现loading效果/" itemprop="url">vue项目配合axios实现loading效果</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-13T17:49:34+08:00">
-                2019-10-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>  在实际项目中，前端发送请求获取数据刷新页面是大家非常熟悉的操作。请求响应的快慢，与业务逻辑的复杂程度和网络环境有关，很有可能出现请求延迟的情况，如果我们不处理请求响应前后的交互，那么页面在请求响应成功之前这段事件就没有任何提示信息，这是非常影响用户体验的。但是如何为每个请求单独处理<code>loading</code>状态，那么工作量是非常大的。<br>  <code>axios</code>是我们开发中常用的请求工具库，并且和vue能很好的搭配。下面向大家介绍我自己在项目中使用<code>axios</code>配置来完场全局的<code>loading</code>状态处理</p>
-<h2 id="store状态记录"><a href="#store状态记录" class="headerlink" title="store状态记录"></a>store状态记录</h2><p><strong><code>index.js</code></strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">"vuex"</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(Vuex);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    <span class="comment">// 是否在请求中</span></span><br><span class="line">    isAppending: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    changeAppending(state, bool) &#123;</span><br><span class="line">      state.isAppending = bool;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/13/vue项目配合axios实现loading效果/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1112,7 +1117,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1123,7 +1128,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1134,7 +1139,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1178,7 +1183,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
