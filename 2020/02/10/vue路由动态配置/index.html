@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue-router,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="追风" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="在后台系统这类的项目中，用户角色和权限的区分是不可分割的一部分需求。常见的用户权限区分形式有两种，一是前端请求接口拿到后台配置的用户权限信息；另一种是直接由前端来定义每种用户角色的权限页面，然后在生成对应的路由。今天我们来了解前端配置路由权限的方式。 角色权限页面配置  在配置角色对应的路由页面时，可以参考项目所用的前端框架导航组件的参数，我们以elment ui的menu组件为例：可对审核方">
+<meta name="keywords" content="vue-router">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue路由动态配置">
+<meta property="og:url" content="https://huchenh.github.io/2020/02/10/vue路由动态配置/index.html">
+<meta property="og:site_name" content="追风">
+<meta property="og:description" content="在后台系统这类的项目中，用户角色和权限的区分是不可分割的一部分需求。常见的用户权限区分形式有两种，一是前端请求接口拿到后台配置的用户权限信息；另一种是直接由前端来定义每种用户角色的权限页面，然后在生成对应的路由。今天我们来了解前端配置路由权限的方式。 角色权限页面配置  在配置角色对应的路由页面时，可以参考项目所用的前端框架导航组件的参数，我们以elment ui的menu组件为例：可对审核方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="data:image/png;base64,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">
+<meta property="og:updated_time" content="2020-02-10T10:03:36.387Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue路由动态配置">
+<meta name="twitter:description" content="在后台系统这类的项目中，用户角色和权限的区分是不可分割的一部分需求。常见的用户权限区分形式有两种，一是前端请求接口拿到后台配置的用户权限信息；另一种是直接由前端来定义每种用户角色的权限页面，然后在生成对应的路由。今天我们来了解前端配置路由权限的方式。 角色权限页面配置  在配置角色对应的路由页面时，可以参考项目所用的前端框架导航组件的参数，我们以elment ui的menu组件为例：可对审核方">
+<meta name="twitter:image" content="data:image/png;base64,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">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://huchenh.github.io/2020/02/10/vue路由动态配置/">
+
+
+
+
+
+  <title>vue路由动态配置 | 追风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/huchenh" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">追风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我的前端之路</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/02/10/vue路由动态配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue路由动态配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T18:02:03+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>  在后台系统这类的项目中，用户角色和权限的区分是不可分割的一部分需求。常见的用户权限区分形式有两种，一是前端请求接口拿到后台配置的用户权限信息；另一种是直接由前端来定义每种用户角色的权限页面，然后在生成对应的路由。今天我们来了解前端配置路由权限的方式。</p>
+<h3 id="角色权限页面配置"><a href="#角色权限页面配置" class="headerlink" title="角色权限页面配置"></a>角色权限页面配置</h3><p>  在配置角色对应的路由页面时，可以参考项目所用的前端框架导航组件的参数，我们以<code>elment ui</code>的<code>menu</code>组件为例：可对审核方（Auditor）、供应商（Supplier）和需求方（Business）做如下配置：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> appMenuitem = &#123;</span><br><span class="line">  <span class="comment">// 审核方下拉选项（路由）菜单</span></span><br><span class="line">  Auditor: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// icon: "el-icon-view", // operationLog  userConfiguration</span></span><br><span class="line">      title: <span class="string">"基本配置"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"dataOverview"</span>,</span><br><span class="line">          title: <span class="string">"数据概览"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// icon: "el-icon-view",</span></span><br><span class="line">      title: <span class="string">"需求审核"</span>,</span><br><span class="line">      index: <span class="string">"2"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"demendManage"</span>,</span><br><span class="line">          title: <span class="string">"需求管理"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 业务方下拉选项和路由</span></span><br><span class="line">  Business: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"基本配置"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"demandList"</span>,</span><br><span class="line">          title: <span class="string">"需求列表"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 供应商</span></span><br><span class="line">  Supplier: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"需求制作"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"needList"</span>,</span><br><span class="line">          title: <span class="string">"需求列表"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>这样配置后，所有用户角色的权限信息都在<code>appMenuitem</code>中，在项目的开发，我们可以按照配置的对象属性<code>index</code>（这里是可以由开发按自己的习惯约定）的值，如<code>dataOverview</code>、<code>demendManage</code>等来建立页面。如图：<br><img src="data:image/png;base64,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" alt="image"></p>
+<p>生成侧边菜单逻辑<code>（需配置好路由router才能运行）</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-menu</span><br><span class="line">  background-color=&quot;#fff&quot;</span><br><span class="line">  text-color=&quot;#222222&quot;</span><br><span class="line">  theme=&quot;dark&quot;</span><br><span class="line">  :default-active=&quot;onRoute&quot;</span><br><span class="line">  :collapse=&quot;false&quot;</span><br><span class="line">  router</span><br><span class="line">&gt;</span><br><span class="line"> &lt;template v-for=&quot;(item, index) in items&quot;&gt;</span><br><span class="line">    &lt;!-- 有子选项 --&gt;</span><br><span class="line">    &lt;template v-if=&quot;item.subs &amp;&amp; item.subs.length &gt; 0&quot;&gt;</span><br><span class="line">      &lt;el-submenu :index=&quot;item.index&quot; :key=&quot;index&quot;&gt;</span><br><span class="line">        &lt;template slot=&quot;title&quot;&gt;</span><br><span class="line">          &lt;i :class=&quot;item.icon&quot;</span><br><span class="line">          &gt;&lt;/i&gt;</span><br><span class="line">          &lt;span&gt;&#123;&#123; item.title &#125;&#125;&lt;/span&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">        &lt;el-menu-item-group&gt;</span><br><span class="line">          &lt;el-menu-item</span><br><span class="line">            v-for=&quot;(subItem, index2) in item.subs&quot;</span><br><span class="line">            :key=&quot;index2&quot;</span><br><span class="line">            :index=&quot;subItem.index&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            &lt;span&gt;&#123;&#123; subItem.title &#125;&#125;&lt;/span&gt;</span><br><span class="line">          &lt;/el-menu-item&gt;</span><br><span class="line">        &lt;/el-menu-item-group&gt;</span><br><span class="line">      &lt;/el-submenu&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">    &lt;!-- 无子选项 --&gt;</span><br><span class="line">    &lt;template v-else&gt;</span><br><span class="line">      &lt;el-menu-item :index=&quot;item.index&quot; :key=&quot;item.index&quot;&gt;</span><br><span class="line">        &lt;i :class=&quot;item.icon&quot;&gt;&lt;/i&gt;</span><br><span class="line">        &#123;&#123; item.title &#125;&#125;</span><br><span class="line">      &lt;/el-menu-item&gt;</span><br><span class="line">    &lt;/template&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-menu&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.items = appMenuitem[userMap[<span class="keyword">this</span>.userInfo.role]];</span><br></pre></td></tr></table></figure>
+<p>手动配置上的工作就完成了。后面就是完成路由的动态生成了。</p>
+<h3 id="路由生成"><a href="#路由生成" class="headerlink" title="路由生成"></a>路由生成</h3><p>  首页配置在<code>router.js</code>中配置项目通用路由：<br>  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">let</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">"/"</span>,</span><br><span class="line">      redirect: <span class="string">"/home"</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">"/login"</span>,</span><br><span class="line">      name: <span class="string">"login"</span>,</span><br><span class="line">      component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">"../views/Login.vue"</span>], resolve)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>  <code>home</code>是主路由，前面配置的路由页面均嵌套在其中。下面来看看生成其他路由的方法</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">initRouter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 登录用户 角色  审核方 业务方 供应商</span></span><br><span class="line">  <span class="keyword">const</span> userType = userMap[store.state.userInfo.role] || <span class="string">'Auditor'</span>;</span><br><span class="line">  <span class="keyword">let</span> subs = appMenuitem[userType],</span><br><span class="line">    children = [];</span><br><span class="line">  subs = subs</span><br><span class="line">    .map(<span class="function"><span class="params">c</span> =&gt;</span> c[<span class="string">"subs"</span>])</span><br><span class="line">    .forEach(<span class="function"><span class="params">sub</span> =&gt;</span> &#123;</span><br><span class="line">      children = children.concat(sub);</span><br><span class="line">    &#125;);</span><br><span class="line">  children = children.map(<span class="function">(<span class="params">child, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        path: <span class="string">`/<span class="subst">$&#123;child.index&#125;</span>`</span>,</span><br><span class="line">        component: <span class="function"><span class="params">resolve</span> =&gt;</span></span><br><span class="line">          <span class="built_in">require</span>([<span class="string">`@/views/<span class="subst">$&#123;userType&#125;</span>/<span class="subst">$&#123;child.index&#125;</span>.vue`</span>], resolve)</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      path: <span class="string">`/<span class="subst">$&#123;child.index&#125;</span>`</span>,</span><br><span class="line">      name: <span class="string">`<span class="subst">$&#123;child.index&#125;</span>`</span>,</span><br><span class="line">      component: <span class="function"><span class="params">resolve</span> =&gt;</span></span><br><span class="line">        <span class="built_in">require</span>([<span class="string">`@/views/<span class="subst">$&#123;userType&#125;</span>/<span class="subst">$&#123;child.index&#125;</span>.vue`</span>], resolve)</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 为了配置 菜单导航</span></span><br><span class="line">  children.unshift(&#123;</span><br><span class="line">    path: <span class="string">"/"</span>,</span><br><span class="line">    redirect: children[<span class="number">0</span>].path</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// console.log(children)</span></span><br><span class="line">  <span class="keyword">return</span> children;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  只要调用这个方法就可以生成，<code>home</code>的子级路由了。接下来我们可以通过router的API<code>addRoutes</code>完成<code>路由的添加</code></p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 在页面不刷新的前提 避免重复生产动态路由</span></span><br><span class="line">  <span class="built_in">window</span>.hasRoutes = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">  router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 路由卫士</span></span><br><span class="line">  <span class="keyword">if</span> (to.path === <span class="string">"/login"</span>) &#123;</span><br><span class="line">    <span class="comment">// 请除登录信息</span></span><br><span class="line">    localStorage.removeItem(<span class="string">"hasLogin"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> user = localStorage.getItem(<span class="string">"hasLogin"</span>) == <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">// 这里store.state.userInfo.role 是后台返回来的 用户角色信息 role 取值 为 1 2 3 分别 对应前面的键值 Author...</span></span><br><span class="line">  <span class="keyword">if</span> ((user|| !store.state.userInfo.role) &amp;&amp; to.path !== <span class="string">"/login"</span> ) &#123;</span><br><span class="line">    <span class="comment">// 登录信息失效 直接去登录页面</span></span><br><span class="line">    next(&#123; <span class="attr">path</span>: <span class="string">"/login"</span> &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 获取动态路由</span></span><br><span class="line">    <span class="keyword">if</span> (store.state.userInfo.role &amp;&amp; !<span class="built_in">window</span>.hasRoutes) &#123;</span><br><span class="line">      <span class="comment">// window.hasRoutes 为了简单，使用的全局变量 进入登录login.vue 页面也可以重置为false即可</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// router 创建新的路由对象</span></span><br><span class="line">      <span class="keyword">let</span> newRouter = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">        routes: [</span><br><span class="line">          &#123;</span><br><span class="line">            path: <span class="string">"/"</span>,</span><br><span class="line">            redirect: <span class="string">"/home"</span>,</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            path: <span class="string">"/login"</span>,</span><br><span class="line">            name: <span class="string">"login"</span>,</span><br><span class="line">            component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">"../views/Login.vue"</span>], resolve)</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">let</span> children = initRouter();</span><br><span class="line">      router.matcher = newRouter.matcher;</span><br><span class="line">      <span class="comment">// 添加路由</span></span><br><span class="line">      router.addRoutes([</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">"/home"</span>,</span><br><span class="line">          <span class="comment">// name: "home",</span></span><br><span class="line">          component: <span class="function"><span class="params">resolve</span> =&gt;</span> <span class="built_in">require</span>([<span class="string">"@/views/Home.vue"</span>], resolve),</span><br><span class="line">          children: children</span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line">      <span class="comment">// 避免重复</span></span><br><span class="line">      <span class="built_in">window</span>.hasRoutes = <span class="literal">true</span>;</span><br><span class="line">      <span class="comment">// 这里 时在实际情况存在 切换登录对象的时候, 首次路由加载不成功,需要刷新, 我们 手动跳到 home 重新走下刚刚的逻辑</span></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">from</span>.path == <span class="string">'/login'</span>) &#123;</span><br><span class="line">        router.push(&#123;<span class="attr">path</span>:<span class="string">'/home'</span>&#125;)</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        router.push(&#123; <span class="attr">path</span>: to.path &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">else</span>  &#123;</span><br><span class="line">      next();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>最后,前端配置生成动态路由的方法基本就是这样啦,这是我在项目中遇到的坑,希望有所帮助.</p>
+
+      
+    </div>
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue-router/" rel="tag"><i class="fa fa-tag"></i> vue-router</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/11/Koa原理浅析/" rel="next" title="Koa原理浅析">
+                <i class="fa fa-chevron-left"></i> Koa原理浅析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80Mjg3MC8xOTQxNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/pho.jpg" alt="陈虎">
+            
+              <p class="site-author-name" itemprop="name">陈虎</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，记录生活，记录点滴</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#角色权限页面配置"><span class="nav-number">1.</span> <span class="nav-text">角色权限页面配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由生成"><span class="nav-number">2.</span> <span class="nav-text">路由生成</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陈虎</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

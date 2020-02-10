@@ -304,6 +304,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/02/10/vue路由动态配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/10/vue路由动态配置/" itemprop="url">vue路由动态配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T18:02:03+08:00">
+                2020-02-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>  在后台系统这类的项目中，用户角色和权限的区分是不可分割的一部分需求。常见的用户权限区分形式有两种，一是前端请求接口拿到后台配置的用户权限信息；另一种是直接由前端来定义每种用户角色的权限页面，然后在生成对应的路由。今天我们来了解前端配置路由权限的方式。</p>
+<h3 id="角色权限页面配置"><a href="#角色权限页面配置" class="headerlink" title="角色权限页面配置"></a>角色权限页面配置</h3><p>  在配置角色对应的路由页面时，可以参考项目所用的前端框架导航组件的参数，我们以<code>elment ui</code>的<code>menu</code>组件为例：可对审核方（Auditor）、供应商（Supplier）和需求方（Business）做如下配置：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> appMenuitem = &#123;</span><br><span class="line">  <span class="comment">// 审核方下拉选项（路由）菜单</span></span><br><span class="line">  Auditor: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// icon: "el-icon-view", // operationLog  userConfiguration</span></span><br><span class="line">      title: <span class="string">"基本配置"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"dataOverview"</span>,</span><br><span class="line">          title: <span class="string">"数据概览"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// icon: "el-icon-view",</span></span><br><span class="line">      title: <span class="string">"需求审核"</span>,</span><br><span class="line">      index: <span class="string">"2"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"demendManage"</span>,</span><br><span class="line">          title: <span class="string">"需求管理"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 业务方下拉选项和路由</span></span><br><span class="line">  Business: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"基本配置"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"demandList"</span>,</span><br><span class="line">          title: <span class="string">"需求列表"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 供应商</span></span><br><span class="line">  Supplier: [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">"需求制作"</span>,</span><br><span class="line">      index: <span class="string">"1"</span>,</span><br><span class="line">      subs: [</span><br><span class="line">        &#123;</span><br><span class="line">          index: <span class="string">"needList"</span>,</span><br><span class="line">          title: <span class="string">"需求列表"</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/10/vue路由动态配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/01/11/Koa原理浅析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -906,165 +1056,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/10/20/js处理字符串和数字/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/20/js处理字符串和数字/" itemprop="url">js处理字符串和数字</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-20T20:59:17+08:00">
-                2019-10-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端三剑客/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串在自然世界中充当着非常重要的角色，所有的自然语言（比如汉语、英语等）都由多个字符组成，比如经典的 “Hello World” 这句话则由 11 个字符组成：H,e,l,l,o,<space>,W,o,r,l,d。</space></p>
-<h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><p>在 JavaScript 中创建一个字符串跟其他语言并没有较大的区别，可以分别使用 ‘、” 和 ` 作为边界标识。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str1 = <span class="string">'string 1'</span></span><br><span class="line"><span class="keyword">const</span> str2 = <span class="string">"string 2"</span></span><br><span class="line"><span class="keyword">const</span> str3 = <span class="string">`string 3`</span></span><br></pre></td></tr></table></figure>
-<p>虽然 <code>`</code> 同样可以以与 <code>&#39;</code> 和 <code>&quot;</code> 一样的使用方式使用，但也可以有更高级的用法。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> target = <span class="string">'World'</span></span><br><span class="line"><span class="keyword">const</span> word = <span class="string">`Hello <span class="subst">$&#123;target&#125;</span>`</span> <span class="comment">//=&gt; Hello World</span></span><br></pre></td></tr></table></figure>
-<p>同时 <code>`</code> 也可以用于创建一个“多行字符串”，即字符串内容中包含多行文本。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">Hello</span></span><br><span class="line"><span class="string">World</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt;</span></span><br><span class="line"><span class="comment">// Hello</span></span><br><span class="line"><span class="comment">// World</span></span><br></pre></td></tr></table></figure>
-<h3 id="分割字符串"><a href="#分割字符串" class="headerlink" title="分割字符串"></a>分割字符串</h3><p>一般来说人们都会使用词频统计作为数据科学的 “Hello World”，简单来说就是对一段英语内容中的单词进行频次（出现次数）统计。我们在进行词频统计之前，我们首先需要对源内容进行预处理。首先我们要了解的是，我们可以看到这段内容中有小写字母、大写字母以及标点符号（包括逗号、句号、括号、双引号、斜杠和冒号）。</p>
-<p>而从语言角度，HELLO、hello 和 Hello 都是一样的，所以我们需要先完成以下预处理任务：</p>
-<ol>
-<li>去除文本中的标点符号、数字</li>
-<li>将所有大写字母转换为小写字母
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/20/js处理字符串和数字/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </li></ol></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1117,7 +1108,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1139,7 +1130,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
