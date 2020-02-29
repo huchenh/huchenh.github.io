@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2020-02-10T10:03:36.387Z</updated>
+  <updated>2020-02-29T15:27:43.332Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>express中间件原理浅析</title>
+    <link href="https://huchenh.github.io/2020/02/29/express%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90/"/>
+    <id>https://huchenh.github.io/2020/02/29/express中间件原理浅析/</id>
+    <published>2020-02-29T15:27:05.000Z</published>
+    <updated>2020-02-29T15:27:43.332Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;再学习express的时候，对其中间件的实现原理狠感兴趣。自己私下模拟了一个简易demo，分享给大家。下面直接上代码。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="Node" scheme="https://huchenh.github.io/categories/Node/"/>
+    
+    
+      <category term="express" scheme="https://huchenh.github.io/tags/express/"/>
+    
+  </entry>
   
   <entry>
     <title>vue路由动态配置</title>
@@ -533,33 +559,6 @@
     
     
       <category term="webpack" scheme="https://huchenh.github.io/tags/webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>weakMap</title>
-    <link href="https://huchenh.github.io/2019/07/12/weakMap/"/>
-    <id>https://huchenh.github.io/2019/07/12/weakMap/</id>
-    <published>2019-07-12T13:54:36.000Z</published>
-    <updated>2019-07-12T13:56:44.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;weakMap的特性及应用场景总结：&lt;/p&gt;
-&lt;h3 id=&quot;特性&quot;&gt;&lt;a href=&quot;#特性&quot; class=&quot;headerlink&quot; title=&quot;特性&quot;&gt;&lt;/a&gt;特性&lt;/h3&gt;&lt;h4 id=&quot;WeakMap-只接受对象作为键名&quot;&gt;&lt;a href=&quot;#WeakMap-只接受对象作为键名&quot; class=&quot;headerlink&quot; title=&quot;WeakMap 只接受对象作为键名&quot;&gt;&lt;/a&gt;WeakMap 只接受对象作为键名&lt;/h4&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; map = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;WeakMap&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;map.set(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// TypeError: Invalid value used as weak map key&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;map.set(&lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// TypeError: Invalid value used as weak map key&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;WeakMap-的键名所引用的对象是弱引用&quot;&gt;&lt;a href=&quot;#WeakMap-的键名所引用的对象是弱引用&quot; class=&quot;headerlink&quot; title=&quot;WeakMap 的键名所引用的对象是弱引用&quot;&gt;&lt;/a&gt;WeakMap 的键名所引用的对象是弱引用&lt;/h4&gt;&lt;p&gt;​       WeakMaps 保持了对键名所引用的对象的弱引用。在计算机程序中弱引用和强应用是相对的，是指不能确保其引用的对象不会被垃圾回收器回收的引用。一个对象若只被弱引用所引用，则被认为是不可访问（或弱可访问）的，并因此可能在任何时刻被回收。&lt;/p&gt;
-&lt;p&gt;在JavaScript中，一般我们创建的对象，都是强引用；&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Object&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;只有当我们手动设置为null时，才会回收obj&lt;/p&gt;
-&lt;p&gt;如果创建一个弱引用对象：&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 假设可以这样创建一个&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; WeakObject();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
-    
-    
-      <category term="javaScript" scheme="https://huchenh.github.io/tags/javaScript/"/>
     
   </entry>
   
