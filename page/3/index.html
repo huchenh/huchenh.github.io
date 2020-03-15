@@ -304,6 +304,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/10/05/SVG01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/05/SVG01/" itemprop="url">SVG01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-05T21:47:57+08:00">
+                2019-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/svg/" itemprop="url" rel="index">
+                    <span itemprop="name">svg</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>  理解SVG中的 viewport，viewBox, preserveAspectRatio</p>
+<h3 id="理解viewport"><a href="#理解viewport" class="headerlink" title="理解viewport"></a>理解viewport</h3><pre><code>该属性表示的是SVG可见区域的大小。或者也可以叫画布的大小。就好比我们的电脑屏幕，我们只能看到我们电脑屏幕的可视区里面的内容，但是看不到电脑屏幕之外的内容。比如如下代码：
+</code></pre>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid red"</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上述代码设置了svg的画布大小为200px*200px, 如果没有带单位的话，该单位默认是 px(像素)。当然也有其他单位：</p>
+<ul>
+<li>em: 相对于父元素的字体大小。</li>
+<li>ex: 相对于小写字母的 ‘x’ 的高度(不常用)</li>
+<li>px: 像素(在支持css2的图形系统中，每英寸为96像素)。</li>
+<li>pt: 点(1/72英寸)</li>
+<li>pc: 12点(1/6英寸)。</li>
+<li>cm: 厘米</li>
+<li>mm: 毫米</li>
+<li>in: 英寸</li>
+</ul>
+<p>svg元素的width和height还可以为百分比，当我们的svg元素嵌套在一个div里面去的话，那么它的百分比是相对于外层的div元素的宽度和高度进行计算的。当然如果我们的svg元素为根元素的话，那么它的百分比是相对于窗口的尺寸来计算的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:400px;height:400px; border: 1px solid red; "</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"20%"</span> <span class="attr">height</span>=<span class="string">"20%"</span> <span class="attr">style</span>=<span class="string">"border: 1px solid red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果我们没有给svg设置宽度和高度的话，它默认的宽度为300px，高度为150px</p>
+<h4 id="理解默认用户坐标"><a href="#理解默认用户坐标" class="headerlink" title="理解默认用户坐标"></a>理解默认用户坐标</h4><p>在svg中有一个默认的坐标系统，其中 水平坐标(x坐标)向右递增的，垂直坐标(y坐标)是向下递增的。原点坐标是(0, 0).  该坐标系统类似于我们数学几何中的坐标。</p>
+<p>比如我们现在建立一个200px宽，200px高的视口，然后我们在里面绘制一个矩形，该矩形左上角在坐标(10, 10)的位置，该矩形的宽度为50px, 高度为 50px，基本代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">style</span>=<span class="string">"border: 1px solid red;"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rect</span> <span class="attr">x</span>=<span class="string">"10"</span> <span class="attr">y</span>=<span class="string">"10"</span> <span class="attr">width</span>=<span class="string">"50"</span> <span class="attr">height</span>=<span class="string">"50"</span> <span class="attr">style</span>=<span class="string">"stroke: black; fill:none;"</span>&gt;</span><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px;margin-left:10px;background: red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/10/05/SVG01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/09/28/vue倒计时组件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -918,164 +1085,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/08/20/Vue的构造器-extend/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/20/Vue的构造器-extend/" itemprop="url">Vue的构造器-extend</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T21:36:42+08:00">
-                2019-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Vue-的构造器——extend-与手动挂载——-mount"><a href="#Vue-的构造器——extend-与手动挂载——-mount" class="headerlink" title="Vue 的构造器——extend 与手动挂载——$mount"></a>Vue 的构造器——extend 与手动挂载——$mount</h2><p>我们来看看Vue.js 内置但却不常用的 API——extend 和 $mount，它们经常一起使用。不常用，是因为在业务开发中，基本没有它们的用武之地，但在独立组件开发时，在一些特定的场景它们是至关重要的。</p>
-<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>我们在写 Vue.js 时，不论是用 CDN 的方式还是在 Webpack 里用 npm 引入的 Vue.js，都会有一个根节点，并且创建一个根实例，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  const app = new Vue(&#123;</span><br><span class="line">    el: &apos;#app&apos;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>Webpack 也类似，一般在入口文件 main.js 里，最后会创建一个实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import App from &apos;./app.vue&apos;;</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>因为用 Webpack 基本都是前端路由的，它的 html 里一般都只有一个根节点 <code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code>，其余都是通过 JavaScript 完成，也就是许多的 Vue.js 组件（每个页面也是一个组件）。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/20/Vue的构造器-extend/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1123,7 +1137,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
