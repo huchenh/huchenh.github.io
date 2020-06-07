@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://huchenh.github.io/"/>
-  <updated>2020-03-21T10:23:56.271Z</updated>
+  <updated>2020-06-07T03:06:46.390Z</updated>
   <id>https://huchenh.github.io/</id>
   
   <author>
@@ -15,6 +15,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>迟来的前端面经</title>
+    <link href="https://huchenh.github.io/2020/06/07/%E8%BF%9F%E6%9D%A5%E7%9A%84%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/"/>
+    <id>https://huchenh.github.io/2020/06/07/迟来的前端面经/</id>
+    <published>2020-06-07T03:05:24.000Z</published>
+    <updated>2020-06-07T03:06:46.390Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近也是在换工作，小公司和大厂（虾皮、腾讯）都有面试。几次面试收获还是比较大的，了解许多自己的短板，当然也拿到了合适的offer。本文主要整理下面试遇到的问题和知识点，希望对准备找工作的掘友有所帮助。&lt;/p&gt;
+&lt;h3 id=&quot;基础部分&quot;&gt;&lt;a href=&quot;#基础部分&quot; class=&quot;headerlink&quot; title=&quot;基础部分&quot;&gt;&lt;/a&gt;基础部分&lt;/h3&gt;&lt;p&gt;面试的时候，前端基础知识，还是仔细准备，这一块可以问的东西很多，不管哪一面，都将会有问到，或者通过面试题来考察。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;你对css3的动画属性了解多少？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这个问题，是在介绍项目的时候，面试官提出来的。我介绍的项目是一个利用贝塞尔曲线公式，来控制小车做曲线运动移动到对应的位置，抽取奖品。我自己是用js套用公式做的，当时面试官，有提到具体的公式是怎样的（有点慌，确实是百度来的。。。），车的坐标怎么控制，小车是否可以连续运动（项目中采用的是把所有动画函数放入一个数组，采用类似express中间件 next这样的方式来实现）。然后面试就提了上面的问题，我的回答（常规操作），animation开头的后面的属性，能记住的都说了，最后面试官问我知道 css3也可以设置贝塞尔曲线么，还有&lt;code&gt;animationend 事件&lt;/code&gt;，然后项目的新的思路就出来了，利用css3 &lt;code&gt;cubic-bezier&lt;/code&gt;结合动画结束事件&lt;code&gt;animationend&lt;/code&gt;,就可以实现小车的曲线运动了。嗯，服气！&lt;/p&gt;
+&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;session和cookie的区别是啥？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这个网上答案有很多，建议回答的时候，就是解释一下基本的概念，然后结合场景说明下用途就ok啦。。。。&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;聊聊js的原型链吧？&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这个考的方式有很多。比如直接说出一个&lt;code&gt;function Person&lt;/code&gt;，让你画图的（如果头脑清晰，可以把函数也是对象的那部分画出来，这是一个加分项）;还有就是出一个题，让你说出&lt;code&gt;p1.__proto__&lt;/code&gt; ，&lt;code&gt;Person.prototype&lt;/code&gt;的关系或是各种&lt;code&gt;__proto__&lt;/code&gt;的指向问题，建议用纸笔仔细捋捋。&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;&lt;p&gt;防抖和节流的实现原理，和使用场景？&lt;br&gt;这个也是一个面试高频问题。防抖类似于，我们排队上地铁，一个人上去后，后面的人才能接着上（one by one），一般用在&lt;code&gt;搜索展示下拉框&lt;/code&gt;这样的场景；节流，是理解为是&lt;code&gt;水龙头按节奏的滴水&lt;/code&gt;，一般是用在有&lt;code&gt;onresize&lt;/code&gt; &lt;code&gt;onsrcoll&lt;/code&gt; 这样的场景。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;http的缓存机制？&lt;br&gt;协商缓存(etag,last-mofify)和强制缓存（cache-control）。分别解释了各种概念后，面试官追问，既然有了last-modify为什么还要有etag：1、文件内容没有变的情况，但是last-mofidy会变，比如，打开文件修改，当时内容没有变化。2、就是last-mofify的时间精度是秒级，但后台可能存在一秒对文件多次操作的可能。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;聊聊http2的特性？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;概念性问题，背背书。。。。&lt;/p&gt;
+&lt;ol start=&quot;7&quot;&gt;
+&lt;li&gt;addeventlistener第三个参数作用&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="前端三剑客" scheme="https://huchenh.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/"/>
+    
+    
+      <category term="面经" scheme="https://huchenh.github.io/tags/%E9%9D%A2%E7%BB%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>vue收集依赖watcher</title>
@@ -513,39 +558,6 @@
 &lt;/ul&gt;
 &lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;5 个函数的原理，都是通过递归、遍历，找到指定组件的 &lt;code&gt;name&lt;/code&gt; 选项匹配的组件实例并返回。&lt;/p&gt;
 &lt;h3 id=&quot;向上找到最近的指定组件——findComponentUpward&quot;&gt;&lt;a href=&quot;#向上找到最近的指定组件——findComponentUpward&quot; class=&quot;headerlink&quot; title=&quot;向上找到最近的指定组件——findComponentUpward&quot;&gt;&lt;/a&gt;向上找到最近的指定组件——findComponentUpward&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// assist.js&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 由一个组件，向上找到最近的指定组件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;findComponentUpward&lt;/span&gt; (&lt;span class=&quot;params&quot;&gt;context, componentName&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; parent = context.$parent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; name = parent.$options.name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt;(parent &amp;amp;&amp;amp; (!name || [componentName].indexOf(name) &amp;lt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    parent = parent.$parent;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(parent)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      name = parent.$options.name&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; parent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;export&lt;/span&gt; &amp;#123; findComponentUpward &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Vue" scheme="https://huchenh.github.io/categories/Vue/"/>
-    
-    
-      <category term="vue" scheme="https://huchenh.github.io/tags/vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue组件通信一provide inject</title>
-    <link href="https://huchenh.github.io/2019/08/07/vue%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%E4%B8%80provide-inject/"/>
-    <id>https://huchenh.github.io/2019/08/07/vue组件通信一provide-inject/</id>
-    <published>2019-08-07T14:44:16.000Z</published>
-    <updated>2019-08-07T14:44:50.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;组件的通信-1：provide-inject&quot;&gt;&lt;a href=&quot;#组件的通信-1：provide-inject&quot; class=&quot;headerlink&quot; title=&quot;组件的通信 1：provide / inject&quot;&gt;&lt;/a&gt;组件的通信 1：provide / inject&lt;/h2&gt;&lt;p&gt;  vue提供的API，&lt;code&gt;ref&lt;/code&gt; 和 &lt;code&gt;$parent / $children&lt;/code&gt; 在&lt;strong&gt;跨级&lt;/strong&gt;通信时是有弊端的。为了解决这种跨级通信情况，我们往往会借助Bus和Vuex这些第三方库。但我们还可以借用vue 内置的 provide / inject 接口，实现无依赖的组件通信。&lt;/p&gt;
-&lt;h3 id=&quot;provide-inject&quot;&gt;&lt;a href=&quot;#provide-inject&quot; class=&quot;headerlink&quot; title=&quot;provide / inject&quot;&gt;&lt;/a&gt;provide / inject&lt;/h3&gt;&lt;p&gt;  &lt;code&gt;provide / inject&lt;/code&gt; 是 Vue.js 2.2.0 版本后新增的 API，在文档中这样介绍 ：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;https://cn.vuejs.org/v2/api/#provide-inject&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://cn.vuejs.org/v2/api/#provide-inject&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这对选项需要一起使用，以允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。这与 React 的上下文特性&lt;code&gt;context&lt;/code&gt;很相似。&lt;br&gt;&lt;code&gt;官网提示&lt;/code&gt;provide 和 inject 主要为高阶插件/组件库提供用例。并不推荐直接用于应用程序代码中。&lt;strong&gt;不过建议归建议，如果你用好了，这个 API 会非常有用。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;假设有两个组件： &lt;strong&gt;A.vue&lt;/strong&gt; 和 &lt;strong&gt;B.vue&lt;/strong&gt;，B 是 A 的子组件。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// A.vue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export default &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  provide: &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name: &amp;apos;Aresn&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// B.vue&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;export defaul &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  inject: [&amp;apos;name&amp;apos;],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  mounted()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(this.name) // Aresn&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;在 A.vue 里，我们设置了一个 &lt;strong&gt;provide: name&lt;/strong&gt;，值为 Aresn，它的作用就是将 &lt;strong&gt;name&lt;/strong&gt; 这个变量提供给它的所有子组件。而在 B.vue 中，通过 &lt;code&gt;inject&lt;/code&gt; 注入了从 A 组件中提供的 &lt;strong&gt;name&lt;/strong&gt; 变量，那么在组件 B 中，就可以直接通过 &lt;strong&gt;this.name&lt;/strong&gt; 访问这个变量了，它的值也是 Aresn。这就是 provide / inject API 最核心的用法。&lt;/p&gt;
-&lt;p&gt;需要注意的是：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;provide 和 inject 绑定并&lt;strong&gt;不是可响应&lt;/strong&gt;的。这是刻意为之的。然而，如果你传入了一个可监听的对象,具体参照&lt;a href=&quot;https://segmentfault.com/a/1190000019836663&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://segmentfault.com/a/1190000019836663&lt;/a&gt;，那么其对象的属性还是可响应的。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;所以，上面 A.vue 的 name 如果改变了，B.vue 的 &lt;a href=&quot;http://this.name&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;this.name&lt;/a&gt; 是不会改变的，仍然是 Aresn。&lt;br&gt;
     
     </summary>
     
