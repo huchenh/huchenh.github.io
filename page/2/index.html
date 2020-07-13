@@ -304,6 +304,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/02/29/express中间件原理浅析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/29/express中间件原理浅析/" itemprop="url">express中间件原理浅析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T23:27:05+08:00">
+                2020-02-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>再学习express的时候，对其中间件的实现原理狠感兴趣。自己私下模拟了一个简易demo，分享给大家。下面直接上代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MiniExpress</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 收集app 的中间件 路由执行 函数</span></span><br><span class="line">    <span class="keyword">this</span>.routes = &#123;</span><br><span class="line">      all: [], <span class="comment">// 所有的匹配路径的请求 都执行的 中间件函数</span></span><br><span class="line">      <span class="keyword">get</span>: [], // <span class="keyword">get</span> 请求 匹配的 中间件执行函数</span><br><span class="line">      post: [] // post 请求</span><br><span class="line">      // put delete 可自行扩展</span><br><span class="line">    &#125;</span><br><span class="line">    // 初始中间件</span><br><span class="line">    this.use(function (req, res, next) &#123;</span><br><span class="line">      <span class="comment">// 实现 json 方法</span></span><br><span class="line">      res.json = <span class="function"><span class="keyword">function</span> (<span class="params">obj = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">        res.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/json'</span>);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">      &#125;</span><br><span class="line">      next()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 第一个参数可能是路径 也可能是函数，并且 支持 多个函数操作</span></span><br><span class="line">  use(...args) &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'all'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleLayer(method = <span class="string">'all'</span>, ...args) &#123;</span><br><span class="line">    <span class="keyword">let</span> layer;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">0</span>] == <span class="string">'string'</span>) &#123;</span><br><span class="line">      layer = &#123;</span><br><span class="line">        path: args.shift(),</span><br><span class="line">        stack: args,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      layer = &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        stack: args</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.routes[method].push(layer)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span>(...args) &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'get'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  post() &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'post'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 请求方式和路径 匹配 合适 的中间件</span></span><br><span class="line">  match(method, url) &#123;</span><br><span class="line">    <span class="keyword">let</span> midderwares = [];</span><br><span class="line">    <span class="comment">// 处理浏览器 网页 图标</span></span><br><span class="line">    <span class="keyword">if</span> (url == <span class="string">'/favicon.ico'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> midderwares</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 对所有请求方式 都生效的中间件 </span></span><br><span class="line">    <span class="keyword">this</span>.routes.all.filter(<span class="function"><span class="params">m</span> =&gt;</span> url.indexOf(m.path) == <span class="number">0</span>).forEach(<span class="function"><span class="params">m</span> =&gt;</span> &#123;</span><br><span class="line">      midderwares = midderwares.concat(m.stack)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理对应请求方式</span></span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">this</span>.routes[method].filter(<span class="function"><span class="params">m</span> =&gt;</span> url.indexOf(m.path) == <span class="number">0</span>).forEach(<span class="function"><span class="params">m</span> =&gt;</span> &#123;</span><br><span class="line">      midderwares = midderwares.concat(m.stack)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> midderwares;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理请求的方法</span></span><br><span class="line">  hanldRequest(req, res) &#123;</span><br><span class="line">    <span class="comment">// console.log(req)</span></span><br><span class="line">    <span class="keyword">let</span> method = req.method.toLocaleLowerCase(),</span><br><span class="line">      url = req.url;</span><br><span class="line">    <span class="keyword">const</span> stack = <span class="keyword">this</span>.match(method, url);</span><br><span class="line">    <span class="comment">// 依次执行 中间件 数组</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> curMidware = stack.shift();</span><br><span class="line">      <span class="comment">// 如果是 处理函数</span></span><br><span class="line">      <span class="keyword">if</span> (curMidware) &#123;</span><br><span class="line">        <span class="comment">// 传入正常中间件的3个参数</span></span><br><span class="line">        curMidware(req, res, next);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  listen(...res) &#123;</span><br><span class="line">    <span class="keyword">const</span> server = http.createServer(<span class="keyword">this</span>.hanldRequest.bind(<span class="keyword">this</span>));</span><br><span class="line">    server.listen(...res);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = MiniExpress;</span><br></pre></td></tr></table></figure></p>
+<p>测试代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniExpress = <span class="built_in">require</span>(<span class="string">'./mini_express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> MiniExpress();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'11111'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/api/list'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'22222222222222'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/api/list'</span>, <span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'user is pass checked'</span>);</span><br><span class="line">  next()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    code: <span class="number">200</span>,</span><br><span class="line">    list: [</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">'ddd'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">'eee'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'server is listening at port 8000'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">测试 结果</span></span><br><span class="line"><span class="comment">server is listening at port 8000</span></span><br><span class="line"><span class="comment">11111</span></span><br><span class="line"><span class="comment">22222222222222</span></span><br><span class="line"><span class="comment">user is pass checked</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
+<p>要实现express的中间件这样的效果，我们就需要记录所有的中间处理函数及其对应的路径和请求方式。然后，对每一次请求都匹配对应处理函数，最后就会得到每次请求的 中间件函数队列，然后利用指针来依次执行所有的中间件处理函数。这种思想也可用于异步和动画队列等问题的应用中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/02/10/vue路由动态配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -900,162 +1046,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2019/11/30/用js的方式实现vue弹框/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/30/用js的方式实现vue弹框/" itemprop="url">用js的方式实现vue弹框</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T19:14:31+08:00">
-                2019-11-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>  在平常，我们使用vue组件的时候，都要先在<code>.vue</code>文件中引入我们要使用的组件。虽然这样能满足大部分日常开发的需求，但这种方法在某些场景下，就有些难以应对。</p>
-<ol>
-<li>组件的模板是通过调用接口从服务端获取的，需要动态渲染组件；</li>
-<li>实现类似原生 window.alert() 的提示框组件，它的位置是在 <body> 下，而非 <div id="app">，并且不会通过常规的组件自定义标签的形式使用，而是像 JS 调用函数一样使用。</div></body></li>
-</ol>
-<h3 id="extend"><a href="#extend" class="headerlink" title="extend"></a>extend</h3><p>  Vue.extend 的作用，就是基于 Vue 构造器，创建一个“子类”，它的参数跟 new Vue 的基本一样，但 data 要跟组件一样，是个函数，再配合 $mount ，就可以让组件渲染，并且挂载到任意指定的节点上，比如 body。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line"></span><br><span class="line">&lt;!-- 创建了一个构造器，这个过程就可以解决异步获取 template 模板的问题 --&gt;</span><br><span class="line">const AlertComponent = Vue.extend(&#123;</span><br><span class="line">  template: &apos;&lt;div&gt;&#123;&#123; message &#125;&#125;&lt;/div&gt;&apos;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &apos;Hello, Aresn&apos;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;!-- 调用 $mount 方法对组件进行了手动渲染， --&gt;</span><br><span class="line">const component = new AlertComponent().$mount();</span><br><span class="line">&lt;!-- 挂载节点 --&gt;</span><br><span class="line">document.body.appendChild(component.$el);</span><br><span class="line">&lt;!-- 快捷的挂载方式 --&gt;</span><br><span class="line">new AlertComponent().$mount(&apos;#app&apos;);</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以满足我们用js方法调用的方式来控制组件，但是在平常的开发中，我们用的vue的runtime编译环境，不支持<code>template</code>模板，而且用字符串来描述组件的模板，也有些不太友好。那么，我们可以试试用<code>new Vue()</code>的方式。</p>
-<h3 id="new-Vue"><a href="#new-Vue" class="headerlink" title="new Vue"></a>new Vue</h3><p>  <code>new Vue()</code>也可以直接创建 Vue 实例，并且用一个 Render 函数来渲染一个 .vue 文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;;</span><br><span class="line">import Notification from &apos;./notification.vue&apos;;</span><br><span class="line"></span><br><span class="line">const props = &#123;&#125;;  // 这里可以传入一些组件的 props 选项</span><br><span class="line"></span><br><span class="line">const Instance = new Vue(&#123;</span><br><span class="line">  render (h) &#123;</span><br><span class="line">    return h(Notification, &#123;</span><br><span class="line">      props: props</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const component = Instance.$mount();</span><br><span class="line">document.body.appendChild(component.$el);</span><br></pre></td></tr></table></figure></p>
-<p>这样既可以使用 .vue 来写复杂的组件,还可以根据需要传入适当的 props。渲染后，如果想操作 Render 的 Notification 实例，也是很简单的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const notification = Instance.$children[0];</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/11/30/用js的方式实现vue弹框/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1108,7 +1098,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1119,7 +1109,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1130,7 +1120,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

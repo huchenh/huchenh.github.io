@@ -304,6 +304,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/07/13/基于react的虚拟列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陈虎">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/pho.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="追风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/13/基于react的虚拟列表/" itemprop="url">基于react的虚拟列表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-13T21:48:09+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react/" itemprop="url" rel="index">
+                    <span itemprop="name">react</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="虚拟列表"><a href="#虚拟列表" class="headerlink" title="虚拟列表"></a>虚拟列表</h3><p>在工作中，我们经常会以列表的形式来展示内容，当时如果列表项很多的话，在pc端我们会考虑用分页的形式来解决长列表带来的性能问题。但是如果是在移动设备，为了用户体验，我们通常是用长列表的形式来展示，用户只需上下滑动来浏览。这时如果不做处理，而是一次加载全部的数据，那么当数据量过大的时候，就会出现性能问题，影响体验。这时，我们就需要用到<code>*虚拟列表*</code>了。</p>
+<p>虚拟列表是按需显示的一种技术，可以根据用户的滚动，不必渲染所有列表项，而只是渲染可视区域内的一部分列表元素的技术。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2020/7/12/173437b972d26904?w=720&amp;h=481&amp;f=webp&amp;s=9326" alt="img"></p>
+<p>如图所示，当页面有很多数据的时候，我们只需渲染用户可看到的区域<code>item8</code>到<code>item15</code>。这样就大大提升了性能和用户体验。</p>
+<h3 id="固定高度长列表"><a href="#固定高度长列表" class="headerlink" title="固定高度长列表"></a>固定高度长列表</h3><p>我们项目中的列表如果都是高度固定，那么这种情况就是固定高度的长列表。这种情况的处理相对简单，我们只要根据可视区域的高度和列表的高度，就能计算出可视区域要渲染列表项的索引（范围）啦。<br>首先我们可以根据<code>scrollTop</code>属性来确定可视区域开始项的索引；然后我们可以根据可视区域的高度和列表项的高度，计算得出结束索引的值，这样可视区域要渲染的内容索引已经确认，可视区域上下方的高度，也就是开始索引的值<em>列表项的高度和（列表的长度-结束索引）</em>列表项的高度。监听容器的<code>scroll</code>事情，重复上面的计算，这就是当列表项目固定的情况下，实现虚拟列表的原理。</p>
+<p>如果是列表项高度不一，但是我们可以确定没项列表的高度，那么也是可用上面的方法计算，我们只需为列表增加一个<code>height</code>属性来记录每个列表的高度，然后根据索引和之前列表的高度相加，我们就可以确定当前列表的<code>top</code>相对与股东容器的高度，这样形成了一个有序的top值数组，然后我们就可以使用<code>二分法</code>结合<code>固定列表项高度</code>的情况来得到可视区域的索引范围。</p>
+<p>由于本文的讨论重点不是上面两种情况，对上面两种情况感兴趣的同学，推荐我自己之前看到过的一篇文章，讲的很详细 <a href="https://juejin.im/post/5ae05bd66fb9a07aa631724b" target="_blank" rel="noopener">虚拟滚动的轮子是如何造成的？</a></p>
+<h3 id="不固定列表高度的情况"><a href="#不固定列表高度的情况" class="headerlink" title="不固定列表高度的情况"></a>不固定列表高度的情况</h3><p>终于来到今天讨论的重点啦。在高度不固定的情况下，要怎么实现虚拟列表呢？通过前面的概述，相信大家也认识到要实现一个虚拟列表，我们只需要确定可是区域的渲染范围（索引）即可，滚动盒子上下高度根据计算出来的索引和列表的总长度就可以计算出来啦。那么，我们要怎么确定可视区域要渲染列表的索引呢？</p>
+<p>其实在高度不确定的情况下，我们就只有等到列表项渲染完成后，才能得到列表项的真实高度，所以我们要动态的记录列表项的真实高度。为了不是页面发生错误的情况，我们需要一个预估列表项的高度来尽可能撑开滚动盒子，就等到列表项渲染后，我们就可以拿到真实dom的高度，在替换可视区域。考虑到单独的记录每个列表项的真实高度，会比较麻烦，所以我就页为单位来记录<code>pageHeight</code>。</p>
+<p>来看代码<code>ScrollList</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; PureComponent &#125; from &apos;react&apos;</span><br><span class="line">import &#123; throttle &#125; from &apos;../../utils/index&apos;</span><br><span class="line"></span><br><span class="line">// 应该接收的props: renderItem: Function, height:string; estimateHeight:Number</span><br><span class="line">class ScrollList extends PureComponent &#123;</span><br><span class="line">  constructor (props) &#123;</span><br><span class="line">    super(props)</span><br><span class="line">    this.renderItem = props.renderItem</span><br><span class="line">    this.getData = props.getData</span><br><span class="line">    // 预估高度 做屏幕适配</span><br><span class="line">    this.estimateHeight = document.documentElement.clientWidth * (props.estimateHeight / 320)</span><br><span class="line">    // 每一页展示的数据</span><br><span class="line">    //一页10条数据，进行一页数据的预估</span><br><span class="line">    // 每一页的总体高度</span><br><span class="line">    this.pageHeight = []</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      List: []</span><br><span class="line">    &#125;</span><br><span class="line">    this.scrollWrapper = React.createRef()</span><br><span class="line">    this.handleScroll = throttle(this.onScroll, 300)</span><br><span class="line">    this.hasDidMounted = false</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  async componentDidMount () &#123;</span><br><span class="line">    console.log(&apos;----- sroll list mount&apos;)</span><br><span class="line">    this.init()</span><br><span class="line">    this.hasDidMounted = true</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init=async (isEimtByParant = false) =&gt; &#123;</span><br><span class="line">    const &#123; offset, events &#125; = await this.props.getData()</span><br><span class="line">    this.initOptions(&#123; offset, events, isEimtByParant &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  // resource</span><br><span class="line">  // static getDerivedStateFromProps (&#123; resource, pageSize &#125;) &#123;</span><br><span class="line">  //   if (resource.length &amp;&amp; resource.length &lt;= pageSize) &#123;</span><br><span class="line">  //     self.initOptions(&#123; offset: 0, events: resource &#125;)</span><br><span class="line">  //     console.log(resource, pageSize)</span><br><span class="line">  //   &#125;</span><br><span class="line">  //   return null</span><br><span class="line">  // &#125;</span><br><span class="line"></span><br><span class="line">  initOptions = (&#123; offset = 0, events = [], isEimtByParant &#125;) =&gt; &#123;</span><br><span class="line">    const page = Math.floor(offset / this.props.pageSize)</span><br><span class="line">    let pageList = [...this.state.List]</span><br><span class="line"></span><br><span class="line">    if (!offset) &#123;</span><br><span class="line">      pageList = []</span><br><span class="line">    &#125;</span><br><span class="line">    // 列表数据</span><br><span class="line">    if (!pageList.length) &#123;</span><br><span class="line">      pageList[0] = &#123;</span><br><span class="line">        data: events,</span><br><span class="line">        visible: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      pageList[page] = &#123;</span><br><span class="line">        data: events,</span><br><span class="line">        visible: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (isEimtByParant) &#123;</span><br><span class="line">      this.pageHeight = []</span><br><span class="line">    &#125;</span><br><span class="line">    // debugger</span><br><span class="line">    // 然后对pageHeight根据预估高度进行预估初始化，后续重新进行计算,每个列表的预估位置高度</span><br><span class="line">    if (this.pageHeight.length) &#123;</span><br><span class="line">      this.pageHeight[page] = &#123;</span><br><span class="line">        top: this.pageHeight[page - 1].height + this.pageHeight[page - 1].top,</span><br><span class="line">        height: this.estimateHeight * events.length,</span><br><span class="line">        isComputed: false</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      this.pageHeight.push(&#123;</span><br><span class="line">        top: 0,</span><br><span class="line">        height: this.estimateHeight * events.length,</span><br><span class="line">        isComputed: false</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&apos;inint options &apos;, this.pageHeight)</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      List: pageList</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   initHeight =(offsetHeight, scrollTop) =&gt; &#123;</span><br><span class="line">     requestAnimationFrame(() =&gt; &#123;</span><br><span class="line">       // 判断一下需要展示的列表，其他的列表都给隐藏了</span><br><span class="line">       const listShow = [...this.state.List]</span><br><span class="line">       //  console.log(listShow)</span><br><span class="line">       listShow.forEach((item, index) =&gt; &#123;</span><br><span class="line">         if (this.pageHeight[index]) &#123;</span><br><span class="line">           const bottom = this.pageHeight[index].top + this.pageHeight[index].height</span><br><span class="line">           //  console.log(&apos;------&apos;, bottom, scrollTop, this.pageHeight[index].top &gt; scrollTop + offsetHeight + 5)</span><br><span class="line">           if ((bottom &lt; scrollTop - 10) || (this.pageHeight[index].top &gt; scrollTop + offsetHeight + 10)) &#123;</span><br><span class="line">             listShow[index].visible = false</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             // 根据预估高度算出来它在视野内的时候，先给它变成visible，让他出现，才能拿到元素高度</span><br><span class="line">             this.setState(prevState =&gt; &#123;</span><br><span class="line">               const List = [...prevState.List]</span><br><span class="line">               List[index].visible = true</span><br><span class="line">               return &#123;</span><br><span class="line">                 List</span><br><span class="line">               &#125;</span><br><span class="line">             &#125;)</span><br><span class="line">             //  console.log(1111111, this.state.List)</span><br><span class="line">             // 出现以后，然后计算高度，替换掉之前用预估高度设置的height</span><br><span class="line">             const target = this[`page$&#123;index&#125;`].current</span><br><span class="line">             let top = 0</span><br><span class="line">             if (index &gt; 0) &#123;</span><br><span class="line">               top = this.pageHeight[index - 1].top + this.pageHeight[index - 1].height</span><br><span class="line">             &#125;</span><br><span class="line">             if (target &amp;&amp; target.offsetHeight &amp;&amp; !listShow[index].isComputed) &#123;</span><br><span class="line">               this.pageHeight[index] = &#123; top, height: target.offsetHeight &#125;</span><br><span class="line">               //  console.log(target.offsetHeight)</span><br><span class="line">               listShow[index].visible = true</span><br><span class="line">               listShow[index].isComputed = true</span><br><span class="line">               // 计算好了以后，还要再setState一下，调整列表高度</span><br><span class="line">               this.setState(&#123;</span><br><span class="line">                 List: listShow</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">           this.pageHeight[index] = &#123; top, height: this.estimateHeight * this.props.pageSize &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  onScroll= async () =&gt; &#123;</span><br><span class="line">    const &#123; offsetHeight, scrollHeight, scrollTop &#125; = this.scrollWrapper.current</span><br><span class="line">    this.initHeight(offsetHeight, scrollTop)</span><br><span class="line">    // console.log(offsetHeight, scrollHeight)</span><br><span class="line">    if (offsetHeight + scrollTop + 10 &gt; scrollHeight &amp;&amp; this.props.hasMore) &#123;</span><br><span class="line">      const &#123; events, offset &#125; = await this.props.getData(1)</span><br><span class="line">      this.initOptions(&#123; offset, events &#125;)</span><br><span class="line">      this.initHeight(offsetHeight, scrollTop)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    const &#123; List &#125; = this.state</span><br><span class="line">    // console.log(&apos;list&apos;, List)</span><br><span class="line">    let headerHeight = 0</span><br><span class="line">    let bottomHeight = 0</span><br><span class="line">    let i = 0</span><br><span class="line">    for (; i &lt; List.length; i++) &#123;</span><br><span class="line">      if (!List[i].visible) &#123;</span><br><span class="line">        headerHeight += this.pageHeight[i].height</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        break</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (; i &lt; List.length; i++) &#123;</span><br><span class="line">      if (!List[i].visible) &#123;</span><br><span class="line">        bottomHeight += this.pageHeight[i].height || 0</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    const renderList = List.map((item, index) =&gt; &#123;</span><br><span class="line">      this[`page$&#123;index&#125;`] = React.createRef()</span><br><span class="line">      if (item.visible) &#123;</span><br><span class="line">        return &lt;div ref=&#123;this[`page$&#123;index&#125;`]&#125; key=&#123;`$&#123;item.id&#125;_page$&#123;index&#125;`&#125;&gt;</span><br><span class="line">          &#123;item.data.map((value, log) =&gt; &#123;</span><br><span class="line">            return (</span><br><span class="line">              this.renderItem(value, `$&#123;index&#125;-$&#123;log&#125;`)</span><br><span class="line">            )</span><br><span class="line">          &#125;)&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    return (&lt;div</span><br><span class="line">      ref=&#123;this.scrollWrapper&#125;</span><br><span class="line">      onScroll=&#123;this.handleScroll&#125;</span><br><span class="line">      style=&#123;&#123; height: &apos;100%&apos;, overflow: &apos;scroll&apos; &#125;&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;div style=&#123;&#123; height: headerHeight &#125;&#125; /&gt;</span><br><span class="line">      &#123;renderList&#125;</span><br><span class="line">      &lt;div style=&#123;&#123; height: bottomHeight &#125;&#125; /&gt;</span><br><span class="line">      &#123;/* &#123;this.state.loading &amp;&amp; (</span><br><span class="line">        &lt;div&gt;加载中&lt;/div&gt;</span><br><span class="line">      )&#125;</span><br><span class="line">      &#123;this.state.showMsg &amp;&amp; (</span><br><span class="line">        &lt;div&gt;暂无更多内容&lt;/div&gt;</span><br><span class="line">      )&#125; */&#125;</span><br><span class="line">    &lt;/div&gt;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default ScrollList</span><br></pre></td></tr></table></figure></p>
+<p>从代码中我们可以看到组件<code>ScollList</code>接收的props有：</p>
+<ul>
+<li>renderItem：渲染列表项的函数，由用户传入即可。</li>
+<li>hasMore：判断是否还有下一页数据，用户往下滑动。</li>
+<li>pageSize：表示每一页的列表项，因为scrollList是以页为单位来计算高度的</li>
+<li>getData： 获取列表项</li>
+<li>estimateHeight： 列表项的预估高度，可以稍微大些，撑开滚动盒子的高度</li>
+</ul>
+<p><em>原理梳理</em></p>
+<ul>
+<li>先设置一个预设一个列表高度，如 320</li>
+<li><p>然后componentDidMounted中加载一页数据，并用<code>pageHeight</code>来存储每一页（10）条数据的预估高度和，还有顶端位置，用<code>top</code>记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// pageHeight</span><br><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    top: 0,</span><br><span class="line">    height:  document.documentElement.clientWidth * (props.estimateHeight / 320)</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在state中用List，来接受请求的数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    data: [....] <span class="comment">// 要渲染的真实数据,</span></span><br><span class="line">    isComputed: <span class="literal">false</span> <span class="comment">// 表示这页数据是用的预估的高度来渲染的，在滚动事件中，我们会用真实的这页数据的高度来替换，在重新更新页面</span></span><br><span class="line">    visible: <span class="literal">false</span> <span class="comment">// 标示本页数据是否在可是区域</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>scroll事件，根据hasMore来请求后面的数据</p>
+</li>
+</ul>
+<p>最后贴下冴羽大佬的<code>throttle</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> throttle = <span class="function">(<span class="params">func, wait, options = &#123; leading: <span class="literal">true</span>, trailing: <span class="literal">true</span> &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> timeout, context, args <span class="comment">// result</span></span><br><span class="line">  <span class="keyword">let</span> previous = <span class="number">0</span></span><br><span class="line">  <span class="keyword">if</span> (!options) options = &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> later = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    previous = options.leading === <span class="literal">false</span> ? <span class="number">0</span> : <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">    timeout = <span class="literal">null</span></span><br><span class="line">    func.apply(context, args)</span><br><span class="line">    <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> throttled = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br><span class="line">    <span class="keyword">if</span> (!previous &amp;&amp; options.leading === <span class="literal">false</span>) previous = now</span><br><span class="line">    <span class="keyword">const</span> remaining = wait - (now - previous)</span><br><span class="line">    context = <span class="keyword">this</span></span><br><span class="line">    args = <span class="built_in">arguments</span></span><br><span class="line">    <span class="keyword">if</span> (remaining &lt;= <span class="number">0</span> || remaining &gt; wait) &#123;</span><br><span class="line">      <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">        clearTimeout(timeout)</span><br><span class="line">        timeout = <span class="literal">null</span></span><br><span class="line">      &#125;</span><br><span class="line">      previous = now</span><br><span class="line">      func.apply(context, args)</span><br><span class="line">      <span class="keyword">if</span> (!timeout) context = args = <span class="literal">null</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.trailing !== <span class="literal">false</span>) &#123;</span><br><span class="line">      timeout = setTimeout(later, remaining)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  throttled.cancel = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    clearTimeout(timeout)</span><br><span class="line">    previous = <span class="number">0</span></span><br><span class="line">    timeout = <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> throttled</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>以上就是本人在项目有用到的虚拟列表实现方法，大家可以帮忙优化下哈！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/06/07/迟来的前端面经/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -920,152 +1095,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://huchenh.github.io/2020/02/29/express中间件原理浅析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="陈虎">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/pho.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="追风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/29/express中间件原理浅析/" itemprop="url">express中间件原理浅析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-29T23:27:05+08:00">
-                2020-02-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Node/" itemprop="url" rel="index">
-                    <span itemprop="name">Node</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>再学习express的时候，对其中间件的实现原理狠感兴趣。自己私下模拟了一个简易demo，分享给大家。下面直接上代码。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MiniExpress</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 收集app 的中间件 路由执行 函数</span></span><br><span class="line">    <span class="keyword">this</span>.routes = &#123;</span><br><span class="line">      all: [], <span class="comment">// 所有的匹配路径的请求 都执行的 中间件函数</span></span><br><span class="line">      <span class="keyword">get</span>: [], // <span class="keyword">get</span> 请求 匹配的 中间件执行函数</span><br><span class="line">      post: [] // post 请求</span><br><span class="line">      // put delete 可自行扩展</span><br><span class="line">    &#125;</span><br><span class="line">    // 初始中间件</span><br><span class="line">    this.use(function (req, res, next) &#123;</span><br><span class="line">      <span class="comment">// 实现 json 方法</span></span><br><span class="line">      res.json = <span class="function"><span class="keyword">function</span> (<span class="params">obj = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">        res.setHeader(<span class="string">'Content-type'</span>, <span class="string">'application/json'</span>);</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">      &#125;</span><br><span class="line">      next()</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 第一个参数可能是路径 也可能是函数，并且 支持 多个函数操作</span></span><br><span class="line">  use(...args) &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'all'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleLayer(method = <span class="string">'all'</span>, ...args) &#123;</span><br><span class="line">    <span class="keyword">let</span> layer;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">0</span>] == <span class="string">'string'</span>) &#123;</span><br><span class="line">      layer = &#123;</span><br><span class="line">        path: args.shift(),</span><br><span class="line">        stack: args,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      layer = &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        stack: args</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.routes[method].push(layer)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span>(...args) &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'get'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  post() &#123;</span><br><span class="line">    <span class="keyword">this</span>.handleLayer(<span class="string">'post'</span>, ...args)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 请求方式和路径 匹配 合适 的中间件</span></span><br><span class="line">  match(method, url) &#123;</span><br><span class="line">    <span class="keyword">let</span> midderwares = [];</span><br><span class="line">    <span class="comment">// 处理浏览器 网页 图标</span></span><br><span class="line">    <span class="keyword">if</span> (url == <span class="string">'/favicon.ico'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> midderwares</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理 对所有请求方式 都生效的中间件 </span></span><br><span class="line">    <span class="keyword">this</span>.routes.all.filter(<span class="function"><span class="params">m</span> =&gt;</span> url.indexOf(m.path) == <span class="number">0</span>).forEach(<span class="function"><span class="params">m</span> =&gt;</span> &#123;</span><br><span class="line">      midderwares = midderwares.concat(m.stack)</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理对应请求方式</span></span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">this</span>.routes[method].filter(<span class="function"><span class="params">m</span> =&gt;</span> url.indexOf(m.path) == <span class="number">0</span>).forEach(<span class="function"><span class="params">m</span> =&gt;</span> &#123;</span><br><span class="line">      midderwares = midderwares.concat(m.stack)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> midderwares;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理请求的方法</span></span><br><span class="line">  hanldRequest(req, res) &#123;</span><br><span class="line">    <span class="comment">// console.log(req)</span></span><br><span class="line">    <span class="keyword">let</span> method = req.method.toLocaleLowerCase(),</span><br><span class="line">      url = req.url;</span><br><span class="line">    <span class="keyword">const</span> stack = <span class="keyword">this</span>.match(method, url);</span><br><span class="line">    <span class="comment">// 依次执行 中间件 数组</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">next</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">const</span> curMidware = stack.shift();</span><br><span class="line">      <span class="comment">// 如果是 处理函数</span></span><br><span class="line">      <span class="keyword">if</span> (curMidware) &#123;</span><br><span class="line">        <span class="comment">// 传入正常中间件的3个参数</span></span><br><span class="line">        curMidware(req, res, next);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  listen(...res) &#123;</span><br><span class="line">    <span class="keyword">const</span> server = http.createServer(<span class="keyword">this</span>.hanldRequest.bind(<span class="keyword">this</span>));</span><br><span class="line">    server.listen(...res);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = MiniExpress;</span><br></pre></td></tr></table></figure></p>
-<p>测试代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MiniExpress = <span class="built_in">require</span>(<span class="string">'./mini_express'</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> MiniExpress();</span><br><span class="line"></span><br><span class="line">app.use(<span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'11111'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(<span class="string">'/api/list'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'22222222222222'</span>)</span><br><span class="line">  next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/api/list'</span>, <span class="function"><span class="keyword">function</span> <span class="title">check</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'user is pass checked'</span>);</span><br><span class="line">  next()</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    code: <span class="number">200</span>,</span><br><span class="line">    list: [</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">'ddd'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">'eee'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">8000</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'server is listening at port 8000'</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">测试 结果</span></span><br><span class="line"><span class="comment">server is listening at port 8000</span></span><br><span class="line"><span class="comment">11111</span></span><br><span class="line"><span class="comment">22222222222222</span></span><br><span class="line"><span class="comment">user is pass checked</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></p>
-<p>要实现express的中间件这样的效果，我们就需要记录所有的中间处理函数及其对应的路径和请求方式。然后，对每一次请求都匹配对应处理函数，最后就会得到每次请求的 中间件函数队列，然后利用指针来依次执行所有的中间件处理函数。这种思想也可用于异步和动画队列等问题的应用中。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1118,7 +1147,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1129,7 +1158,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1140,7 +1169,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
